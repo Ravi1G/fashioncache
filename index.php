@@ -1,0 +1,174 @@
+<?php
+/*******************************************************************\
+ * CashbackEngine v2.1
+ * http://www.CashbackEngine.net
+ *
+ * Copyright (c) 2010-2014 CashbackEngine Software. All rights reserved.
+ * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
+\*******************************************************************/
+
+	if (file_exists("./install.php"))
+	{
+		header ("Location: install.php");
+		exit();
+	}
+
+	session_start();
+	require_once("inc/config.inc.php");
+
+	// save referral id //////////////////////////////////////////////
+	if (isset($_GET['ref']) && is_numeric($_GET['ref']))
+	{
+		$ref_id = (int)$_GET['ref'];
+		setReferal($ref_id);
+
+		header("Location: index.php");
+		exit();
+	}
+
+	// set language ///////////////////////////////////////////////////
+	if (isset($_GET['lang']) && $_GET['lang'] != "")
+	{
+		$site_lang	= strtolower(getGetParameter('lang'));
+		$site_lang	= preg_replace("/[^0-9a-zA-Z]/", " ", $site_lang);
+		$site_lang	= substr(trim($site_lang), 0, 30);
+		
+		if ($site_lang != "")
+			setcookie("site_lang", $site_lang, time()+3600*24*365, '/');
+
+		header("Location: index.php");
+		exit();
+	}
+
+	///////////////  Page config  ///////////////
+	$PAGE_TITLE = SITE_HOME_TITLE;
+
+	require_once("inc/header.inc.php");
+
+?>
+
+		<div id="slider">
+			<ul>
+				<li><img src="<?php echo SITE_URL; ?>images/slide01.jpg" alt="" /></li>
+				<li><img src="<?php echo SITE_URL; ?>images/slide02.jpg" alt="" /></li>
+				<li><img src="<?php echo SITE_URL; ?>images/slide03.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<center><img src="<?php echo SITE_URL; ?>images/slider_shadow.png" /></center>
+		<div style="clear: both"></div>
+
+
+		<?php
+
+			// hide welcome text from registered users
+			if (!isLoggedIn())
+			{
+				$content = GetContent('home');
+				echo $content['text'];
+			}
+
+		?>
+
+		<?php
+
+			if (FEATURED_STORES_LIMIT > 0)
+			{
+				// show featured retailers //
+				$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY RAND() LIMIT ".FEATURED_STORES_LIMIT);
+				$total_fetaured = mysql_num_rows($result_featured);
+
+				if ($total_fetaured > 0) { 
+		?>
+			<div style="clear: both;"></div>
+			<h3 class="brd"><?php echo CBE1_HOME_FEATURED_STORES; ?></h3>
+			<div class="featured_stores">
+			<?php while ($row_featured = mysql_fetch_array($result_featured)) { ?>
+				<div>
+					<?php echo $row_featured['cashback'];?>&nbsp;Cashback
+				</div>
+				<div class="imagebox">
+					<!-- <a href="<?php echo GetRetailerLink($row_featured['retailer_id'], $row_featured['title']); ?>"><img src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>" title="<?php echo $row_featured['title']; ?>" border="0" /></a>-->
+					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>" title="<?php echo $row_featured['title']; ?>" border="0" /></a>
+				</div>
+			<?php } ?>
+			</div>
+		<?php
+				}
+			} // end featured retailers 
+		?>
+
+
+		<?php
+			if (TODAYS_COUPONS_LIMIT > 0)
+			{
+				// show today's top coupons //
+				$result_todays_coupons = smart_mysql_query("SELECT c.*, DATE_FORMAT(c.end_date, '%d %b %Y') AS coupon_end_date, UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, c.title AS coupon_title, r.image, r.title FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW())) AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) AND r.status='active' ORDER BY RAND() LIMIT ".TODAYS_COUPONS_LIMIT);
+				$total_todays_coupons = mysql_num_rows($result_todays_coupons);
+
+				if ($total_todays_coupons > 0) { 
+		?>
+			<div style="clear: both;"></div>
+			<h3 class="brd"><?php echo CBE1_HOME_TOP_COUPONS; ?></h3>
+			<table align="center" width="100%" border="0" cellspacing="0" cellpadding="5">
+			<?php while ($row_todays_coupons = mysql_fetch_array($result_todays_coupons)) { ?>
+				<tr>
+					<td class="td_coupon" width="125" align="center" valign="top">
+						<div class="imagebox"><a href="<?php echo GetRetailerLink($row_todays_coupons['retailer_id'], $row_todays_coupons['title']); ?>"><img src="<?php if (!stristr($row_todays_coupons['image'], 'http')) echo SITE_URL."img/"; echo $row_todays_coupons['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_todays_coupons['title']; ?>" title="<?php echo $row_todays_coupons['title']; ?>" border="0" /></a></div>
+						<br/><a class="more" href="<?php echo GetRetailerLink($row_todays_coupons['retailer_id'], $row_todays_coupons['title']); ?>#coupons"><?php echo CBE1_COUPONS_SEEALL; ?></a>
+					</td>
+					<td class="td_coupon" align="left" valign="top">
+						<a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_todays_coupons['retailer_id']; ?>&c=<?php echo $row_todays_coupons['coupon_id']; ?>" target="_blank"><b><?php echo $row_todays_coupons['title']; ?></b></a>
+						<p><?php echo $row_todays_coupons['coupon_title']; ?></p>
+						<?php if ($row_todays_coupons['code'] != "") { ?>
+							<b><?php echo CBE1_COUPONS_CODE; ?></b>: <span class="coupon_code"><?php echo (isLoggedIn()) ? $row_todays_coupons['code'] : CBE1_COUPONS_CODE_HIDDEN; ?></span><br/><br/>
+						<?php } ?>
+						<a class="go2store" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_todays_coupons['retailer_id']; ?>&c=<?php echo $row_todays_coupons['coupon_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo ($row_todays_coupons['code'] != "") ? CBE1_COUPONS_LINK : CBE1_COUPONS_LINK2; ?></a>
+						<?php if ($row_todays_coupons['end_date'] != "0000-00-00 00:00:00") { ?>
+							<span class="expires"><?php echo CBE1_COUPONS_EXPIRES; ?>: <?php echo $row_todays_coupons['coupon_end_date']; ?></span> &nbsp; 
+							<span class="time_left"><?php echo CBE1_COUPONS_TIMELEFT; ?>: <?php echo GetTimeLeft($row_todays_coupons['time_left']).""; ?></span>
+						<?php } ?>
+						<?php if ($row_todays_coupons['description'] != "") { ?>
+							<p><?php echo $row_todays_coupons['description']; ?></p>
+						<?php } ?>
+					</td>
+				</tr>
+			<?php } ?>
+			</table>
+		<?php
+				}
+			} // end today's top coupons
+		?>
+
+
+		<?php
+
+			if (HOMEPAGE_REVIEWS_LIMIT > 0)
+			{
+				// Show recent reviews //
+				$reviews_query = "SELECT r.*, DATE_FORMAT(r.added, '%e/%m/%Y') AS review_date, u.user_id, u.username, u.fname, u.lname FROM cashbackengine_reviews r LEFT JOIN cashbackengine_users u ON r.user_id=u.user_id WHERE r.status='active' ORDER BY r.added DESC LIMIT ".HOMEPAGE_REVIEWS_LIMIT;
+				$reviews_result = smart_mysql_query($reviews_query);
+				$reviews_total = mysql_num_rows($reviews_result);
+
+				if ($reviews_total > 0) {
+		?>
+			<div style="clear: both"></div>
+			<h3 class="brd"><?php echo CBE1_HOME_RECENT_REVIEWS; ?></h3>
+			<?php while ($reviews_row = mysql_fetch_array($reviews_result)) { ?>
+            <div id="review">
+                <span class="review-author"><?php echo $reviews_row['fname']; ?></span>
+				<span class="review-date"><?php echo $reviews_row['review_date']; ?></span><br/><br/>
+				<b><a href="<?php echo GetRetailerLink($reviews_row['retailer_id'], GetStoreName($reviews_row['retailer_id'])); ?>"><?php echo GetStoreName($reviews_row['retailer_id']); ?></a></b><br/>
+				<img src="<?php echo SITE_URL; ?>images/icons/rating-<?php echo $reviews_row['rating']; ?>.gif" />&nbsp;
+				<span class="review-title"><?php echo $reviews_row['review_title']; ?></span><br/>
+				<div class="review-text"><?php echo $reviews_row['review']; ?></div>
+                <div style="clear: both;"></div>
+            </div>
+			<?php } ?>
+			<div style="clear: both"></div>
+		<?php
+				}
+			}
+		?>
+
+
+<?php require_once("inc/footer.inc.php"); ?>
