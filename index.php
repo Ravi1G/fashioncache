@@ -96,6 +96,38 @@
 				}
 			} // end featured retailers 
 		?>
+		
+		<?php
+
+		// show featured retailers
+		$result_trending_sales = smart_mysql_query("SELECT sale.created,sale.title, sale.description, sale.trending_sale_id, retailer.title as retailer_title, retailer.retailer_id, retailer.cashback FROM cashbackengine_trending_sales as sale 
+		join cashbackengine_retailers as retailer 
+		on retailer.retailer_id = sale.retailer_id 
+		ORDER BY sale.trending_sale_id desc LIMIT 3");
+		$total_trending_sales = mysql_num_rows($result_trending_sales);
+
+		if ($total_trending_sales > 0) { 
+		?>
+			<div style="clear: both;"></div>
+			<h3 class="brd">Trending Sales</h3>
+			<div class="featured_stores">
+			<?php while ($row_sale = mysql_fetch_array($result_trending_sales)) { ?>
+				<div style="float: left; width: 200px;">
+					<div>
+						<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_sale['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+							<?php echo $row_sale['title']?>
+						</a>
+					</div>
+					<div><?php echo $row_sale['description']?></div>
+					<div>+</div>
+					<div><?php echo $row_sale['cashback'];?>&nbsp;Cashback</div>
+				</div>
+			<?php } ?>
+				<div style="clear: both"></div>
+			</div>
+		<?php
+			} // end trending sales 
+		?>
 
 
 		<?php

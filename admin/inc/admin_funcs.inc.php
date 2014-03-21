@@ -314,5 +314,39 @@ function GetGuestsVisitsTotal($retailer_id)
 }
 }
 
+if (!function_exists('getAllActiveRetailer')) {
+	function getAllActiveRetailer ($columns = array('title', 'retailer_id'))
+	{
+		$retailer = array();
+		$result = smart_mysql_query("SELECT ".implode(',', $columns)." FROM cashbackengine_retailers where status = 'active' ORDER BY title asc");
+		$total = mysql_num_rows($result);
+	
+		if ($total > 0)
+		{
+			while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$retailers[]  = $row;
+			}
+		}
+		return $retailers;
+	}
+}
+
+if (!function_exists('getTrendingSale')) {
+	function getTrendingSale ($id, $columns = array('sale.title as title', 'sale.description', 'retailer.title as retailer_title', 'retailer.retailer_id'))
+	{
+		$trending_sale = array();
+		$result = smart_mysql_query("SELECT ".implode(',', $columns)." FROM cashbackengine_trending_sales as sale
+		join cashbackengine_retailers as retailer on retailer.retailer_id = sale.retailer_id
+		where trending_sale_id = $id");
+		$total = mysql_num_rows($result);
+	
+		if ($total > 0)
+		{
+			$trending_sale = mysql_fetch_array($result, MYSQL_ASSOC);
+		}
+		return $trending_sale;
+	}
+}
 
 ?>

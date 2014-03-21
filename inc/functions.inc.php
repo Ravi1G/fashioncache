@@ -1289,5 +1289,19 @@ if (!function_exists('GetRetailerLink')) {
 	}
 }
 
+/**
+ * Print array with formatting
+*/
+
+if (!function_exists('pr')) {
+	function pr($arr, $exit = 0) {
+		echo '<pre>';
+		print_r($arr);
+		echo '</pre>';
+		if($exit)
+			exit;
+	}
+}
+
 
 ?>
