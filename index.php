@@ -109,7 +109,7 @@
 		if ($total_trending_sales > 0) { 
 		?>
 			<div style="clear: both;"></div>
-			<h3 class="brd">Trending Sales</h3>
+			<h3 class="brd">Trending Sales </h3>
 			<div class="featured_stores">
 			<?php while ($row_sale = mysql_fetch_array($result_trending_sales)) { ?>
 				<div style="float: left; width: 200px;">
@@ -128,7 +128,42 @@
 		<?php
 			} // end trending sales 
 		?>
-
+		<div style="clear: both;"></div>
+			<h3 class="brd">Authors </h3>
+		
+	<?php
+	 	// Calling function to get author list from blog/apis.php
+	 		
+		$authors= fc_get_users();
+		fc_reconnect_db();
+		if(count($authors) > 0)
+		{
+			foreach($authors as $author)
+			{
+				?>
+				<div style="float:left">
+					<div>
+						<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>"><img src='<?php echo $author['Author_Profile_Picture_Value'];?>'/></a>
+					</div>
+					<div>
+						First Name: <?php echo $author['First_Name_Value'];?>
+					</div>
+					<div>
+						Last Name: <?php echo $author['Last_Name_Value'];?>
+					</div>
+					<div>
+						Nice Name: <?php echo $author['user_nicename'];?>
+					</div>
+					
+				</div>
+				<?php
+			}
+		}
+		else 
+		{
+			echo 'No Author';
+		}
+	?>
 
 		<?php
 			if (TODAYS_COUPONS_LIMIT > 0)

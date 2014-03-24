@@ -16,6 +16,12 @@
 
 function smart_mysql_query($sql)
 {
+	/*$link = mysql_connect('localhost','username','password');
+
+	if($link == false){
+		//try to reconnect
+	}
+*/
 	$res = mysql_query($sql) or die("<p align='center'><span style='font-size:11px; font-family: tahoma, verdana, arial, helvetica, sans-serif; color: #000;'>query failed: ".mysql_error()."</span></p>");
 	if(!$res){
 		return false;

@@ -91,8 +91,8 @@ if ($isPost)
 			  		$errors[] = 'Uplaod valid image.';
 				}
 				
-				if($_FILES["image"]["size"] < 20480){
-					$errors[] = 'Allowed maximum file size is 20MB.';
+				if($_FILES["image"]["size"] > 5242880){
+					$errors[] = 'Allowed maximum file size is 5MB.';
 				}
 			}
 			 

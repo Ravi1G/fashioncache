@@ -349,6 +349,24 @@ if (!function_exists('getTrendingSale')) {
 	}
 }
 
+if (!function_exists('getSaleAlert')) {
+	function getSaleAlert ($id, $columns = array('sale.title as title', 'retailer.title as retailer_title', 'retailer.retailer_id'))
+	{
+		$sale_alert = array();
+		$result = smart_mysql_query("SELECT ".implode(',', $columns)." FROM cashbackengine_sale_alert as sale
+		join cashbackengine_retailers as retailer on retailer.retailer_id = sale.retailer_id
+		where sale_alert_id = $id");
+		$total = mysql_num_rows($result);
+	
+		if ($total > 0)
+		{
+			$sale_alert = mysql_fetch_array($result, MYSQL_ASSOC);
+		}
+		return $sale_alert;
+	}
+}
+
+
 if(!function_exists('AdvertisementsList')){
 	function AdvertisementsList()
 	{

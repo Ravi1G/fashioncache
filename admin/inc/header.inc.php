@@ -34,6 +34,7 @@
 				<li><a href="coupons.php">Coupons <?php if (GetNewCouponsTotal() > 0) { ?> <span class="new_count"><?php echo GetNewCouponsTotal(); ?></span><?php } ?></a></li>
 				<li><a href="categories.php">Categories</a></li>
 				<li><a href="trending_sales.php">Trending Sales</a></li>
+				<li><a href="sale_alert_add_edit.php">Sale Alert</a></li>
 				<li><a href="countries.php">Countries</a></li>
 				<li><a href="reviews.php">Reviews</a></li>
 				<?php if (GetInvitationsTotal() > 0) { ?>
