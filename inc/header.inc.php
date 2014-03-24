@@ -84,7 +84,29 @@
 						<p align="center"><a href="javascript: void(0);" onclick="facebook_login();" class="connect-f"><img src="<?php echo SITE_URL; ?>images/facebook_connect.png" /></a></p>
 					<?php } ?>
 					<a href="<?php echo SITE_URL; ?>forgot.php"><?php echo CBE1_LOGIN_FORGOT; ?></a><br/>
-					<?php echo CBE1_LOGIN_NOT_MEMBER; ?> <a href="<?php echo SITE_URL; ?>signup.php"><?php echo CBE_SIGNUP; ?>!</a>
+					
+				</form>
+			</div>
+			<div class="bottom">&nbsp;</div>
+		</div>
+		<div class="box">
+			<div class="top"><?php echo CBE1_SIGNUP_TITLE; ?></div>
+			<div class="middle">
+				<form action="<?php echo SITE_URL; ?>shortsignup.php" method="post">
+					<table border="0" cellspacing="0" cellpadding="1">
+					<tr><td align="left" valign="top"><?php echo CBE1_LOGIN_EMAIL; ?>:<br/><input type="text" class="textbox" name="email" value="" size="23" /></td></tr>	<tr><td align="left" valign="top"><?php echo CBE1_LOGIN_PASSWORD; ?>:<br/><input type="password" class="textbox" name="password" value="" size="23" /></td></tr>
+					
+          <tr>
+					<tr>
+						<td align="left" valign="top">
+						<?php if (isset($_COOKIE['referer_id']) && is_numeric($_COOKIE['referer_id'])) { ?>
+							<input type="hidden" name="referer_id" id="referer_id" value="<?php echo (int)$_COOKIE['referer_id']; ?>" />
+						<?php } ?>
+							<input type="hidden" name="action" value="signup" />
+							<input type="submit" class="submit" name="signup" id="signup" value="<?php echo CBE1_SIGNUP_BUTTON; ?>" />
+						</td>
+					</tr>
+					</table>
 				</form>
 			</div>
 			<div class="bottom">&nbsp;</div>

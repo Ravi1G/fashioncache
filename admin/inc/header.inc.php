@@ -25,6 +25,7 @@
 			<ul>
 				<li><a href="index.php">Home</a></li>
 				<li><a href="users.php">Members</a></li>
+				<li><a href="advertisements.php">Advertisements</a></li>
 				<li><a href="retailers.php">Retailers</a></li>
 				<?php if (GetRetailerReportsTotal() > 0) { ?>
 					<li><a href="retailer_reports.php">Retailer Reports <span class="new_count" style="background:#F76E25;"><?php echo GetRetailerReportsTotal(); ?></span></a></li>

@@ -349,4 +349,49 @@ if (!function_exists('getTrendingSale')) {
 	}
 }
 
+if(!function_exists('AdvertisementsList')){
+	function AdvertisementsList()
+	{
+		$result = smart_mysql_query("SELECT title, advertisement_id, image_url, link, image_name FROM cashbackengine_advertisements");
+		$total = mysql_num_rows($result);
+		if($total > 0)
+		{
+			while($row = mysql_fetch_assoc($result))
+			{
+				$alladvertisements[]=$row;
+			}
+		}
+		return $alladvertisements;		
+	}
+}
+
+if(!function_exists('GetAdvertisement')){
+	function GetAdvertisement($id)
+	{
+		$query = mysql_query("SELECT image_url, image_name FROM cashbackengine_advertisements WHERE advertisement_id='$id'");
+		$img = mysql_fetch_assoc($query);
+		if($img['image_url']!="")
+			$img_loc = $img['image_url'];
+		else if($img['image_name']!="")
+			$img_loc = $img['image_name'];
+		return "<a><img src='$img_loc'></a>";
+	}
+	// Call function by passing id which is in admin_func.inc.php - to get the image of advertisement
+	//$img = GetAdvertisement(1);
+	//echo $img;
+}
+
+if(!function_exists('GetAdImagePathFromName')){
+	function GetAdImagePathFromName($imageName)
+	{
+		return $img_loc = $img['image_name'];
+	}
+	// Call function by passing id which is in admin_func.inc.php - to get the image of advertisement
+	//$img = GetAdvertisement(1);
+	//echo $img;
+}
+
+
+
+
 ?>
