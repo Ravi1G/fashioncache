@@ -41,5 +41,5 @@
 	
 	//BLOG URL
 	define('BLOG_URL', SITE_URL.BLOG_DIR_NAME.'/');
-	require_once 'blog/apis.php';
+	require_once PUBLIC_HTML_PATH.'/blog/apis.php';
 ?>
