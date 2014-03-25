@@ -396,7 +396,6 @@ if(!function_exists('GetAdvertisement')){
 	}
 	// Call function by passing id which is in admin_func.inc.php - to get the image of advertisement
 	//$img = GetAdvertisement(1);
-	//echo $img;
 }
 
 if(!function_exists('GetAdImagePathFromName')){
@@ -404,12 +403,23 @@ if(!function_exists('GetAdImagePathFromName')){
 	{
 		return $img_loc = $img['image_name'];
 	}
-	// Call function by passing id which is in admin_func.inc.php - to get the image of advertisement
-	//$img = GetAdvertisement(1);
-	//echo $img;
+		
 }
 
-
-
-
+//Banners list
+if(!function_exists('BannersList')){
+	function BannersList()
+	{
+		$result = smart_mysql_query("SELECT b.banner_id AS banner_id, b.link AS link, b.image AS image, r.title AS retailer_title,r.url FROM cashbackengine_banners AS b INNER JOIN cashbackengine_retailers AS r ON b.retailer_id = r.retailer_id");
+		$total = mysql_num_rows($result);
+		if($total > 0)
+		{
+			while($row = mysql_fetch_assoc($result))
+			{
+				$allbanners[]=$row;
+			}
+		}
+		return $allbanners;		
+	}
+}
 ?>

@@ -58,17 +58,24 @@ if ($isPost)
 	
 	$image_url		= mysql_real_escape_string(getPostParameter('imageurl'));
 	$link			= mysql_real_escape_string(getPostParameter('link'));
-	$adTitle			= mysql_real_escape_string(getPostParameter('title'));
+	$adTitle		= mysql_real_escape_string(getPostParameter('title'));
 	$image_name		= $_FILES['image']['name'];
 
-	if ($link=='' || ($image_url=='' && $image_name=='') || $adTitle=='')
-	{
+	if($isEdit){
+		if ($link=='' || $adTitle=='' || ($select_option=='use_url' && $image_url==''))
+		{
+			$errors[] = "Please ensure that all fields marked with an asterisk are complete";
+		}	
+	}elseif(!$isEdit && ($link=='' || ($image_url=='' && $image_name=='') ||  $adTitle=='')){
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
-	else
+	
+	
+	
+	if(!$errors)
 	{	
 		//validate advertisement image
-		if($select_option=='upload_image'){
+		if($select_option=='upload_image' && $image_name!=''){
 			if ($_FILES["image"]["error"] > 0)
 	  		{
 				$error[]= $_FILES["image"]["error"];
@@ -97,22 +104,22 @@ if ($isPost)
 			}
 			 
 		}elseif($select_option=='use_url'){		//validate advertisement image url
-			if (!preg_match("/^((http|https):\/\/)?([www]+(\.[a-zA-Z0-9]+)+(\.[a-zA-Z0-9]).*)$/", $image_url))
+			if (!preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$image_url))
 			{
-				$errors[] = "Enter correct image url. (e.g. 'http://www.abc.com' or 'https://www.abc.com' or 'www.abc.com')";
+				$errors[] = "Enter correct image url. (e.g. 'http://abc.com' or 'https://abc.com' or 'http://www.abc.com')";
 			}			
 		}
 		
 		//validate advertisement link
-		if (!preg_match("/^((http|https):\/\/)?([www]+(\.[a-zA-Z0-9]+)+(\.[a-zA-Z0-9]).*)$/", $link))
+		if (!preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $link))
 		{
-			$errors[] = "Enter correct link url. (e.g. 'http://www.abc.com' or 'https://www.abc.com' or 'www.abc.com')";
+			$errors[] = "Enter correct link url. (e.g. 'http://abc.com' or 'https://abc.com' or 'http://www.abc.com')";
 		}
 	}
 	
 	if (count($errors) == 0 && $isPost)
 	{
-		if($select_option=='upload_image')
+		if($select_option=='upload_image' && $image_name!='')
 		{
 			if (file_exists("upload/" . $_FILES["image"]["name"]))
 			{
@@ -140,19 +147,46 @@ if ($isPost)
 		//Update record
 		if($id)
 		{	
-			//remove image if one already there for advertisement		
-			$sql=mysql_query("SELECT image_name FROM cashbackengine_advertisements WHERE advertisement_id='$id'");
-			$row=mysql_fetch_assoc($sql);
-			$image_loc = $row['image_name'];
+			if($image_url!='' || ($select_option=='upload_image' && $image_name!='')){
+				//remove image if one already there for advertisement		
+				$sql=mysql_query("SELECT image_name FROM cashbackengine_advertisements WHERE advertisement_id='$id'");
+				$row=mysql_fetch_assoc($sql);
+				$image_loc = $row['image_name'];
 			
-			if($image_loc!="" )	
-				$img_del_result=unlink($image_loc);	
+				if($image_loc!="" )	
+					$img_del_result=unlink($image_loc);
+			}	
 			//remove block ends		
-				
-			if($select_option=='upload_image')
-				$sql = "UPDATE cashbackengine_advertisements  SET title='$adTitle', image_url='', link='$link', image_name='$loc' WHERE advertisement_id='$id'";
-			else 
-				$sql = "UPDATE cashbackengine_advertisements  SET title='$adTitle', image_url='$image_url', link='$link', image_name='' WHERE advertisement_id='$id'";
+			
+			$params = array(
+				'title'=>$adTitle,
+				'link' => $link
+			);
+			
+			
+			if($select_option=='upload_image'){
+				$additionalParams = array(
+					'image_url' => ''
+				);
+				if($image_name!='')
+					$additionalParams['image_name']= $loc;
+
+			}else{
+				$additionalParams = array(
+					'image_url' => $image_url,
+					'image_name' => ''
+				);
+			}
+
+			$params = array_merge($params, $additionalParams);
+			$set = array();
+			
+			foreach($params as $pkey => $pvalue){
+				$set[] = $pkey."='".$pvalue."'";	
+			}
+			$set = implode(',', $set);
+			
+			echo $sql = "UPDATE cashbackengine_advertisements  SET $set WHERE advertisement_id='$id'";
 			
 			if(smart_mysql_query($sql))
 			{

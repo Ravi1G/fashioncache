@@ -47,16 +47,31 @@
 
 ?>
 
-		<div id="slider">
+<?php $allbanners = array(); $allbanners = BannersList(0);
+?>
+
+<div id="slider">
 			<ul>
-				<li><img src="<?php echo SITE_URL; ?>images/slide01.jpg" alt="" /></li>
-				<li><img src="<?php echo SITE_URL; ?>images/slide02.jpg" alt="" /></li>
-				<li><img src="<?php echo SITE_URL; ?>images/slide03.jpg" alt="" /></li>
+				<?php foreach ($allbanners as $banner){?>
+				<li>
+					<a href="
+					<?php 
+					if($banner['link']!="")
+						echo $banner['link'];
+					else 
+						echo $banner['url'];		
+					?>
+					
+					"><img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/></a>
+				</li>
+				<?php 	}?>
 			</ul>
 		</div>
 		<center><img src="<?php echo SITE_URL; ?>images/slider_shadow.png" /></center>
 		<div style="clear: both"></div>
-
+		
+		
+		
 
 		<?php
 
