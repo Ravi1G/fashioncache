@@ -1308,5 +1308,4 @@ if (!function_exists('pr')) {
 			exit;
 	}
 }
-
 ?>

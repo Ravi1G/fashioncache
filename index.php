@@ -60,9 +60,8 @@
 						echo $banner['link'];
 					else 
 						echo $banner['url'];		
-					?>
-					
-					"><img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/></a>
+					?>" target="blank">
+					<img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/></a>
 				</li>
 				<?php 	}?>
 			</ul>

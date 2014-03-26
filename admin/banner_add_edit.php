@@ -34,12 +34,12 @@ if(!$isPost){
 //Run in case of edit to fetch advertisement information
 if($id && !$isPost)
 {
-	$fetch_record 	=	mysql_fetch_assoc(smart_mysql_query("SELECT banner_id, image, link, retailer_id FROM cashbackengine_banners WHERE banner_id=$id"));
+	$fetch_record 	=	mysql_fetch_assoc(smart_mysql_query("SELECT banner_id, image, link, retailer_id, sort_order FROM cashbackengine_banners WHERE banner_id=$id"));
 	$id				=	$fetch_record['banner_id'];
 	$link			=	$fetch_record['link'];
 	$image			=	$fetch_record['image'];
 	$retailer_id	=	$fetch_record['retailer_id'];
-	
+	$sort_order		=	$fetch_record['sort_order'];
 	
 	$_POST = $fetch_record;
 	
@@ -58,13 +58,14 @@ if ($isPost)
 	$errors = array();
 	$retailer_id	= mysql_real_escape_string(getPostParameter('retailer_id'));
 	$link			= mysql_real_escape_string(getPostParameter('link'));
+	$sort_order		= mysql_real_escape_string(getPostParameter('sort_order'));
 	$image			= $_FILES['image']['name'];
 
-	if ($isEdit && $retailer_id=='')
+	if ($isEdit && $retailer_id=='' || $sort_order=='')
 	{
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
-	elseif ($retailer_id=='' || $image=='' && !$isEdit)
+	elseif ($retailer_id=='' || $image=='' && !$isEdit || $sort_order=='')
 	{
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
@@ -74,7 +75,9 @@ if ($isPost)
 			if ($_FILES["image"]["error"] > 0)
 	  		{
 				$error[]= $_FILES["image"]["error"];
-			}else{
+			}
+			else
+			{
 				$valid_mime_types = array(
 					"image/gif",
 					"image/jpeg",
@@ -141,11 +144,11 @@ if ($isPost)
 				if($image_loc!="" && file_exists($image_loc))	
 					$img_del_result=unlink($image_loc);	
 				//remove block ends
-				$sql = "UPDATE cashbackengine_banners  SET link='$link', image='$loc', retailer_id='$retailer_id' WHERE banner_id='$id'";
+				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order', link='$link', image='$loc', retailer_id='$retailer_id' WHERE banner_id='$id'";
 			}
 			else
 			{
-				$sql = "UPDATE cashbackengine_banners  SET link='$link', retailer_id='$retailer_id' WHERE banner_id='$id'";
+				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order',link='$link', retailer_id='$retailer_id' WHERE banner_id='$id'";
 			}
 				
 			
@@ -159,7 +162,7 @@ if ($isPost)
 		else
 		{ 
 			// For inserting new advertisement
-			$sql = "INSERT INTO cashbackengine_banners SET link='$link',image='$loc', retailer_id='$retailer_id'";
+			$sql = "INSERT INTO cashbackengine_banners SET sort_order='$sort_order',link='$link',image='$loc', retailer_id='$retailer_id'";
 
 			if (smart_mysql_query($sql))
 			{
@@ -206,7 +209,6 @@ require_once ("inc/header.inc.php");
 					while ($row_retailers = mysql_fetch_array($sql_retailers))
 					{
 						if ($retailer_id == $row_retailers['retailer_id']) $selected = " selected=\"selected\""; else $selected = "";
-
 						echo "<option value=\"".$row_retailers['retailer_id']."\"".$selected.">".$row_retailers['title']."</option>";
 					}
 				?>
@@ -223,13 +225,17 @@ require_once ("inc/header.inc.php");
 					<?php } ?>
 				</td>
 			</tr>
-	
+
 			<tr>
 				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1">Link :</td>
 				<td align="left">
 					<input type="text" name="link" id="link" value="<?php echo $link; ?>" size="40" class="textbox" />
 				</td>
 			</tr>
+			<tr>
+				<td valign="middle" align="right" class="tb1"><span class="req">*</span>Sort Order:</td>
+				<td valign="middle"><input type="text" class="textbox" name="sort_order" value="<?php echo $sort_order; ?>" size="5" /></td>
+            </tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td valign="middle" align="left">
