@@ -76,24 +76,24 @@
 							<?php 
 								while ($row_featured = mysql_fetch_array($result_featured)) { 
 									$looped_featured++;
-							?>
+							?>							
 									<div class="store<?php if($looped_featured==$total_fetaured){?> lastItem<?php }?>">
-						                <div class="icon">
-						                    <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+									  <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						                <span class="icon">						                    
 						                    	<img alt="" src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>"/>
-						                    </a>	
-						                </div>				
-						                <div class="cashBack">
+										</span>				
+						                <span class="cashBack">
 						                	<?php
 						                	$cashback_type = GetCashbackType($row_featured['cashback']);
 						                	$cashback = RemoveCashbackType($row_featured['cashback']);
 						                	?>
-						                    <div class="percentage"><?php echo $cashback;?><span class="percentageSymbol"><?php echo $cashback_type;?></span></div>
-						                    <div class="cashBackCaption">Cash Back</div>
-						                </div>
-						                <div class="cb"></div>
+						                    <span class="percentage"><?php echo $cashback;?><span class="percentageSymbol"><?php echo $cashback_type;?></span></span>
+						                    <span class="cashBackCaption">Cash Back</span>
+						                </span>
+									  </a>	
+						              <div class="cb"></div>
 						            </div>
-									<!-- <div>
+							   <!-- <div>
 										<?php echo $row_featured['cashback'];?>&nbsp;Cashback
 									</div>
 									<div class="imagebox">
@@ -464,13 +464,14 @@
                 
                 <!-- Featured Articles Section -->
                 <div class="heading3">FEATURED ARTICLES</div>
-                
-                <div class="captionContainer readOurBlog">
-                    <div><img alt="" src="<?php echo SITE_URL;?>img/blog.jpg"/></div>
-                    <div class="subText">READ OUR</div>
-                    <div class="titleText">BLOG</div>
-                    <div class="caption">Read More</div>
-                </div>
+                <a href="<?php echo SITE_URL;?>blog.php" class="noUnderline">
+					<span class="captionContainer readOurBlog">				
+						<span><img alt="" src="<?php echo SITE_URL;?>img/blog.jpg"/></span>
+						<span class="subText">READ OUR</span>
+						<span class="titleText">BLOG</span>
+						<span class="caption">Read More</span>
+					</span>
+				</a>
                 <div class="captionContainer">
                     <div class="image"><img alt="" src="<?php echo SITE_URL;?>img/handBags.jpg"/></div>
                     <div class="caption">Lorem ipsum dolor</div>
