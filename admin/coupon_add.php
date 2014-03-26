@@ -15,6 +15,7 @@
 
 if (isset($_POST['action']) && $_POST['action'] == "add")
  {
+ 	
 		unset($errors);
 		$errors = array();
  
@@ -31,7 +32,7 @@ if (isset($_POST['action']) && $_POST['action'] == "add")
 		$description	= mysql_real_escape_string(nl2br(getPostParameter('description')));
 		$exclusive		= (int)getPostParameter('exclusive');
 		$sort_order		= (int)getPostParameter('sort_order');
-
+		$trending_sale	= (int)getPostParameter('trending_sale');
 
 		if (!($coupon_title && $retailer_id))
 		{
@@ -62,7 +63,7 @@ if (isset($_POST['action']) && $_POST['action'] == "add")
 
 		if (count($errors) == 0)
 		{
-			$insert_sql = "INSERT INTO cashbackengine_coupons SET title='$coupon_title', retailer_id='$retailer_id', user_id='0', code='$code', link='$link', start_date='$coupon_start_date', end_date='$coupon_end_date', description='$description', exclusive='$exclusive', sort_order='$sort_order', status='active', added=NOW()";
+			$insert_sql = "INSERT INTO cashbackengine_coupons SET title='$coupon_title', retailer_id='$retailer_id', user_id='0', code='$code', link='$link', start_date='$coupon_start_date', end_date='$coupon_end_date', description='$description', exclusive='$exclusive', sort_order='$sort_order', status='active', trending_sale='$trending_sale', added=NOW()";
 			$result = smart_mysql_query($insert_sql);
 			$new_coupon_id = mysql_insert_id();
 
@@ -166,6 +167,10 @@ if (isset($_POST['action']) && $_POST['action'] == "add")
             <tr>
 				<td valign="middle" align="right" class="tb1">Exclusive?</td>
 				<td valign="middle"><input type="checkbox" class="checkbox" name="exclusive" value="1" <?php if (getPostParameter('exclusive') == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
+            </tr>
+            <tr>
+				<td valign="middle" align="right" class="tb1">Trending Sale?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="trending_sale" value="1" <?php if (getPostParameter('trending_sale') == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
             <tr>
 				<td align="center" colspan="2" valign="bottom">

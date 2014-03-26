@@ -35,7 +35,8 @@
 		$meta_description		= mysql_real_escape_string(nl2br(getPostParameter('meta_description')));
 		$meta_keywords			= mysql_real_escape_string(getPostParameter('meta_keywords'));
 		$sort_order				= (int)getPostParameter('sort_order');
-
+		$show_in_menu			= (int)getPostParameter('show_in_menu');
+		
 		if (!($catname && $catid))
 		{
 			$errors[] = "Please enter category name";
@@ -43,7 +44,7 @@
 
 		if (count($errors) == 0)
 		{
-			smart_mysql_query("UPDATE cashbackengine_categories SET parent_id='$parent_category', name='$catname', description='$category_description', category_url='', meta_description='$meta_description', meta_keywords='$meta_keywords', sort_order='$sort_order' WHERE category_id='$catid'");
+			smart_mysql_query("UPDATE cashbackengine_categories SET parent_id='$parent_category', name='$catname', description='$category_description', category_url='', meta_description='$meta_description', meta_keywords='$meta_keywords', sort_order='$sort_order',show_in_menu='$show_in_menu' WHERE category_id='$catid'");
 
 			header("Location: categories.php?msg=updated");
 			exit();
@@ -109,6 +110,10 @@
             <tr>
 				<td valign="middle" align="right" class="tb1">Sort Order:</td>
 				<td valign="middle"><input type="text" class="textbox" name="sort_order" value="<?php echo $row['sort_order']; ?>" size="5" /></td>
+            </tr>
+             <tr>
+				<td valign="middle" align="right" class="tb1">Show in menu?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="show_in_menu" value="1" <?php if ($row['show_in_menu'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
             <tr>
               <td align="center" colspan="2" valign="bottom">

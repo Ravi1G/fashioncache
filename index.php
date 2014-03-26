@@ -675,13 +675,13 @@
 				?>
 				<div style="float:left">
 					<div>
-						<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>"><img src='<?php echo $author['Author_Profile_Picture_Value'];?>'/></a>
+						<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>"><img src='<?php echo $author['Author_Profile_Picture'];?>'/></a>
 					</div>
 					<div>
-						First Name: <?php echo $author['First_Name_Value'];?>
+						First Name: <?php echo $author['First_Name'];?>
 					</div>
 					<div>
-						Last Name: <?php echo $author['Last_Name_Value'];?>
+						Last Name: <?php echo $author['Last_Name'];?>
 					</div>
 					<div>
 						Nice Name: <?php echo $author['user_nicename'];?>
@@ -768,6 +768,23 @@
 				}
 			}
 		?>
+		
+		<?php $allbanners = array(); $allbanners = BannersList(0);
+?>
+
+<div id="slider">
+			<ul>
+				<?php foreach ($allbanners as $banner){?>
+				<li>
+					<a href="
+					<?php 
+					if($banner['link']!="")
+						echo $banner['link'];
+					else 
+						echo $banner['url'];		
+					?>
+					
+					"><img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/></a>
 		<?php */ ?>
 		
 <?php require_once("inc/footer.inc.php"); ?>

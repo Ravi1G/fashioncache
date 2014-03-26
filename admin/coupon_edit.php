@@ -36,13 +36,15 @@ if (isset($_POST["action"]) && $_POST["action"] == "edit")
 		$exclusive		= (int)getPostParameter('exclusive');
 		$sort_order		= (int)getPostParameter('sort_order');
 		$status			= mysql_real_escape_string(getPostParameter('status'));
-
+		$trending_sale	= (int)getPostParameter('trending_sale');
+		
 		if (!($coupon_id && $coupon_title && $retailer_id && $status))
 		{
 			$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 		}
 		else
 		{
+			
 			if (isset($link) && $link != "")
 			{
 				if (substr($link, 0, 7) != 'http://' && substr($link, 0, 8) != 'https://')
@@ -58,7 +60,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "edit")
 
 		if (count($errors) == 0)
 		{
-			smart_mysql_query("UPDATE cashbackengine_coupons SET title='$coupon_title', retailer_id='$retailer_id', user_id='$user_id', code='$code', link='$link', start_date='$coupon_start_date', end_date='$coupon_end_date', description='$description', exclusive='$exclusive', sort_order='$sort_order', status='$status' WHERE coupon_id='$coupon_id'");
+			smart_mysql_query("UPDATE cashbackengine_coupons SET title='$coupon_title', retailer_id='$retailer_id', user_id='$user_id', code='$code', link='$link', start_date='$coupon_start_date', end_date='$coupon_end_date', description='$description', exclusive='$exclusive', sort_order='$sort_order', status='$status',trending_sale='$trending_sale' WHERE coupon_id='$coupon_id'");
 
 			header("Location: coupons.php?msg=updated");
 			exit();
@@ -91,9 +93,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "edit")
     <h2>Edit Coupon</h2>
 
 	<?php if ($total > 0) {
-		
 		$row = mysql_fetch_array($rs);
-
 	?>
 
 	<?php if (isset($errormsg) && $errormsg != "") { ?>
@@ -173,6 +173,10 @@ if (isset($_POST["action"]) && $_POST["action"] == "edit")
 				<td valign="middle"><input type="checkbox" class="checkbox" name="exclusive" value="1" <?php if ($row['exclusive'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
             <tr>
+             <tr>
+				<td valign="middle" align="right" class="tb1">Trending Sale?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="trending_sale" value="1" <?php if ($row['trending_sale'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
+            </tr>
             <td valign="middle" align="right" class="tb1"><span class="req">* </span>Status:</td>
             <td valign="top">
 				<select name="status">
