@@ -1327,5 +1327,27 @@ if (!function_exists('RemoveCashbackType')) {
 	}
 }
 
+if (!function_exists('GetTrendingSaleCoupons')) {
+	function GetTrendingSaleCoupons(){
+		$coupons = array();
+		$r = smart_mysql_query("SELECT r.cashback,r.retailer_id, r.image as retailer_image, c.title, c.coupon_id, c.description FROM cashbackengine_coupons c 
+		LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id
+		WHERE 
+		c.status='active' and 
+		c.trending_sale='1' and
+		(c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW()))
+		order by c.sort_order asc
+		");
+		
+		if(mysql_num_rows($r)){
+			while($row = mysql_fetch_array($r, MYSQL_ASSOC)){
+				$coupons[] = $row;					
+			}	
+		}
+		
+		return $coupons;
+	}
+}
+
 
 ?>

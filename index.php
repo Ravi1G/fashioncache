@@ -45,6 +45,8 @@
 	
 	require_once("inc/header.inc.php");
 	$sale_alert =  getSaleAlert(1);
+	$trending_sale_coupons = GetTrendingSaleCoupons();
+	$total_trending_sale_coupons = count($trending_sale_coupons);
 ?>
 		<div class="container content">
 		<!-- Featured Store List  -->
@@ -61,88 +63,7 @@
 		
 		    <div class="featuredStoresSection">		      
 		        <div class="sectionBody">
-		            <!-- <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample1.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">6<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>		            
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample2.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">4.5<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample3.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">3<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample4.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">7<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample6.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage"><span class="upToText"><i>Up to</i></span> 5<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample1.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">6<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>
-		            <div class="store">
-		                <div class="icon">
-		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample2.jpg"/></a>	
-		                </div>				
-		                <div class="cashBack">
-		                    <div class="percentage">4.5<span class="percentageSymbol">%</span></div>
-		                    <div class="cashBackCaption">Cash Back</div>
-		                </div>
-		                <div class="cb"></div>
-		            </div>-->
 		            <?php
-
 					if (FEATURED_STORES_LIMIT > 0)
 					{
 						// show featured retailers //
@@ -205,7 +126,44 @@
                             <div class="title">TOP TRENDING SALES</div>                                                        
                             <div class="body"> 
                                 <ul class="topTrends">
-                                    <li>
+                                <?php 
+                                if($total_trending_sale_coupons>0){ 
+                                	$i = 1;
+                                	$total_trending_coupons_processed = 0;
+                                	foreach($trending_sale_coupons as $trending_coupon){
+										$total_trending_coupons_processed++;
+                                		if($i==1){
+											echo '<li>';
+										}
+								?>
+										<div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
+                                                <?php echo $trending_coupon['title'];?>
+                                            </div>
+                                            <div class="storeText"><?php echo $trending_coupon['description']; ?></div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+								<?php 			
+										if($i==3 || $total_trending_coupons_processed==$total_trending_sale_coupons){
+											echo '</li>';
+										}
+											
+										
+										if($i==3)
+											$i = 1;
+										else 
+											$i++;  
+										                              		
+                                	}
+                                ?>
+                                			
+                                <?php } ?>
+                                    <!-- <li>
                                         <div class="InfoContainer">
                                             <div class="storeTitle">
                                                 <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
@@ -277,7 +235,6 @@
                                         </div>
                                         <div class="cb"></div>
                                     </li>
-                                    
                                     <li>
                                         <div class="InfoContainer">
                                             <div class="storeTitle">
@@ -313,11 +270,11 @@
                                             </div>
                                         </div>
                                         <div class="cb"></div>
-                                    </li>                                
+                                    </li>    -->                             
                                 </ul>
                                 <div class="cb"></div>
                                 <div class="allStores">
-                                    <a href="#"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
+                                    <a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
                             </div>
                         </div>
                     </div>                                       
