@@ -11,7 +11,6 @@
 	require_once("inc/iflogged.inc.php");
 	require_once("inc/config.inc.php");
 
-
 	if (isset($_POST['action']) && $_POST['action'] == "signup")
 	{
 		unset($errs);
