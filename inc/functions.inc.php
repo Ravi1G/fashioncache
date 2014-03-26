@@ -1309,5 +1309,23 @@ if (!function_exists('pr')) {
 	}
 }
 
+if (!function_exists('GetCashbackType')) {
+	function GetCashbackType($cashback){
+		$cashback_type = 'currency';
+		if(strpos($cashback,'%')!== false)
+			$cashback_type = '%';
+		elseif(strpos($cashback,'points')!== false) 
+			$cashback_type = 'points';
+			
+		return $cashback_type;
+	}
+}
+
+if (!function_exists('RemoveCashbackType')) {
+	function RemoveCashbackType($cashback){
+		return str_replace(array('%', 'points'), array('', ''), $cashback);
+	}
+}
+
 
 ?>

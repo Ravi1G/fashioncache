@@ -1,4 +1,111 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title><?php echo $PAGE_TITLE." | ".SITE_TITLE; ?></title>
+<?php if ($PAGE_DESCRIPTION != "") { ?><meta name="description" content="<?php echo $PAGE_DESCRIPTION; ?>" /><?php } ?>
+<?php if ($PAGE_KEYWORDS != "") { ?><meta name="keywords" content="<?php echo $PAGE_KEYWORDS; ?>" /><?php } ?>
+<?php if (FACEBOOK_CONNECT == 1 && FACEBOOK_APPID != "" && FACEBOOK_SECRET != "") { ?>
+	<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js#appId=<?php echo FACEBOOK_APPID; ?>&amp;xfbml=1"></script>
+<?php } ?>
+
+<!-- Cashback engine items -->
+<script type="text/javascript" src="<?php echo SITE_URL; ?>js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL; ?>js/jsCarousel.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL; ?>js/cashbackengine.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL; ?>js/easySlider1.7.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL; ?>js/jquery.tools.tabs.min.js"></script>
+<link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" />
+<link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" />
+<!-- Cashback engine items ends -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/main.css">
+<link href="<?php echo SITE_URL;?>css/jquery.bxslider.css" rel="stylesheet"/>
+<link href="<?php echo SITE_URL;?>css/colorbox.css" rel="stylesheet"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="<?php echo SITE_URL;?>js/jquery.bxslider.js"></script>
+<script src="<?php echo SITE_URL;?>js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="<?php echo SITE_URL;?>js/jquery.c.js"></script>
+<script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
+</head>
+<body>
+	<!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+	<div class="header">
+		<div class="container">
+			<div class="saleCouponsSection">
+				<a href="<?php echo SITE_URL; ?>coupons.php">SEE ALL SALES &#x0026; COUPONS</a> <img alt="" src="<?php echo SITE_URL;?>img/downArrow.jpg"/>
+			</div>			
+			<div class="userActivitySection">
+				<?php if (isLoggedIn()) { ?>
+					<?php echo CBE_WELCOME; ?>, <a href="<?php echo SITE_URL; ?>myprofile.php"><span class="member"><?php echo $_SESSION['FirstName']; ?></span></a><!-- | <a href="<?php echo SITE_URL; ?>myaccount.php"><?php echo CBE_ACCOUNT ?></a>--> | <?php echo CBE_BALANCE; ?>: <span class="mbalance"><?php echo GetUserBalance($_SESSION['userid']); ?></span> | <?php echo CBE_REFERRALS; ?>: <a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a> | <a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a>
+				<?php }else{ ?>
+					<div class="signUpSection">
+						<div><span>New to Fashion-Cache?</span></div>
+						<div class="signUpCaption"><a href="<?php echo SITE_URL; ?>signup.php"><?php echo CBE_SIGNUP; ?></a></div>
+					</div>
+					<div class="LoginSection">
+						<div><img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <span><a href="<?php echo SITE_URL; ?>login.php"><?php echo CBE_LOGIN; ?></a></span></div>
+					</div>
+				<?php } ?>
+				<div class="cb"></div>
+			</div>
+			<div class="cb"></div>
+		</div>
+	</div>
+		<div class="container">	
+			<div class="siteTitleSection">
+				<div class="siteTitle"><a href="<?php echo SITE_URL;?>"><img alt="" src="<?php echo SITE_URL;?>img/logo.jpg"/></a></div>
+				<div class="siteSubTitle">SHOP &#x0026; EARN CASH BACK</div>
+			</div>
+			<div class="advertisementOf480">				
+				<div class="sampleAdvertisement">480x60</div>
+				<div class="cb"></div>
+			</div>
+			<div class="cb"></div>
+			<div class="navigationSection">
+				<ul>
+					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php">ALL STORES</a></li>
+					<li>FASHION</li>
+					<li>BEAUTY</li>
+					<li>LIFE STYLE &#x0026; HOME</li>
+					<li>MEN&#x2019;S</li>
+					<li>KID&#x2019;S &#x0026; BABY</li>
+					<li class="last"><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
+				</ul>
+				<div class="searchContainer">
+					<form action="<?php echo SITE_URL; ?>search.php" method="get" id="searchfrm" name="searchfrm" onsubmit="if(searchtext.value==searchtext.defaultValue) return false" >				
+						<div class="searchIcon"><img alt="" src="<?php echo SITE_URL;?>img/search.jpg"/></div>
+						<div>
+							<input type="text" name="searchtext" placeholder="Search for stores..." class="searchCriteria" />
+							<input type="hidden" name="action" value="search" />
+							<!-- <input type="submit" class="search_button" value="" /> -->
+						</div>
+					</form>
+				</div>
+				<div class="cb"></div>
+			</div>
+		</div>
+<?php 
+/*
+?>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title><?php echo $PAGE_TITLE." | ".SITE_TITLE; ?></title>
@@ -171,3 +278,6 @@
 </div>
 
 <div id="column_center">
+<?php 
+*/
+?>

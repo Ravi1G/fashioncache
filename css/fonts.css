@@ -1,0 +1,121 @@
+@font-face {
+	font-family: "open_sansitalic";
+	src: url("../fonts/OpenSans-Italic.eot?") format("eot"),
+		url("../fonts/OpenSans-Italic.woff") format("woff"),
+		url("../fonts/OpenSans-Italic.ttf") format("truetype"),
+		url("../fonts/OpenSans-Italic.svg#OpenSans-Italic") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'open_sansbold';
+	src: url('../fonts/open-sans.bold-webfont.eot');
+	src: url('../fonts/open-sans.bold-webfont.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/open-sans.bold-webfont.woff') format('woff'),
+		url('../fonts/open-sans.bold-webfont.ttf') format('truetype'),
+		url('../fonts/open-sans.bold-webfont.svg#open_sansbold') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'open_sansregular';
+	src: url('../fonts/open-sans.regular-webfont.eot');
+	src: url('../fonts/open-sans.regular-webfont.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/open-sans.regular-webfont.woff') format('woff'),
+		url('../fonts/open-sans.regular-webfont.ttf') format('truetype'),
+		url('../fonts/open-sans.regular-webfont.svg#open_sansregular')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'open_sanslight';
+	src: url('../fonts/OpenSans-Light-webfont.eot');
+	src: url('../fonts/OpenSans-Light-webfont.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
+		url('../fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+		url('../fonts/OpenSans-Light-webfont.svg#open_sanslight')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'open_sanssemibold';
+	src: url('../fonts/open-sans.semibold-webfont.eot');
+	src: url('../fonts/open-sans.semibold-webfont.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/open-sans.semibold-webfont.woff') format('woff'),
+		url('../fonts/open-sans.semibold-webfont.ttf') format('truetype'),
+		url('../fonts/open-sans.semibold-webfont.svg#open_sanssemibold')
+		format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'open_sansextrabold';
+    src: url('../fonts/OpenSans-ExtraBold-webfont.eot');
+    src: url('../fonts/OpenSans-ExtraBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-ExtraBold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-ExtraBold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-ExtraBold-webfont.svg#open_sansextrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+	font-family: "Garamond_Italic";
+	src: url('../fonts/628234864-ufonts.com_garamond_italic__2_.eot');
+	src: url('../fonts/628234864-ufonts.com_garamond_italic__2_.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/628234864-ufonts.com_garamond_italic__2_.svg#Garamond')
+		format('svg'),
+		url('../fonts/628234864-ufonts.com_garamond_italic__2_.woff')
+		format('woff'),
+		url('../fonts/628234864-ufonts.com_garamond_italic__2_.ttf')
+		format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Garamond_bold";
+	src: url('../fonts/410583497-gb.eot');
+	src: url('../fonts/410583497-gb.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/410583497-gb.svg#Garamond') format('svg'),
+		url('../fonts/410583497-gb.woff') format('woff'),
+		url('../fonts/410583497-gb.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Garamond";
+	src: url('../fonts/166717530-Garamond-Regular.eot');
+	src: url('../fonts/166717530-Garamond-Regular.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/166717530-Garamond-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Avenir";
+	src: url('../fonts/342437745-Avenir-LT-95-Black.eot');
+	src: url('../fonts/342437745-Avenir-LT-95-Black.eot?#iefix')
+		format('embedded-opentype'),
+		url('../fonts/342437745-Avenir-LT-95-Black.svg#Avenir LT 65 Medium')
+		format('svg'), url('../fonts/342437745-Avenir-LT-95-Black.woff')
+		format('woff'), url('../fonts/342437745-Avenir-LT-95-Black.ttf')
+		format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

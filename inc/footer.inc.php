@@ -1,4 +1,63 @@
+<div class="footer">
+		<div class="container">
+			<div class="footerNavigation footernavlinks">
+				<div><a href="#">About Fashion Smart</a></div>
+				<div><a href="#">Advertise With Us</a></div>
+				<div><a href="#">Contact Us</a></div>
+				<div><a href="#">Privacy Policy</a></div>
+				<div><a href="#">Terms &#x0026; Conditions</a></div>
+				<div><a href="#">Blog</a></div>
+				<div><a href="#">FAQs</a></div>
+				<div><a href="#">Partners: Brands &#x0026; Retailers</a></div>
+			</div>
+			<div class="popularStores footernavlinks">
+				<div class="title">MOST POPULAR STORES</div>
+				<div><a href="#">Nordstrom</a></div>
+				<div><a href="#">Macy&#x2019;s</a></div>
+				<div><a href="#">Banana Republic</a></div>
+				<div><a href="#">J. Crew</a></div>
+				<div><a href="#">Neiman Marcus</a></div>
+			</div>
+			<div class="connectWithUs footernavlinks socialLinks">
+				<div class="title">CONNECT WITH US!</div>
+				<div><a href="#" class="fbDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorDark.jpg"/></a></div>
+				<div><a href="#" class="twtDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorDark.jpg"/></a></div>
+				<div><a href="#" class="gpDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorDark.jpg"/></a></div>
+				<div><a href="#" class="piDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorDark.jpg"/></a></div>
+			</div>
+			<div class="cb"></div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+			<div>Fashion Smart. &#x00A9; 2013 All rights reserved.</div>
+			</div>
+		</div>
+	</div>
 
+
+
+
+
+	
+	
+			
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+	<!-- <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+     	</script> -->
+</body>
+</html>
+<?php 
+/*
+?>
 </div>
 
 <div id="column_right">
@@ -149,3 +208,6 @@
 
 </body>
 </html>
+<?php 
+*/
+?>

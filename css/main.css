@@ -1,0 +1,2769 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html,button,input,select,textarea {
+	color: #222;
+}
+
+html {
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,canvas,img,video {
+	vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+	resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+.browsehappy {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body {
+	color: #373737;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.header {
+	background-color: #EFEFEF;
+	height: 67px;
+}
+
+.container {
+	width: 960px;
+	margin: auto;
+}
+
+.saleCouponsSection {
+	width: 200px;
+	float: left;
+	margin-top: 24px;
+	font-family: 'open_sanssemibold';
+	font-size: 14px;
+	color: #373737;
+}
+
+.userActivitySection {
+	width: 230px;
+	float: right;
+	text-align: right;
+	font-size: 17px;
+	margin-top: 15px;
+}
+
+.userActivitySection .signUpSection span {
+	font-family: "Garamond_Italic";
+	font-size: 15px;
+	text-align: left;
+}
+
+.LoginSection div {
+	margin-top: 5px;
+	margin-right: 22px;
+}
+
+.LoginSection span {
+	font-family: "Garamond_Italic";
+	font-size: 15px;
+}
+
+.userActivitySection .signUpCaption {
+	font-family: 'open_sansbold';
+	font-size: 14px;
+	text-align: left;
+	margin-top: -4px;
+	color: #373637;
+}
+
+.signUpSection {
+	width: 138px;
+	float: left;
+	text-align: left;
+}
+
+.loginSection {
+	width: 90px;
+	float: right;
+}
+
+.siteSubTitle {
+	font-family: "Garamond";
+	font-size: 14px;
+	margin-top: 11px;
+	margin-bottom: 5px;
+}
+
+.siteTitleSection {
+	width: 273px;
+	float: left;
+	margin-top: 15px;
+}
+
+.siteTitleSection .siteTitle {
+	margin-bottom: -5px;
+}
+
+.siteTitleSection .siteSubTitle {
+	text-align: right;
+	letter-spacing: 3px !important;
+	margin-right: -6px;
+}
+
+.advertisementOf480 {
+	float: right;
+	width: 543px;
+	margin-top: 11px;
+}
+
+.advertisementOf480 .sampleAdvertisement {
+	width: 480px;
+	height: 60px;
+	background-color: #373737;
+	color: #fff;
+	float: right;
+	text-align: center;
+}
+
+.navigationSection {
+	border-top: 1px solid #e3e3e3;
+	margin-top: 10px;
+}
+
+.navigationSection ul {
+	margin: 0px;
+	padding: 0px;
+	width: 770px;
+	float: left;
+}
+
+.navigationSection ul li {
+	font-family: 'open_sanssemibold';
+	display: inline-block;
+	margin-right: 40px;
+	color: #ababab;
+	text-align: left;
+	font-size: 14px;
+	margin-top: 18px;
+}
+
+.navigationSection ul li.last {
+	margin-right: 0px;
+}
+
+.navigationSection ul li.active {
+	color: #373737;
+	font-weight: bold;
+}
+
+.navigationSection ul li:hover {
+	color: #373737;
+	cursor: pointer;
+}
+
+.featuredStoresSection {
+	width: 296px;
+	float: left;
+}
+
+.saleAlertSection {
+	width: 654px;
+	float: right;
+}
+
+.featuredStoresSection .sectionTitle {
+	background-color: #373737;
+	color: #e7e7e7;
+	letter-spacing: 4px;
+	text-align: center;
+	max-height: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: Garamond_bold;
+	font-size: 17.2px;
+}
+
+.saleAlertSection .sectionTitle {
+	background-color: #fdd3d1;
+	color: #2d2f2e;
+	text-align: left;
+	max-height: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 63px;
+	font-family: 'open_sansregular';
+	font-size: 15px;
+}
+
+.saleAlertSection .sectionTitle span {
+	font-size: 17.2px;
+	font-family: Garamond_bold;
+	margin-right: 20px;
+	color: #373737;
+}
+
+.content {
+	margin-top: 2px;
+}
+
+.store {
+	border-bottom: 1px solid #e3e3e3;
+	padding-bottom: 8px;
+	padding-top: 12px;
+	min-height: 53px;
+}
+
+.lastItem {
+	border-bottom: 0px;
+}
+
+.store .icon {
+	text-align: center;
+	float: left;
+	width: 180px;
+}
+
+.cashBack {
+	max-height: 49px;
+	width: 116px;
+	float: right;
+	text-align: center;
+	background-color: #efefef;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.percentage {
+	font-size: 30.85px;
+	font-family: 'open_sansbold';
+	margin-top: -3px;
+	margin-bottom: 2px;
+}
+
+.percentage span.percentageSymbol {
+	position: relative;
+	top: -12px;
+	font-size: 15.43px;
+}
+
+.percentage span.upToText {
+	position: relative;
+	top: -10px;
+	right: -2px;
+	font-size: 12.25px;
+	font-family: "Garamond_bold";
+}
+
+.percentage span.upToText i {
+	font-family: "Garamond_italic";
+	font-style: normal;
+}
+
+.cashBackCaption {
+	font-size: 12px;
+	font-family: "Garamond_bold";
+	margin-top: -10px;
+}
+
+.saleAlertSection .sectionBody {
+	margin-top: 10px;
+}
+
+.saleAlertSection .contentSection {
+	width: 446px;
+	float: left;
+	border-right: 1px solid #D3D3D3;
+}
+
+.saleAlertSection .contentSection .cashBackTitle,.saleAlertSection .contentSection .cashBackSubTitle
+	{
+	text-align: center;
+	font-family: "Garamond_bold";
+	font-weight: normal;
+}
+
+.saleAlertSection .contentSection .cashBackTitle {
+	letter-spacing: 7px;
+	font-size: 32px;
+	margin: 0px;
+	margin-bottom: -5px;
+	color: #373737;
+}
+
+/* Blog Page Design */
+.standardContainer .saleAlertSection {
+	width: 100%;
+}
+
+.standardContainer .saleAlertSection .sectionTitle {
+	min-height: 22px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+h1 {
+	font-family: "Garamond_bold";
+	font-size: 24px;
+	margin-top: 18px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	font-weight: normal;
+}
+.standardContainer .fashionExpertSection
+{
+	margin-top: 50px;
+	}
+.blogSection
+{	
+	width: 641px;
+	}
+.olderPost
+	{
+	text-align: right;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: "Garamond_bold";
+	font-size: 12px;
+	}
+.blog .blogContentContainer {
+	width: 641px;
+	border-bottom: 1px solid #EFEFEF;
+	padding-bottom: 14px;
+	margin-bottom: 12px;
+}
+
+.blog .blogContentContainerLeft {
+	width: 266px;
+	float: left;
+}
+
+.blog .blogContentContainerRight {
+	width: 374px;
+	float: right;
+}
+
+.blogContentContainerLeft .blogPicture {
+	margin-top: 11px;
+	width: 225px;
+	height: 225px;
+	overflow: hidden;
+}
+
+.blogContentContainerLeft .blogPicture img {
+	width: 225px;
+	height: 225px;
+	max-width: 225px;
+	max-height: 225px;
+}
+
+.blogContentContainerRight .postDate {
+	font-size: 12px;
+	font-family: "Garamond_bold";
+	border-bottom: 1px solid #EFEFEF;
+}
+
+.blogContentContainerRight .blogCategory {
+	font-family: 'open_sansbold';
+	font-size: 12px;
+	margin-top: -1px;
+	height: 50px;
+}
+
+.blogContentContainerRight .blogAuthor {
+	font-family: "open_sansitalic";
+	font-size: 12px;
+}
+
+.blogContentContainerRight .blogTitle {
+	font-size: 18px;
+	font-family: "Garamond_bold";
+	margin-top: 11px;
+	margin-bottom: 39px;
+	line-height: 21px;
+	letter-spacing: 2px;
+}
+
+.blogContentContainerRight .blogDescription {
+	font-family: 'open_sansregular';
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.blogContentContainerRight .blogReadMore {
+	font-family: 'open_sanssemibold';
+	font-size: 12px;
+	margin-top: 15px;
+}
+
+.blogContentContainerRight .blogSocialIcons {
+	text-align: right;
+	margin-top: -10px;
+}
+
+.blogSocialIcons img {
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+.blogSocialIcons .countContainer {
+	background-image: url("../img/blog/count.png");
+	background-position: top left;
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 20px;
+	text-align: center;
+	font-size: 12px;
+	font-family: 'open_sansbold';
+	padding-top: 1px;
+	position: relative;
+	top: 2px;
+}
+
+.allStores {
+	text-align: center;	
+}
+
+.allStores span 
+{
+	position:relative;
+	z-index:2;		
+	background-color: #373737;
+	color: #fff;
+	font-size: 10px;
+	font-family: "Garamond_bold";
+	padding: 13px 18px 13px 18px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-moz-border-radius: 10px;
+	letter-spacing: 2px;
+}
+
+.saleAlertSection .contentSection .cashBackSubTitle {
+	margin-bottom: 20px;
+	font-size: 24px;
+	color: #373737;
+}
+
+.stepOne {
+	width: 131px;
+	float: left;
+	border-right: 1px solid #E5E5E5;
+	text-align: center;
+	padding-top: 27px;
+	min-height: 143px;
+}
+
+.steps .title {
+	font-size: 14px;
+	font-family: 'open_sansbold';
+	margin-top: 15px;
+}
+
+.steps .subTitle {
+	margin-top: -2px;
+	font-size: 14px;
+	font-family: "open_sansitalic";
+	margin-bottom: 14px;
+}
+
+.stepTwo {
+	min-height: 143px;
+	width: 161px;
+	float: left;
+	border-right: 1px solid #E5E5E5;
+	text-align: center;
+	padding-top: 27px;
+}
+
+.stepThree {
+	min-height: 143px;
+	width: 143px;
+	float: left;
+	text-align: center;
+	padding-top: 27px;
+}
+
+.noTricks {
+	margin-top: 27px;
+	margin-bottom: 27px;
+	text-align: center;
+	font-family: 'open_sansregular';
+	color: #373737;
+	font-size: 12px;
+}
+
+.topTrendSection .title {
+	text-align: center;
+	font-family: "Garamond_bold";
+	font-size: 14px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	border-top: 1px solid #E5E5E5;
+	border-bottom: 1px solid #E5E5E5;
+	letter-spacing: 4px;
+	margin-right: 10px;
+}
+
+.topTrendSection .body .last {
+	border: 0px;
+}
+
+.topTrendSection .body {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.body .InfoContainer {
+	padding-top: 10px;
+	padding-bottom: 20px;
+	border-right: 1px dashed #E5E5E5;
+	width: 144px;
+	float: left;
+}
+
+.body .InfoContainer .storeTitle {
+	text-align: center;
+}
+
+.body .InfoContainer .storeTitle img {
+	width: 80%;
+}
+
+.body .InfoContainer .storeText {
+	font-family: 'open_sansregular';
+	color: #373737;
+	text-align: center;
+	font-size: 12px;
+}
+
+.body .InfoContainer .storeText .runningHead {
+	font-family: 'open_sanssemibold';
+}
+
+.body .InfoContainer .addition {
+	font-family: 'open_sansbold';
+	font-size: 21px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.body .InfoContainer  .cashBack {
+	max-height: 49px;
+	width: 116px;
+	float: none;
+	margin: auto;
+	text-align: center;
+	background-color: #efefef;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+}
+
+.body .InfoContainer  .cashBack .percentage {
+	position: relative;
+	top: -3px;
+}
+
+.body .InfoContainer  .cashBack .cashBackCaption {
+	position: relative;
+	top: -3px;
+}
+
+.sideBarsSection {
+	float: left;
+	width: 193px;
+	margin: 0.3em;
+}
+
+.searchContainer {
+	position: relative;
+	width: 185px;
+	float: right;
+	text-align: right;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	overflow: hidden;
+}
+
+.searchContainer .searchCriteria {
+	width: 130px;
+	position: absolute;
+	top: 7px;
+	font-family: 'open_sansregular';
+	font-size: 12px;
+	padding: 5px;
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	z-index: 1;
+}
+
+.searchContainer .searchIcon img {
+	z-index: 2;
+	position: relative;
+	cursor: pointer;
+}
+
+.followUs .title {
+	text-align: center;
+	margin-bottom: 5px;
+	font-size: 13px;
+	font-family: "Garamond";
+}
+
+.followUs .shortLinks {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.followUs .shortLinks span {
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.blog .followUs
+{
+	margin-top: 10px;
+	}
+.howItWorks
+	{
+	text-align: center;
+	font-size: 12px;
+	font-family: 'open_sansbold';	
+	margin-bottom: 5px;
+	}
+	.standardBody
+	{
+	min-height: 164px;
+	}
+.howItWorksSteps
+{
+	width: 290px;
+	}
+.advertisement300
+{
+	text-align: center;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	}	
+.standardSignUpContainer
+	{
+	margin-top: 8px !important;
+	margin-bottom: 8px !important;
+	}
+.howItWorksSteps .stepSection
+{
+	width: 90px;
+	float: left;
+	border-right:1px solid #D0D0D0;
+	text-align: center;
+	padding-top: 18px; 
+	padding-bottom: 5px;
+	padding-left: 3px; 
+	padding-right: 3px;
+	min-height: 73px;
+	}
+.howItWorksSteps .howItWorksStepOne
+	{
+	width: 80px;
+	}
+.howItWorksSteps .stepSection .stepTitle
+	{
+	font-family: 'open_sansbold';
+    font-size: 11px;
+    margin-top: 12px;
+	}
+.howItWorksSteps .stepSection .stepTitle span
+	{
+	font-family: "open_sansitalic";
+    font-size: 11px;
+    margin-bottom: 14px;
+    margin-top: -2px;
+	}
+.howItWorksSteps .last
+{
+	border: 0px;
+	}	
+	
+.signUpContainer {
+	text-align: center;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.signUpContainer .title {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #FBD2D1;
+	padding-top: 11px;
+	padding-bottom: 8px;
+	font-size: 12px;
+	font-family: "Garamond_bold";
+	min-height: 19px;
+	letter-spacing: 2px;
+	letter-spacing: 2px;
+}
+
+.signUpContainer
+ 
+.body {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #EFEFEF;
+	height: 148px;
+	padding: 9px;
+}
+
+.emailSignUp {
+	font-family: 'open_sansbold';
+	font-size: 12px;
+	text-align: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.inputBox {
+	background-image: url("../img/inputBack.jpg");
+	background-repeat: no-repeat;
+	border: 0px;
+	font-size: 12px;
+	font-family: 'open_sansregular';
+	color: #fff;
+	width: 161px;
+	height: 14px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+.howItWorksContainer
+{
+font-size:12px;
+font-family: 'open_sanssemibold';
+text-align:left;
+}
+.howItWorksContainer .body
+{
+height:auto !important;
+}
+.topTrendSection .bx-pager
+{
+top:-46px;
+left:170px
+}
+.topTrendSection .bx-wrapper
+{
+margin-bottom:15px;
+}
+.howItWorksContainer .title
+{
+text-align:center;
+font-size:14px;
+font-family: "Garamond_bold";
+}
+.howItWorksContainer .title .subTitleSec
+{
+font-size:10px;
+font-family: 'open_sanssemibold';
+}
+.horizontalSteps
+{
+padding-top:3px;
+padding-bottom:3px;
+width:160px;
+margin:auto;
+}
+.horizontalSteps span
+{
+font-family: 'open_sansregular';
+}
+.learnMoreAboutSteps
+{
+width:173px;
+border-top:1px solid #C4C3C3;
+padding-top:5px;
+margin-top:5px;
+text-align:center;
+}
+.learnMoreAlert
+{
+font-size:10px;
+font-family: 'open_sansregular';
+}
+.learnMoreLink
+{
+font-size:14px;
+font-family: "Garamond_bold";
+}
+.horizontalSteps img
+{
+width:23px;
+margin-right:10px;
+}
+
+.customButton {
+	text-align: center;
+	background: none;
+	outline: none;
+	border: 0px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+.customButtonHomePage
+{
+margin-top:0px !important;
+}
+.customButton span {
+	font-size: 10px;
+	color: #fff;
+	background-color: #373737;
+	font-family: "Garamond_bold";
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 11px;
+	padding-right: 11px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-moz-border-radius: 10px;
+	letter-spacing: 2px;
+}
+
+.giftCardContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px dashed #E5E5E5;
+	background-color: #F8F8F8;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	height: 162px;
+	text-align: center;
+}
+
+.giftCardContainer .title {
+	font-size: 16px;
+	font-family: 'open_sansbold';
+}
+
+.giftCardContainer .giftCardAmount {
+	color: #FBD2D1;
+	font-family: "Garamond_bold";
+	font-size: 109.65px;
+	margin-top: -32px;
+	margin-bottom: -42px;
+}
+
+.giftCardContainer .giftCardAmount span.currency {
+	font-size: 54.825px;
+	position: relative;
+	top: -40px;
+}
+
+.giftCardContainer .giftCardCaption {
+	font-family: "Garamond_bold";
+	font-size: 23.11px;
+	color: #FBD2D1;
+	margin-top: -1.8em;
+	margin-bottom: -0.3em;
+}
+
+.giftCardContainer .giftCardCaption1 {
+	font-size: 12px;
+	font-family: 'open_sansbold';
+	margin-top: 0px;
+	margin-bottom: 00px;
+}
+
+.giftCardContainer .giftCardLearnMore {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 14px;
+	font-family: "Garamond_bold";
+	letter-spacing: 3px;
+}
+
+.heading3 {
+	font-family: "Garamond_bold";
+	font-size: 12px;
+	letter-spacing: 2px;
+	text-align: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.captionContainer {
+	height: 130px;
+	max-height: 130px;
+	position: relative;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	overflow: hidden;
+}
+
+.captionContainer div.image img {
+	width: 100%;
+}
+
+.captionContainer .caption {
+	position: absolute;
+	bottom: 0px;
+	height: 15px;
+	max-height: 15px;
+	width: 91%;
+	text-align: right;
+	font-family: 'open_sansbold';
+	font-size: 12px;
+	color: #fff;
+	padding: 9px;
+	background-image: url("../img/blogBack.png");
+	background-repeat: repeat;
+}
+
+.readOurBlog {
+	background-color: #FBD2D1;
+	text-align: center;
+}
+
+.readOurBlog img {
+	padding-top: 2px;
+}
+
+.readOurBlog .subText {
+	font-size: 23.34px;
+	font-family: 'open_sansregular';
+	margin-top: 0em;
+	margin-bottom: 0em;
+}
+
+.readOurBlog .titleText {
+	margin-top: -0.4em;
+	margin-bottom: 0em;
+	font-family: "Garamond_bold";
+	font-size: 42.79px;
+}
+
+.fashionExpertSection {
+	width: 750px;
+}
+
+.fashionExpertSection .titleSection {
+	width: 87px;
+	float: left;
+	text-align: left;
+}
+
+.fashionExpertSection .titleSection .title {
+	font-family: "Avenir";
+	font-size: 13.98px;
+	margin-top: 6px;
+}
+
+.fashionExpertSection .titleSection img {
+	margin-left: 7px;
+	margin-top: 10px;
+}
+
+.fashionExpertSection .titleSection .title span {
+	font-size: 16.31px;
+}
+
+.fashionExpertSection .titleSection .title span.pink {
+	color: #FBD2D1;
+	font-size: 16.9px;
+}
+
+.fashionExpertSection .expertList {
+	width: 663px;
+	float: right;	
+}
+
+/*  Slider Styling */
+
+
+.fashionExpertSection .expertList .bx-viewport
+{
+width:643px !important;
+overflow:hidden;
+margin-left:5px;
+}
+.fashionExpertSection .expertList .bx-next
+{
+right:-15px;
+}
+.fashionExpertSection .expertList .bx-prev
+{
+left:-10px;
+}
+
+
+.expertList .expertInformation {
+	width: 125px;
+	height: 166px;
+	text-align: center;
+	float: left;	
+}
+
+.expertList .expertInformation .expertName {
+	letter-spacing: 3px;
+	font-size: 14px;
+	color: #FBD2D1;
+	font-family: "Garamond_bold";
+	margin-top: 22px;
+	margin-bottom: -0.1em;
+}
+
+.expertList .expertInformation .expertLocation {
+	font-size: 12px;
+	font-family: 'open_sansregular';
+}
+
+.expertList .expertInformation .expertBlog {
+	font-size: 11px;
+	font-family: 'open_sansregular';
+}
+
+.Advertisement728 {
+	background-color: #F8F8F8;	
+	max-height: 146px;
+	padding-top: 28px;
+	padding-bottom: 28px;
+	margin-top: 20px;
+	margin-bottom: -30px;
+}
+.categoryHeading
+{
+	font-family: "Garamond";
+	font-size: 24px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	}
+.categoryHeading h1
+{
+	display: inline;
+	}
+.Advertisement728 .advertisement {
+	width: 728px;
+	height: 90px;
+	background-color: #373737;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+}
+.siteButton a:hover
+{
+	text-decoration: none; 
+	}
+.blog .SiteContentSection .SiteContentRight
+{
+	width: 300px;	
+	}
+	.forSignUp
+	{	
+	margin-top: 13px;		
+	}
+	.forSignUp span
+	{
+	font-size: 12px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 22px;
+	padding-right: 22px;
+	}
+.footer {
+	background-image: url("../img/footer.png");
+	padding-top: 20px;
+	margin-top: 30px;
+}
+
+.footer .footerNavigation {
+	width: 308px;
+	float: left;
+}
+
+.footer .popularStores {
+	width: 386px;
+	float: left;
+}
+
+.footer .connectWithUs {
+	width: 266px;
+	float: left;
+}
+
+.footer .footernavlinks div {
+	font-size: 14px;
+	font-family: 'open_sanssemibold';
+	margin-top: 12px;
+	margin-bottom: 12px;
+	color: #898989;
+}
+
+.footer .footernavlinks div.title {
+	font-size: 14px;
+	color: #FBD2D1;
+	letter-spacing: 3px;
+	font-family: "Garamond";
+}
+
+.footer .copyright {
+	background-color: #000000;
+	color: #898989;
+	font-size: 10px;
+	margin-top: 12px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-family: 'open_sanslight';
+}
+
+.expertSectoinSlider {
+	position: relative;
+	top: -13px;
+}
+
+.expertSectoinSlider li {
+	margin-left: 8px;
+	height: 168px;
+}
+
+.allStores a:hover {
+	text-decoration: none;
+}
+
+img.colorful {
+	display: none;
+}
+
+.fbLight:hover img.noncolor {
+	display: none;
+}
+
+.fbLight:hover img.colorful {
+	display: inline;
+}
+
+.twtLight:hover img.noncolor {
+	display: none;
+}
+
+.twtLight:hover img.colorful {
+	display: inline;
+}
+
+.gpLight:hover img.noncolor {
+	display: none;
+}
+
+.gpLight:hover img.colorful {
+	display: inline;
+}
+
+.piLight:hover img.noncolor {
+	display: none;
+}
+
+.piLight:hover img.colorful {
+	display: inline;
+}
+
+.socialLinks div {
+	min-height: 33px;
+}
+
+.socialLinks div.title {
+	margin-top: 12px !important;
+	margin-bottom: -12px !important;
+}
+
+.fbDark:hover img.noncolor {
+	display: none;
+}
+
+.fbDark:hover img.colorful {
+	display: inline;
+}
+
+.twtDark:hover img.noncolor {
+	display: none;
+}
+
+.twtDark:hover img.colorful {
+	display: inline;
+}
+
+.gpDark:hover img.noncolor {
+	display: none;
+}
+
+.gpDark:hover img.colorful {
+	display: inline;
+}
+
+.piDark:hover img.noncolor {
+	display: none;
+}
+
+.piDark:hover img.colorful {
+	display: inline;
+}
+
+.SiteContentSection .featuredStoresSection,.SiteContentSection .saleAlertSection
+	{
+	float: left;
+}
+
+.SiteContentSection .featuredStoresSection {
+	width: 296px;
+}
+
+.SiteContentSection  .saleAlertSection {
+	width: 448px;
+	margin-left: 6px;
+}
+
+.SiteContentSection .sideBarsSection {
+	margin: 6px;
+	margin-top: 12px;
+}
+
+.SiteContentSection  .SiteContentLeft {
+	float: left;
+}
+
+.SiteContentSection  .SiteContentRight {
+	float: right;
+}
+
+.SiteContentLeft .fashionExpertSection {
+	margin-top: 63px;
+}
+
+.formBody .alreadyMember {
+	font-size: 12px;
+}
+
+.formBody .customButton {
+	text-align: center;
+	background: none;
+	outline: none;
+	border: 0px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.formBody .customButton span {
+	font-size: 12px;
+	color: #fff;
+	background-color: #373737;
+	font-family: "Garamond_bold";
+	padding-top: 13px;
+	padding-bottom: 13px;
+	padding-left: 23px;
+	padding-right: 23px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-moz-border-radius: 10px;
+	letter-spacing: 3px;
+}
+
+.formActionsRight .alreadyMember {
+	font-family: 'open_sansbold';
+	font-size: 12px;
+}
+
+.formActionsRight .login {
+	font-size: 12px;
+	font-family: 'open_sansbold';
+	color: #5D77AF;
+}
+
+.formActions {
+	width: 248px;
+	margin: auto;
+	margin-top: 9px;
+	margin-bottom: 9px;	
+}
+
+.formActions .formActionsLeft {
+	float: left;
+	width: 131px;
+	text-align: left;
+}
+
+.formActions .formActionsRight {
+	float: right;
+	width: 116px;
+	text-align: left;
+}
+
+/* Retailer Page Design */
+
+
+.RetailerContainer
+{
+	width: 583px;
+	margin-left: 18px;
+}
+.RetailerContainer h1
+{
+	margin-left: 0px;
+	}
+	.titleOf14
+	{
+	font-size: 14px !important;
+	}
+.RetailerIcon
+{
+	width: 360px;
+	float: left;	 	
+	}
+.RetailerIcon div
+{	
+	line-height: 80px;	
+}
+.RetailerShopNow .blogSocialIcons
+{
+	text-align: right;
+	}
+.RetailerIcon div img
+{
+	vertical-align: middle;
+}
+.RetailerShopNow
+{	
+	margin-bottom: 15px;
+	}
+.RetailerShopNow .shopNowLeft
+{
+	float: left;
+	width: 400px;
+	}
+.RetailerShopNow .shopNowRight
+{
+	width: 120px;
+	float: right;
+	}
+.RetailerShopNow .shopNowLeft .shopNowBotton
+{
+	text-align: left;
+	margin-top: -4px;	
+	}
+.RetailerShopNow .shopNowBotton span
+{
+	padding: 8px 20px;	
+	font-size: 14px !important;
+	max-height: 33px;
+	} 
+.RetailerCashBack
+{
+	width: 218px;
+	float: right;
+	border-radius:8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	-ms-border-radius:8px;
+	background-color: #EFEFEF;
+	text-align: center; 
+    min-height: 92px;    
+	}
+.RetailerCashBack .percentageCount
+{
+	font-family: 'open_sansbold';
+    font-size: 60px;
+    margin-bottom: 2px;
+    margin-top: -9px;
+	}
+.RetailerCashBack .percentageCount .percentageCountSymbol
+	{
+	font-size: 30px;
+    position: relative;
+    top: -22px;
+	}
+.RetailerCashBack .cashBackCaption
+{
+	font-size: 22.29px;
+	font-family: "Garamond";    
+    margin-top: -20px;
+	}
+.percentageCount .upToText
+{
+	font-family: "Garamond_bold";
+    font-size: 28px;
+    position: relative;
+    right: -8px;
+    top: -15px;
+	}
+.percentageCount .upToText i
+{
+font-family: "Garamond_italic";
+    font-style: normal;
+}
+.RetailerDescription
+{
+	font-size: 12px;
+	font-family: 'open_sansregular';
+	margin-top: 34px;
+	margin-bottom: 36px;
+	}
+.RetailerOffersHeading
+	{
+	font-size: 24px;
+	font-family: "Garamond_bold";
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	margin-top: 10px;
+	margin-bottom: 1px;
+	}
+table.RetailerOffersTable tr.lastRow td
+	{
+	border-bottom: 0px;
+	}
+table.RetailerOffersTable
+{
+	border-spacing: 0px; 
+	}
+table.RetailerOffersTable tr td
+{
+padding-top: 14px;
+padding-bottom: 14px;
+vertical-align: middle;
+border-bottom: 1px solid #D3D3D3;
+	}	
+td.columnOne
+{
+	width: 107px;
+	}
+td.columnTwo
+{
+	width: 373px;
+	}
+td.columnThree
+{
+	width: 100px;
+	}
+	.discountTitle
+	{
+	font-family: 'open_sansextrabold';
+	font-size: 12px;
+	}
+.offerName
+{
+	font-family: 'open_sansextrabold';
+	font-size: 12px;
+	}
+.offerName span.offerExpiryDate
+{
+	font-family: 'open_sanssemibold';
+	font-size: 12px;
+	}
+.cashBackOnOffer
+{
+	font-size: 12px;
+	font-family: "Garamond_bold";
+	margin-top: 5px;
+	margin-bottom: 1px;
+	}
+.cashBackOnOffer span
+{
+	font-family: 'open_sansextrabold';
+	}
+.requirement
+{
+	font-family: 'open_sanssemibold';
+	font-size: 12px;
+}
+.shopNowBotton
+{
+	text-align: center;
+	}
+.shopNowBotton span
+{
+	background-color: #373737;
+    border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+    color: #FFFFFF;
+    max-height:19px;
+    font-family: "Garamond_bold";
+    font-size: 9px;
+    letter-spacing: 1px;    
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+	}
+	
+	
+	
+	/* Category Page Design  */
+	
+		
+	.categoryTable
+	{
+	width: 625px;
+	margin-bottom: 10px;
+	}
+	.categoryTable tr.categoryTableHeading td
+	{
+	background-color: #FBD2D1;	
+	padding-top:10px;
+	padding-bottom:10px;
+	font-size: 12px;
+	font-family: 'open_sansbold';
+	border-bottom: 0px;	
+	}
+	.categoryTable tr td
+	{
+	border-bottom: 1px solid #CCCCCC;
+	font-size: 12px;
+	font-family: 'open_sansbold';
+	padding-top:5px;
+	padding-bottom:7px;
+	vertical-align: middle;
+	}
+	.categoryTable tr td .shopNowBotton
+	{
+	margin-top: -1px;
+	}
+	.categoryTable tr td .shopNowBotton span
+	{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}
+	.bulletIconAlignment
+	{
+	margin-left: 10px;
+	}
+	.cashBackCaption span
+	{
+	font-family: "Garamond_bold";
+	}
+	.selectedRow td
+	{
+	background-color: #F2F2F2;
+	}
+	.rightPointing
+	{
+	position: relative;
+	top: -1px; 
+	}
+	.categoryTable tr td.cashBackCaption
+	{
+	text-align: center;
+	font-family: 'open_sansextrabold';
+	}
+	.categoryTable tr.categoryTableHeading td.topLeft
+	{
+	border-top-left-radius:5px;	
+	}
+	.categoryTable tr.categoryTableHeading td.topRight
+	{
+	border-top-right-radius:5px;	
+	}
+	.bulletIcon
+	{
+	width: 45px;
+	}
+	.storeName
+	{
+	width: 200px;
+	border-right:1px solid #DEBBBA; 
+	}	
+	.storeCashBackScheme
+	{
+	width: 191px;
+	border-right:1px solid #DEBBBA;
+	text-align: center;
+	}
+	.storeCashBackScheme
+	{
+	width: 190px;
+	}
+	.storeIconsContainer
+	{
+	width:732px;
+	margin:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+	.storeIconsContainer .sites
+	{
+	width:146px;
+	float:left;
+	text-align:center;
+	}
+.WhyToJoinContainer
+{
+background-color:#373737;
+}	
+.WhyToJoinContainerContent
+{
+width:799px;
+margin:auto;
+padding-top:7px;
+padding-bottom:7px;
+}
+
+.WhyToJoinContainerLeft
+{
+float:left;
+width:155px;
+border-right:1px solid #FBD2D1;
+padding-left:16px;
+padding-right:16px;
+padding-top:13px;
+padding-bottom:13px;
+text-align:right;
+font-size:25px;
+font-family: "Garamond_bold";
+color:#FBD2D1;
+letter-spacing:3px;
+}	
+.WhyToJoinContainerLeft .heightChange
+{
+letter-spacing:2px;
+font-size:17px;
+margin-top:-5px;
+}
+.WhyToJoinContainerRight
+{
+float:left;
+width:608px;
+}		
+.WhyToJoinContainerRight div
+{
+padding-left:15px;
+padding-right:21px;
+padding-top:10px;
+padding-bottom:10px;
+font-family: 'open_sansregular';
+font-size:10px;
+color:#fff;
+letter-spacing:1px;
+}	
+.WhyToJoinContainerRight div span
+{
+font-family: 'open_sansextrabold';
+}	
+	
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+.cb {
+	clear: both;
+}
+
+.ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
+}
+
+.ir
+
+
+:before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden
+
+
+.focusable
+
+
+:active,.visuallyhidden
+
+
+.focusable
+
+
+:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+	visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix
+
+
+:before,.clearfix
+
+
+:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix
+
+
+:after {
+	clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+	*zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+	/* Style adjustments for viewports that meet the condition */
+}
+
+@media print , ( -o-min-device-pixel-ratio : 5/4) , (
+		-webkit-min-device-pixel-ratio : 1.25) , ( min-resolution : 120dpi) {
+	/* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,a:visited {
+		text-decoration: underline;
+	}
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*
+     * Don't show links for images, or javascript/internal links
+     */
+	.ir a:after,a[href ^="javascript:"]:after,a[href ^="#"]:after {
+		content: "";
+	}
+	pre,blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
+	tr,img {
+		page-break-inside: avoid;
+	}
+	img {
+		max-width: 100% !important;
+	}
+	@page {
+		margin: 0.5cm;
+	}
+	p,h2,h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,h3 {
+		page-break-after: avoid;
+	}
+}
+
+.signUpContainer
+ 
+.body {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #EFEFEF;
+	height: 148px;
+	padding: 9px;
+}
+
+.emailSignUp {
+	font-family: 'open_sansbold';
+	font-size: 12px;
+	text-align: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.inputBox {
+	background-image: url("../img/inputBack.jpg");
+	background-repeat: no-repeat;
+	border: 0px;
+	font-size: 12px;
+	font-family: 'open_sansregular';
+	color: #fff;
+	width: 161px;
+	height: 14px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.customButton {
+	text-align: center;
+	background: none;
+	outline: none;
+	border: 0px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	height:33px;
+}
+.formActionsLeft .customButton
+{
+height:33px;
+margin-top:-2px;
+}
+
+.customButton
+
+ 
+
+span {
+	font-size: 10px;
+	color: #fff;
+	background-color: #373737;
+	font-family: "Garamond_bold";
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 11px;
+	padding-right: 11px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	letter-spacing: 2px;
+}
+
+.giftCardContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px dashed #E5E5E5;
+	background-color: #F8F8F8;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 5px;
+	height: 162px;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+.cb {
+	clear: both;
+}
+
+.ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
+}
+
+.ir
+:before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden
+.focusable
+:active,.visuallyhidden
+.focusable
+:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+	visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix
+:before,.clearfix
+:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix
+:after {
+	clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+	*zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+	/* Style adjustments for viewports that meet the condition */
+}
+
+@media print , ( -o-min-device-pixel-ratio : 5/4) , (
+		-webkit-min-device-pixel-ratio : 1.25) , ( min-resolution : 120dpi) {
+	/* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,a
+:visited {
+		text-decoration: underline;
+	}
+	a
+[href]
+:after {
+		content: " (" attr(href) ")";
+	}
+	abbr
+[title]
+:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*
+     * Don't show links for images, or javascript/internal links
+     */
+	.ir
+ 
+a
+:after,a
+[href ^ ="javascript:"]
+:after,a
+[href ^ ="#"]
+:after {
+		content: "";
+	}
+	pre,blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
+	tr,img {
+		page-break-inside: avoid;
+	}
+	img {
+		max-width: 100% !important;
+	}
+	@page {
+		margin: 0.5cm;
+	}
+	p,h2,h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,h3 {
+		page-break-after: avoid;
+	}
+}
+
+.ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
+}
+
+.ir
+:before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden
+.focusable
+:active,.visuallyhidden
+.focusable
+:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+	visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix
+:before,.clearfix
+:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix
+:after {
+	clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+	*zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+	/* Style adjustments for viewports that meet the condition */
+}
+
+@media print , ( -o-min-device-pixel-ratio : 5/4) , (
+		-webkit-min-device-pixel-ratio : 1.25) , ( min-resolution : 120dpi) {
+	/* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,a
+:visited {
+		text-decoration: underline;
+	}
+	a
+[href]
+:after {
+		content: " (" attr(href) ")";
+	}
+	abbr
+[title]
+:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*
+     * Don't show links for images, or javascript/internal links
+     */
+	.ir
+ 
+a
+:after,a
+[href ^ ="javascript:"]
+:after,a
+[href ^ ="#"]
+:after {
+		content: "";
+	}
+	pre,blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
+	tr,img {
+		page-break-inside: avoid;
+	}
+	img {
+		max-width: 100% !important;
+	}
+	@page {
+		margin: 0.5cm;
+	}
+	p,h2,h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,h3 {
+		page-break-after: avoid;
+	}
+}
+
+.signUpContainer .body {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #EFEFEF;
+	height: 148px;
+	padding: 9px;
+}
+
+.emailSignUp {
+	font-family: 'open_sansbold';
+	font-size: 12px;
+	text-align: center;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.inputBox {
+	background-image: url("../img/inputBack.jpg");
+	background-repeat: no-repeat;
+	border: 0px;
+	font-size: 12px;
+	font-family: 'open_sansregular';
+	color: #fff;
+	width: 161px;
+	height: 14px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.customButton {
+	text-align: center;
+	background: none;
+	outline: none;
+	border: 0px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.customButton
+ 
+span {
+	font-size: 10px;
+	color: #fff;
+	background-color: #373737;
+	font-family: "Garamond_bold";
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 11px;
+	padding-right: 11px;
+	border-radius: 10px;
+	letter-spacing: 2px;
+}
+
+.giftCardContainer {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px dashed #E5E5E5;
+	background-color: #F8F8F8;
+	border-radius: 5px;
+	padding: 5px;
+	height: 162px;
+}
+
+.popUpContainer {
+	width: 802px;
+	margin: auto;
+	background-image: url("../img/popupBack.jpg");
+	background-repeat:no-repeat;
+	border:1px solid #DEDEDE;
+}
+.storeSite
+{
+text-align:center;
+}
+.popUpContainer .title {
+	font-family: "Garamond_bold";
+	font-size: 24px;	
+	color: #FBD2D1;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-align: center;
+	letter-spacing: 3px;
+	background-color: #373737;
+}
+
+.popUpContainer .body {
+	margin-top: 134px;
+}
+
+.welcomeContainer {
+	width: 335px;
+	margin-left: 75px;
+}
+
+.welcomeContainer .welcomeTitle {
+	font-family: "Garamond_bold";
+	font-size: 12px;
+	text-align: center;
+	letter-spacing: 3px;
+	margin-bottom: 15px;
+}
+
+.popUpContent {
+	width: 732px;
+	margin: auto;
+	margin-top: 138px;	
+}
+
+.popUpContentLeft {
+	width: 400px;
+	float: left;
+}
+
+.popUpContentRight {
+	width: 325px;
+	float: right;
+}
+
+.popUpContentLeft .heading {
+	text-align: center;
+	font-size: 24px;
+	font-family: "Avenir";	
+	margin-top:30px;
+}
+
+.popUpContentRight .formHeader {
+	text-align: center;
+	font-size: 24px;
+	font-family: "Garamond_bold";
+	letter-spacing: 5px;
+	color: #FBD2D1;
+	background-color: #373737;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.popUpContentRight .formBody {
+	background-color: #EFEFEF;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.formBody {
+	text-align: center;
+	padding: 7px;
+}
+
+.formBody .fbApi {
+	margin-bottom: 7px;
+	margin-top: 7px;
+}
+
+.formBody .signUpWithEmail 
+{
+	margin-bottom: 7px;
+	margin-top: 7px;
+	font-size: 12px;
+	font-family: 'open_sansbold';
+}
+.customInputBox input
+{
+	border: 0px;
+	width: 226px;
+	outline: none;
+	color: #fff;
+	font-size: 12px !important;
+	font-family: 'open_sansregular';
+	padding: 8px 9px;
+	background-color: #D0D0D0;
+	margin-top: 7px;
+	margin-bottom: 7px;
+	box-shadow:inset 1px 1px 3px #B5B5B5;
+	}
+.formActionsLeft button span
+{
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;
+	margin-left: -4px !important;
+	}	
+	
+.CashBackStores
+{
+	width: 732px;
+	margin: auto;	
+	text-align: center;
+	background-color: #373737;
+	font-size: 17.2px;
+	font-family: "Garamond_bold";
+	color: #fff;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	letter-spacing: 4px;
+	margin-top: 8px; 
+	}
+.popUpSteps
+{
+width:410px;
+margin-top:36px;
+margin-left:-10px;
+}	
+.popUpSteps .stepSection
+{
+width:100px;
+height:120px;
+padding-left:15px;
+padding-right:15px;
+}	
+.popUpSteps .stepSection .stepTitle	
+	{
+	font-size:14px !important;
+	}
+.popUpSteps .howItWorksStepThree
+	{
+	padding-right:0px !important;
+	width:110px;
+	}
+	
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+.cb {
+	clear: both;
+}
+
+.ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
+}
+
+.ir:before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+	visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+	*zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+	/* Style adjustments for viewports that meet the condition */
+}
+
+@media print , ( -o-min-device-pixel-ratio : 5/4) , (
+		-webkit-min-device-pixel-ratio : 1.25) , ( min-resolution : 120dpi) {
+	/* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,a
+
+
+:visited {
+		text-decoration: underline;
+	}
+	a
+
+
+[href]
+
+
+:after {
+		content: " (" attr(href) ")";
+	}
+	abbr
+
+
+[title]
+
+
+:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*
+     * Don't show links for images, or javascript/internal links
+     */
+	.ir
+
+ 
+
+a
+
+
+:after,a
+
+
+[href ^ ="javascript:"]
+
+
+:after,a
+
+
+[href ^ ="#"]
+
+
+:after {
+		content: "";
+	}
+	pre,blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
+	tr,img {
+		page-break-inside: avoid;
+	}
+	img {
+		max-width: 100% !important;
+	}
+	@page {
+		margin: 0.5cm;
+	}
+	p,h2,h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,h3 {
+		page-break-after: avoid;
+	}
+}

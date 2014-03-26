@@ -42,11 +42,543 @@
 
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = SITE_HOME_TITLE;
-
+	
 	require_once("inc/header.inc.php");
-
+	$sale_alert =  getSaleAlert(1);
 ?>
+		<div class="container content">
+		<!-- Featured Store List  -->
+			<div class="featuredStoresSection">
+			  	<div class="sectionTitle">FEATURED STORES</div>
+			</div>
+			<div class="saleAlertSection">
+			        <div class="sectionTitle"><span>SALE ALERT!</span> <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
+			</div>
+		<div class="cb"></div>
+		<div class="SiteContentSection">
+		<div class="SiteContentLeft">
+		
+		
+		    <div class="featuredStoresSection">		      
+		        <div class="sectionBody">
+		            <!-- <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample1.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">6<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>		            
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample2.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">4.5<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample3.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">3<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample4.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">7<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample6.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage"><span class="upToText"><i>Up to</i></span> 5<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample1.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">6<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>
+		            <div class="store">
+		                <div class="icon">
+		                    <a href="#"><img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample2.jpg"/></a>	
+		                </div>				
+		                <div class="cashBack">
+		                    <div class="percentage">4.5<span class="percentageSymbol">%</span></div>
+		                    <div class="cashBackCaption">Cash Back</div>
+		                </div>
+		                <div class="cb"></div>
+		            </div>-->
+		            <?php
 
+					if (FEATURED_STORES_LIMIT > 0)
+					{
+						// show featured retailers //
+						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY RAND() LIMIT ".FEATURED_STORES_LIMIT);
+						$total_fetaured = mysql_num_rows($result_featured);
+		
+						if ($total_fetaured > 0) { 
+							$looped_featured = 0;
+						?>
+							<?php 
+								while ($row_featured = mysql_fetch_array($result_featured)) { 
+									$looped_featured++;
+							?>
+									<div class="store<?php if($looped_featured==$total_fetaured){?> lastItem<?php }?>">
+						                <div class="icon">
+						                    <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						                    	<img alt="" src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>"/>
+						                    </a>	
+						                </div>				
+						                <div class="cashBack">
+						                	<?php
+						                	$cashback_type = GetCashbackType($row_featured['cashback']);
+						                	$cashback = RemoveCashbackType($row_featured['cashback']);
+						                	?>
+						                    <div class="percentage"><?php echo $cashback;?><span class="percentageSymbol"><?php echo $cashback_type;?></span></div>
+						                    <div class="cashBackCaption">Cash Back</div>
+						                </div>
+						                <div class="cb"></div>
+						            </div>
+									<!-- <div>
+										<?php echo $row_featured['cashback'];?>&nbsp;Cashback
+									</div>
+									<div class="imagebox">
+										<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>" title="<?php echo $row_featured['title']; ?>" border="0" /></a>
+									</div> -->
+							<?php } ?>
+						<?php
+								}
+						} // end featured retailers 
+					?>
+		            <div class="cb"></div>
+		        </div>			
+		    </div>
+		    <!-- Sale Alert Section -->
+		    <div class="saleAlertSection">		        
+		        <div class="sectionBody">
+		            <div class="contentSection">
+		                <ul class="contentSlider">
+			               <li>
+      		                              <div class="cashBackTitle">EARN CASH BACK!</div>
+      		                              <div class="cashBackSubTitle">How It Works</div>		                
+			               <div class="steps stepOne">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepOne.jpg"/></div>
+			                    <div class="title">Sign up</div>
+			                    <div class="subTitle">(it&#x2019;s free)</div>
+			                </div>
+			                <div class="steps stepTwo">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepTwo.jpg"/></div>
+			                    <div class="title">Select a Store<br/>&#x0026; Shop</div>					
+			                </div>
+			                <div class="steps stepThree">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepThree.jpg"/></div>
+			                    <div class="title">Get Cash Back!</div>
+			                </div>		                	                
+			                <div class="cb"></div>
+			                </li>
+			               <li>
+      		                              <div class="cashBackTitle">EARN CASH BACK!</div>
+      		                              <div class="cashBackSubTitle">How It Works</div>		                
+			               <div class="steps stepOne">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepOne.jpg"/></div>
+			                    <div class="title">Sign up</div>
+			                    <div class="subTitle">(it&#x2019;s free)</div>
+			                </div>
+			                <div class="steps stepTwo">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepTwo.jpg"/></div>
+			                    <div class="title">Select a Store<br/>&#x0026; Shop</div>					
+			                </div>
+			                <div class="steps stepThree">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepThree.jpg"/></div>
+			                    <div class="title">Get Cash Back!</div>
+			                </div>		                	                
+			                <div class="cb"></div>
+			                </li>
+			                <li>
+      		                              <div class="cashBackTitle">EARN CASH BACK!</div>
+      		                              <div class="cashBackSubTitle">How It Works</div>		                
+			               <div class="steps stepOne">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepOne.jpg"/></div>
+			                    <div class="title">Sign up</div>
+			                    <div class="subTitle">(it&#x2019;s free)</div>
+			                </div>
+			                <div class="steps stepTwo">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepTwo.jpg"/></div>
+			                    <div class="title">Select a Store<br/>&#x0026; Shop</div>					
+			                </div>
+			                <div class="steps stepThree">
+			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepThree.jpg"/></div>
+			                    <div class="title">Get Cash Back!</div>
+			                </div>		                	                
+			                <div class="cb"></div>
+			                </li>
+		                </ul>
+		                
+		                <div class="noTricks">No Catches, Tricks or Gimmicks.</div>
+		                <div class="topTrendSection">
+		                    <div class="title">TOP TRENDING SALES</div>                                                        
+		                    <div class="body"> 
+                            <ul class="topTrends">
+                            <li>
+		                        <div class="InfoContainer">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="InfoContainer">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="InfoContainer last">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="cb"></div>
+                                </li>
+                                <li>
+		                        <div class="InfoContainer">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="InfoContainer">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="InfoContainer last">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="cb"></div>
+                                </li>
+                                
+                                <li>
+		                        <div class="InfoContainer">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum elit. Nullam fermentum .</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="InfoContainer">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="InfoContainer last">
+		                            <div class="storeTitle">
+		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+		                            </div>
+		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+		                            <div class="addition">+</div>
+		                            <div class="cashBack">
+		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+		                                <div class="cashBackCaption">Cash Back</div>
+		                            </div>
+		                        </div>
+		                        <div class="cb"></div>
+                                </li>                                
+                                </ul>
+								<div class="cb"></div>
+		                        <div class="allStores">
+		                            <a href="<?php echo SITE_URL; ?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a>		                        </div>
+	                    </div>
+		                </div>
+		            </div>
+		            
+		           
+		        </div>
+		    </div>
+		      <div class="cb"></div>
+		      <div class="fashionExpertSection">
+			<div class="titleSection">
+				<div>
+					<img alt="" src="<?php echo SITE_URL;?>img/FashionExpertsIcon.jpg" />
+				</div>
+				<div class="title">
+					MEET OUR <span>FASHION</span> <span class="pink">EXPERTS</span>
+				</div>
+			</div>
+			<div class="expertList">			
+				<ul class="expertSectoinSlider">
+					<li>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+					</li>
+					<li>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+					</li>
+					<li>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
+							</div>
+							<div class="expertName">SHELLY S.</div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog">Read her blog posts:</div>
+						</div>
+					</li>
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<div class="cb"></div>
+		</div>
+		      
+		      
+		    </div>
+		    <div class="SiteContentRight">
+		     <!-- Sidebar Section -->
+            <div class="sideBarsSection">
+                <!-- Follow Us Section  -->				
+                <div class="followUs">
+                    <div class="title">------ FOLLOW US ------</div>
+                    <div class="shortLinks">
+                        <span><a href="#" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span><span><a href="#" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
+                    </div>
+                </div>
+                
+                <!-- Sign Up Section -->
+                <div class="signUpContainer">
+                    <div class="title">SIGN UP TODAY TO EARN CASH BACK!</div>
+                    <div class="body">
+                        <div><a href="#"><img alt="" src="<?php echo SITE_URL;?>img/fbSignUp.jpg"/></a></div>
+                        <div class="emailSignUp">Or- Sign up with Email</div>
+                        <form method="post" action="">
+                            <div><input type="text" placeholder="Email" class="inputBox"/></div>
+                            <div><input type="password" placeholder="Password" class="inputBox"/></div>
+                            <div><button type="submit" class="customButton customButtonHomePage"><span>SIGN UP</span></button></div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Gift Card Section -->
+                <div class="giftCardContainer">
+                    <div class="title">Receive a</div>
+                    <div class="giftCardAmount">
+                        <span class="currency">&#x0024;</span>10
+                    </div>
+                    <div class="giftCardCaption">GIFT CARD</div>
+                    <div class="giftCardCaption1">when you refer a friend!</div>
+                    <div class="giftCardLearnMore"><a href="#">LEARN MORE &#x003E;</a></div>
+                </div>
+                
+                <!-- Featured Articles Section -->
+                <div class="heading3">FEATURED ARTICLES</div>
+                
+                <div class="captionContainer readOurBlog">
+                    <div><img alt="" src="<?php echo SITE_URL;?>img/blog.jpg"/></div>
+                    <div class="subText">READ OUR</div>
+                    <div class="titleText">BLOG</div>
+                    <div class="caption">Read More</div>
+                </div>
+                <div class="captionContainer">
+                    <div class="image"><img alt="" src="<?php echo SITE_URL;?>img/handBags.jpg"/></div>
+                    <div class="caption">Lorem ipsum dolor</div>
+                </div>
+            </div>
+            </div>
+		    <div class="cb"></div>
+		</div>   
+		</div>
+
+	<div class="Advertisement728">
+		<div class="container">
+			<div class="advertisement">728x90</div>
+		</div>
+	</div>
+		<?php /* ?>
 		<div id="slider">
 			<ul>
 				<li><img src="<?php echo SITE_URL; ?>images/slide01.jpg" alt="" /></li>
@@ -236,6 +768,6 @@
 				}
 			}
 		?>
-
-
+		<?php */ ?>
+		
 <?php require_once("inc/footer.inc.php"); ?>
