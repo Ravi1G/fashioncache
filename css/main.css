@@ -115,11 +115,11 @@ a:hover {
 }
 
 .userActivitySection {
-	width: 230px;
+	width: 530px;
 	float: right;
 	text-align: right;
 	font-size: 17px;
-	margin-top: 15px;
+	margin-top: 15px;	
 }
 
 .userActivitySection .signUpSection span {
@@ -150,6 +150,7 @@ a:hover {
 	width: 138px;
 	float: left;
 	text-align: left;
+	margin-left:300px;
 }
 
 .loginSection {
@@ -271,7 +272,12 @@ a:hover {
 	margin-right: 20px;
 	color: #373737;
 }
-
+.contentSectionSlides
+{
+	max-width:437px;
+	margin-left:10px;
+	padding-right:5px;
+}
 .content {
 	margin-top: 2px;
 }
@@ -962,6 +968,8 @@ margin-top:0px !important;
 	font-size: 14px;
 	font-family: "Garamond_bold";
 	letter-spacing: 3px;
+	position:relative;
+	z-index:2;
 }
 
 .heading3 {
@@ -1368,13 +1376,13 @@ img.colorful {
 
 .formActions .formActionsLeft {
 	float: left;
-	width: 131px;
+	width: 53.03644%;
 	text-align: left;
 }
 
 .formActions .formActionsRight {
 	float: right;
-	width: 116px;
+	width: 46.96356%;
 	text-align: left;
 }
 
@@ -1513,6 +1521,41 @@ padding-bottom: 14px;
 vertical-align: middle;
 border-bottom: 1px solid #D3D3D3;
 	}	
+	table.couponTable
+	{
+	width:580px;
+	margin-left:10px;
+	margin-bottom:30px;
+	}
+	.couponProviderIcon
+	{
+	text-align:center;
+	}
+	.couponProviderIcon	img
+	{
+	max-width:100%;	
+	}
+table.couponTable tr td
+{
+padding-top: 14px;
+padding-bottom: 14px;
+vertical-align: middle;
+border-top: 1px solid #D3D3D3;
+border-bottom: 0px;
+	}	
+table.couponTable tr td.columnOne
+{
+width: 158px;
+}	
+table.couponTable tr td.columnTwo
+{
+width:324px;
+}
+table.couponTable tr td.columnThree
+{
+width:100px;
+}
+
 td.columnOne
 {
 	width: 107px;
@@ -1525,6 +1568,14 @@ td.columnThree
 {
 	width: 100px;
 	}
+table.couponTable tr td .offerName
+{
+font-size: 13px;
+}
+table.couponTable tr td span.offerExpiryDate
+{
+font-size:13px;
+}
 	.discountTitle
 	{
 	font-family: 'open_sansextrabold';
@@ -1673,7 +1724,7 @@ td.columnThree
 	}
 	.storeIconsContainer .sites
 	{
-	width:146px;
+	width:20%;
 	float:left;
 	text-align:center;
 	}
@@ -1683,7 +1734,7 @@ background-color:#373737;
 }	
 .WhyToJoinContainerContent
 {
-width:799px;
+width:99%;
 margin:auto;
 padding-top:7px;
 padding-bottom:7px;
@@ -1692,7 +1743,7 @@ padding-bottom:7px;
 .WhyToJoinContainerLeft
 {
 float:left;
-width:155px;
+width:20.31455%;
 border-right:1px solid #FBD2D1;
 padding-left:16px;
 padding-right:16px;
@@ -1713,7 +1764,7 @@ margin-top:-5px;
 .WhyToJoinContainerRight
 {
 float:left;
-width:608px;
+width:74.68545%;
 }		
 .WhyToJoinContainerRight div
 {
@@ -2417,11 +2468,15 @@ span {
 }
 
 .popUpContainer {
-	width: 802px;
+	width: 800px;
 	margin: auto;
 	background-image: url("../img/popupBack.jpg");
 	background-repeat:no-repeat;
 	border:1px solid #DEDEDE;
+	position:relative;
+	left:-5px;
+	top:-2px;
+	z-index:22;
 }
 .storeSite
 {
@@ -2456,18 +2511,18 @@ text-align:center;
 }
 
 .popUpContent {
-	width: 732px;
+	width: 96.5555%;
 	margin: auto;
 	margin-top: 138px;	
 }
 
 .popUpContentLeft {
-	width: 400px;
+	width: 55.17241%;
 	float: left;
 }
 
 .popUpContentRight {
-	width: 325px;
+	width: 44.82759%;
 	float: right;
 }
 
@@ -2537,7 +2592,7 @@ text-align:center;
 	
 .CashBackStores
 {
-	width: 732px;
+	width: 96.5555%;
 	margin: auto;	
 	text-align: center;
 	background-color: #373737;
@@ -2557,7 +2612,7 @@ margin-left:-10px;
 }	
 .popUpSteps .stepSection
 {
-width:100px;
+width:25.3333%;
 height:120px;
 padding-left:15px;
 padding-right:15px;
@@ -2571,6 +2626,47 @@ padding-right:15px;
 	padding-right:0px !important;
 	width:110px;
 	}
+.dashboardInfo
+{
+font-family:'open_sansregular';
+font-size:12px;
+padding-top:8px;
+}
+.dashboardInfo span
+{
+font-family:'open_sansbold';
+font-size:14px;
+}
+.welcomeContainer1
+{
+float:right;
+}
+.welcomeSection1
+{
+text-align:left;
+display:inline-block;
+float:right;
+}
+.welcomeSection1 div.welcomeText
+{
+font-family: "Garamond_Italic";
+font-size:15px;
+}
+.welcomeSection1 div.userName
+{
+font-family:'open_sansbold';
+font-size:14px;
+margin-top:-5px;
+}
+.myAccount
+{
+font-family: "Garamond_Italic";
+margin-top:3px;
+font-size:15px;
+float:right;
+width:110px;
+}
+	
 	
 /* ==========================================================================
    Helper classes

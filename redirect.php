@@ -60,6 +60,25 @@
 			}
 		}
 	}
+	
+	if (isset($_GET['b']) && is_numeric($_GET['b']) && $_GET['b'] > 0)
+	{
+		$banner_id = (int)$_GET['b'];
+
+		$banner_query = "SELECT * FROM cashbackengine_banners WHERE banner_id='$banner_id' LIMIT 1";
+		$banner_result = smart_mysql_query($banner_query);
+
+		if (mysql_num_rows($banner_result) > 0)
+		{
+			$banner_row = mysql_fetch_array($banner_result);
+			$banner_link = $banner_row['link'];
+
+			if ($banner_link != "")
+			{
+				$website_url = str_replace("{USERID}", $userid, $banner_link);
+			}
+		}
+	}
 
 ?>
 <!DOCTYPE html>

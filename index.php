@@ -186,192 +186,143 @@
 		            <div class="cb"></div>
 		        </div>			
 		    </div>
+		     <?php $allbanners = array(); $allbanners = BannersList(0);?>
 		    <!-- Sale Alert Section -->
-		    <div class="saleAlertSection">		        
-		        <div class="sectionBody">
-		            <div class="contentSection">
-		                <ul class="contentSlider">
-			               <li>
-      		                              <div class="cashBackTitle">EARN CASH BACK!</div>
-      		                              <div class="cashBackSubTitle">How It Works</div>		                
-			               <div class="steps stepOne">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepOne.jpg"/></div>
-			                    <div class="title">Sign up</div>
-			                    <div class="subTitle">(it&#x2019;s free)</div>
-			                </div>
-			                <div class="steps stepTwo">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepTwo.jpg"/></div>
-			                    <div class="title">Select a Store<br/>&#x0026; Shop</div>					
-			                </div>
-			                <div class="steps stepThree">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepThree.jpg"/></div>
-			                    <div class="title">Get Cash Back!</div>
-			                </div>		                	                
-			                <div class="cb"></div>
-			                </li>
-			               <li>
-      		                              <div class="cashBackTitle">EARN CASH BACK!</div>
-      		                              <div class="cashBackSubTitle">How It Works</div>		                
-			               <div class="steps stepOne">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepOne.jpg"/></div>
-			                    <div class="title">Sign up</div>
-			                    <div class="subTitle">(it&#x2019;s free)</div>
-			                </div>
-			                <div class="steps stepTwo">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepTwo.jpg"/></div>
-			                    <div class="title">Select a Store<br/>&#x0026; Shop</div>					
-			                </div>
-			                <div class="steps stepThree">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepThree.jpg"/></div>
-			                    <div class="title">Get Cash Back!</div>
-			                </div>		                	                
-			                <div class="cb"></div>
-			                </li>
-			                <li>
-      		                              <div class="cashBackTitle">EARN CASH BACK!</div>
-      		                              <div class="cashBackSubTitle">How It Works</div>		                
-			               <div class="steps stepOne">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepOne.jpg"/></div>
-			                    <div class="title">Sign up</div>
-			                    <div class="subTitle">(it&#x2019;s free)</div>
-			                </div>
-			                <div class="steps stepTwo">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepTwo.jpg"/></div>
-			                    <div class="title">Select a Store<br/>&#x0026; Shop</div>					
-			                </div>
-			                <div class="steps stepThree">
-			                    <div><img alt="" src="<?php echo SITE_URL;?>img/stepThree.jpg"/></div>
-			                    <div class="title">Get Cash Back!</div>
-			                </div>		                	                
-			                <div class="cb"></div>
-			                </li>
-		                </ul>
-		                
-		                <div class="noTricks">No Catches, Tricks or Gimmicks.</div>
-		                <div class="topTrendSection">
-		                    <div class="title">TOP TRENDING SALES</div>                                                        
-		                    <div class="body"> 
-                            <ul class="topTrends">
-                            <li>
-		                        <div class="InfoContainer">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="InfoContainer">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="InfoContainer last">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="cb"></div>
-                                </li>
-                                <li>
-		                        <div class="InfoContainer">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="InfoContainer">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="InfoContainer last">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="cb"></div>
-                                </li>
-                                
-                                <li>
-		                        <div class="InfoContainer">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum elit. Nullam fermentum .</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="InfoContainer">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="InfoContainer last">
-		                            <div class="storeTitle">
-		                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-		                            </div>
-		                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-		                            <div class="addition">+</div>
-		                            <div class="cashBack">
-		                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-		                                <div class="cashBackCaption">Cash Back</div>
-		                            </div>
-		                        </div>
-		                        <div class="cb"></div>
-                                </li>                                
+		     <div class="saleAlertSection">		        
+                <div class="sectionBody">
+                    <div class="contentSection contentSectionSlides">
+                        <ul class="contentSlider">
+							<?php foreach ($allbanners as $banner){ ?>
+							<li>
+								<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $banner['retailer_id']; ?>&b=<?php echo $banner['banner_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+									<img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/>
+								</a>
+							</li>
+							<?php 	}?>
+                        </ul>                        
+                        <div class="noTricks">No Catches, Tricks or Gimmicks.</div>
+                        <div class="topTrendSection">
+                            <div class="title">TOP TRENDING SALES</div>                                                        
+                            <div class="body"> 
+                                <ul class="topTrends">
+                                    <li>
+                                        <div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="InfoContainer last">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="cb"></div>
+                                    </li>
+                                    <li>
+                                        <div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="InfoContainer last">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="cb"></div>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum elit. Nullam fermentum .</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="InfoContainer">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="InfoContainer last">
+                                            <div class="storeTitle">
+                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
+                                            </div>
+                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
+                                            <div class="addition">+</div>
+                                            <div class="cashBack">
+                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="cashBackCaption">Cash Back</div>
+                                            </div>
+                                        </div>
+                                        <div class="cb"></div>
+                                    </li>                                
                                 </ul>
-								<div class="cb"></div>
-		                        <div class="allStores">
-		                            <a href="<?php echo SITE_URL; ?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a>		                        </div>
-	                    </div>
-		                </div>
-		            </div>
-		            
-		           
-		        </div>
-		    </div>
+                                <div class="cb"></div>
+                                <div class="allStores">
+                                    <a href="#"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
+                            </div>
+                        </div>
+                    </div>                                       
+                </div>
+            </div>
 		      <div class="cb"></div>
 		      <div class="fashionExpertSection">
 			<div class="titleSection">

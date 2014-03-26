@@ -34,6 +34,19 @@
 				}
 			}
 			
+			//user clicked banner
+			if (isset($_GET['b']) && is_numeric($_GET['b']) && $_GET['b'] > 0)
+			{
+				$banner_id = (int)$_GET['b'];
+
+				$banner_result = smart_mysql_query("SELECT * FROM cashbackengine_banners WHERE banner_id=$banner_id");
+				if (mysql_num_rows($banner_result) > 0)
+				{
+					$banner_row = mysql_fetch_array($banner_result);
+					$banner_link = $banner_row['link'];
+				}
+			}
+			
 			if (!isLoggedIn())
 			{
 				$_SESSION['goRetailerID']	= $retailer_id;
@@ -61,6 +74,8 @@
 			{
 				if ($coupon_link != "")
 					$retailer_website = str_replace("{USERID}", $userid, $coupon_link);
+				elseif($banner_link!='')
+					$retailer_website = str_replace("{USERID}", $userid, $banner_link);
 				else
 					$retailer_website = str_replace("{USERID}", $userid, $row['url']);
 
@@ -69,9 +84,11 @@
 					// show landing page
 					if ($coupon_id)
 						$go_url = "redirect.php?id=".$retailer_id."&c=".$coupon_id;
+					elseif ($banner_id)
+						$go_url = "redirect.php?id=".$retailer_id."&b=".$banner_id;
 					else
 						$go_url = "redirect.php?id=".$retailer_id;
-					
+
 					header("Location: $go_url");
 					exit();
 				}
