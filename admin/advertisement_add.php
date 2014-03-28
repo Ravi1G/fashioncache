@@ -34,10 +34,13 @@ if(!$isPost){
 //Run in case of edit to fetch advertisement information
 if($id && !$isPost)
 {
-	$fetch_record 	=	mysql_fetch_assoc(smart_mysql_query("SELECT title,advertisement_id, image_url, link, image_name FROM cashbackengine_advertisements WHERE advertisement_id=$id"));
+	$fetch_record 	=	mysql_fetch_assoc(smart_mysql_query("SELECT a.title,a.advertisement_id, a.image_url, link, a.image_name, r.retailer_id FROM cashbackengine_advertisements as a 
+	left join cashbackengine_retailers as r on r.retailer_id = a.retailer_id
+	WHERE advertisement_id=$id"));
 	$image_url		=	$fetch_record['image_url'];
 	$link			=	$fetch_record['link'];
 	$image_name		=	$fetch_record['image_name'];
+	$retailer_id	= 	$fetch_record['retailer_id'];
 	
 	$select_option = $image_url!='' ? 'use_url' : 'upload_image';
 	$_POST = $fetch_record;
@@ -60,13 +63,14 @@ if ($isPost)
 	$link			= mysql_real_escape_string(getPostParameter('link'));
 	$adTitle		= mysql_real_escape_string(getPostParameter('title'));
 	$image_name		= $_FILES['image']['name'];
+	$retailer_id	= mysql_real_escape_string(getPostParameter('retailer_id'));
 
 	if($isEdit){
-		if ($link=='' || $adTitle=='' || ($select_option=='use_url' && $image_url==''))
+		if ($link=='' || $adTitle=='' || ($select_option=='use_url' && $image_url=='') || $retailer_id=='')
 		{
 			$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 		}	
-	}elseif(!$isEdit && ($link=='' || ($image_url=='' && $image_name=='') ||  $adTitle=='')){
+	}elseif(!$isEdit && ($link=='' || ($image_url=='' && $image_name=='') ||  $adTitle=='' || $retailer_id=='')){
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
 	
@@ -160,7 +164,8 @@ if ($isPost)
 			
 			$params = array(
 				'title'=>$adTitle,
-				'link' => $link
+				'link' => $link,
+				'retailer_id' => $retailer_id
 			);
 			
 			
@@ -199,11 +204,11 @@ if ($isPost)
 			// For inserting new advertisement
 			if($select_option=="upload_image")
 			{
-				$sql = "INSERT INTO cashbackengine_advertisements SET title='$adTitle', link='$link',image_name='$loc'";
+				$sql = "INSERT INTO cashbackengine_advertisements SET retailer_id='$retailer_id',title='$adTitle', link='$link',image_name='$loc'";
 			}
 			else
 			{
-				$sql = "INSERT INTO cashbackengine_advertisements SET title='$adTitle', image_url='$image_url',link='$link'"; 
+				$sql = "INSERT INTO cashbackengine_advertisements SET retailer_id='$retailer_id',title='$adTitle', image_url='$image_url',link='$link'"; 
 			}
 
 			if (smart_mysql_query($sql))
@@ -240,6 +245,24 @@ require_once ("inc/header.inc.php");
 		<table align="center" width="75%" border="0" cellpadding="3" cellspacing="0">
 			<tr>
 				<td colspan="2" align="right" valign="top"><font color="red">* denotes required field</font></td>
+			</tr>
+			<tr>
+				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1"><span class="req">* </span>Store :</td>
+				<td align="left">
+					<select class="textbox2" id="retailer_id" name="retailer_id">
+						<option value="">--- Please select store ---</option>
+						<?php
+		
+							$sql_retailers = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE status='active' ORDER BY title ASC");
+						
+							while ($row_retailers = mysql_fetch_array($sql_retailers))
+							{
+								if ($retailer_id == $row_retailers['retailer_id']) $selected = " selected=\"selected\""; else $selected = "";
+								echo "<option value=\"".$row_retailers['retailer_id']."\"".$selected.">".$row_retailers['title']."</option>";
+							}
+						?>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1"><span class="req">* </span>Title :</td>

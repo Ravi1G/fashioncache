@@ -7,6 +7,7 @@
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \*******************************************************************/
 
+exit;
   
 session_start();
 require_once("../inc/adm_auth.inc.php");

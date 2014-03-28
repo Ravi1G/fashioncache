@@ -43,10 +43,10 @@
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = SITE_HOME_TITLE;
 	
-	require_once("inc/header.inc.php");
-	$sale_alert =  getSaleAlert(1);
+	
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
+	require_once("inc/header.inc.php");
 ?>
 		<div class="container content">
 		<!-- Featured Store List  -->
@@ -54,7 +54,8 @@
 			  	<div class="sectionTitle">FEATURED STORES</div>
 			</div>
 			<div class="saleAlertSection">
-			        <div class="sectionTitle"><span>SALE ALERT!</span> <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
+			        <div class="sectionTitle"><span>SALE ALERT!</span> 
+			        <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>&s=<?php echo $sale_alert['sale_alert_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
 			</div>
 		<div class="cb"></div>
 		<div class="SiteContentSection">
@@ -121,7 +122,7 @@
 							</li>
 							<?php 	}?>
                         </ul>                        
-                        <div class="noTricks">No Catches, Tricks or Gimmicks.</div>
+                        <!-- <div class="noTricks">No Catches, Tricks or Gimmicks.</div> -->
                         <div class="topTrendSection">
                             <div class="title">TOP TRENDING SALES</div>                                                        
                             <div class="body"> 
@@ -139,7 +140,9 @@
 										<div class="InfoContainer">
                                             <div class="storeTitle">
                                                 <!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
-                                                <?php echo $trending_coupon['title'];?>
+                                                <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $trending_coupon['retailer_id']; ?>&c=<?php echo $trending_coupon['coupon_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+                                                	<?php echo $trending_coupon['title'];?>
+                                                </a>
                                             </div>
                                             <div class="storeText"><?php echo $trending_coupon['description']; ?></div>
                                             <div class="addition">+</div>
@@ -163,114 +166,6 @@
                                 ?>
                                 			
                                 <?php } ?>
-                                    <!-- <li>
-                                        <div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="InfoContainer last">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="cb"></div>
-                                    </li>
-                                    <li>
-                                        <div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="InfoContainer last">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="cb"></div>
-                                    </li>
-                                    <li>
-                                        <div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum elit. Nullam fermentum .</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="InfoContainer last">
-                                            <div class="storeTitle">
-                                                <img alt="" src="<?php echo SITE_URL;?>img/storeLogos/sample5.jpg"/>
-                                            </div>
-                                            <div class="storeText"><span class="runningHead">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit. Nullam fermentum magna vel nisl dignissim ultricies.</div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-                                        <div class="cb"></div>
-                                    </li>    -->                             
                                 </ul>
                                 <div class="cb"></div>
                                 <div class="allStores">
@@ -292,7 +187,54 @@
 			</div>
 			<div class="expertList">			
 				<ul class="expertSectoinSlider">
-					<li>
+				<?php 
+				// Calling function to get author list from blog/apis.php
+				$authors= fc_get_users();
+				fc_reconnect_db();
+				$total_authors = count($authors);
+				if($total_authors>0){ 
+					$i = 1;
+					$total_authors_processed = 0;
+					foreach($authors as $author){
+						$total_authors_processed++;
+						if($i==1){
+							echo '<li>';
+						}
+				?>
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">
+									<img width="92" height="92" src='<?php echo $author['Author_Profile_Picture'];?>'/>
+								</a>
+							</div>
+							<?php 
+								$username = trim($author['First_Name'].' '.substr($author['Last_name'], 0, 1));
+								if($username==''){
+									$username = $author['user_nicename'];
+								}
+							?>
+							<!--  user_nicename -->
+							<div class="expertName"><?php echo $username;?></div>
+							<div class="expertLocation">Sandy, Utah</div>
+							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
+						</div>
+
+							
+				<?php 			
+						if($i==5 || $total_authors_processed==$total_authors){
+							echo '</li>';
+						}
+						
+						if($i==5)
+							$i = 1;
+						else 
+							$i++;  
+															
+					}
+				?>
+							
+				<?php } ?>				
+					<!-- <li>
 						<div class="expertInformation">
 							<div class="expertThumb">
 								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
@@ -417,7 +359,7 @@
 							<div class="expertLocation">Sandy, Utah</div>
 							<div class="expertBlog">Read her blog posts:</div>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 				<div class="cb"></div>
 			</div>
@@ -433,7 +375,7 @@
                 <div class="followUs">
                     <div class="title">------ FOLLOW US ------</div>
                     <div class="shortLinks">
-                        <span><a href="#" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span><span><a href="#" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
+                        <span><a href="<?php echo FACEBOOK_PAGE;?>" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span><span><a href="<?php ECHO TWITTER_PAGE;?>" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
                     </div>
                 </div>
                 
@@ -482,12 +424,6 @@
 		    <div class="cb"></div>
 		</div>   
 		</div>
-
-	<div class="Advertisement728">
-		<div class="container">
-			<div class="advertisement">728x90</div>
-		</div>
-	</div>
 		<?php /* ?>
 		<div id="slider">
 			<ul>

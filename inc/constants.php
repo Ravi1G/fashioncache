@@ -16,3 +16,7 @@ define('PUBLIC_HTML_PATH', $_SERVER['DOCUMENT_ROOT']);
 define('DOCS_ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('CBengine_ROOT', dirname(__FILE__) . '/');
 define('CBengine_PAGE', TRUE);
+
+//advertisment ids
+define('HOME_PAGE_HEADER_AD_ID',6);
+define('HOME_PAGE_FOOTER_AD_ID',7);

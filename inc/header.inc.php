@@ -1,3 +1,8 @@
+<?php 
+$sale_alert =  getSaleAlert(1);
+$advertisements = GetAdvertisements(array(HOME_PAGE_HEADER_AD_ID, HOME_PAGE_FOOTER_AD_ID));
+$menu_categories = GetMenuCategories();
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -40,6 +45,10 @@
 <script src="<?php echo SITE_URL;?>js/vendor/modernizr-2.6.2.min.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.c.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
+
+<script>
+var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
+</script>
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -74,18 +83,26 @@
 				<div class="siteSubTitle">SHOP &#x0026; EARN CASH BACK</div>
 			</div>
 			<div class="advertisementOf480">				
-				<div class="sampleAdvertisement">480x60</div>
+				<div class="sampleAdvertisement">
+					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						<img height="60" width="480" src="<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['image_url']!='' ? $advertisements[HOME_PAGE_HEADER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_HEADER_AD_ID]['image_name']?>">
+					</a>
+				</div>
 				<div class="cb"></div>
 			</div>
 			<div class="cb"></div>
 			<div class="navigationSection">
 				<ul>
 					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php">ALL STORES</a></li>
-					<li>FASHION</li>
-					<li>BEAUTY</li>
-					<li>LIFE STYLE &#x0026; HOME</li>
-					<li>MEN&#x2019;S</li>
-					<li>KID&#x2019;S &#x0026; BABY</li>
+					<?php 
+					if($menu_categories){ 
+						foreach($menu_categories as $menu_category){
+					?>
+						<li><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>"><?php echo $menu_category['name']?></a></li>
+					<?php 
+						}
+					}
+					?>
 					<li class="last"><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
 				</ul>
 				<div class="searchContainer">

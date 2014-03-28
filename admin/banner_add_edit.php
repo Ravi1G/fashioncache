@@ -61,45 +61,45 @@ if ($isPost)
 	$sort_order		= mysql_real_escape_string(getPostParameter('sort_order'));
 	$image			= $_FILES['image']['name'];
 
-	if ($isEdit && $retailer_id=='' || $sort_order=='')
+	if ($isEdit && $retailer_id=='' || $sort_order=='') //run in case of edit
 	{
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
-	elseif ($retailer_id=='' || $image=='' && !$isEdit || $sort_order=='')
+	elseif ($retailer_id=='' || ($image=='' && !$isEdit) || $sort_order=='') //run in case of add
 	{
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
 	else
 	{	
 		//validate banner image
-			if ($_FILES["image"]["error"] > 0)
-	  		{
-				$error[]= $_FILES["image"]["error"];
-			}
-			else
-			{
-				$valid_mime_types = array(
-					"image/gif",
-					"image/jpeg",
-					"image/jpg",
-					"image/pjpeg",
-					"image/x-png",
-					"image/png",
-				);
-				
-				$allowedExts = array("gif", "jpeg", "jpg", "png");
-				$temp = explode(".", $_FILES["image"]["name"]);
-				$extension = end($temp);
+		if ($_FILES["image"]["error"] > 0)
+  		{
+			$error[]= $_FILES["image"]["error"];
+		}
+		else
+		{
+			$valid_mime_types = array(
+				"image/gif",
+				"image/jpeg",
+				"image/jpg",
+				"image/pjpeg",
+				"image/x-png",
+				"image/png",
+			);
+			
+			$allowedExts = array("gif", "jpeg", "jpg", "png");
+			$temp = explode(".", $_FILES["image"]["name"]);
+			$extension = end($temp);
 
-				if (!(in_array($extension, $allowedExts) && in_array($_FILES["image"]["type"], $valid_mime_types)))
-				{
-			  		$errors[] = 'Uplaod valid image.';
-				}
-				
-				if($_FILES["image"]["size"] > 5242880){
-					$errors[] = 'Allowed maximum file size is 5MB.';
-				}
+			if (!(in_array($extension, $allowedExts) && in_array($_FILES["image"]["type"], $valid_mime_types)))
+			{
+		  		$errors[] = 'Uplaod valid image.';
 			}
+			
+			if($_FILES["image"]["size"] > 5242880){
+				$errors[] = 'Allowed maximum file size is 5MB.';
+			}
+		}
 			 
 		//validate banner link
 		if (isset($link) && $link!="" && !preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $link))
@@ -110,27 +110,28 @@ if ($isPost)
 	
 	if (count($errors) == 0 && $isPost)
 	{
-			if (file_exists("upload/" . $_FILES["image"]["name"]))
+		if (file_exists("upload/" . $_FILES["image"]["name"]))
+		{
+			//rename the file and upload - pending
+			$name =	$temp[0].'1.';
+			$name = $name.$extension;
+			while(file_exists("upload/" . $name)) //If file with new name already exist then change the name
 			{
-				//rename the file and upload - pending
-				$name =	$temp[0].'1.';
+				$temp = explode(".", $name);
+				$name = $temp[0].'1.';
 				$name = $name.$extension;
-				while(file_exists("upload/" . $name)) //If file with new name already exist then change the name
-				{
-					$temp = explode(".", $name);
-					$name = $temp[0].'1.';
-					$name = $name.$extension;
-				}
-				move_uploaded_file($_FILES["image"]["tmp_name"],
-				"upload/" . $name);
-		     	$loc="upload/" . $name;
 			}
-			else
-			{
-				move_uploaded_file($_FILES["image"]["tmp_name"],
-				"upload/" . $_FILES["image"]["name"]);
-		     	$loc="upload/" . $_FILES["image"]["name"];
-			}
+			move_uploaded_file($_FILES["image"]["tmp_name"],
+			"upload/" . $name);
+	     	$loc="upload/" . $name;
+		}
+		else
+		{
+			move_uploaded_file($_FILES["image"]["tmp_name"],
+			"upload/" . $_FILES["image"]["name"]);
+	     	$loc="upload/" . $_FILES["image"]["name"];
+		}
+		
 		//Update record
 		if($id)
 		{	
@@ -150,8 +151,6 @@ if ($isPost)
 			{
 				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order',link='$link', retailer_id='$retailer_id' WHERE banner_id='$id'";
 			}
-				
-			
 			
 			if(smart_mysql_query($sql))
 			{

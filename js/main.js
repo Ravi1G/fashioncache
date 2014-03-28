@@ -55,7 +55,7 @@ $(document).ready(function () {
     $('.contentSlider').bxSlider({
         auto: true,
         pause: 2000,
-        speed: 800,
+        speed: BANNER_SPEED,
         pager: false, // carasuls
         controls: false,
         autoHover : true

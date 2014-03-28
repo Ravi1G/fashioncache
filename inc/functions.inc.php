@@ -1349,5 +1349,43 @@ if (!function_exists('GetTrendingSaleCoupons')) {
 	}
 }
 
+if (!function_exists('GetAdvertisements')) {
+	function GetAdvertisements($ids = array()){
+		$advertisements = array();
+		$where = '';
+		if($ids){
+			$where = ' where advertisement_id in ('.implode(',', $ids).')';			
+		}
+		$query = 'select * from cashbackengine_advertisements'.$where;
+		$r = smart_mysql_query($query);
+		
+		if(mysql_num_rows($r)){
+			while($row = mysql_fetch_array($r, MYSQL_ASSOC)){
+				$advertisements[$row['advertisement_id']] = $row;					
+			}	
+		}
+		return $advertisements;
+	}
+}
+
+if (!function_exists('GetMenuCategories')) {
+function GetMenuCategories ()
+{
+	$result = smart_mysql_query("SELECT name, category_id FROM cashbackengine_categories WHERE show_in_menu=1 ORDER BY sort_order, name");
+	$total = mysql_num_rows($result);
+
+	if ($total > 0)
+	{
+		while ($row = mysql_fetch_array($result, MYSQL_ASSOC))
+		{
+			$category_id = $row['category_id'];
+			$allcategories[$category_id] = $row;
+		}
+	}
+	return $allcategories;
+}
+}
+
+
 
 ?>
