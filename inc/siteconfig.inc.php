@@ -71,6 +71,7 @@
 	define('SHOW_FB_LIKEBOX', $settings['show_fb_likebox']);
 	define('TWITTER_PAGE', $settings['twitter_page']);
 	define('GOOGLE_ANALYTICS', $settings['google_analytics']);
+	define('BANNER_SPEED', $settings['banner_speed']);
 
 	// addthis.com Account ID
 	define('ADDTHIS_ID', 'YOUR-ACCOUNT-ID');

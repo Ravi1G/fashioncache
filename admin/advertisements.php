@@ -73,7 +73,7 @@
 					<td align="left" valign="middle" class="row_title"><?php echo $advertisement['link']?></td>
 					<td nowrap="nowrap" align="center" valign="middle">
 						<a href="advertisement_add.php?id=<?php echo $advertisement['advertisement_id']; ?>" title="Edit"><img border="0" alt="Edit" src="images/edit.png" /></a>
-						<a href="#" onclick="if (confirm('Are you sure you really want to delete this advertisement?') )location.href='advertisement_delete.php?id=<?php echo $advertisement['advertisement_id']; ?>'" title="Delete"><img border="0" alt="Delete" src="images/delete.png" /></a>
+						<!-- <a href="#" onclick="if (confirm('Are you sure you really want to delete this advertisement?') )location.href='advertisement_delete.php?id=<?php echo $advertisement['advertisement_id']; ?>'" title="Delete"><img border="0" alt="Delete" src="images/delete.png" /></a> -->
 					</td>
 				  </tr>
 			<?php } ?>

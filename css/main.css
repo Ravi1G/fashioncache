@@ -257,10 +257,11 @@ a:hover {
 .saleAlertSection .sectionTitle {
 	background-color: #fdd3d1;
 	color: #2d2f2e;
-	text-align: center;
+	text-align: left;
 	max-height: 40px;
 	padding-top: 10px;
-	padding-bottom: 10px;	
+	padding-bottom: 10px;
+	padding-left: 63px;
 	font-family: 'open_sansregular';
 	font-size: 15px;
 }
@@ -268,7 +269,7 @@ a:hover {
 .saleAlertSection .sectionTitle span {
 	font-size: 17.2px;
 	font-family: Garamond_bold;
-	margin-right: 10px;
+	margin-right: 20px;
 	color: #373737;
 }
 .contentSectionSlides
@@ -280,16 +281,15 @@ a:hover {
 .content {
 	margin-top: 2px;
 }
-
+.siteInnerSection
+{
+margin-top:10px;
+}
 .store {
 	border-bottom: 1px solid #e3e3e3;
 	padding-bottom: 8px;
 	padding-top: 12px;
 	min-height: 53px;
-}
-.store .icon img
-{
-max-height:49px;
 }
 
 .lastItem {
@@ -300,7 +300,6 @@ max-height:49px;
 	text-align: center;
 	float: left;
 	width: 180px;
-	display:block;
 }
 
 .cashBack {
@@ -308,7 +307,6 @@ max-height:49px;
 	width: 116px;
 	float: right;
 	text-align: center;
-	display:block;
 	background-color: #efefef;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -321,7 +319,6 @@ max-height:49px;
 	font-family: 'open_sansbold';
 	margin-top: -3px;
 	margin-bottom: 2px;
-	display:block;
 }
 
 .percentage span.percentageSymbol {
@@ -347,7 +344,6 @@ max-height:49px;
 	font-size: 12px;
 	font-family: "Garamond_bold";
 	margin-top: -10px;
-	display:block;
 }
 
 .saleAlertSection .sectionBody {
@@ -512,7 +508,9 @@ h1 {
 }
 
 .allStores span 
-{	
+{
+	position:relative;
+	z-index:2;		
 	background-color: #373737;
 	color: #fff;
 	font-size: 10px;
@@ -590,11 +588,7 @@ h1 {
 	letter-spacing: 4px;
 	margin-right: 10px;
 }
-.topTrendSection .bx-wrapper .bx-viewport
-{
-min-height:200px !important;
-height:auto !important;
-}
+
 .topTrendSection .body .last {
 	border: 0px;
 }
@@ -614,11 +608,6 @@ height:auto !important;
 
 .body .InfoContainer .storeTitle {
 	text-align: center;
-	font-size:20px;
-	font-family: "Garamond_bold";
-	line-height:21px;
-	margin-botttom:8px;
-	text-transform:uppercase;
 }
 
 .body .InfoContainer .storeTitle img {
@@ -848,13 +837,7 @@ height:auto !important;
 .topTrendSection .bx-pager
 {
 top:-46px;
-right:0px;
-width:100px !important;
-height:20px !important;
-}
-.contentSectionSlides .bx-wrapper .bx-viewport
-{
-min-height:50px;
+left:170px
 }
 .topTrendSection .bx-wrapper
 {
@@ -1028,19 +1011,10 @@ margin-top:0px !important;
 	background-image: url("../img/blogBack.png");
 	background-repeat: repeat;
 }
-a.noUnderline,
-a.noUnderline:hover
-{
-text-decoration:none;
-}
+
 .readOurBlog {
 	background-color: #FBD2D1;
 	text-align: center;
-	display:block;
-}
-.readOurBlog span
-{
-display:block;
 }
 
 .readOurBlog img {
@@ -1125,7 +1099,6 @@ left:-10px;
 .expertList .expertInformation .expertName {
 	letter-spacing: 3px;
 	font-size: 14px;
-	text-transform:uppercase;
 	color: #FBD2D1;
 	font-family: "Garamond_bold";
 	margin-top: 22px;
@@ -2892,4 +2865,171 @@ a
 	h2,h3 {
 		page-break-after: avoid;
 	}
+}
+
+
+/* Common Alignment Styles */
+.leftContainer
+{
+float:left;
+}
+.rightContainer
+{
+float:right;
+}
+
+/* Standard input Styles */
+
+
+
+/*  Login/SignUp Design  */	
+
+
+.userActivityContainer
+{
+font-family: 'open_sansregular';
+font-size:12px;
+width:650px;
+margin-top:10px;
+margin-bottom:10px;
+float:left;
+}
+.rightLine
+{
+border-right:1px solid #e1e1e1;
+min-height:465px;
+}
+.signUpActivity
+{
+width:30%;
+padding:10px;
+}
+.loginActivity
+{
+width:30%;
+padding:10px;
+}
+.userActivityContainer .contentTitle
+{
+font-family: "Garamond_bold";
+font-size:15px;
+margin-top:5px;
+margin-bottom:5px;
+text-transform:uppercase;
+}
+.standardLabel
+{
+display:block;
+margin-top:10px;
+}
+.standardInputBox
+{
+margin-top:5px;
+margin-bottom:5px;
+}
+.standardInputBox input
+{
+width:180px;
+padding:3px 2px 3px 2px;
+border:1px solid #D3D3D3;
+}
+.leftAlign
+{
+text-align:left;
+}
+.formSubmitButton
+{
+margin-top:15px;
+margin-bottom:15px;
+}
+.formSubmitButton span
+{
+font-size:11px;
+text-transform:uppercase;
+padding-left:10px;
+padding-right:10px;
+}
+.standardList li
+{
+margin-left:-20px;
+padding:0px;
+}
+h3
+{
+font-family: 'open_sansregular';
+font-size:13px;
+}
+.loginActions
+{
+width:100%;
+}
+.forgotPassword
+{
+padding-top:10px;
+padding-bottom:10px;
+padding-left:8px;
+}
+.loginActions .formSubmitButton
+{
+margin-top:10px;
+}
+.colorLink
+{
+color:#5977ad;
+}
+.facebookTitle
+{
+color:#3C5A9A;
+}
+.haveAccount
+{
+font-family: 'open_sanssemibold';
+margin-bottom:8px;
+margin-top:-6px;
+}
+.fbLoginApi
+{
+margin-top:8px;
+margin-bottom:8px;
+}
+.sidebarWithAds
+{
+float:right;
+width:300px;
+margin-top:5px;
+}
+.errorMessageContainer
+{
+background-color:#F2DEDE;
+border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-webkit-border-radius:5px;
+padding:10px;
+margin-bottom:10px;
+}
+.errorMessage
+{
+font-family: 'open_sansregular';
+font-size:13px;
+text-shadow:1px 1px 1px #fbfbfb;
+text-align:left;
+color:#B94A67;
+}
+.errorIcon
+{
+width:30px;
+padding-right:20px;
+margin:5px;
+}
+.errorIcon img
+{
+width:40px;
+}
+.errorList
+{
+color:#B94A67;
+margin:0px;
+margin-left:-10px;
+list-style:disc;
 }

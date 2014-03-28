@@ -43,10 +43,10 @@
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = SITE_HOME_TITLE;
 	
-	require_once("inc/header.inc.php");
-	$sale_alert =  getSaleAlert(1);
+	
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
+	require_once("inc/header.inc.php");
 ?>
 		<div class="container content">
 		<!-- Featured Store List  -->
@@ -54,7 +54,8 @@
 			  	<div class="sectionTitle">FEATURED STORES</div>
 			</div>
 			<div class="saleAlertSection">
-			        <div class="sectionTitle"><span>SALE ALERT!</span> <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
+			        <div class="sectionTitle"><span>SALE ALERT!</span> 
+			        <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>&s=<?php echo $sale_alert['sale_alert_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
 			</div>
 		<div class="cb"></div>
 		<div class="SiteContentSection">
@@ -121,7 +122,7 @@
 							</li>
 							<?php 	}?>
                         </ul>                        
-                        <div class="noTricks">No Catches, Tricks or Gimmicks.</div>
+                        <!-- <div class="noTricks">No Catches, Tricks or Gimmicks.</div> -->
                         <div class="topTrendSection">
                             <div class="title">TOP TRENDING SALES</div>                                                        
                             <div class="body"> 
@@ -139,7 +140,9 @@
 										<div class="InfoContainer">
                                             <div class="storeTitle">
                                                 <!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
-                                                <?php echo $trending_coupon['title'];?>
+                                                <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $trending_coupon['retailer_id']; ?>&c=<?php echo $trending_coupon['coupon_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+                                                	<?php echo $trending_coupon['title'];?>
+                                                </a>
                                             </div>
                                             <div class="storeText"><?php echo $trending_coupon['description']; ?></div>
                                             <div class="addition">+</div>
@@ -372,7 +375,7 @@
                 <div class="followUs">
                     <div class="title">------ FOLLOW US ------</div>
                     <div class="shortLinks">
-                        <span><a href="#" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span><span><a href="#" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
+                        <span><a href="<?php echo FACEBOOK_PAGE;?>" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span><span><a href="<?php ECHO TWITTER_PAGE;?>" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
                     </div>
                 </div>
                 
@@ -421,12 +424,6 @@
 		    <div class="cb"></div>
 		</div>   
 		</div>
-
-	<div class="Advertisement728">
-		<div class="container">
-			<div class="advertisement">728x90</div>
-		</div>
-	</div>
 		<?php /* ?>
 		<div id="slider">
 			<ul>

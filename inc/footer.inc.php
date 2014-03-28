@@ -1,3 +1,8 @@
+<div class="Advertisement728">
+	<div class="container">
+		<div class="advertisement"><a href="<?php echo $advertisements[HOME_PAGE_FOOTER_AD_ID]['link'];?>" target="_blank"><img height="90" width="728" src="<?php echo $advertisements[HOME_PAGE_FOOTER_AD_ID]['image_url']!='' ? $advertisements[HOME_PAGE_FOOTER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_FOOTER_AD_ID]['image_name']?>"></a></div>
+	</div>
+</div>
 <div class="footer">
 		<div class="container">
 			<div class="footerNavigation footernavlinks">
@@ -20,8 +25,8 @@
 			</div>
 			<div class="connectWithUs footernavlinks socialLinks">
 				<div class="title">CONNECT WITH US!</div>
-				<div><a href="#" class="fbDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorDark.jpg"/></a></div>
-				<div><a href="#" class="twtDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorDark.jpg"/></a></div>
+				<div><a href="<?php echo FACEBOOK_PAGE;?>" class="fbDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorDark.jpg"/></a></div>
+				<div><a href="<?php echo TWITTER_PAGE;?>" class="twtDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorDark.jpg"/></a></div>
 				<div><a href="#" class="gpDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorDark.jpg"/></a></div>
 				<div><a href="#" class="piDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorDark.jpg"/></a></div>
 			</div>

@@ -22,6 +22,7 @@
 	{
 		$title			= mysql_real_escape_string(getPostParameter('title'));
 		$retailer_id	= (int)getPostParameter('retailer_id');
+		$link			= mysql_real_escape_string(getPostParameter('link'));
  
 		//validation
 		unset($errors);
@@ -34,18 +35,24 @@
 		if(empty($retailer_id)){
 			$errors[] = 'Retailer is mandatory.';			
 		}
+		
+		//validate link
+		if (isset($link) && $link!="" && !preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $link))
+		{
+			$errors[] = "Enter correct link url. (e.g. 'http://abc.com' or 'https://abc.com' or 'http://www.abc.com')";
+		}
 
 		if (count($errors) == 0)
 		{
 			if($id)
 			{
 				$msg = 'updated';			
-				$sql = "update cashbackengine_sale_alert set title='$title', retailer_id=$retailer_id where sale_alert_id=$id";
+				$sql = "update cashbackengine_sale_alert set link='$link', title='$title', retailer_id=$retailer_id where sale_alert_id=$id";
 			}
 			else 
 			{
 				$msg = 'added';
-				$sql = "INSERT INTO cashbackengine_sale_alert(title, retailer_id) values('$title', $retailer_id)";
+				$sql = "INSERT INTO cashbackengine_sale_alert(link, title, retailer_id) values('$link','$title', $retailer_id)";
 			}
 			
 			smart_mysql_query($sql);
@@ -65,7 +72,6 @@
 	if($isEdit && !$isPost)
 	{
 		$retailer = getSaleAlert($id);
-		
 		if(empty($retailer)){
 			header("Location: sale_alerts.php?msg=invalid_sale_alert&msg_type=error");
 			exit();
@@ -86,13 +92,12 @@
 
 	
 	require_once ("inc/header.inc.php");
-	
 	$retailers = getAllActiveRetailer()
 ?>
 
 		<h2><?php echo $title;?></h2>
 		<?php 
-		if (isset($_GET['msg']) && $_GET['msg']!="" && $_GET['msg']=="updated") { 
+		if (!isset($errormsg) && $errormsg == "" && isset($_GET['msg']) && $_GET['msg']!="" && $_GET['msg']=="updated") { 
 			?>
 			<div style="width:60%;" class="success_box">
 				<?php
@@ -135,6 +140,12 @@
 				<input type="text" name="title" id="title" value="<?php echo getPostParameter('title'); ?>" size="40" class="textbox" />
 			</td>
           </tr>
+          <tr>
+			<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1">Link :</td>
+			<td align="left">
+				<input type="text" name="link" id="link" value="<?php echo getPostParameter('link'); ?>" size="40" class="textbox" />
+			</td>
+		  </tr>
           <tr>
 			<td>&nbsp;</td>
 			<td valign="middle" align="left">
