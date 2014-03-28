@@ -35,15 +35,42 @@
 			}
 			
 			//user clicked banner
-			if (isset($_GET['b']) && is_numeric($_GET['b']) && $_GET['b'] > 0)
+			$a = isset($_GET['a']) && is_numeric($_GET['a']) && $_GET['a']>0 ? $_GET['a'] : 0;
+			$b = isset($_GET['b']) && is_numeric($_GET['b']) && $_GET['b'] > 0 ? $_GET['b'] : 0;
+			$s = isset($_GET['s']) && is_numeric($_GET['s']) && $_GET['s'] > 0 ? $_GET['s'] : 0;
+			if ($a || $b || $s)
 			{
-				$banner_id = (int)$_GET['b'];
-
-				$banner_result = smart_mysql_query("SELECT * FROM cashbackengine_banners WHERE banner_id=$banner_id");
-				if (mysql_num_rows($banner_result) > 0)
+				$table_name = '';
+				if($a)
 				{
-					$banner_row = mysql_fetch_array($banner_result);
-					$banner_link = $banner_row['link'];
+					$table_name = 'cashbackengine_advertisements';
+					$other_pk = 'advertisement_id';
+					$other_field = 'a';	
+					$other_id = $a;
+				}
+				elseif($b)
+				{	
+					$table_name = 'cashbackengine_banners';
+					$other_pk = 'banner_id';
+					$other_field = 'b';
+					$other_id = $b;
+				}
+				elseif($s)
+				{
+					$table_name = 'cashbackengine_sale_alert';
+					$other_pk = 'sale_alert_id';
+					$other_field = 's';
+					$other_id = $s;	
+				}
+					
+				if($table_name)
+				{
+					$other_result = smart_mysql_query("SELECT * FROM $table_name WHERE $other_pk=$other_id");
+					if (mysql_num_rows($other_result) > 0)
+					{
+						$other_row = mysql_fetch_array($other_result);
+						$other_link = $other_row['link'];
+					}
 				}
 			}
 			
@@ -74,8 +101,8 @@
 			{
 				if ($coupon_link != "")
 					$retailer_website = str_replace("{USERID}", $userid, $coupon_link);
-				elseif($banner_link!='')
-					$retailer_website = str_replace("{USERID}", $userid, $banner_link);
+				elseif($other_link!='')
+					$retailer_website = str_replace("{USERID}", $userid, $other_link);
 				else
 					$retailer_website = str_replace("{USERID}", $userid, $row['url']);
 
@@ -84,8 +111,10 @@
 					// show landing page
 					if ($coupon_id)
 						$go_url = "redirect.php?id=".$retailer_id."&c=".$coupon_id;
-					elseif ($banner_id)
-						$go_url = "redirect.php?id=".$retailer_id."&b=".$banner_id;
+					elseif ($other_id)
+					{
+						$go_url = "redirect.php?id=".$retailer_id."&$other_field=".$other_id;
+					}
 					else
 						$go_url = "redirect.php?id=".$retailer_id;
 

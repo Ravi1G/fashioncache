@@ -80,6 +80,9 @@
 
 			if ($data['min_transaction'] == "" || !is_numeric($data['min_transaction']))
 				$errs[] = "Please enter correct min transaction";
+				
+			if ($data['banner_speed'] == "" || !is_numeric($data['banner_speed']))
+				$errs[] = "Please enter correct banner speed";
 
 			if (!(isset($data['max_review_length']) && is_numeric($data['max_review_length']) && $data['max_review_length'] > 0))
 				$errs[] = "Please enter correct max review length";
@@ -215,7 +218,6 @@
 
 	$title = "Site Settings";
 	require_once ("inc/header.inc.php");
-
 ?>
 
     <h2><img src="images/icons/settings.gif" align="absmiddle" /> Website Settings</h2>
@@ -431,6 +433,10 @@
 					<option value="0" <?php if ($settings['show_site_statistics'] == "0") echo "selected"; ?>>no</option>
 				</select>				
 			</td>
+          </tr>
+          <tr>
+            <td valign="middle" align="right" class="tb1">Banner Speed:</td>
+            <td valign="top"><input type="text" name="data[banner_speed]" value="<?php echo $settings['banner_speed']; ?>" size="5" class="textbox" /></td>
           </tr>
           <tr>
             <td align="center" valign="bottom">&nbsp;</td>

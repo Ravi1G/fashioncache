@@ -350,7 +350,7 @@ if (!function_exists('getTrendingSale')) {
 }
 
 if (!function_exists('getSaleAlert')) {
-	function getSaleAlert ($id, $columns = array('sale.title as title', 'retailer.title as retailer_title', 'retailer.retailer_id'))
+	function getSaleAlert ($id, $columns = array('sale.sale_alert_id','sale.link','sale.title as title', 'retailer.title as retailer_title', 'retailer.retailer_id'))
 	{
 		$sale_alert = array();
 		$result = smart_mysql_query("SELECT ".implode(',', $columns)." FROM cashbackengine_sale_alert as sale
