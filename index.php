@@ -90,7 +90,7 @@
 						                    <span class="percentage"><?php echo $cashback;?><span class="percentageSymbol"><?php echo $cashback_type;?></span></span>
 						                    <span class="cashBackCaption">Cash Back</span>
 						                </span>
-									  </a>	
+										</a>
 						              <div class="cb"></div>
 						            </div>
 							   <!-- <div>
