@@ -66,10 +66,10 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 				<?php }else{ ?>
 					<div class="signUpSection">
 						<div><span>New to Fashion-Cache?</span></div>
-						<div class="signUpCaption"><a href="<?php echo SITE_URL; ?>signup.php"><?php echo CBE_SIGNUP; ?></a></div>
+						<div class="signUpCaption"><a href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE_SIGNUP; ?></a></div>
 					</div>
 					<div class="LoginSection">
-						<div><img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <span><a href="<?php echo SITE_URL; ?>login.php"><?php echo CBE_LOGIN; ?></a></span></div>
+						<div><img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <span><a href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE_LOGIN; ?></a></span></div>
 					</div>
 				<?php } ?>
 				<div class="cb"></div>

@@ -385,7 +385,7 @@
                     <div class="body">
                         <div><a href="#"><img alt="" src="<?php echo SITE_URL;?>img/fbSignUp.jpg"/></a></div>
                         <div class="emailSignUp">Or- Sign up with Email</div>
-                        <form method="post" action="<?php echo 'shortsignup.php';?>">
+                        <form method="post" action="<?php echo 'signup_or_login.php';?>">
                             <div><input type="text" name="email" placeholder="Email" class="inputBox"/></div>
                             <div><input type="password" name="password" placeholder="Password" class="inputBox"/></div>
                            <input type="hidden" name="action" id="action" value="signup" />

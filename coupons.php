@@ -51,9 +51,14 @@
 	$from = ($page-1)*$results_per_page;
 
 	$where = " (start_date<=NOW() AND (end_date='0000-00-00 00:00:00' OR end_date > NOW())) AND status='active'";
+	
+	// Query for fetching data & sorting according to the previous functionality of sorting
+	//$query = "SELECT c.*, DATE_FORMAT(c.end_date, '%d %b %Y')  AS coupon_end_date, UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, c.title AS coupon_title, r.image, r.title FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW())) AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) AND r.status='active' ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
 
-	$query = "SELECT c.*, DATE_FORMAT(c.end_date, '%d %b %Y') AS coupon_end_date, UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, c.title AS coupon_title, r.image, r.title FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW())) AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) AND r.status='active' ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
-	$total_result = smart_mysql_query("SELECT * FROM cashbackengine_coupons WHERE $where ORDER BY title ASC");
+	// Query for fetching data & sorting according to the sort order provided at the backend
+	$query = "SELECT c.*, DATE_FORMAT(c.end_date, '%m/%d/%Y')  AS coupon_end_date, UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, c.title AS coupon_title, r.image, r.title,r.cashback AS cashback FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW())) AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) AND r.status='active' ORDER BY sort_order LIMIT $from, $results_per_page";
+	
+	$total_result = smart_mysql_query("SELECT * FROM cashbackengine_coupons WHERE $where ORDER BY sort_order ASC");
 	$total = mysql_num_rows($total_result);
 
 	$result = smart_mysql_query($query);
@@ -61,11 +66,252 @@
 
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = CBE1_COUPONS_TITLE;
-
 	require_once ("inc/header.inc.php");
-
 ?>
+<div class="container content standardContainer blog">
+    <!-- Featured Store List -->			
+    <div class="saleAlertSection">
+        <div class="sectionTitle"><span>SALE ALERT!</span> Shop the Nordstroms Half Anniversary sale going on now</div>
+    </div>
+    <div class="cb"></div>
+    <div class="SiteContentSection">
+        <div class="SiteContentLeft">
+            <h1>Sales, Specials &#x0026; Coupons</h1>
+            <table class="RetailerOffersTable couponTable">	
+                <?php while ($row = mysql_fetch_array($result)) { ?>
+                	<tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon"> <!-- Exclusive or See all coupons button is commented down, uncomment to show in the website -->
+                        <?php /*?><?php if ($row['exclusive'] == 1) { ?><span class="exclusive" alt="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>" title="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>"><?php echo CBE1_COUPONS_EXCLUSIVE; ?></span><?php } ?><?php */?>
+                            <a href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>"><img src="<?php if (!stristr($row['image'], 'http')) echo SITE_URL."img/"; echo $row['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" /></a>
+                            <?php /*?>
+                            <br/><a class="more" href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>#coupons"><?php echo CBE1_COUPONS_SEEALL; ?></a>
+                            <?php */?>
+                        </div>
+                    </td>
+                    
+                    <td class="columnTwo">
+	                    <a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>
+						<span class="offerExpiryDate">
+							<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
+								<span class="offerExpiryDate">(exp. <?php echo $row['coupon_end_date']; ?>)</span> &nbsp; 
+							<?php } ?>
+							
+						</span>
+                        <div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
+                        <div class="requirement">
+                        	<?php if($row['code']!=""){?>
+                        	<b><?php echo CBE1_COUPONS_CODE; ?></b>: <?php echo (isLoggedIn()) ? $row['code'] : CBE1_COUPONS_CODE_HIDDEN; ?>
+                        	<?php } else{?> No Coupon Code Required
+                        	<?php }?>
+                        	
+                        	<?php 
+                        	//Description
+                        	/* if ($row['description'] != "") { ?>
+							<p><?php echo $row['description']; ?></p>
+						<?php } */?>
+                        </div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <?php }?>
+                
+             <?php /*?> // NEW CSS Design - static
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample4.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample1.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample2.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample3.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample6.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample4.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample1.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon">
+                            <img src="../img/storeLogos/sample2.jpg" alt=""/>
+                        </div>
+                    </td>
+                    <td class="columnTwo">
+                        <div class="offerName">Men&#x2019;s Half-Yearly Sale Men. <span class="offerExpiryDate">(exp. 01/01/2014)</span></div>
+                        <div class="cashBackOnOffer">Plus <span>5.0%</span> Cash Back</div>
+                        <div class="requirement">No Coupon Code Required</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shopNowBotton siteButton">
+                            <a href="#"><span>SHOP NOW</span></a>
+                        </div>
+                    </td>
+                </tr>
+                <?php */?>
+            </table>
+            <div class="cb"></div>
+        </div>
+        
+        <?php require_once('inc/right_sidebar.php')?>
+        
+        
+        <?php /*?>
+        <div class="SiteContentRight">
+            <!-- Sidebar Section -->
+            <div>
+                <!-- Follow Us Section -->				
+                <div class="followUs">
+                    <div class="title">------ FOLLOW US ------</div>
+                    <div class="shortLinks">
+                        <span><a href="#" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_IMG;?>fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_IMG;?>fbColorLight.jpg"/></a></span><span><a href="#" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_IMG;?>twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_IMG;?>twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_IMG;?>gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_IMG;?>gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_IMG;?>piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_IMG;?>piColorLight.jpg"/></a></span>
+                    </div>
+                </div>
+                <!-- Sign Up Section -->
+                <div class="signUpContainer standardSignUpContainer">
+                    <div class="title titleOf14">SHOP &#x0026; EARN CASH BACK!</div>
+                    <div class="body standardBody">
+                        <div class="howItWorks">HOW IT WORKS</div>
+                        <div class="howItWorksSteps">
+                            <div class="stepSection howItWorksStepOne">
+                                <div><img src="<?php echo SITE_IMG;?>stepOneDark.jpg" alt=""/></div>
+                                <div class="stepTitle">Sign up<br/><span>(it&#x2019;s free)</span></div>
+                            </div>
+                            <div class="stepSection howItWorksStepTwo">
+                                <div><img src="<?php echo SITE_IMG;?>stepTwoDark.jpg" alt=""/></div>
+                                <div class="stepTitle">Select a Store &#x0026; Shop</div>
+                            </div>
+                            <div class="stepSection last howItWorksStepThree">
+                                <div><img src="<?php echo SITE_IMG;?>stepThreeDark.jpg" alt=""/></div>
+                                <div class="stepTitle">Get Cash Back!</div>
+                            </div>
+                            <div class="cb"></div>
+                        </div>						
+                        <div class="allStores forSignUp">
+                            <a href="#">
+                                <span>SIGN UP</span> </a> </div>
+                    </div>
+                </div>
+                <div class="advertisement300">
+                    <img src="<?php echo SITE_IMG;?>ad300.jpg" alt=""/>
+                </div>
+            </div>
+        </div><?php */?>
+        <div class="cb"></div>
+    </div>
+</div>
+<?php require_once ("inc/footer.inc.php"); ?>
 
+<?php /*?> // OLD Functionality DESIGN  + CODE
 	<h1><?php echo CBE1_COUPONS_TITLE; ?></h1>
 
 		<div id="tabs_container">
@@ -402,3 +648,4 @@
 
 
 <?php require_once ("inc/footer.inc.php"); ?>
+<?php */?>
