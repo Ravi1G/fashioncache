@@ -8,6 +8,9 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
+
+require_once $_SERVER['DOCUMENT_ROOT'].'/inc/right_sidebar.php';
+return 1;
 ?>
 
 	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>

@@ -6,7 +6,7 @@
  * Copyright (c) 2010-2014 CashbackEngine Software. All rights reserved.
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \*******************************************************************/
-
+	$is_index = 1;
 	if (file_exists("./install.php"))
 	{
 		header ("Location: install.php");
@@ -91,7 +91,7 @@
 						                    <span class="percentage"><?php echo $cashback;?><span class="percentageSymbol"><?php echo $cashback_type;?></span></span>
 						                    <span class="cashBackCaption">Cash Back</span>
 						                </span>
-									  </a>	
+										</a>
 						              <div class="cb"></div>
 						            </div>
 							   <!-- <div>

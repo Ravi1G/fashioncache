@@ -1,4 +1,5 @@
 <?php 
+global $advertisements;
 $sale_alert =  getSaleAlert(1);
 $advertisements = GetAdvertisements(array(HOME_PAGE_HEADER_AD_ID, HOME_PAGE_FOOTER_AD_ID));
 $menu_categories = GetMenuCategories();
@@ -34,9 +35,9 @@ $menu_categories = GetMenuCategories();
 
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/normalize.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/fonts.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/main.css">
 <link href="<?php echo SITE_URL;?>css/jquery.bxslider.css" rel="stylesheet"/>
 <link href="<?php echo SITE_URL;?>css/colorbox.css" rel="stylesheet"/>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -117,6 +118,11 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 				</div>
 				<div class="cb"></div>
 			</div>
+			<?php if(!isset($is_index)){?>
+			<div class="saleAlertSection siteInnerBanner">
+			  <div class="sectionTitle"><span>SALE ALERT!</span><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>&s=<?php echo $sale_alert['sale_alert_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
+			</div>
+			<?php } ?>
 		</div>
 <?php 
 /*

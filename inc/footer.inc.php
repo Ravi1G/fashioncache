@@ -1,3 +1,4 @@
+<?php global $advertisements;?>
 <div class="Advertisement728">
 	<div class="container">
 		<div class="advertisement"><a href="<?php echo $advertisements[HOME_PAGE_FOOTER_AD_ID]['link'];?>" target="_blank"><img height="90" width="728" src="<?php echo $advertisements[HOME_PAGE_FOOTER_AD_ID]['image_url']!='' ? $advertisements[HOME_PAGE_FOOTER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_FOOTER_AD_ID]['image_name']?>"></a></div>
@@ -46,8 +47,8 @@
 	
 	
 			
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
+	<script src="<?php echo SITE_URL?>/js/plugins.js"></script>
+	<script src="<?php echo SITE_URL?>/js/main.js"></script>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<!-- <script>
