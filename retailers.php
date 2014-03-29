@@ -145,7 +145,44 @@
 
 	require_once ("inc/header.inc.php");
 ?>
-
+<div class="container content standardContainer blog">
+		<div class="SiteContentSection">
+			<div class="SiteContentLeft">
+				<div class="RetailerContainer">
+					<div class="categoryHeading">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
+					<table class="categoryTable">
+						<tr class="categoryTableHeading">
+							<td class="bulletIcon topLeft"></td>
+							<td class="storeName">Store Name <img alt="" src="<?php echo SITE_IMG;?>upArrow.png"/></td>
+							<td class="storeCashBackScheme">Cash Back</td>
+							<td class="storeSite topRight">See Site</td>
+						</tr>
+						<tr>
+							<td><img alt="" src="<?php echo SITE_IMG;?>bulletIcon.png" class="bulletIconAlignment"/></td>
+							<td>Big Dogs</td>
+							<td class="cashBackCaption">7.5%</td>
+							<td>
+								<div class="shopNowBotton siteButton">
+									<a href="#"><span>SHOP NOW <img alt="" src="<?php echo SITE_IMG;?>rightPointing.png" class="rightPointing"/> </span></a></div>
+							</td>
+						</tr>
+						<tr>
+							<td><img alt="" src="<?php echo SITE_IMG;?>bulletIcon.png" class="bulletIconAlignment"/></td>
+							<td>Birthday Express</td>
+							<td class="cashBackCaption">6.0%</td>
+							<td>
+								<div class="shopNowBotton siteButton">
+									<a href="#"><span>SHOP NOW <img alt="" src="<?php echo SITE_IMG;?>rightPointing.png" class="rightPointing"/> </span></a></div>
+							</td>
+						</tr>
+					</table>	
+				</div>
+			</div>
+			<?php require_once('inc/right_sidebar.php');?>
+		</div>
+	</div>
+</div>
+<?php /* ?>	
 	<h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1>
 
 	<div class="breadcrumbs"><a href="<?php echo SITE_URL; ?>" class="home_link"><?php echo CBE1_BREADCRUMBS_HOME; ?></a> &#155; <a href="<?php echo SITE_URL; ?>retailers.php"><?php echo CBE1_BREADCRUMBS_STORES; ?></a> <?php echo ($cat_id > 0) ? " &#155; ".getCategory($_GET['cat']) : ""; ?><?php echo ($totitle != "") ? $totitle : ""; ?></div>
@@ -347,5 +384,5 @@
 			<a class="goback" href="#" onclick="history.go(-1);return false;"><?php echo CBE1_GO_BACK; ?></a>
 		</p>
 	<?php } ?>
-
+<?php */ ?>
 <?php require_once ("inc/footer.inc.php"); ?>

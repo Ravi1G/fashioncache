@@ -8,6 +8,8 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
+require_once $_SERVER['DOCUMENT_ROOT'].'/inc/footer.inc.php';
+return 1;
 ?>
 	</div><!-- #main .wrapper -->
 	<footer id="colophon" role="contentinfo">

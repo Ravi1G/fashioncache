@@ -6,7 +6,7 @@
  * Copyright (c) 2010-2014 CashbackEngine Software. All rights reserved.
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \*******************************************************************/
-
+	$is_index = 1;
 	if (file_exists("./install.php"))
 	{
 		header ("Location: install.php");
