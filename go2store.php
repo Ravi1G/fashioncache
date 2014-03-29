@@ -79,7 +79,7 @@
 				$_SESSION['goRetailerID']	= $retailer_id;
 				$_SESSION['goCouponID']		= $coupon_id;
 
-				header("Location: login.php?msg=4");
+				header("Location: signup_or_login.php?msg=4");
 				exit();
 			}
 
