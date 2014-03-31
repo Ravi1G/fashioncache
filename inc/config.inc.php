@@ -13,7 +13,7 @@
 	require_once(CBengine_ROOT."db.inc.php");
 	require_once(CBengine_ROOT."functions.inc.php");
 	require_once(DOCS_ROOT."/admin/inc/admin_funcs.inc.php");
-
+	
 	if (!defined('is_Setup'))
 	{
 		require_once(CBengine_ROOT."siteconfig.inc.php");

@@ -91,13 +91,15 @@
                     </td>
                     
                     <td class="columnTwo">
-	                    <a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>
-						<span class="offerExpiryDate">
-							<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
-								<span class="offerExpiryDate">(exp. <?php echo $row['coupon_end_date']; ?>)</span> &nbsp; 
-							<?php } ?>
-							
-						</span>
+						<div class="offerName">
+							<a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>
+							<span class="offerExpiryDate">
+								<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
+									<span class="offerExpiryDate">(exp. <?php echo $row['coupon_end_date']; ?>)</span> &nbsp; 
+								<?php } ?>
+								
+							</span>
+						</div>
                         <div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
                         <div class="requirement">
                         	<?php if($row['code']!=""){?>
