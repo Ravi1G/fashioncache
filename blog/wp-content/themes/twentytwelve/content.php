@@ -9,20 +9,19 @@
  * @since Twenty Twelve 1.0
  */
 ?>
- <?php echo '1'.get_the_post_thumbnail( $post->ID, array(150, 150) ); ?> 
  <?php 
- 
+/* 
  if ( has_post_thumbnail()) : ?>
    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
    <?php the_post_thumbnail( array(150,150) ); ?>
    </a>
- <?php endif; ?>
+ <?php endif; */?>
 <?php 
 if(!is_single()){
 ?>
 	<div class="blogContentContainer">
 		<div class="blogContentContainerLeft">
-			<div class="blogPicture"><a href="#"><img src="<?php the_post_thumbnail('medium');; ?>" alt="Featured Image"/></a></div>
+			<div class="blogPicture"><a href="#"><?php the_post_thumbnail( array(225,225) );?></a></div>
 		</div>
 		<div class="blogContentContainerRight">
 			<div class="postDate" style="text-transform:uppercase"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
@@ -32,13 +31,14 @@ if(!is_single()){
 			</div>
 			<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 			<div class="blogDescription">
-				 <?php the_excerpt();?> 
+				 <?php the_content();?> 
+				 <?php //echo get_comments_number()?>
 			</div>
 			<div class="blogSocialIcons">
 				<a href="#"><img src="<?php echo SITE_IMG;?>blog/fb.png" alt=""/></a>
-					<a href="#"><img src="<?php echo SITE_IMG;?>blog/twitter.png" alt=""/></a>
-						<a href="#"><img src="<?php echo SITE_IMG;?>blog/pinterest.png" alt=""/></a>
-							<a href="#"><img src="<?php echo SITE_IMG;?>blog/comments.png" alt=""/></a>
+				<a href="#"><img src="<?php echo SITE_IMG;?>blog/twitter.png" alt=""/></a>
+				<a href="#"><img src="<?php echo SITE_IMG;?>blog/pinterest.png" alt=""/></a>
+				<a href="#"><img src="<?php echo SITE_IMG;?>blog/comments.png" alt=""/></a>
 				<span class="countContainer">2</span>
 			</div>
 		</div>
