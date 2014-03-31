@@ -19,63 +19,16 @@ get_header(); ?>
 	        <div class="SiteContentLeft">            
 	            <h1>BLOG</h1>
 	            <div class="blogSection"> 
-	                <div class="blogContentContainer">
-	                    <div class="blogContentContainerLeft">
-	                        <div class="blogPicture"><a href="#"><img src="<?php echo SITE_IMG;?>blog1.jpg" alt=""/></a></div>
-	                    </div>
-	                    <div class="blogContentContainerRight">
-	                        <div class="postDate">JANUARY 5, 2014</div>
-	                        <div class="blogCategory">
-	                            <div><a href="#"><i>CELEBRITIES</i></a></div>
-	                            <div class="blogAuthor"></div>			        
-	                        </div>
-	                        <div class="blogTitle"><a href="#">THE BEST BABY BUMP STYLE IN HOLLYWOOD</a></div>
-	                        <div class="blogDescription">With recent pregnancy announcements of Olivia Wilde and Drew Barrymore &#x2013; and rumors about mom-to-be Kerry Washington &#x2013; it seems that Hollywood...</div>
-	                        <div class="blogReadMore"><a href="#"><i>Read More</i></a></div>
-	                        <div class="blogSocialIcons">
-	                            <a href="#"><img src="<?php echo SITE_IMG;?>blog/fb.png" alt=""/></a>
-	                                <a href="#"><img src="<?php echo SITE_IMG;?>blog/twitter.png" alt=""/></a>
-	                                    <a href="#"><img src="<?php echo SITE_IMG;?>blog/pinterest.png" alt=""/></a>
-	                                        <a href="#"><img src="<?php echo SITE_IMG;?>blog/comments.png" alt=""/></a>
-								<span class="countContainer">2</span>
-	                        </div>
-	                    </div>
-	                    <div class="cb"></div>
-	                </div>
-	                <div class="blogContentContainer">
-	                    <div class="blogContentContainerLeft">
-	                        <div class="blogPicture"><a href="#"><img src="<?php echo SITE_IMG;?>blog1.jpg" alt=""/></a></div>
-	                    </div>
-	                    <div class="blogContentContainerRight">
-	                        <div class="postDate">JANUARY 5, 2014</div>
-	                        <div class="blogCategory">
-	                            <div><a href="#"><i>CELEBRITIES</i></a></div>
-	                            <div class="blogAuthor"><a href="#">By Jordan Christensen</a></div>			        
-	                        </div>
-	                        <div class="blogTitle"><a href="#">THE BEST BABY BUMP STYLE IN HOLLYWOOD</a></div>
-	                        <div class="blogDescription">With recent pregnancy announcements of Olivia Wilde and Drew Barrymore &#x2013; and rumors about mom-to-be Kerry Washington &#x2013; it seems that Hollywood...</div>
-	                        <div class="blogReadMore"><a href="#"><i>Read More</i></a></div>
-	                        <div class="blogSocialIcons">
-	                            <a href="#"><img src="<?php echo SITE_IMG;?>blog/fb.png" alt=""/></a>
-	                                <a href="#"><img src="<?php echo SITE_IMG;?>blog/twitter.png" alt=""/></a>
-	                                    <a href="#"><img src="<?php echo SITE_IMG;?>blog/pinterest.png" alt=""/></a>
-	                                        <a href="#"><img src="<?php echo SITE_IMG;?>blog/comments.png" alt=""/></a>		        
-	                                            <span class="countContainer">2</span></div>
-	                    </div>
-	                    <div class="cb"></div>
-	                </div>
+	           		<?php if ( have_posts() ) : ?>
+		           		<?php while ( have_posts() ) : the_post(); ?>
+							<?php get_template_part( 'content', get_post_format() ); ?>
+						<?php endwhile; ?>
+					<?php twentytwelve_content_nav( 'nav-below' ); ?>
+	           		<?php endif;?>
 	                <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div>
 	            </div>  
 	            <div class="cb"></div>   
-		        <?php if ( have_posts() ) : ?>
-	
-				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'content', get_post_format() ); ?>
-				<?php endwhile; ?>
-	
-				<?php twentytwelve_content_nav( 'nav-below' ); ?>
-				<?php endif;?>                 
-		        </div>
+		   </div>
 	        <?php get_sidebar();?>
 	        <!-- <div class="fashionExpertSection">
 	            <div class="titleSection">

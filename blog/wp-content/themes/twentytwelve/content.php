@@ -9,7 +9,54 @@
  * @since Twenty Twelve 1.0
  */
 ?>
+ <?php echo '1'.get_the_post_thumbnail( $post->ID, array(150, 150) ); ?> 
+ <?php 
+ 
+ if ( has_post_thumbnail()) : ?>
+   <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+   <?php the_post_thumbnail( array(150,150) ); ?>
+   </a>
+ <?php endif; ?>
+<?php 
+if(!is_single()){
+?>
+	<div class="blogContentContainer">
+		<div class="blogContentContainerLeft">
+			<div class="blogPicture"><a href="#"><img src="<?php the_post_thumbnail('medium');; ?>" alt="Featured Image"/></a></div>
+		</div>
+		<div class="blogContentContainerRight">
+			<div class="postDate" style="text-transform:uppercase"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+			<div class="blogCategory">
+				<div><a href="#"><i>CELEBRITIES</i></a></div>
+				<div class="blogAuthor"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>">By <?php echo get_the_author(); ?></a></div>			        
+			</div>
+			<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+			<div class="blogDescription">
+				 <?php the_excerpt();?> 
+			</div>
+			<div class="blogSocialIcons">
+				<a href="#"><img src="<?php echo SITE_IMG;?>blog/fb.png" alt=""/></a>
+					<a href="#"><img src="<?php echo SITE_IMG;?>blog/twitter.png" alt=""/></a>
+						<a href="#"><img src="<?php echo SITE_IMG;?>blog/pinterest.png" alt=""/></a>
+							<a href="#"><img src="<?php echo SITE_IMG;?>blog/comments.png" alt=""/></a>
+				<span class="countContainer">2</span>
+			</div>
+		</div>
+		<div class="cb"></div>
+	</div>
+	<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+<?php 
+}elseif(is_single()){
+?>
+<?php the_title(); ?>
+<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
+<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+<?php 	
+	
+}
+?>
 
+<?php /* ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
 		<div class="featured-post">
@@ -50,7 +97,6 @@
 				<div class="author-info">
 					<div class="author-avatar">
 						<?php
-						/** This filter is documented in author.php */
 						$author_bio_avatar_size = apply_filters( 'twentytwelve_author_bio_avatar_size', 68 );
 						echo get_avatar( get_the_author_meta( 'user_email' ), $author_bio_avatar_size );
 						?>
@@ -68,3 +114,4 @@
 			<?php endif; ?>
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->
+<?php */ ?>

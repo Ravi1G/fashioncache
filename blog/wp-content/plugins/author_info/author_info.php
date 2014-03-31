@@ -68,6 +68,11 @@ add_action('user_register','a_save_custom_profile_fields');
 add_action( 'personal_options_update', 'a_save_custom_profile_fields' );
 add_action( 'edit_user_profile_update', 'a_save_custom_profile_fields' );
 
+function excerpt_ellipse($text) {
+   	return str_replace('[&hellip;]', '<span class="read_more"><div class="blogReadMore"><a href="'.get_permalink().'"><i>Read More</i></a></div>', $text); 
+}
+add_filter('the_excerpt', 'excerpt_ellipse');
+
 
 
 ?>
