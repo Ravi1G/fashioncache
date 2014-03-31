@@ -47,7 +47,22 @@
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
-?>
+	if(!isLoggedIn()){
+	?>
+		<script>
+		$.colorbox({
+		    iframe      : true,
+		    width: 795,
+	        height: 875,
+	        opacity: 0.8,
+	        scrolling: false,
+	        closeButton: false,
+	        fixed: false,
+	        top: 20,
+		    href : "<?php echo SITE_URL?>popup.php"
+		});
+		</script>
+	<?php } ?>
 		<div class="container content">
 		<!-- Featured Store List  -->
 			<div class="featuredStoresSection">
@@ -213,9 +228,29 @@
 									$username = $author['user_nicename'];
 								}
 							?>
-							<!--  user_nicename -->
-							<div class="expertName"><?php echo $username;?></div>
-							<div class="expertLocation">Sandy, Utah</div>
+							<!-- Information about the author: authorname,city,jalandhar -->
+							<div class="expertName">
+								<?php 
+									if($username!="") 
+										echo $username;
+									else 
+										echo 'Author';
+								?>
+							</div>
+							<div class="expertLocation">
+							<?php 
+								if($author['author_city']!="")
+									echo $author['author_city'];
+								else 
+									echo 'City';
+								
+								?>, <?php 
+								if($author['author_state']!="")
+									echo $author['author_state'];
+								else 
+									echo 'State';
+								
+								?></div>
 							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
 						</div>
 
