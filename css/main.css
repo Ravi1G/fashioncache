@@ -1173,6 +1173,7 @@ left:-10px;
 .categoryHeading h1
 {
 	display: inline;
+	text-transform:uppercase;
 	}
 .Advertisement728 .advertisement {
 	width: 728px;
@@ -3075,4 +3076,56 @@ width:100%;
 .siteInnerBanner .sectionTitle
 {
 text-align:center;
+}
+.categoryTableHeading td.storeName span,
+.categoryTableHeading td.storeCashBackScheme span
+{
+cursor:pointer;
+}
+.orderReflector
+{
+display:none;
+}
+.sorting_asc .orderReflector
+{
+display:inline;
+background-image:url('../img/orderArrow.png');
+background-position:0px 0px;
+background-repeat:no-repeat;
+padding:0px;
+padding-right:6px;
+font-size:6px;
+}
+.sorting_desc .orderReflector
+{
+display:inline;
+background-image:url('../img/orderArrow.png');
+background-position:-8px 0px;
+background-repeat:no-repeat;
+padding:0px;
+padding-right:6px;
+font-size:6px;
+}
+.dataTables_info
+{
+font-size:13px;
+font-family: 'open_sansregular';
+}
+.categoryHeadingWithMargins
+{
+margin-top:24px;
+margin-bottom:24px;
+}
+.dataTables_empty div
+{
+text-align:center;
+font-size:13px;
+font-family: 'open_sansregular';
+font-weight:normal;
+padding-top:20px;
+padding-bottom:20px;
+}
+.retailer_title
+{
+text-transform:uppercase;
 }

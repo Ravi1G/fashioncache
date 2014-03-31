@@ -151,13 +151,13 @@
 		<div class="SiteContentSection">
 			<div class="SiteContentLeft">
 				<div class="RetailerContainer">
-					<div class="categoryHeading">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
+					<div class="categoryHeading categoryHeadingWithMargins">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
 					<table class="categoryTable" id="categoryTable">
 					<thead>
 						<tr class="categoryTableHeading">
 							<td class="bulletIcon topLeft"></td>
-							<td class="storeName">Store Name</td>
-							<td class="storeCashBackScheme">Cash Back</td>
+							<td class="storeName"><span>Store Name <span class="orderReflector">&#x00A0;</span></span></td>
+							<td class="storeCashBackScheme"><span>Cash Back <span class="orderReflector">&#x00A0;</span></span></td>
 							<td class="storeSite topRight">See Site</td>
 						</tr>
 					</thead>
