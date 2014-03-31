@@ -1,4 +1,8 @@
 <?php
+session_start();
+require_once($_SERVER['DOCUMENT_ROOT']."/inc/config.inc.php");
+include($_SERVER['DOCUMENT_ROOT']."/inc/header.inc.php");
+return 1;
 /**
  * The Header template for our theme
  *

@@ -11,30 +11,47 @@
 	require_once("inc/iflogged.inc.php");
 	require_once("inc/config.inc.php");
 
-
+	// Login
 	if (isset($_POST['action']) && $_POST['action'] == "login")
 	{
-		$username	= mysql_real_escape_string(getPostParameter('username'));
+		$username	= mysql_real_escape_string(getPostParameter('email'));
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
-		$remember	= (int)getPostParameter('rememberme');
 		$ip			= getenv("REMOTE_ADDR");
 
 		if (!($username && $pwd))
 		{
-			$errormsg = CBE1_LOGIN_ERR;
+			$errs[] = CBE1_LOGIN_ERR;
 		}
-		else
+		
+		if (isset($username) && $username != "" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $username))
 		{
+			$errs[] = "Please enter a valid email";	
+		}
+	
+		if (isset($pwd) && $pwd != "")
+			{
+				if ((strlen($pwd)) < 6 || (strlen($pwd)) > 20 )
+				{
+					$errs[] = CBE1_SIGNUP_ERR7;
+				}
+				elseif (stristr($pwd, ' '))
+				{
+					$errs[] = CBE1_SIGNUP_ERR8;
+				}
+			}
+
+
+		if(count($errs)==0 )
+		{	
 			$sql = "SELECT * FROM cashbackengine_users WHERE username='$username' AND password='".PasswordEncryption($pwd)."' LIMIT 1";
 			$result = smart_mysql_query($sql);
-
 			if (mysql_num_rows($result) != 0)
 			{
 					$row = mysql_fetch_array($result);
 
 					if ($row['status'] == 'inactive')
 					{
-						header("Location: login.php?msg=2");
+						header("Location: signup_or_login.php?msg=2");
 						exit();
 					}
 
@@ -100,9 +117,173 @@
 					}
 				}
 
-				header("Location: login.php?msg=1");
+				header("Location: signup_or_login.php?msg=1");
 				exit();
 			}
+		}
+	}
+	else if(isset($_POST['action']) && $_POST['action'] == "signup")
+	{
+		$email		= mysql_real_escape_string(getPostParameter('email'));
+		$username	= mysql_real_escape_string(getPostParameter('email'));
+		$pwd		= mysql_real_escape_string(getPostParameter('password'));
+		$ip			= getenv("REMOTE_ADDR");
+		$ref_email	= mysql_real_escape_string(getPostParameter('referrer_email'));
+		if (!($email && $pwd))
+		{
+			$errs[] = CBE1_SIGNUP_ERR;
+		}
+		else
+		{
+			if (isset($email) && $email != "" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email))
+			{
+				$errs[] = CBE1_SIGNUP_ERR4;
+			}
+	
+			
+			if (isset($pwd) && $pwd != "")
+			{
+				if ((strlen($pwd)) < 6 || (strlen($pwd)) > 20 )
+				{
+					$errs[] = CBE1_SIGNUP_ERR7;
+				}
+				elseif (stristr($pwd, ' '))
+				{
+					$errs[] = CBE1_SIGNUP_ERR8;
+				}
+			}
+
+		if (isset($ref_email) && $ref_email != "" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $ref_email))
+			{
+				$errs[] = 'Please enter a valid email address of referrer';
+			}
+			
+		}
+		
+	if (count($errs) == 0)
+		{	
+				$query = "SELECT username FROM cashbackengine_users WHERE username='$email' LIMIT 1";
+				$result = smart_mysql_query($query);
+
+				if (mysql_num_rows($result) != 0)
+				{
+					header ("Location: signup_or_login.php?msg=exists");
+					exit();
+				}
+
+				// check referral
+				if (isset($ref_email) && $ref_email!="")
+				{
+					$check_referral_query = "SELECT user_id FROM cashbackengine_users WHERE username='$ref_email' LIMIT 1";
+					$check_referral_result = smart_mysql_query($check_referral_query);
+
+					if (mysql_num_rows($check_referral_result) != 0)
+					{
+						$ref_id=mysql_fetch_assoc($check_referral_result);
+						$ref_id = $ref_id['user_id'];
+					}
+					else
+					{
+						$ref_id = 0;
+					}
+				}
+
+				$unsubscribe_key = GenerateKey($username);
+
+				if (ACCOUNT_ACTIVATION == 1)
+				{
+					$activation_key = GenerateKey($username);
+					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', status='inactive',ref_id='$ref_id', activation_key='$activation_key', created=NOW()";
+				}
+				else
+				{
+					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', status='active',ref_id='$ref_id',  activation_key='', unsubscribe_key='$unsubscribe_key', last_login=NOW(), login_count='1', last_ip='$ip', created=NOW()";
+				}
+
+				smart_mysql_query($insert_query);
+				$new_user_id = mysql_insert_id();
+
+				if (SIGNUP_BONUS > 0)
+				{
+					// save SIGN UP BONUS transaction //
+					$reference_id = GenerateReferenceID();
+					smart_mysql_query("INSERT INTO cashbackengine_transactions SET reference_id='$reference_id', user_id='$new_user_id', payment_type='Sign Up Bonus', amount='".SIGNUP_BONUS."', status='confirmed', created=NOW(), process_date=NOW()");
+					/////////////////////////////////////
+				}
+
+				// add bonus to referral, save transaction //
+				if (REFER_FRIEND_BONUS > 0 && isset($ref_id) && $ref_id > 0)
+				{
+					$reference_id = GenerateReferenceID();
+					$ref_res = smart_mysql_query("INSERT INTO cashbackengine_transactions SET reference_id='$reference_id', user_id='$ref_id', payment_type='Refer a Friend Bonus', amount='".REFER_FRIEND_BONUS."', status='pending', created=NOW()");
+				}
+				//////////////////////////////////////////////
+
+
+				if (ACCOUNT_ACTIVATION == 1)
+				{			
+					////////////////////////////////  Send Message  //////////////////////////////
+					$etemplate = GetEmailTemplate('activate');
+					$esubject = $etemplate['email_subject'];
+					$emessage = $etemplate['email_message'];
+
+					$activate_link = SITE_URL."activate.php?key=".$activation_key;
+
+					$emessage = str_replace("{first_name}", $fname, $emessage);
+					$emessage = str_replace("{username}", $email, $emessage);
+					$emessage = str_replace("{password}", $pwd, $emessage);
+					$emessage = str_replace("{activate_link}", $activate_link, $emessage);
+
+					$to_email = $fname.' '.$lname.' <'.$email.'>';
+					$subject = $esubject;
+					$message = $emessage;
+
+					$headers = 'MIME-Version: 1.0' . "\r\n";
+					$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+					$headers .= 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
+				
+					@mail($to_email, $subject, $message, $headers);
+					////////////////////////////////////////////////////////////////////////////////
+
+					header("Location: activate.php?msg=1"); // show account activation message
+					exit();
+				}
+				else
+				{
+					////////////////////////////////  Send welcome message  ////////////////////////
+					$etemplate = GetEmailTemplate('signup');
+					$esubject = $etemplate['email_subject'];
+					$emessage = $etemplate['email_message'];
+
+					$emessage = str_replace("{first_name}", $fname, $emessage);
+					$emessage = str_replace("{username}", $email, $emessage);
+					$emessage = str_replace("{password}", $pwd, $emessage);
+					$emessage = str_replace("{login_url}", SITE_URL."login.php", $emessage);
+
+					$to_email = $fname.' '.$lname.' <'.$email.'>';
+					$subject = $esubject;
+					$message = $emessage;
+
+					$headers = 'MIME-Version: 1.0' . "\r\n";
+					$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+					$headers .= 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
+				
+					@mail($to_email, $subject, $message, $headers);
+					////////////////////////////////////////////////////////////////////////////////
+
+					if (!session_id()) session_start();
+					$_SESSION['userid']		= $new_user_id;
+					$_SESSION['FirstName']	= $fname;
+
+					header("Location: myaccount.php?msg=welcome"); // forward new user to member dashboard
+					exit();
+				}
+		}
+		else
+		{
+			$allerrors = "";
+			foreach ($errs as $errorname)
+				$allerrors .= "&#155; ".$errorname."<br/>\n";
 		}
 	}
 
@@ -111,40 +292,68 @@
 
 	require_once ("inc/header.inc.php");
 
+	
+	
 ?>
 
 <div class="container content siteInnerSection">
     <div class="userActivityContainer">
         <h1>SIGN-UP OR LOG IN</h1>
+        <?php if(count($errs) > 0 || isset($_GET['msg'])){?>
         <div class="errorMessageContainer">
             <div class="leftContainer errorIcon">
                 <img src="../img/errorIcon.png" alt="Error"/>
             </div>
+             
             <div class="leftContainer">	
-                <ul class="standardList errorList">			
-                    <li><div class="errorMessage">Please enter a valid Email.</div></li>
-                    <li><div class="errorMessage">Password you have entered is ver weak.</div></li>
-                    <li><div class="errorMessage">Email is required.</div></li>
-                </ul>
+               <ul class="standardList errorList">
+               	             			
+               <?php
+               	if(isset($_GET['msg']) && $_GET['msg']=='exists')
+               	{?>
+               		<li><div class="errorMessage"><?php echo CBE1_SIGNUP_ERR10;?></div></li>
+               	<?php }
+               	else if(isset($errs))
+               	{
+				foreach ($errs as $err){?>
+					<li><div class="errorMessage"><?php echo $err;?></div></li>               	
+				<?php }	
+				}
+				?>
+				<?php if (isset($_GET['msg']) && $_GET['msg'] == 1 ||$_GET['msg'] == 2 || $_GET['msg'] == 3 || $_GET['msg'] == 4 || $_GET['msg'] == 5 || $_GET['msg'] == 6) { ?>
+				<li><div class="errorMessage">
+					<?php if ($_GET['msg'] == 1) { echo CBE1_LOGIN_ERR1; } ?>
+					<?php if ($_GET['msg'] == 2) { echo CBE1_LOGIN_ERR2; } ?>
+					<?php if ($_GET['msg'] == 3) { echo CBE1_LOGIN_ERR3; } ?>
+					<?php if ($_GET['msg'] == 4) { echo CBE1_LOGIN_ERR4; } ?>
+					<?php if ($_GET['msg'] == 5) { echo CBE1_LOGIN_ERR1." ".$_SESSION['attems_left']." ".CBE1_LOGIN_ATTEMPTS; } ?>
+					<?php if ($_GET['msg'] == 6) { echo CBE1_LOGIN_ERR6; } ?>
+				</div></li>
+				<?php } ?>
+				
+					</ul>
             </div>
+              
             <div class="cb"></div>			
         </div>
-        
+        <?php } ?>
+        <!-- Sign up form -->
         <div class="leftContainer signUpActivity rightLine">
             <div class="contentTitle">New Members</div>
             <div>
-                <form action="" method="post">
+                <form action="" method="post" id="frmsignup">
                     <label class="standardLabel">Email:</label>
-                    <div class="standardInputBox"><input name="" type="text"/></div>						
+                    <div class="standardInputBox"><input name="email" type="text"/></div>						
                     <label class="standardLabel">Password (6-12 characters):</label>
-                    <div class="standardInputBox"><input name="" type="password"/></div>
+                    <div class="standardInputBox"><input name="password" type="password"/></div>
                     <label class="standardLabel">Referrer's Email (optional):</label>
-                    <div class="standardInputBox"><input name="" type="text"/></div>
+                    <div class="standardInputBox"><input name="referrer_email" type="text"/></div>
                     <div class="shopNowBotton siteButton leftAlign formSubmitButton">
-                        <a href="#">
+                        <a href="#" onclick="document.getElementById('frmsignup').submit()">
                             <span>Sign Up &#x003E;</span>
                         </a>
                     </div>
+                    <input type="hidden" name="action" value="signup">
                 </form>
             </div>
             <div>By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
@@ -158,24 +367,25 @@
         </div>			
         <div class="leftContainer loginActivity rightLine">
             <div class="contentTitle">Returning Members</div>
-            <form action="" method="post">
+            <form action="" method="post" id="frmlogin">
                 <label class="standardLabel">Email:</label>
-                <div class="standardInputBox"><input name="" type="text"/></div>
+                <div class="standardInputBox"><input name="email" type="text"/></div>
                 <label class="standardLabel">Password:</label>
-                <div class="standardInputBox"><input name="" type="password"/></div>					
+                <div class="standardInputBox"><input name="password" type="password"/></div>					
                 <div class="loginActions">
                     <div class="leftContainer">
                         <div class="shopNowBotton siteButton leftAlign formSubmitButton">
-                            <a href="#">
+                            <a href="#" onclick="document.getElementById('frmlogin').submit()">
                                 <span>Log In &#x003E;</span>
                             </a>
                         </div>
                     </div>
                     <div class="leftContainer">
-                        <div class="forgotPassword"><a class="colorLink" href="#">Forgot Password?</a></div>
+                        <div class="forgotPassword"><a class="colorLink" href="<?php echo SITE_URL; ?>forgot.php">Forgot Password?</a></div>
                     </div>
                     <div class="cb"></div>
                 </div>
+                <input type="hidden" name="action" value="login" >
                 
             </form>
         </div>

@@ -11,7 +11,6 @@
 	require_once("inc/config.inc.php");
 	require_once("inc/pagination.inc.php");
 
-
 	if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0 && in_array($_GET['show'], $results_on_page))
 	{
 		$results_per_page = (int)$_GET['show'];
@@ -129,6 +128,7 @@
 	$total_on_page = mysql_num_rows($result);
 
 
+	
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE	= getCategory($_GET['cat']).$totitle;
 	
@@ -146,6 +146,49 @@
 	require_once ("inc/header.inc.php");
 ?>
 
+		
+<div class="container content standardContainer blog">
+		<div class="SiteContentSection">
+			<div class="SiteContentLeft">
+				<div class="RetailerContainer">
+					<div class="categoryHeading">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
+					<table class="categoryTable" id="categoryTable">
+					<thead>
+						<tr class="categoryTableHeading">
+							<td class="bulletIcon topLeft"></td>
+							<td class="storeName">Store Name</td>
+							<td class="storeCashBackScheme">Cash Back</td>
+							<td class="storeSite topRight">See Site</td>
+						</tr>
+					</thead>
+						<?php while($row=mysql_fetch_assoc($result)){?>
+						<tr>
+							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
+							<td><?php echo $row['title'];?></td>
+							<td class="cashBackCaption"><?php echo $row['cashback'];?></td>
+							<td>
+								<div class="shopNowBotton siteButton">
+									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
+								</div>
+									
+						<?php /*
+						if (isset($cat_id) && is_numeric($cat_id))
+							echo "<li".$lilast."><a href=\"".SITE_URL."retailers.php?".$view_a."cat=$cat_id&letter=$letter\" $liclass>$letter</a></li>";
+						else
+							echo "<li".$lilast."><a href=\"".SITE_URL."retailers.php?".$view_a."letter=$letter\" $liclass>$letter</a></li>";
+						*/?>
+							</td>
+						</tr>
+						<?php }?>
+						
+					</table>	
+				</div>
+			</div>
+			<?php require_once('inc/right_sidebar.php');?>
+		</div>
+	</div>
+</div>
+<?php /* ?>	
 	<h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1>
 
 	<div class="breadcrumbs"><a href="<?php echo SITE_URL; ?>" class="home_link"><?php echo CBE1_BREADCRUMBS_HOME; ?></a> &#155; <a href="<?php echo SITE_URL; ?>retailers.php"><?php echo CBE1_BREADCRUMBS_STORES; ?></a> <?php echo ($cat_id > 0) ? " &#155; ".getCategory($_GET['cat']) : ""; ?><?php echo ($totitle != "") ? $totitle : ""; ?></div>
@@ -347,5 +390,15 @@
 			<a class="goback" href="#" onclick="history.go(-1);return false;"><?php echo CBE1_GO_BACK; ?></a>
 		</p>
 	<?php } ?>
+<?php */ ?>
 
+<script>	
+$(document).ready(function() {
+    $('#categoryTable').dataTable({
+		"bPaginate": false,
+		"bFilter": false,
+		"aaSorting": [ [0,'asc'], [1,'asc'] ]
+	});
+} );
+</script>
 <?php require_once ("inc/footer.inc.php"); ?>

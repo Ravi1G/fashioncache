@@ -1,4 +1,5 @@
 <?php 
+global $advertisements;
 $sale_alert =  getSaleAlert(1);
 $advertisements = GetAdvertisements(array(HOME_PAGE_HEADER_AD_ID, HOME_PAGE_FOOTER_AD_ID));
 $menu_categories = GetMenuCategories();
@@ -26,6 +27,7 @@ $menu_categories = GetMenuCategories();
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/cashbackengine.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/easySlider1.7.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/jquery.tools.tabs.min.js"></script>
+
 <link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" />
 <link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" />
 <!-- Cashback engine items ends -->
@@ -34,9 +36,9 @@ $menu_categories = GetMenuCategories();
 
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/normalize.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/fonts.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/main.css">
 <link href="<?php echo SITE_URL;?>css/jquery.bxslider.css" rel="stylesheet"/>
 <link href="<?php echo SITE_URL;?>css/colorbox.css" rel="stylesheet"/>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -45,10 +47,11 @@ $menu_categories = GetMenuCategories();
 <script src="<?php echo SITE_URL;?>js/vendor/modernizr-2.6.2.min.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.c.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
-
+<script src="<?php echo SITE_URL; ?>js/jquery.dataTables.js"></script>
 <script>
 var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 </script>
+
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -66,10 +69,10 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 				<?php }else{ ?>
 					<div class="signUpSection">
 						<div><span>New to Fashion-Cache?</span></div>
-						<div class="signUpCaption"><a href="<?php echo SITE_URL; ?>signup.php"><?php echo CBE_SIGNUP; ?></a></div>
+						<div class="signUpCaption"><a href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE_SIGNUP; ?></a></div>
 					</div>
 					<div class="LoginSection">
-						<div><img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <span><a href="<?php echo SITE_URL; ?>login.php"><?php echo CBE_LOGIN; ?></a></span></div>
+						<div><img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <span><a href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE_LOGIN; ?></a></span></div>
 					</div>
 				<?php } ?>
 				<div class="cb"></div>
@@ -93,12 +96,12 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 			<div class="cb"></div>
 			<div class="navigationSection">
 				<ul>
-					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php">ALL STORES</a></li>
+					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php?show=111111">ALL STORES</a></li>
 					<?php 
 					if($menu_categories){ 
 						foreach($menu_categories as $menu_category){
 					?>
-						<li><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>"><?php echo $menu_category['name']?></a></li>
+						<li><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a></li>
 					<?php 
 						}
 					}
@@ -117,7 +120,13 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 				</div>
 				<div class="cb"></div>
 			</div>
+			<?php if(!isset($is_index)){?>
+			<div class="saleAlertSection siteInnerBanner">
+			  <div class="sectionTitle"><span>SALE ALERT!</span><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>&s=<?php echo $sale_alert['sale_alert_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
+			</div>
+			<?php } ?>
 		</div>
+		<!-- No record functionality is pending -->
 <?php 
 /*
 ?>

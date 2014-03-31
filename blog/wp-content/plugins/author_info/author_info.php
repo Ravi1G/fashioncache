@@ -10,8 +10,6 @@ License: GPL2
 
 function easy_author_info_init() {
 	global $pagenow;
-	
-		add_filter( 'gettext', 'q_replace_thickbox_button_text', 1, 3 ); // here we call our func to replace the button text for the avatar uploader
 
 }	
 

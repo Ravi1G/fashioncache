@@ -127,7 +127,8 @@ add_action( 'show_user_profile', 'q_add_custom_profile_fields' );
 add_action( 'edit_user_profile', 'q_add_custom_profile_fields' );
 add_action( 'personal_options_update', 'q_save_custom_profile_fields' );
 add_action( 'edit_user_profile_update', 'q_save_custom_profile_fields' );
-
+add_action('user_new_form','q_add_custom_profile_fields');
+add_action('user_register','q_save_custom_profile_fields');
 // Now, let's create an easy function to grab our author image
 
 function author_image_circle($user_id=999999, $_size="small") {
