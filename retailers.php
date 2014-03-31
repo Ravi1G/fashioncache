@@ -11,7 +11,6 @@
 	require_once("inc/config.inc.php");
 	require_once("inc/pagination.inc.php");
 
-
 	if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0 && in_array($_GET['show'], $results_on_page))
 	{
 		$results_per_page = (int)$_GET['show'];
@@ -129,6 +128,7 @@
 	$total_on_page = mysql_num_rows($result);
 
 
+	
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE	= getCategory($_GET['cat']).$totitle;
 	
@@ -145,36 +145,42 @@
 
 	require_once ("inc/header.inc.php");
 ?>
+
+		
 <div class="container content standardContainer blog">
 		<div class="SiteContentSection">
 			<div class="SiteContentLeft">
 				<div class="RetailerContainer">
 					<div class="categoryHeading">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
-					<table class="categoryTable">
-						<tr class="categoryTableHeading">
-							<td class="bulletIcon topLeft"></td>
-							<td class="storeName">Store Name <img alt="" src="<?php echo SITE_IMG;?>upArrow.png"/></td>
-							<td class="storeCashBackScheme">Cash Back</td>
-							<td class="storeSite topRight">See Site</td>
-						</tr>
+					<table class="categoryTable" id="categoryTable">
+					<thead>
 						<tr>
-							<td><img alt="" src="<?php echo SITE_IMG;?>bulletIcon.png" class="bulletIconAlignment"/></td>
-							<td>Big Dogs</td>
-							<td class="cashBackCaption">7.5%</td>
+							<th class="bulletIcon topLeft"></th>
+							<th class="storeName">Store Name <img alt="" src="<?php echo SITE_IMG;?>upArrow.png"/></th>
+							<th class="storeCashBackScheme">Cash Back</th>
+							<th class="storeSite topRight">See Site</th>
+						</tr>
+					</thead>
+						<?php while($row=mysql_fetch_assoc($result)){?>
+						<tr>
+							<td></td>
+							<td><?php echo $row['title'];?></td>
+							<td class="cashBackCaption"><?php echo $row['cashback'];?></td>
 							<td>
 								<div class="shopNowBotton siteButton">
-									<a href="#"><span>SHOP NOW <img alt="" src="<?php echo SITE_IMG;?>rightPointing.png" class="rightPointing"/> </span></a></div>
+									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
+								</div>
+									
+						<?php /*
+						if (isset($cat_id) && is_numeric($cat_id))
+							echo "<li".$lilast."><a href=\"".SITE_URL."retailers.php?".$view_a."cat=$cat_id&letter=$letter\" $liclass>$letter</a></li>";
+						else
+							echo "<li".$lilast."><a href=\"".SITE_URL."retailers.php?".$view_a."letter=$letter\" $liclass>$letter</a></li>";
+						*/?>
 							</td>
 						</tr>
-						<tr>
-							<td><img alt="" src="<?php echo SITE_IMG;?>bulletIcon.png" class="bulletIconAlignment"/></td>
-							<td>Birthday Express</td>
-							<td class="cashBackCaption">6.0%</td>
-							<td>
-								<div class="shopNowBotton siteButton">
-									<a href="#"><span>SHOP NOW <img alt="" src="<?php echo SITE_IMG;?>rightPointing.png" class="rightPointing"/> </span></a></div>
-							</td>
-						</tr>
+						<?php }?>
+						
 					</table>	
 				</div>
 			</div>
@@ -385,4 +391,10 @@
 		</p>
 	<?php } ?>
 <?php */ ?>
+
+<script>	
+			$(document).ready(function() {
+				$('#categoryTable').dataTable();
+			} );
+</script>
 <?php require_once ("inc/footer.inc.php"); ?>

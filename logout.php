@@ -15,7 +15,7 @@
 
 	setcookie("usname", "", time()-3600);
 
-	header("Location: login.php");
+	header("Location: signup_or_login.php");
 	exit();
 	
 ?>

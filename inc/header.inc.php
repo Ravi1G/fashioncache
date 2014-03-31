@@ -27,6 +27,7 @@ $menu_categories = GetMenuCategories();
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/cashbackengine.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/easySlider1.7.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/jquery.tools.tabs.min.js"></script>
+
 <link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" />
 <link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" />
 <!-- Cashback engine items ends -->
@@ -46,10 +47,11 @@ $menu_categories = GetMenuCategories();
 <script src="<?php echo SITE_URL;?>js/vendor/modernizr-2.6.2.min.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.c.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
-
+<script src="<?php echo SITE_URL; ?>js/jquery.dataTables.js"></script>
 <script>
 var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 </script>
+
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -94,12 +96,12 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 			<div class="cb"></div>
 			<div class="navigationSection">
 				<ul>
-					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php">ALL STORES</a></li>
+					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php?show=111111">ALL STORES</a></li>
 					<?php 
 					if($menu_categories){ 
 						foreach($menu_categories as $menu_category){
 					?>
-						<li><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>"><?php echo $menu_category['name']?></a></li>
+						<li><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a></li>
 					<?php 
 						}
 					}
@@ -124,6 +126,7 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 			</div>
 			<?php } ?>
 		</div>
+		<!-- No record functionality is pending -->
 <?php 
 /*
 ?>
