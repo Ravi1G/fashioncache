@@ -154,16 +154,16 @@
 					<div class="categoryHeading">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
 					<table class="categoryTable" id="categoryTable">
 					<thead>
-						<tr>
-							<th class="bulletIcon topLeft"></th>
-							<th class="storeName">Store Name <img alt="" src="<?php echo SITE_IMG;?>upArrow.png"/></th>
-							<th class="storeCashBackScheme">Cash Back</th>
-							<th class="storeSite topRight">See Site</th>
+						<tr class="categoryTableHeading">
+							<td class="bulletIcon topLeft"></td>
+							<td class="storeName">Store Name</td>
+							<td class="storeCashBackScheme">Cash Back</td>
+							<td class="storeSite topRight">See Site</td>
 						</tr>
 					</thead>
 						<?php while($row=mysql_fetch_assoc($result)){?>
 						<tr>
-							<td></td>
+							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td><?php echo $row['title'];?></td>
 							<td class="cashBackCaption"><?php echo $row['cashback'];?></td>
 							<td>
@@ -393,8 +393,12 @@
 <?php */ ?>
 
 <script>	
-			$(document).ready(function() {
-				$('#categoryTable').dataTable();
-			} );
+$(document).ready(function() {
+    $('#categoryTable').dataTable({
+		"bPaginate": false,
+		"bFilter": false,
+		"aaSorting": [ [0,'asc'], [1,'asc'] ]
+	});
+} );
 </script>
 <?php require_once ("inc/footer.inc.php"); ?>
