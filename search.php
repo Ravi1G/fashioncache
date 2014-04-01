@@ -104,8 +104,64 @@
 
 ?>
 
-	<h1><?php echo CBE1_SEARCH_TITLE; ?> '<?php echo $stext; ?>'</h1>
+	
 
+<div class="container content standardContainer blog">
+    <!-- Search List -->			
+    
+    <div class="cb"></div>
+    <div class="SiteContentSection">
+        <div class="SiteContentLeft">
+            <h1>Search Results for  '<?php echo $stext; ?>'</h1>
+            <table class="RetailerOffersTable couponTable searchRetailer">	
+                <?php while ($row = mysql_fetch_array($result)) { ?>
+                	<tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon"> <!-- Exclusive or See all coupons button is commented down, uncomment to show in the website -->
+                        <?php /*?><?php if ($row['exclusive'] == 1) { ?><span class="exclusive" alt="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>" title="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>"><?php echo CBE1_COUPONS_EXCLUSIVE; ?></span><?php } ?><?php */?>
+                            <a href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>"><img src="<?php if (!stristr($row['image'], 'http')) echo SITE_URL."img/"; echo $row['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" /></a>
+                            <?php /*?>
+                            <br/><a class="more" href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>#coupons"><?php echo CBE1_COUPONS_SEEALL; ?></a>
+                            <?php */?>
+                        </div>
+                    </td>
+                    
+                    <td class="columnTwo">
+                    <div class="offerName"><?php echo $row['title'];?> <span class="offerExpiryDate">(<?php echo $row['cashback'];?> Cashback)</span></div>                        
+                        <div class="requirement">
+							<div class="offerDetail"><?php
+								echo substr(strip_tags($row['description']),0,161).'...';?> 
+							</div>
+						</div>
+                    </td>
+                    <td class="columnThree">
+                    <div class="shareOnSocialMedia">
+                    	<a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>&t=<?php echo $row['title']; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL; ?>images/icon_facebook.png"  alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a> &nbsp;
+						<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo $row['title']; ?>&url=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>images/icon_twitter.png" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
+					</div>
+						<div class="shopNowBotton siteButton searchRetailerShopNow">
+                            <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
+                        </div>
+						<div class="shopNowBotton siteButton searchRetailerShopNow">
+                            <a class="favorites" href="<?php echo SITE_URL; ?>myfavorites.php?act=add&id=<?php echo $row['retailer_id']; ?>"><span>Add to favourites</span></a>
+                        </div>	
+                        
+                    </td>
+                </tr>
+                <?php }?>
+                
+            
+            </table>
+            <div class="cb"></div>
+        </div>
+        
+        <?php require_once('inc/right_sidebar.php')?>
+        <div class="cb"></div>
+    </div>
+</div>
+
+<!-- Old Design & Functionality -->
+<?php /*?>
 	<div class="search_box">
 	<form action="" method="get">
 		<b><?php echo CBE1_SEARCH_TITLE2; ?></b>: 
@@ -238,7 +294,7 @@
 			<?php echo CBE1_SEARCH_NO; ?><br/><br/>
 			<a class="goback" href="#" onclick="history.go(-1);return false;"><?php echo CBE1_GO_BACK; ?></a>
 		</p>
-	<?php } ?>
+	<?php } ?><?php */?>
 
 
 <?php require_once ("inc/footer.inc.php"); ?>

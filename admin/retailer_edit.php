@@ -44,6 +44,7 @@
 			$retailer_end_date	= $end_date." ".$end_time;
 			$featured			= (int)getPostParameter('featured');
 			$deal_of_week		= (int)getPostParameter('deal_of_week');
+			$popular_retailer	= (int)getPostParameter('popular_retailer');
 			$status				= mysql_real_escape_string(getPostParameter('status'));
 
 			if ($img == "")
@@ -110,8 +111,8 @@
 
 			if (count($errors) == 0)
 			{
-				smart_mysql_query("UPDATE cashbackengine_retailers SET title='$rname', network_id='$network_id', program_id='$program_id', url='$url', image='$img', old_cashback='$retailer_old_cashback', cashback='$retailer_cashback', conditions='$conditions', description='$description', meta_description='$meta_description', meta_keywords='$meta_keywords', end_date='$retailer_end_date', featured='$featured', deal_of_week='$deal_of_week', status='$status' WHERE retailer_id='$retailer_id'");
-
+				$qry=smart_mysql_query("UPDATE cashbackengine_retailers SET title='$rname', network_id='$network_id', program_id='$program_id', url='$url', image='$img', old_cashback='$retailer_old_cashback', cashback='$retailer_cashback', conditions='$conditions', description='$description', meta_description='$meta_description', meta_keywords='$meta_keywords', end_date='$retailer_end_date', featured='$featured', deal_of_week='$deal_of_week',popular_retailer='$popular_retailer', status='$status' WHERE retailer_id='$retailer_id'");
+	
 				smart_mysql_query("DELETE FROM cashbackengine_retailer_to_category WHERE retailer_id='$retailer_id'");
 				if (count($category) > 0)
 				{
@@ -411,6 +412,10 @@
             <tr>
 				<td valign="middle" align="right" class="tb1">Store of the Week?</td>
 				<td valign="middle"><input type="checkbox" class="checkbox" name="deal_of_week" value="1" <?php if ($row['deal_of_week'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
+            </tr>
+             <tr>
+				<td valign="middle" align="right" class="tb1">Popular Retailer?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="popular_retailer" value="1" <?php if ($row['popular_retailer'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
             <tr>
             <td valign="middle" align="right" class="tb1">Status:</td>

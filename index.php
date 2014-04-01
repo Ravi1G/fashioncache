@@ -47,7 +47,22 @@
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
-?>
+	if(!isLoggedIn()){
+	?>
+		<script>
+		$.colorbox({
+		    iframe      : true,
+		    width: 795,
+	        height: 875,
+	        opacity: 0.8,
+	        scrolling: false,
+	        closeButton: false,
+	        fixed: false,
+	        top: 20,
+		    href : "<?php echo SITE_URL?>popup.php"
+		});
+		</script>
+	<?php } ?>
 		<div class="container content">
 		<!-- Featured Store List  -->
 			<div class="featuredStoresSection">
@@ -116,7 +131,16 @@
                         <ul class="contentSlider">
 							<?php foreach ($allbanners as $banner){ ?>
 							<li>
-								<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $banner['retailer_id']; ?>&b=<?php echo $banner['banner_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+								<?php
+								if($banner['bypass_script']==1) 
+								{
+									$link	=	$banner['link'];	
+								}
+								else {
+									$link	=	SITE_URL.'go2store.php?id='.$banner['retailer_id'].'&b='.$banner['banner_id'];	
+								}
+								?>
+								<a href="<?php echo $link?>" <?php echo "target=\"_blank\"";?> >
 									<img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/>
 								</a>
 							</li>
@@ -195,7 +219,7 @@
 				if($total_authors>0){ 
 					$i = 1;
 					$total_authors_processed = 0;
-					foreach($authors as $author){
+					foreach($authors as $author){	
 						$total_authors_processed++;
 						if($i==1){
 							echo '<li>';
@@ -213,9 +237,29 @@
 									$username = $author['user_nicename'];
 								}
 							?>
-							<!--  user_nicename -->
-							<div class="expertName"><?php echo $username;?></div>
-							<div class="expertLocation">Sandy, Utah</div>
+							<!-- Information about the author: authorname,city,jalandhar -->
+							<div class="expertName">
+								<?php 
+									if($username!="") 
+										echo $username;
+									else 
+										echo 'Author';
+								?>
+							</div>
+							<div class="expertLocation">
+							<?php 
+								if($author['author_city']!="")
+									echo $author['author_city'];
+								else 
+									echo 'City';
+								
+								?>, <?php 
+								if($author['author_state']!="")
+									echo $author['author_state'];
+								else 
+									echo 'State';
+								
+								?></div>
 							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
 						</div>
 
@@ -379,6 +423,7 @@
                     </div>
                 </div>
                 
+                <?php if(!isLoggedIn()) {  ?>
                 <!-- Sign Up Section -->
                 <div class="signUpContainer">
                     <div class="title">SIGN UP TODAY TO EARN CASH BACK!</div>
@@ -393,7 +438,24 @@
                         </form>
                     </div>
                 </div>
-                
+                <?php } else {?>
+                <div class="signUpContainer howItWorksContainer">
+						<div class="title">
+							<div>EARN CASH BACK!</div>
+							<div class="subTitleSec">HOW IT WORKS!</div>
+						</div>
+						<div class="body">
+							<div class="horizontalSteps"><img src="<?php echo SITE_URL;?>img/stepOneDark.jpg" alt=""/> Sign up <span>(it’s free)</span></div>
+							<div class="horizontalSteps"><img src="<?php echo SITE_URL;?>img/stepTwoDark.jpg" alt=""/> Select a Store &#x0026; Shop</div>
+							<div class="horizontalSteps"><img src="<?php echo SITE_URL;?>img/stepThreeDark.jpg" alt=""/> Get Cash Back!</div>
+							<div class="learnMoreAboutSteps">
+								<div class="learnMoreAlert">No Catches, Tricks or Gimmicks.</div>
+								<div class="learnMoreLink"><a href="#">Learn More &#x003E;</a></div>
+								
+							</div>
+						</div>	
+					</div>
+                <?php }?>
                 <!-- Gift Card Section -->
                 <div class="giftCardContainer">
                     <div class="title">Receive a</div>
@@ -402,7 +464,7 @@
                     </div>
                     <div class="giftCardCaption">GIFT CARD</div>
                     <div class="giftCardCaption1">when you refer a friend!</div>
-                    <div class="giftCardLearnMore"><a href="#">LEARN MORE &#x003E;</a></div>
+                    <div class="giftCardLearnMore"><a href="<?php echo SITE_URL.'invite.php';?>">LEARN MORE &#x003E;</a></div>
                 </div>
                 
                 <!-- Featured Articles Section -->

@@ -34,13 +34,13 @@ if(!$isPost){
 //Run in case of edit to fetch advertisement information
 if($id && !$isPost)
 {
-	$fetch_record 	=	mysql_fetch_assoc(smart_mysql_query("SELECT banner_id, image, link, retailer_id, sort_order FROM cashbackengine_banners WHERE banner_id=$id"));
+	$fetch_record 	=	mysql_fetch_assoc(smart_mysql_query("SELECT banner_id, image, link, retailer_id, sort_order, bypass_script FROM cashbackengine_banners WHERE banner_id=$id"));
 	$id				=	$fetch_record['banner_id'];
 	$link			=	$fetch_record['link'];
 	$image			=	$fetch_record['image'];
 	$retailer_id	=	$fetch_record['retailer_id'];
 	$sort_order		=	$fetch_record['sort_order'];
-	
+	$bypass_script	=	$fetch_record['bypass_script'];
 	$_POST = $fetch_record;
 	
 	$_POST["existingBannerImage"] = $image;
@@ -59,6 +59,7 @@ if ($isPost)
 	$retailer_id	= mysql_real_escape_string(getPostParameter('retailer_id'));
 	$link			= mysql_real_escape_string(getPostParameter('link'));
 	$sort_order		= mysql_real_escape_string(getPostParameter('sort_order'));
+	$bypass_script	= (int)getPostParameter('bypass_script');
 	$image			= $_FILES['image']['name'];
 
 	if ($isEdit && $retailer_id=='' || $sort_order=='') //run in case of edit
@@ -106,6 +107,13 @@ if ($isPost)
 		{
 			$errors[] = "Enter correct link url. (e.g. 'http://abc.com' or 'https://abc.com' or 'http://www.abc.com')";
 		}
+		if(isset($bypass_script) && $bypass_script!="")
+		{
+			if($link=="")
+			{
+				$errors[]="Link is mendatory to bypass the script";
+			}
+		}
 	}
 	
 	if (count($errors) == 0 && $isPost)
@@ -145,11 +153,11 @@ if ($isPost)
 				if($image_loc!="" && file_exists($image_loc))	
 					$img_del_result=unlink($image_loc);	
 				//remove block ends
-				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order', link='$link', image='$loc', retailer_id='$retailer_id' WHERE banner_id='$id'";
+				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order', link='$link', image='$loc', retailer_id='$retailer_id',bypass_script='$bypass_script' WHERE banner_id='$id'";
 			}
 			else
 			{
-				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order',link='$link', retailer_id='$retailer_id' WHERE banner_id='$id'";
+				$sql = "UPDATE cashbackengine_banners  SET sort_order='$sort_order',link='$link', retailer_id='$retailer_id',bypass_script='$bypass_script' WHERE banner_id='$id'";
 			}
 			
 			if(smart_mysql_query($sql))
@@ -161,7 +169,7 @@ if ($isPost)
 		else
 		{ 
 			// For inserting new advertisement
-			$sql = "INSERT INTO cashbackengine_banners SET sort_order='$sort_order',link='$link',image='$loc', retailer_id='$retailer_id'";
+			$sql = "INSERT INTO cashbackengine_banners SET sort_order='$sort_order',link='$link',image='$loc', retailer_id='$retailer_id',bypass_script='$bypass_script'";
 
 			if (smart_mysql_query($sql))
 			{
@@ -234,6 +242,10 @@ require_once ("inc/header.inc.php");
 			<tr>
 				<td valign="middle" align="right" class="tb1"><span class="req">*</span>Sort Order:</td>
 				<td valign="middle"><input type="text" class="textbox" name="sort_order" value="<?php echo $sort_order; ?>" size="5" /></td>
+            </tr>
+             <tr>
+				<td valign="middle" align="right" class="tb1">Bypass Retailer Script?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="bypass_script" value="1" <?php if (getPostParameter('bypass_script') == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
 			<tr>
 				<td>&nbsp;</td>

@@ -10,12 +10,37 @@
 	session_start();
 	require_once("inc/iflogged.inc.php");
 	require_once("inc/config.inc.php");
+	
+	//For Session variables from pop-up of index page
+	if(isset($_SESSION['action']) && $_SESSION['action']=='signup' && isset($_SESSION['email']))
+	{
+		$username	=	$_SESSION['email'];
+		$email		=	$_SESSION['email'];
+		$pwd		=	$_SESSION['password'];
+		$action		=	$_SESSION['action'];
+		unset($_SESSION['email']);
+		unset($_SESSION['password']);
+		unset($_SESSION['action']);		
+		
+		$action = $_POST['action'] = 'signup';
+		$_POST['email'] = $email;
+		$_POST['action'] = $pwd;
+	}
+	//For post variables from the same page
+	if(isset($_POST['action']) && $_POST['action'] == "signup")
+	{
+		$email		= mysql_real_escape_string(getPostParameter('email'));
+		$username	= mysql_real_escape_string(getPostParameter('email'));
+		$pwd		= mysql_real_escape_string(getPostParameter('password'));
+		$action		= $_POST['action'];
+	}
 
 	// Login
 	if (isset($_POST['action']) && $_POST['action'] == "login")
 	{
 		$username	= mysql_real_escape_string(getPostParameter('email'));
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
+		$remember	= (int)getPostParameter('rememberme');
 		$ip			= getenv("REMOTE_ADDR");
 
 		if (!($username && $pwd))
@@ -81,7 +106,7 @@
 					}
 					else
 					{
-						$redirect_url = "myaccount.php";
+						$redirect_url = "index.php";
 					}
 
 					header("Location: ".$redirect_url);
@@ -122,13 +147,11 @@
 			}
 		}
 	}
-	else if(isset($_POST['action']) && $_POST['action'] == "signup")
+	else if(isset($action) && $action == "signup")
 	{
-		$email		= mysql_real_escape_string(getPostParameter('email'));
-		$username	= mysql_real_escape_string(getPostParameter('email'));
-		$pwd		= mysql_real_escape_string(getPostParameter('password'));
 		$ip			= getenv("REMOTE_ADDR");
 		$ref_email	= mysql_real_escape_string(getPostParameter('referrer_email'));
+		
 		if (!($email && $pwd))
 		{
 			$errs[] = CBE1_SIGNUP_ERR;
@@ -138,6 +161,14 @@
 			if (isset($email) && $email != "" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email))
 			{
 				$errs[] = CBE1_SIGNUP_ERR4;
+			}else{
+				$query = "SELECT username FROM cashbackengine_users WHERE username='$email' LIMIT 1";
+				$result = smart_mysql_query($query);
+	
+				if (mysql_num_rows($result) != 0)
+				{
+					$errs[] = 'Email already exists';
+				}
 			}
 	
 			
@@ -153,24 +184,14 @@
 				}
 			}
 
-		if (isset($ref_email) && $ref_email != "" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $ref_email))
+			if (isset($ref_email) && $ref_email != "" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $ref_email))
 			{
 				$errs[] = 'Please enter a valid email address of referrer';
 			}
-			
 		}
-		
+
 	if (count($errs) == 0)
 		{	
-				$query = "SELECT username FROM cashbackengine_users WHERE username='$email' LIMIT 1";
-				$result = smart_mysql_query($query);
-
-				if (mysql_num_rows($result) != 0)
-				{
-					header ("Location: signup_or_login.php?msg=exists");
-					exit();
-				}
-
 				// check referral
 				if (isset($ref_email) && $ref_email!="")
 				{
@@ -286,16 +307,11 @@
 				$allerrors .= "&#155; ".$errorname."<br/>\n";
 		}
 	}
-
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = CBE1_LOGIN_TITLE;
 
 	require_once ("inc/header.inc.php");
-
-	
-	
 ?>
-
 <div class="container content siteInnerSection">
     <div class="userActivityContainer">
         <h1>SIGN-UP OR LOG IN</h1>
@@ -307,8 +323,7 @@
              
             <div class="leftContainer">	
 				<!-- For Single line error, add singleError class -->
-               <ul class="standardList errorList">
-               	             			
+               <ul class="standardList errorList <?php if (isset($_GET['msg']) || count($errs)==1){ echo 'singleError'; }?>"> 	             			
                <?php
                	if(isset($_GET['msg']) && $_GET['msg']=='exists')
                	{?>
@@ -343,13 +358,13 @@
             <div>
                 <form action="" method="post" id="frmsignup">
                     <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
-                    <div class="standardInputBox"><input name="email" type="text"/></div>						
+                    <div class="standardInputBox"><input name="email" type="text" value="<?php echo getPostParameter('email')?>"/></div>						
                     <label class="standardLabel">Password (6-12 characters):<sup class="manadatoryField">*</sup></label>
-                    <div class="standardInputBox"><input name="password" type="password"/></div>
+                    <div class="standardInputBox"><input name="password" type="password" value="<?php echo getPostParameter('password')?>"/></div>
                     <label class="standardLabel">Referrer's Email (optional):</label>
-                    <div class="standardInputBox"><input name="referrer_email" type="text"/></div>
+                    <div class="standardInputBox"><input name="referrer_email" type="text" value="<?php echo getPostParameter('referrer_email')?>"/></div>
                     <div class="shopNowBotton siteButton leftAlign formSubmitButton">
-                        <a href="#" onclick="document.getElementById('frmsignup').submit()">
+                        <a href="#" onclick="document.getElementById('frmsignup').submit();return false;">
                             <span>Sign Up &#x003E;</span>
                         </a>
                     </div>
@@ -371,11 +386,16 @@
                 <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
                 <div class="standardInputBox"><input name="email" type="text"/></div>
                 <label class="standardLabel">Password:<sup class="manadatoryField">*</sup></label>
-                <div class="standardInputBox"><input name="password" type="password"/></div>					
+                <div class="standardInputBox"><input name="password" type="password"/></div>
+                
+          		  <input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
+          		
+          
+          					
                 <div class="loginActions">
                     <div class="leftContainer">
                         <div class="shopNowBotton siteButton leftAlign formSubmitButton">
-                            <a href="#" onclick="document.getElementById('frmlogin').submit()">
+                            <a href="#" onclick="document.getElementById('frmlogin').submit();return false;">
                                 <span>Log In &#x003E;</span>
                             </a>
                         </div>

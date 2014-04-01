@@ -409,7 +409,7 @@ if(!function_exists('GetAdImagePathFromName')){
 if(!function_exists('BannersList')){
 	function BannersList()
 	{
-		$result = smart_mysql_query("SELECT b.banner_id AS banner_id,b.sort_order, b.link AS link, b.image AS image, r.retailer_id, r.title AS retailer_title,r.url FROM cashbackengine_banners AS b INNER JOIN cashbackengine_retailers AS r ON b.retailer_id = r.retailer_id ORDER BY b.sort_order");
+		$result = smart_mysql_query("SELECT b.banner_id AS banner_id,b.bypass_script as bypass_script,b.sort_order, b.link AS link, b.image AS image, r.retailer_id, r.title AS retailer_title,r.url FROM cashbackengine_banners AS b INNER JOIN cashbackengine_retailers AS r ON b.retailer_id = r.retailer_id ORDER BY b.sort_order");
 		$total = mysql_num_rows($result);
 		if($total > 0)
 		{

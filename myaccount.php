@@ -22,7 +22,7 @@
 
 	<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
 	<div class="success_msg" style="width: 90%">
-		<?php if ($_GET['msg'] == "welcome") { ?><?php echo CBE1_ACCOUNT_MSG; ?><?php } ?>
+		<?php if ($_GET['msg'] == "welcomeasdasdad") { ?><?php echo CBE1_ACCOUNT_MSG; ?><?php } ?>
 	</div>
 	<?php } ?>
 
