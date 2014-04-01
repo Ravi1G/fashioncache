@@ -66,7 +66,7 @@ include_once 'inc/config.inc.php';?>
 									</div>
 									<div class="formActionsRight">
 										<div class="alreadyMember">Already a Member?</div>
-										<div class="login"><a href="#">LOGIN</a></div>
+										<div class="login" ><a href="" id='loginLink'>LOGIN</a></div>
 									</div>
 									<div class="cb"></div>
 								</div>
@@ -82,6 +82,9 @@ include_once 'inc/config.inc.php';?>
 							<?php if($close_popup){ ?>
 							parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
 							<?php } ?>
+							$('#loginLink').click(function(){
+								parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
+							});
 						});
 						
 					</script>

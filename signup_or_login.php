@@ -12,7 +12,7 @@
 	require_once("inc/config.inc.php");
 	
 	//For Session variables from pop-up of index page
-	if(isset($_SESSION['action']) && $_SESSION['action']=='signup' && isset($_SESSION['email']) && $_SESSION['email']!="")
+	if(isset($_SESSION['action']) && $_SESSION['action']=='signup' && isset($_SESSION['email']))
 	{
 		$username	=	$_SESSION['email'];
 		$email		=	$_SESSION['email'];
@@ -40,6 +40,7 @@
 	{
 		$username	= mysql_real_escape_string(getPostParameter('email'));
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
+		$remember	= (int)getPostParameter('rememberme');
 		$ip			= getenv("REMOTE_ADDR");
 
 		if (!($username && $pwd))
@@ -105,7 +106,7 @@
 					}
 					else
 					{
-						$redirect_url = "myaccount.php";
+						$redirect_url = "index.php";
 					}
 
 					header("Location: ".$redirect_url);
@@ -321,8 +322,7 @@
             </div>
              
             <div class="leftContainer">	
-               <ul class="standardList errorList">
-               	             			
+               <ul class="standardList errorList <?php if (isset($_GET['msg']) || count($errs)==1){ echo 'singleError'; }?>"> 	             			
                <?php
                	if(isset($_GET['msg']) && $_GET['msg']=='exists')
                	{?>
@@ -386,7 +386,12 @@
                 <label class="standardLabel">Email:</label>
                 <div class="standardInputBox"><input name="email" type="text"/></div>
                 <label class="standardLabel">Password:</label>
-                <div class="standardInputBox"><input name="password" type="password"/></div>					
+                <div class="standardInputBox"><input name="password" type="password"/></div>
+                
+          		  <input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
+          		
+          
+          					
                 <div class="loginActions">
                     <div class="leftContainer">
                         <div class="shopNowBotton siteButton leftAlign formSubmitButton">

@@ -20,3 +20,5 @@ define('CBengine_PAGE', TRUE);
 //advertisment ids
 define('HOME_PAGE_HEADER_AD_ID',6);
 define('HOME_PAGE_FOOTER_AD_ID',7);
+define('SIDEBAR_TOP_IMAGE',9);
+define('SIDEBAR_BOTTOM_IMAGE',10);

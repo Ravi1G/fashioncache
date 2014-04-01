@@ -161,11 +161,12 @@
 						</div>
 						<div class="shopNowRight">
 							<div class="blogSocialIcons">
-								<a href=""><img src="<?php echo SITE_URL;?>/img/blog/fb.png" alt=""/></a>
+								<!-- <a href=""><img src="<?php echo SITE_URL;?>/img/blog/fb.png" alt=""/></a>
 								<a href=""><img src="<?php echo SITE_URL;?>/img/blog/twitter.png" alt=""/></a>
 								<a href=""><img src="<?php echo SITE_URL;?>/img/blog/pinterest.png" alt=""/></a>
 								<a href=""><img src="<?php echo SITE_URL;?>/img/blog/comments.png" alt=""/></a>
-								<span class="countContainer">2</span> </div>
+								<span class="countContainer">2</span>-->
+							 </div>
 						</div>
 						<div class="cb"></div>
 					</div>
@@ -185,7 +186,7 @@
 		?>
 			<a name="coupons"></a>
 			<h3 class="store_coupons"> <?php echo CBE1_STORE_COUPONS; ?></h3>
-			<div class="RetailerOffersHeading"><?php echo $row['title']; ?><?php echo CBE1_STORE_COUPONS; ?> &#x0026; Specials</div>
+			<div class="RetailerOffersHeading"><?php echo $row['title']; ?> <?php echo CBE1_STORE_COUPONS; ?> &#x0026; Specials</div>
 			
 			<table class="RetailerOffersTable">
 				<?php while ($row_coupons = mysql_fetch_array($result_coupons)) { $ee++; ?>

@@ -52,9 +52,85 @@
 	
 ?>
 
-	<h1><?php echo CBE1_MYFAVORITES_TITLE; ?></h1>
+
+<div class="container content standardContainer blog">
+    <!-- Search List -->			
+  
+		
+    <div class="cb"></div>
+    <div class="SiteContentSection">
+        <div class="SiteContentLeft">
+           <h1><?php echo CBE1_MYFAVORITES_TITLE; ?></h1>
+              <?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
+			<div class="success_msg">
+				<?php
+					switch ($_GET['msg'])
+					{
+						case "added": echo CBE1_MYFAVORITES_MSG1; break;
+						case "deleted": echo CBE1_MYFAVORITES_MSG2; break;
+					}
+				?>
+			</div>
+		<?php } ?>
+		
+            <table class="RetailerOffersTable couponTable searchRetailer">	
+                <?php while ($row = mysql_fetch_array($result)) { ?>
+                	<tr>
+                    <td class="columnOne">
+                        <div class="couponProviderIcon"> <!-- Exclusive or See all coupons button is commented down, uncomment to show in the website -->
+                        <?php /*?><?php if ($row['exclusive'] == 1) { ?><span class="exclusive" alt="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>" title="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>"><?php echo CBE1_COUPONS_EXCLUSIVE; ?></span><?php } ?><?php */?>
+                            <a href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>"><img src="<?php if (!stristr($row['image'], 'http')) echo SITE_URL."img/"; echo $row['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" /></a>
+                            <?php /*?>
+                            <br/><a class="more" href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>#coupons"><?php echo CBE1_COUPONS_SEEALL; ?></a>
+                            <?php */?>
+                        </div>
+                    </td>
+                    
+                    <td class="columnTwo">
+						 <div class="offerName"><?php echo $row['title'];?> <span class="offerExpiryDate">(<?php echo $row['cashback'];?> Cashback)</span></div>                        
+                        <div class="requirement">
+							<div class="offerDetail"><?php
+								echo substr(strip_tags($row['description']),0,161).'...';?> 
+							</div>
+						</div>
+                    </td>
+                    <td class="columnThree">
+                        <div class="shareOnSocialMedia">
+                    	<a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>&t=<?php echo $row['title']; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL; ?>images/icon_facebook.png"  alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a> &nbsp;
+						<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo $row['title']; ?>&url=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>images/icon_twitter.png" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
+					</div>
+						<div class="shopNowBotton siteButton searchRetailerShopNow">
+                            <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
+                        </div>
+						<div class="shopNowBotton siteButton searchRetailerShopNow">
+                            <a href="#" onclick="if (confirm('<?php echo CBE1_MYFAVORITES_DELETE; ?>') )location.href='<?php echo SITE_URL; ?>myfavorites.php?act=del&id=<?php echo $row['retailer_id']; ?>'" title="<?php echo CBE1_MYFAVORITES_DEL; ?>">
+                            	<span>Remove Favourite</span>
+                            </a>
+                        </div>	
+                    </td>
+                </tr>
+                <?php }?>
+                
+            
+            </table>
+            <div class="cb"></div>
+        </div>
+        
+        <?php require_once('inc/right_sidebar.php')?>
+        
+        
+      
+        <div class="cb"></div>
+    </div>
+</div>
 
 
+
+
+
+	<!-- OLD DESIGN & FUNCTIONALITY -->
+
+<?php /*?>
 		  <?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
 			<div class="success_msg">
 				<?php
@@ -124,6 +200,6 @@
 				<?php echo CBE1_MYFAVORITES_NO; ?><br/><br/>
 				<a class="button" href="<?php echo SITE_URL; ?>retailers.php"><?php echo CBE1_MYFAVORITES_ADD; ?></a>
 			</p>
-     <?php } ?>
+     <?php } */?>
 
 <?php require_once ("inc/footer.inc.php"); ?>

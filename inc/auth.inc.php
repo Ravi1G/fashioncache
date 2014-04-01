@@ -14,7 +14,7 @@
 		// check cookie
 		if (!CheckCookieLogin())
 		{
-			header("Location: login.php?msg=3");
+			header("Location: signup_or_login.php?msg=3");
 			exit();
 		}
 	}

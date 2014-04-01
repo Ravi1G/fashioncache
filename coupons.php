@@ -70,9 +70,7 @@
 ?>
 <div class="container content standardContainer blog">
     <!-- Featured Store List -->			
-    <div class="saleAlertSection">
-        <div class="sectionTitle"><span>SALE ALERT!</span> Shop the Nordstroms Half Anniversary sale going on now</div>
-    </div>
+    
     <div class="cb"></div>
     <div class="SiteContentSection">
         <div class="SiteContentLeft">
@@ -648,6 +646,5 @@
 		</ul>
 	<?php } ?>
 
-
-<?php require_once ("inc/footer.inc.php"); ?>
 <?php */?>
+<?php require_once ("inc/footer.inc.php"); ?>

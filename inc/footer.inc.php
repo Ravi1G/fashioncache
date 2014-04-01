@@ -16,13 +16,18 @@
 				<div><a href="#">FAQs</a></div>
 				<div><a href="#">Partners: Brands &#x0026; Retailers</a></div>
 			</div>
+			<?php 
+				$query = mysql_query("SELECT retailer_id, title, url, retailer_url FROM cashbackengine_retailers WHERE popular_retailer=1");
+			?>
 			<div class="popularStores footernavlinks">
 				<div class="title">MOST POPULAR STORES</div>
-				<div><a href="#">Nordstrom</a></div>
-				<div><a href="#">Macy&#x2019;s</a></div>
-				<div><a href="#">Banana Republic</a></div>
-				<div><a href="#">J. Crew</a></div>
-				<div><a href="#">Neiman Marcus</a></div>
+				<?php 
+				while($row_popular=mysql_fetch_assoc($query))
+				{?>
+					<div><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_popular['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $row_popular['title']?></a></div>
+					
+				<?php }
+				?>
 			</div>
 			<div class="connectWithUs footernavlinks socialLinks">
 				<div class="title">CONNECT WITH US!</div>

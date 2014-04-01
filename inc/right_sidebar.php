@@ -1,3 +1,6 @@
+<?php 
+global $advertisements;
+?>
 <div class="sidebarWithAds">
         <!-- Follow Us Section -->				
         <div class="followUs">
@@ -33,10 +36,14 @@
             </div>
         </div>
         <div class="advertisement300">
-            <img src="<?php echo SITE_URL;?>img/ad300.jpg" alt=""/>
+            <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[SIDEBAR_TOP_IMAGE]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						<img height="250" width="300" src="<?php echo $advertisements[SIDEBAR_TOP_IMAGE]['image_url']!='' ? $advertisements[HOME_PAGE_HEADER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[SIDEBAR_TOP_IMAGE]['image_name']?>">
+			</a>
         </div>
         <div class="advertisement300">
-            <img src="<?php echo SITE_URL;?>img/ad300.jpg" alt=""/>
+           <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[SIDEBAR_BOTTOM_IMAGE]['retailer_id']; ?>&a=<?php echo $advertisements[SIDEBAR_BOTTOM_IMAGE]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						<img height="250" width="300" src="<?php echo $advertisements[SIDEBAR_BOTTOM_IMAGE]['image_url']!='' ? $advertisements[SIDEBAR_BOTTOM_IMAGE]['image_url'] : SITE_URL.'admin/'.$advertisements[SIDEBAR_BOTTOM_IMAGE]['image_name']?>">
+			</a>
         </div>
     </div>				
     <div class="cb"></div>	
