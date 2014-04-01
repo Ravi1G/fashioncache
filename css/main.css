@@ -211,11 +211,15 @@ a:hover {
 .navigationSection ul li {
 	font-family: 'open_sanssemibold';
 	display: inline-block;
+	*display: inline;
+    zoom: 1;
 	margin-right: 40px;
 	color: #ababab;
 	text-align: left;
 	font-size: 14px;
 	margin-top: 18px;
+	*display: inline;
+    zoom: 1;
 }
 
 .navigationSection ul li.last {
@@ -475,6 +479,7 @@ h1 {
 	margin-bottom: 39px;
 	line-height: 21px;
 	letter-spacing: 2px;
+	text-transform:uppercase;
 }
 
 .blogContentContainerRight .blogDescription {
@@ -491,7 +496,7 @@ h1 {
 
 .blogContentContainerRight .blogSocialIcons {
 	text-align: right;
-	margin-top: -10px;
+	margin-top: -30px;
 }
 
 .blogSocialIcons img {
@@ -500,17 +505,23 @@ h1 {
 }
 
 .blogSocialIcons .countContainer {
-	background-image: url("../img/blog/count.png");
+	background-image: url("../img/comments.png");
 	background-position: top left;
+	color:#fff;
 	background-repeat: no-repeat;
 	display: inline-block;
-	width: 20px;
+	*display: inline;
+    zoom: 1;
+	*display: inline;
+    zoom: 1;
+	width: 24px;
+	height:23px;	
 	text-align: center;
-	font-size: 12px;
-	font-family: 'open_sansbold';
-	padding-top: 1px;
+	font-size: 11px;	
+	font-family: 'open_sansregular';
+	padding-top: 5px;
 	position: relative;
-	top: 2px;
+	top: 6px;
 }
 
 .allStores {
@@ -2690,6 +2701,8 @@ float:right;
 {
 text-align:left;
 display:inline-block;
+*display: inline;
+    zoom: 1;
 float:right;
 }
 .welcomeSection1 div.welcomeText
@@ -3041,8 +3054,21 @@ border-radius:5px;
 -moz-border-radius:5px;
 -ms-border-radius:5px;
 -webkit-border-radius:5px;
-padding:10px;
+padding:6px;
 margin-bottom:10px;
+}
+.successMessageContainer
+{
+background-color:#def2e1;
+}
+.successMessageContainer .errorMessage
+{
+text-shadow:1px 1px 1px #fbfbfb;
+color:#49b249;
+}
+.successMessageContainer .errorList
+{
+color:#49b249 !important;
 }
 .errorMessage
 {
@@ -3055,12 +3081,12 @@ color:#B94A67;
 .errorIcon
 {
 width:30px;
-padding-right:20px;
+padding-right:2px;
 margin:5px;
 }
 .errorIcon img
 {
-width:40px;
+width:28px;
 }
 .errorList
 {
@@ -3128,4 +3154,176 @@ padding-bottom:20px;
 .retailer_title
 {
 text-transform:uppercase;
+}
+
+
+/* Social Icon Modifications  */
+
+.synved-social-credit
+{
+display:none;
+}
+
+.manadatoryField
+{
+color:#FF0000;
+font-family: 'open_sansregular';
+}
+ul.singleError
+{
+list-style:none;
+margin-left:18px !important;
+padding-left:0px !important;
+margin-top:8px;
+}
+.socialIcons
+{
+text-align:right;
+margin-right:29px;
+margin-top:-15px;
+}
+.olderPost
+{
+width:375px;
+float:right;
+margin-top:0px;
+}
+.olderPost div
+{
+display:inline-block;
+*display: inline;
+    zoom: 1;
+}
+.olderPost .nav-previous
+{
+float:left;
+}
+
+/* Search Retailer Page Design */
+
+
+.searchRetailer
+{
+font-family: 'open_sansregular';
+font-size:12px;
+}
+.searchRetailer tr td.columnOne,
+.searchRetailer tr td.columnTwo,
+.searchRetailer tr td.columnThree
+{
+vertical-align:top;
+}
+.searchRetailer tr td.columnOne
+{
+padding-top:6px;
+padding-bottom:6px;
+}
+.searchRetailer tr td.columnThree
+{
+padding-right:0px;
+width:130px !important;
+padding-left:5px;
+padding-bottom:6px;
+padding-top:6px;
+}
+.searchRetailer tr td.columnTwo
+{
+width:294px !important;
+padding-bottom:6px;
+padding-top:6px;
+}
+.searchRetailer tr td.columnThree .siteButton
+{
+margin-top:7px;
+margin-bottom:7px;
+}
+.searchRetailer tr td.columnThree .siteButton span
+{
+min-width:110px !important;
+display:inline-block;
+*display: inline;
+    zoom: 1;
+text-align:center;
+}
+.offerDetail
+{
+padding-right:5px;
+max-height:50px;
+overflow:hidden;
+}
+.shareOnSocialMedia
+{
+margin-bottom:5px;
+text-align:center;
+}
+.shareOnSocialMedia img
+{
+width:22px;
+padding-right:2px;
+}
+.searchRetailerShopNow
+{
+text-align:left;
+}
+.siteButton span
+{
+text-transform:uppercase;
+}
+.standardContainer h1
+{
+text-transform:uppercase;
+}
+
+.lt-ie8 a
+{
+color:#373737;
+}
+.lt-ie8 .footernavlinks a
+{
+color:#7E8989;
+}
+.lt-ie8 .allStores .hoverAnim
+{
+display:inline-block;
+*display: inline;
+    zoom: 1;
+cursor:pointer;
+}
+.lt-ie8 button.customButton span
+{
+display:inline-block;
+*display: inline;
+    zoom: 1;
+	width:70px;
+}
+.lt-ie8 div.store a:hover 
+{
+text-decoration:none !important;
+}
+.lt-ie8 a
+{
+cursor:pointer;
+}
+.lt-ie8 .readOurBlog
+{
+position:relative;
+}
+.lt-ie8 .readOurBlog span.caption
+{
+position:absolute;
+bottom:0px;
+left:0px;
+width:175px;
+}
+.lt-ie8 .errorMessageContainer
+{
+display:block;
+}
+.lt-ie8 .errorMessageContainer
+{
+position:relative;
+}
+.lt-ie8 .errorMessageContainer ul
+{
+margin-left:-5px;
 }

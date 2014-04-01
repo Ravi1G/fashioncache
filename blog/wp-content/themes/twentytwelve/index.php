@@ -26,7 +26,7 @@ get_header(); ?>
 					<?php else : ?>
 						No posts to show.
 	           		<?php endif;?>
-	           		<?php twentytwelve_content_nav( 'nav-below' ); ?>
+	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
 	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
 	                <?php //posts_nav_link(); ?></p>
 	            </div>  

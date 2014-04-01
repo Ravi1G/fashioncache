@@ -34,11 +34,7 @@ if(!is_single()){
 				 <?php the_content();?> 
 				 <?php //echo get_comments_number()?>
 			</div>
-			<div class="blogSocialIcons">
-				<a href="#"><img src="<?php echo SITE_IMG;?>blog/fb.png" alt=""/></a>
-				<a href="#"><img src="<?php echo SITE_IMG;?>blog/twitter.png" alt=""/></a>
-				<a href="#"><img src="<?php echo SITE_IMG;?>blog/pinterest.png" alt=""/></a>
-				<a href="#"><img src="<?php echo SITE_IMG;?>blog/comments.png" alt=""/></a>
+			<div class="blogSocialIcons">				
 				<span class="countContainer">2</span>
 			</div>
 		</div>

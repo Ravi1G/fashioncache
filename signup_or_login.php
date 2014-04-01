@@ -306,6 +306,7 @@
             </div>
              
             <div class="leftContainer">	
+				<!-- For Single line error, add singleError class -->
                <ul class="standardList errorList">
                	             			
                <?php
@@ -332,8 +333,7 @@
 				<?php } ?>
 				
 					</ul>
-            </div>
-              
+            </div>              
             <div class="cb"></div>			
         </div>
         <?php } ?>
@@ -342,9 +342,9 @@
             <div class="contentTitle">New Members</div>
             <div>
                 <form action="" method="post" id="frmsignup">
-                    <label class="standardLabel">Email:</label>
+                    <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
                     <div class="standardInputBox"><input name="email" type="text"/></div>						
-                    <label class="standardLabel">Password (6-12 characters):</label>
+                    <label class="standardLabel">Password (6-12 characters):<sup class="manadatoryField">*</sup></label>
                     <div class="standardInputBox"><input name="password" type="password"/></div>
                     <label class="standardLabel">Referrer's Email (optional):</label>
                     <div class="standardInputBox"><input name="referrer_email" type="text"/></div>
@@ -368,9 +368,9 @@
         <div class="leftContainer loginActivity rightLine">
             <div class="contentTitle">Returning Members</div>
             <form action="" method="post" id="frmlogin">
-                <label class="standardLabel">Email:</label>
+                <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
                 <div class="standardInputBox"><input name="email" type="text"/></div>
-                <label class="standardLabel">Password:</label>
+                <label class="standardLabel">Password:<sup class="manadatoryField">*</sup></label>
                 <div class="standardInputBox"><input name="password" type="password"/></div>					
                 <div class="loginActions">
                     <div class="leftContainer">
