@@ -57,7 +57,7 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 	<!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+<?php CheckCookieLogin();?>
 	<div class="header">
 		<div class="container">
 			<div class="saleCouponsSection">
@@ -65,7 +65,35 @@ var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 			</div>			
 			<div class="userActivitySection">
 				<?php if (isLoggedIn()) { ?>
-					<?php echo CBE_WELCOME; ?>, <a href="<?php echo SITE_URL; ?>myprofile.php"><span class="member"><?php echo $_SESSION['FirstName']; ?></span></a><!-- | <a href="<?php echo SITE_URL; ?>myaccount.php"><?php echo CBE_ACCOUNT ?></a>--> | <?php echo CBE_BALANCE; ?>: <span class="mbalance"><?php echo GetUserBalance($_SESSION['userid']); ?></span> | <?php echo CBE_REFERRALS; ?>: <a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a> | <a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a>
+				
+				<div class="welcomeContainer1">
+			      <div class="myAccount">
+			       <ul class="menuDropDown">       
+			        <li class="drop">
+			         <img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <a href="#" class="menuItem">my account</a>
+			         <div class="dropdownContain">          
+			          <div class="dropOut">
+			           <div class="triangle"></div>
+			           <ul>
+			            <li><b>Balance:</b> <?php echo GetUserBalance($_SESSION['userid']);?></li>
+			            <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b><?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li>             
+			            <li><b><a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a></b></li>
+			           </ul>
+			           <div class="cb"></div>
+			          </div>
+			         </div>       
+			        </li>       
+			       </ul>
+			      </div>
+			      <div class="welcomeSection1">
+			       <div class="welcomeText">welcome:</div>
+			       <div class="userName"><a href="<?php echo SITE_URL; ?>myprofile.php"><span class="member"><?php echo $_SESSION['FirstName']; ?></span></a></div>
+			      </div>
+			     </div>
+				
+				
+				
+				<?php /*?>	<?php echo CBE_WELCOME; ?>, <a href="<?php echo SITE_URL; ?>myprofile.php"><span class="member"><?php echo $_SESSION['FirstName']; ?></span></a><!-- | <a href="<?php echo SITE_URL; ?>myaccount.php"><?php echo CBE_ACCOUNT ?></a>--> | <?php echo CBE_BALANCE; ?>: <span class="mbalance"><?php echo GetUserBalance($_SESSION['userid']); ?></span> | <?php echo CBE_REFERRALS; ?>: <a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a> | <a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a><?php */?>
 				<?php }else{ ?>
 					<div class="signUpSection">
 						<div><span>New to Fashion-Cache?</span></div>

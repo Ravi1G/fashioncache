@@ -13,18 +13,37 @@
 
 get_header(); ?>
 
+
+<div class="container content blog standardContainer">
+	    <div class="SiteContentSection">
+	        <div class="SiteContentLeft">            
+	            <h1>BLOG</h1>
+	            <div class="blogSection"> 
+	           		<?php if ( have_posts() ) : ?>
+		           		<?php while ( have_posts() ) : the_post(); ?>
+							<?php get_template_part( 'content', get_post_format() ); ?>
+						<?php endwhile; ?>
+					<?php else : ?>
+						No posts to show.
+	           		<?php endif;?>
+	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
+	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
+	                <?php //posts_nav_link(); ?></p>
+	            </div>  
+	            <div class="cb"></div>   
+		   </div>
+	        <?php get_sidebar();?>
+			<?php //@todo put fashion experts here ?>
+	    </div>   
+	</div>
+	
+<?php /*?>
 	<section id="primary" class="site-content">
 		<div id="content" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
 			<?php
-				/* Queue the first post, that way we know
-				 * what author we're dealing with (if that is the case).
-				 *
-				 * We reset this later so we can run the loop
-				 * properly with a call to rewind_posts().
-				 */
 				the_post();
 			?>
 
@@ -33,10 +52,6 @@ get_header(); ?>
 			</header><!-- .archive-header -->
 
 			<?php
-				/* Since we called the_post() above, we need to
-				 * rewind the loop back to the beginning that way
-				 * we can run the loop properly, in full.
-				 */
 				rewind_posts();
 			?>
 
@@ -48,13 +63,6 @@ get_header(); ?>
 			<div class="author-info">
 				<div class="author-avatar">
 					<?php
-					/**
-					 * Filter the author bio avatar size.
-					 *
-					 * @since Twenty Twelve 1.0
-					 *
-					 * @param int $size The height and width of the avatar in pixels.
-					 */
 					$author_bio_avatar_size = apply_filters( 'twentytwelve_author_bio_avatar_size', 68 );
 					echo get_avatar( get_the_author_meta( 'user_email' ), $author_bio_avatar_size );
 					?>
@@ -66,7 +74,6 @@ get_header(); ?>
 			</div><!-- .author-info -->
 			<?php endif; ?>
 
-			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part( 'content', get_post_format() ); ?>
 			<?php endwhile; ?>
@@ -80,5 +87,5 @@ get_header(); ?>
 		</div><!-- #content -->
 	</section><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php get_sidebar(); ?><?php */?>
 <?php get_footer(); ?>

@@ -21,8 +21,20 @@
 	<h1><?php echo CBE1_ACCOUNT_TITLE; ?></h1>
 
 	<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
-	<div class="success_msg" style="width: 90%">
-		<?php if ($_GET['msg'] == "welcomeasdasdad") { ?><?php echo CBE1_ACCOUNT_MSG; ?><?php } ?>
+	<div class="errorMessageContainer successMessageContainer">
+		 <div class="leftContainer errorIcon">
+                <img src="<?php echo SITE_URL;?>img/successIcon.png" alt="Error"/>
+          </div>
+          <div class="leftContainer">	
+          <ul class="standardList errorList singleError">
+        		<li>
+        			<div class="errorMessage">
+        				<?php if ($_GET['msg'] == "welcome") { ?><?php echo CBE1_ACCOUNT_MSG; ?><?php } ?>
+        			</div>
+        		</li>  	
+          </ul>
+          </div>  
+		<div class="cb"></div>
 	</div>
 	<?php } ?>
 

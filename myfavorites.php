@@ -55,22 +55,27 @@
 
 <div class="container content standardContainer blog">
     <!-- Search List -->			
-  
-		
-    <div class="cb"></div>
     <div class="SiteContentSection">
         <div class="SiteContentLeft">
            <h1><?php echo CBE1_MYFAVORITES_TITLE; ?></h1>
               <?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
-			<div class="success_msg">
-				<?php
-					switch ($_GET['msg'])
-					{
-						case "added": echo CBE1_MYFAVORITES_MSG1; break;
-						case "deleted": echo CBE1_MYFAVORITES_MSG2; break;
-					}
-				?>
-			</div>
+			
+				<div class="errorMessageContainer successMessageContainer">
+				 <div class="leftContainer errorIcon">
+		                <img src="<?php echo SITE_URL;?>img/successIcon.png" alt="Error"/>
+		          </div>
+		          <div class="leftContainer">	
+		          <ul class="standardList errorList singleError">
+		        		<li><div class="errorMessage">
+		        			<?php if ($_GET['msg'] == "added") { ?><?php echo CBE1_MYFAVORITES_MSG1 ?><?php } ?>
+		        			<?php if ($_GET['msg'] == "deleted") { ?><?php echo CBE1_MYFAVORITES_MSG2 ?><?php } ?>
+		        			</div>
+		        		</li>  	
+		          </ul>
+		          </div>  
+				<div class="cb"></div>
+				</div>
+			
 		<?php } ?>
 		
             <table class="RetailerOffersTable couponTable searchRetailer">	
