@@ -317,11 +317,8 @@
         <h1>SIGN-UP OR LOG IN</h1>
         <?php if(count($errs) > 0 || isset($_GET['msg'])){?>
         <div class="errorMessageContainer">
-            <div class="leftContainer errorIcon">
-                <img src="../img/errorIcon.png" alt="Error"/>
-            </div>
-             
-            <div class="leftContainer">	
+            <div class="leftContainer errorIcon"></div>
+			<div class="leftContainer">	
 				<!-- For Single line error, add singleError class -->
                <ul class="standardList errorList <?php if (isset($_GET['msg']) || count($errs)==1){ echo 'singleError'; }?>"> 	             			
                <?php
@@ -387,9 +384,9 @@
                 <div class="standardInputBox"><input name="email" type="text"/></div>
                 <label class="standardLabel">Password:<sup class="manadatoryField">*</sup></label>
                 <div class="standardInputBox"><input name="password" type="password"/></div>
-                
-          		  <input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
-          		
+                <div class="rememberMe">
+          			<input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
+          		</div>
           
           					
                 <div class="loginActions">
