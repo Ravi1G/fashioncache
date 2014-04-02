@@ -14,17 +14,21 @@
  * @since Twenty Twelve 1.0
  */
 get_header(); ?>
+
+
+
+
 	<div class="container content blog standardContainer">
 	    <div class="SiteContentSection">
 	        <div class="SiteContentLeft">            
-	            <h1>BLOG</h1>
+	           	<div class="categoryHeadingWithMargins"><h1>BLOG</h1></div>
 	            <div class="blogSection"> 
 	           		<?php if ( have_posts() ) : ?>
 		           		<?php while ( have_posts() ) : the_post(); ?>
 							<?php get_template_part( 'content', get_post_format() ); ?>
 						<?php endwhile; ?>
 					<?php else : ?>
-						No posts to show.
+						<div class="noPostMessage">No posts to show.</div>
 	           		<?php endif;?>
 	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
 	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->

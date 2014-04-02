@@ -66,11 +66,13 @@ if ($isPost)
 	$retailer_id	= mysql_real_escape_string(getPostParameter('retailer_id'));
 
 	if($isEdit){
-		if ($link=='' || $adTitle=='' || ($select_option=='use_url' && $image_url=='') || $retailer_id=='')
+		//if ($link=='' || $adTitle=='' || ($select_option=='use_url' && $image_url=='') || $retailer_id=='')
+		if ($adTitle=='' || ($select_option=='use_url' && $image_url=='') || $retailer_id=='')
 		{
 			$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 		}	
-	}elseif(!$isEdit && ($link=='' || ($image_url=='' && $image_name=='') ||  $adTitle=='' || $retailer_id=='')){
+	}//elseif(!$isEdit && ($link=='' || ($image_url=='' && $image_name=='') ||  $adTitle=='' || $retailer_id=='')){
+	elseif(!$isEdit && (($image_url=='' && $image_name=='') ||  $adTitle=='' || $retailer_id=='')){
 		$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 	}
 	
@@ -115,7 +117,8 @@ if ($isPost)
 		}
 		
 		//validate advertisement link
-		if (!preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $link))
+		
+		if (isset($link) && $link!="" && !preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $link))
 		{
 			$errors[] = "Enter correct link url. (e.g. 'http://abc.com' or 'https://abc.com' or 'http://www.abc.com')";
 		}
@@ -290,7 +293,7 @@ require_once ("inc/header.inc.php");
 			</tr>
 	
 			<tr>
-				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1"><span class="req">* </span>Link :</td>
+				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1">Link :</td>
 				<td align="left">
 					<input type="text" name="link" id="link" value="<?php echo $link; ?>" size="40" class="textbox" />
 				</td>

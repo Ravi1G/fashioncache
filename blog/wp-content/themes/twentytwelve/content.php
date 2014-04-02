@@ -21,12 +21,21 @@ if(!is_single()){
 ?>
 	<div class="blogContentContainer">
 		<div class="blogContentContainerLeft">
-			<div class="blogPicture"><a href="#"><?php the_post_thumbnail( array(225,225) );?></a></div>
+			<div class="blogPicture"><a href="<?php the_permalink(); ?>">
+			<?php 
+			if (has_post_thumbnail( $post_id )) {?> 
+				<?php the_post_thumbnail( array(225,225) );
+			}
+			else{ ?>
+				<img src="<?php echo SITE_URL; ?>img/hangerIcon.png">
+			<?php 
+			}?>
+			</a></div>
 		</div>
 		<div class="blogContentContainerRight">
 			<div class="postDate" style="text-transform:uppercase"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
 			<div class="blogCategory">
-				<div><a href="#"><i>CELEBRITIES</i></a></div>
+				<div><a href="<?php the_permalink(); ?>"><i><?php the_category(', ');?></i></a></div>
 				<div class="blogAuthor"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>">By <?php echo get_the_author(); ?></a></div>			        
 			</div>
 			<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
