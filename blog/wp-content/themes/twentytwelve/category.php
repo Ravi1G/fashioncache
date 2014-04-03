@@ -13,12 +13,15 @@
 
 get_header(); ?>
 
-	<section id="primary" class="site-content">
-		<div id="content" role="main">
 
-		<?php if ( have_posts() ) : ?>
+	<div class="container content blog standardContainer">
+	    <div class="SiteContentSection">
+	        <div class="SiteContentLeft">            
+	           	<div class="categoryHeadingWithMargins"><h1><?php printf( __( 'Category : %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1></div>
+	            <div class="blogSection"> 
+	           		<?php if ( have_posts() ) : ?>
 			<header class="archive-header">
-				<h1 class="archive-title"><?php printf( __( 'Category Archives: %s', 'twentytwelve' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?></h1>
+				
 
 			<?php if ( category_description() ) : // Show an optional category description ?>
 				<div class="archive-meta"><?php echo category_description(); ?></div>
@@ -28,21 +31,32 @@ get_header(); ?>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-
-				/* Include the post format-specific template for the content. If you want to
-				 * this in a child theme then include a file called called content-___.php
-				 * (where ___ is the post format) and that will be used instead.
-				 */
 				get_template_part( 'content', get_post_format() );
-
 			endwhile;
 
-			twentytwelve_content_nav( 'nav-below' );
+			//twentytwelve_content_nav( 'nav-below' );
 			?>
 
 		<?php else : ?>
 			<?php get_template_part( 'content', 'none' ); ?>
 		<?php endif; ?>
+	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
+	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
+	                <?php //posts_nav_link(); ?></p>
+	            </div>  
+	            <div class="cb"></div>   
+		   </div>
+	        <?php get_sidebar();?>
+			<?php //@todo put fashion experts here ?>
+	    </div>   
+	</div>
+	
+	
+
+	<section id="primary" class="site-content">
+		<div id="content" role="main">
+
+		
 
 		</div><!-- #content -->
 	</section><!-- #primary -->
