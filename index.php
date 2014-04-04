@@ -246,20 +246,20 @@
 										echo 'Author';
 								?>
 							</div>
-							<div class="expertLocation">
 							<?php 
-								if($author['author_city']!="")
-									echo $author['author_city'];
-								else 
-									echo 'City';
-								
-								?>, <?php 
-								if($author['author_state']!="")
-									echo $author['author_state'];
-								else 
-									echo 'State';
-								
-								?></div>
+							unset($author_address);
+							if($author['author_city']!=""){
+								$author_address[] = $author['author_city'];								
+							}
+							if($author['author_state']!=""){
+								$author_address[] = $author['author_state'];								
+							}
+							if(isset($author_address)){
+							?>
+							<div class="expertLocation">
+								<?php echo implode(',', $author_address);?>
+							</div>
+							<?php } ?>
 							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
 						</div>
 
