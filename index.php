@@ -225,9 +225,13 @@
 							echo '<li>';
 						}
 				?>
+				
 						<div class="expertInformation">
 							<div class="expertThumb">
 								<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">
+									<?php //Image link if author image is present otherwise show the default image
+										$img_link =isset($author['Author_Profile_Picture']) && $author['Author_Profile_Picture']!="" ? $author['Author_Profile_Picture'] : SITE_URL.'img/hangerIconSmall.png' ; 
+									?>
 									<img width="92" height="92" src='<?php echo $author['Author_Profile_Picture'];?>'/>
 								</a>
 							</div>
@@ -246,6 +250,7 @@
 										echo 'Author';
 								?>
 							</div>
+							<div class="expertLocation">
 							<?php 
 							unset($author_address);
 							if($author['author_city']!=""){

@@ -9,6 +9,37 @@
 
 get_header(); ?>
 
+<div class="container content blog standardContainer">
+	    <div class="SiteContentSection">
+	        <div class="SiteContentLeft">            
+	            <!-- <h1>BLOG</h1>-->
+	            <h1><?php the_title();?></h1>
+	            <div class="blogSection"> 
+	            <?php /*
+			if (has_post_thumbnail( $post_id )) {?> 
+				<?php the_post_thumbnail( array(225,225) );
+			}*/
+			?>
+	           		<?php if ( have_posts() ) : ?>
+		           		<?php while ( have_posts() ) : the_post(); ?>
+							<?php //get_template_part( 'content', get_post_format() ); 
+								the_content();
+							?>
+						<?php endwhile; ?>
+					<?php else : ?>
+						No posts to show.
+	           		<?php endif;?>
+	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
+	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
+	                <?php //posts_nav_link(); ?>
+	            </div>  
+	            <div class="cb"></div>   
+		   </div>
+	        <?php get_sidebar();?>
+			<?php //@todo put fashion experts here ?>
+	    </div>   
+	</div>
+	<?php /*?>
 	<div id="primary" class="site-content">
 		<div id="content" role="main">
 
@@ -29,5 +60,5 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+<?php get_sidebar(); ?><?php */?>
 <?php get_footer(); ?>

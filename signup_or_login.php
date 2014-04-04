@@ -317,11 +317,8 @@
         <h1>SIGN-UP OR LOG IN</h1>
         <?php if(count($errs) > 0 || isset($_GET['msg'])){?>
         <div class="errorMessageContainer">
-            <div class="leftContainer errorIcon">
-                <img src="../img/errorIcon.png" alt="Error"/>
-            </div>
-             
-            <div class="leftContainer">	
+            <div class="leftContainer errorIcon"></div>
+			<div class="leftContainer">	
 				<!-- For Single line error, add singleError class -->
                <ul class="standardList errorList <?php if (isset($_GET['msg']) || count($errs)==1){ echo 'singleError'; }?>"> 	             			
                <?php
@@ -358,11 +355,11 @@
             <div>
                 <form action="" method="post" id="frmsignup">
                     <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
-                    <div class="standardInputBox"><input name="email" type="text" value="<?php echo getPostParameter('email')?>"/></div>						
+                    <div class="standardInputBox"><input name="email" class="signup_" type="text" value="<?php if(getPostParameter('action')=="signup") { echo getPostParameter('email');} ?>"/></div>						
                     <label class="standardLabel">Password (6-12 characters):<sup class="manadatoryField">*</sup></label>
-                    <div class="standardInputBox"><input name="password" type="password" value="<?php echo getPostParameter('password')?>"/></div>
+                    <div class="standardInputBox "><input name="password" class="signup_" type="password" value="<?php if(getPostParameter('action')=="signup"){?><?php echo getPostParameter('password');}?>"/></div>
                     <label class="standardLabel">Referrer's Email (optional):</label>
-                    <div class="standardInputBox"><input name="referrer_email" type="text" value="<?php echo getPostParameter('referrer_email')?>"/></div>
+                    <div class="standardInputBox"><input id="referrer_email" class="signup_" name="referrer_email" type="text" value="<?php if(getPostParameter('action')==signup){?><?php echo getPostParameter('referrer_email');}?>"/></div>
                     <div class="shopNowBotton siteButton leftAlign formSubmitButton">
                         <a href="#" onclick="document.getElementById('frmsignup').submit();return false;">
                             <span>Sign Up &#x003E;</span>
@@ -384,14 +381,12 @@
             <div class="contentTitle">Returning Members</div>
             <form action="" method="post" id="frmlogin">
                 <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
-                <div class="standardInputBox"><input name="email" type="text"/></div>
+                <div class="standardInputBox"><input name="email" class='login_' type="text" value="<?php if(getPostParameter('action')=="login") { echo getPostParameter('email');} ?>"/></div>
                 <label class="standardLabel">Password:<sup class="manadatoryField">*</sup></label>
-                <div class="standardInputBox"><input name="password" type="password"/></div>
-                
+                <div class="standardInputBox"><input name="password" class='login_' type="password" value=""/></div>
+                <div class="rememberMe">
           		  <input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
-          		
-          
-          					
+          		</div>
                 <div class="loginActions">
                     <div class="leftContainer">
                         <div class="shopNowBotton siteButton leftAlign formSubmitButton">
@@ -422,4 +417,26 @@
     <?php require_once "inc/right_sidebar.php";?>	
 </div>
 
+
+<script>
+//Script for submitting signup form on enter key in the textboxes
+	$('.signup_').keyup(function(e)
+	{
+		if(e.keyCode == 13)
+		{
+			$("#frmsignup").submit();	
+	    }
+    });
+
+//Script for submitting login form on enter key in the textboxes
+	$('.login_').keyup(function(e)
+	{
+		if(e.keyCode == 13)
+		{
+			$("#frmlogin").submit();	
+	    }
+    });
+
+</script>
+                
 <?php require_once ("inc/footer.inc.php"); ?>
