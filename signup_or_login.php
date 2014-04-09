@@ -408,7 +408,7 @@
             <div class="contentTitle facebookTitle">Facebook Members</div>
             <div class="haveAccount">Have a Facebook account?</div>
             <div>Signup or login here.</div>
-            <div class="fbLoginApi"><a href="#"><img src="../img/fbApiLogin.jpg" alt="Login with Facebook"/></a></div>				
+            <div class="fbLoginApi"><a href="javascript: void(0);" onclick="fbLogin();"><img src="../img/fbApiLogin.jpg" alt="Login with Facebook"/></a></div>				
             <div>By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>				
         </div>			
         <div class="cb"></div>

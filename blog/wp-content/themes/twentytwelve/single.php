@@ -22,9 +22,12 @@ get_header(); ?>
 			?>
 	           		<?php if ( have_posts() ) : ?>
 		           		<?php while ( have_posts() ) : the_post(); ?>
-							<?php //get_template_part( 'content', get_post_format() ); 
-								the_content();
+							<?php get_template_part( 'content', get_post_format() ); 
 							?>
+<!-- <div class="blogSocialIcons">				
+	<span class="countContainer"><?php comments_number( '0', '1', '% ' ); ?></span>
+</div>-->
+							
 						<?php endwhile; ?>
 					<?php else : ?>
 						No posts to show.
@@ -32,10 +35,12 @@ get_header(); ?>
 	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
 	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
 	                <?php //posts_nav_link(); ?>
-	            </div>  
+	            </div> 
+	             
 	            <div class="cb"></div>   
 		   </div>
 	        <?php get_sidebar();?>
+	        <?php comments_template( '', true ); ?><!-- For the comments panel to be shown -->
 			<?php //@todo put fashion experts here ?>
 	    </div>   
 	</div>

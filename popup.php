@@ -11,6 +11,7 @@ include_once 'inc/config.inc.php';?>
     <head>
           <title><?php echo SITE_TITLE;?></title>
           <?php include 'inc/common.php'; ?>
+          
     </head>
     
     <?php	// session variable to store information which will be used in signup_or_login page 
@@ -54,7 +55,7 @@ include_once 'inc/config.inc.php';?>
 					<div class="popUpContentRight">
 						<div class="formHeader">SIGN UP TODAY!</div>
 						<div class="formBody">
-							<div class="fbApi"><a href=""><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
+							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onclick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
 							<div class="signUpWithEmail">Or- Sign up with Email</div>
 
 							<form action="" method="post">
@@ -85,6 +86,8 @@ include_once 'inc/config.inc.php';?>
 							$('#loginLink').click(function(){
 								parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
 							});
+							    //alert($.session.get("close_popup"));
+							
 						});
 						
 					</script>
@@ -117,6 +120,7 @@ include_once 'inc/config.inc.php';?>
 		</div>
 	   <script type="text/javascript" src="<?php echo SITE_URL?>js/plugins.js"></script>
 	   <script type="text/javascript" src="<?php echo SITE_URL?>js/main.js"></script>
+	   
 	   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	   <script type="text/javascript">
 		   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

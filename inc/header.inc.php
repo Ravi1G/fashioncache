@@ -27,7 +27,6 @@ $menu_categories = GetMenuCategories();
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/cashbackengine.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/easySlider1.7.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/jquery.tools.tabs.min.js"></script>
-
 <link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" />
 <link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" />
 <!-- Cashback engine items ends -->
@@ -48,8 +47,10 @@ $menu_categories = GetMenuCategories();
 <script src="<?php echo SITE_URL;?>js/jquery.c.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
 <script src="<?php echo SITE_URL; ?>js/jquery.dataTables.js"></script>
+ <script src="<?php echo SITE_URL; ?>js/fb.js" type="text/javascript"></script>
 <script>
-var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
+	var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
+	var FACEBOOK_APPID= "<?php echo FACEBOOK_APPID;?>";
 </script>
 
 </head>

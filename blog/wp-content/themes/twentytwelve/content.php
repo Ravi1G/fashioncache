@@ -41,11 +41,13 @@ if(!is_single()){
 			<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 			<div class="blogDescription">
 				 <?php the_content();?> 
-				 <?php //echo get_comments_number()?>
+				 <div class="blogSocialIcons">	
+				 	<a href="<?php the_permalink();?>/#comments">			
+						<span class="countContainer"><?php echo get_comments_number(); ?></span>
+					</a>
+				</div>
 			</div>
-			<div class="blogSocialIcons">				
-				<span class="countContainer">2</span>
-			</div>
+			
 		</div>
 		<div class="cb"></div>
 	</div>
@@ -53,7 +55,8 @@ if(!is_single()){
 <?php 
 }elseif(is_single()){
 ?>
-<?php the_title(); ?>
+<?php //the_title(); ?>
+
 <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
 <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 <?php 	

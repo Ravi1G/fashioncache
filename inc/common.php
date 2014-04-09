@@ -14,3 +14,13 @@
           <script src="<?php echo SITE_URL?>js/vendor/modernizr-2.6.2.min.js" type="text/javascript"></script>
           <script src="<?php echo SITE_URL?>js/jquery.c.js" type="text/javascript"></script>
           <script src="<?php echo SITE_URL?>js/jquery.colorbox-min.js" type="text/javascript"></script>
+         
+         <script type="text/javascript" src="<?php echo SITE_URL?>js/fb.js"></script>
+         
+          <script>
+          	var FACEBOOK_APPID = "<?php echo FACEBOOK_APPID;?>";
+          	var CLOSE_POPUP=1;
+          	var SITE_URL ="<?php echo SITE_URL;?>";
+          </script>
+         
+		   

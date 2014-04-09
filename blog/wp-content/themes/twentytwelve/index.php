@@ -14,10 +14,6 @@
  * @since Twenty Twelve 1.0
  */
 get_header(); ?>
-
-
-
-
 	<div class="container content blog standardContainer">
 	    <div class="SiteContentSection">
 	        <div class="SiteContentLeft">            
