@@ -10,6 +10,11 @@
 	session_start();
 	require_once("inc/config.inc.php");
 	require_once("inc/pagination.inc.php");
+	$show_popup = 0;
+	if(isset($_GET['p']) && $_GET['p']==1)
+	{
+		$show_popup = $_GET['p'];
+	}
 
 	if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0 && in_array($_GET['show'], $results_on_page))
 	{
@@ -399,6 +404,22 @@ $(document).ready(function() {
 		"bFilter": false,
 		"aaSorting": [ [0,'asc'], [1,'asc'] ]
 	});
+	<?php 
+		if(isset($show_popup) && $show_popup==1)
+		{?>
+			$.colorbox({
+			    iframe      : true,
+			    width: 593,
+		        height: 360,
+		        opacity: 0.8,
+		        scrolling: false,
+		        closeButton: false,
+		        fixed: false,
+		        transition: "none",
+			    href : "<?php echo SITE_URL?>signup_or_login_popup.php"
+			});
+		<?php }
+	?>
 } );
 </script>
 <?php require_once ("inc/footer.inc.php"); ?>

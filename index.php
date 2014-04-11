@@ -109,12 +109,12 @@
 										</a>
 						              <div class="cb"></div>
 						            </div>
-							   <!-- <div>
-										<?php echo $row_featured['cashback'];?>&nbsp;Cashback
-									</div>
-									<div class="imagebox">
-										<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>" title="<?php echo $row_featured['title']; ?>" border="0" /></a>
-									</div> -->
+						             <!-- <div>
+-										<?php echo $row_featured['cashback'];?>&nbsp;Cashback
+-									</div>
+-									<div class="imagebox">
+-										<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>" title="<?php echo $row_featured['title']; ?>" border="0" /></a>
+-									</div> -->
 							<?php } ?>
 						<?php
 								}

@@ -11,19 +11,25 @@
  * @subpackage Twenty_Twelve
  * @since Twenty Twelve 1.0
  */
-
 get_header(); ?>
+	<div class="container content blog standardContainer">
+	    <div class="SiteContentSection">
+	        <div class="SiteContentLeft">            
+	           	<div class="categoryHeadingWithMargins"><h1><?php the_title();?></h1></div>
+	            <div class="blogSection"> 
+	           	<?php while ( have_posts() ) : the_post(); ?>
+					<?php the_content(); ?>
+					
+				<?php endwhile; // end of the loop. ?>
+	            </div>  
+	            <div class="cb"></div>   
+		   </div>
+	        <?php get_sidebar();?>
+			<?php //@todo put fashion experts here ?>
+	    </div>   
+	</div>
 
-	<div id="primary" class="site-content">
-		<div id="content" role="main">
-
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', 'page' ); ?>
-				<?php comments_template( '', true ); ?>
-			<?php endwhile; // end of the loop. ?>
-
-		</div><!-- #content -->
-	</div><!-- #primary -->
+	
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -7,13 +7,13 @@
 <div class="footer">
 		<div class="container">
 			<div class="footerNavigation footernavlinks">
-				<div><a href="#">About Fashion Smart</a></div>
-				<div><a href="#">Advertise With Us</a></div>
-				<div><a href="#">Contact Us</a></div>
-				<div><a href="#">Privacy Policy</a></div>
-				<div><a href="#">Terms &#x0026; Conditions</a></div>
-				<div><a href="#">Blog</a></div>
-				<div><a href="#">FAQs</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/about-fasion-smart/';?>">About Fashion Smart</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/advertise-with-us/';?>">Advertise With Us</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/contact-us/';?>">Contact Us</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/privacy-policy/';?>">Privacy Policy</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/terms-conditions/';?>">Terms &#x0026; Conditions</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/';?>">Blog</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/faq/';?>">FAQs</a></div>
 				<div><a href="#">Partners: Brands &#x0026; Retailers</a></div>
 			</div>
 			<?php 
