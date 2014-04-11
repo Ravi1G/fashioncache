@@ -59,6 +59,20 @@ $(document).ready(function () {
             }, 180);
         }
     );	
+	$(".wpcf7-submit").hover(
+        function () {
+            $(this).animate({
+                backgroundColor: "#FBD2D1",
+                color: "#373737"
+            }, 180);
+        }, function () {
+			$(this).stop(20);
+            $(this).animate({
+                backgroundColor: "#373737",
+                color: "#fff"
+            }, 180);
+        }
+    );	
 
     $('.topTrends').bxSlider({
         auto: false,

@@ -14,9 +14,11 @@
 get_header(); ?>
 	<div class="container content blog standardContainer">
 	    <div class="SiteContentSection">
-	        <div class="SiteContentLeft">            
-	           	<div class="categoryHeadingWithMargins"><h1><?php the_title();?></h1></div>
-	            <div class="blogSection"> 
+	        <div class="SiteContentLeft">            	           	
+	            <div class="standardSiteContainer"> 
+				<div class="categoryHeadingWithMargins">
+					<h1><?php the_title();?></h1>
+				</div>
 	           	<?php while ( have_posts() ) : the_post(); ?>
 					<?php the_content(); ?>
 					
