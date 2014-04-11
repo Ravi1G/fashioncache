@@ -3670,7 +3670,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .referAFriend {
-	font-size: 14px;
+	font-size: 13px;
 	font-family: 'open_sansregular';
 	padding-top: 0px;
 }
@@ -3719,7 +3719,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .yourReferralLinkContainer b {
 	font-family: 'open_sanssemibold';
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 13px;
+	padding-right:5px;
 }
 
 .referalForm {
@@ -3736,7 +3737,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .referalForm b {
 	font-family: 'open_sanssemibold';
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 .referalForm table tr td {
@@ -3917,14 +3918,17 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	display: none;
 }
 
-.blogTimeStamp {
-	border-bottom: 1px solid #CACACA;
-	margin-bottom: 5px;
-	padding-bottom: 2px;
-	text-align: right;
-	font-family: 'open_sanssemibold';
+.blogTimeStamp {	
+	margin-bottom: 10px;
+	margin-left:10px;	
 	font-size: 12px;
-	font-style: italic;
+	background-color: #EFEFEF;
+	border-left: 5px solid #FBD2D1;
+	padding: 4px 10px;
+	display: inline-block;
+	font-family: 'open_sanssemibold';
+	min-width: 100px;
+	float:left;
 }
 
 .blogAuthorNameSection {
@@ -3936,6 +3940,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	display: inline-block;
 	font-family: 'open_sanssemibold';
 	min-width: 100px;
+	float:left;
 }
 
 .blogAuthorDetail {
@@ -3990,7 +3995,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .comment-form textarea {
-	width: 350px;
+	width: 351px;
 	resize: vertical;
 }
 
