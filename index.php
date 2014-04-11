@@ -209,7 +209,7 @@
 					MEET OUR <span>FASHION</span> <span class="pink">EXPERTS</span>
 				</div>
 			</div>
-			<div class="expertList">			
+			<div class="expertList">
 				<ul class="expertSectoinSlider">
 				<?php 
 				// Calling function to get author list from blog/apis.php
@@ -250,7 +250,6 @@
 										echo 'Author';
 								?>
 							</div>
-							<div class="expertLocation">
 							<?php 
 							unset($author_address);
 							if($author['author_city']!=""){
@@ -266,9 +265,7 @@
 							</div>
 							<?php } ?>
 							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
-						</div>
-
-							
+						</div>							
 				<?php 			
 						if($i==5 || $total_authors_processed==$total_authors){
 							echo '</li>';
@@ -283,132 +280,6 @@
 				?>
 							
 				<?php } ?>				
-					<!-- <li>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-					</li>
-					<li>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-					</li>
-					<li>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<img alt="" src="<?php echo SITE_URL;?>img/FashionExperts.jpg" />
-							</div>
-							<div class="expertName">SHELLY S.</div>
-							<div class="expertLocation">Sandy, Utah</div>
-							<div class="expertBlog">Read her blog posts:</div>
-						</div>
-					</li> -->
 				</ul>
 				<div class="cb"></div>
 			</div>

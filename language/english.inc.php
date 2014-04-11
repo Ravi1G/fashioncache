@@ -454,9 +454,9 @@ define ('CBE1_EMAIL_NO_MESSAGE', 'Please add email template from admin panel.');
 define ('CBE1_INVITE_TITLE', 'Refer a Friend');
 define ('CBE1_INVITE_ERR', 'Please enter at least one friend\'s first name and email address');
 define ('CBE1_INVITE_ERR2', 'Invalid email address');
-define ('CBE1_INVITE_TEXT', 'Tell your friends about us and we\'ll credit your account with a <b>%amount%</b> bonus once your friend has earned minimum withdrawal amount. There is no limit on how many friends you can refer meaning the amount you can earn is endless!</p>
-<p>Use your unique referral link to refer your friends. Why not add this link to your email signature or post it on a forum, website, Facebook, Twitter, blog, etc.</p>');
-define ('CBE1_INVITE_TEXT2', 'Refer your friend and get <b>%amount%</b>! It\'s easy. Enter up to 5 email addresses of your friends and family.<br/> Each friend will receive link to join us and you will receive <b>%amount%</b> per each referred member.');
+define ('CBE1_INVITE_TEXT', '<div>Tell your friends about us and we\'ll credit your account with a <b>%amount%</b> bonus once your friend has earned minimum withdrawal amount. There is no limit on how many friends you can refer meaning the amount you can earn is endless!</div>
+<div>Use your unique referral link to refer your friends. Why not add this link to your email signature or post it on a forum, website, Facebook, Twitter, blog, etc.</div>');
+define ('CBE1_INVITE_TEXT2', '<div>Refer your friend and get <b>%amount%</b>! It\'s easy. Enter up to 5 email addresses of your friends and family.<br/>Each friend will receive link to join us and you will receive <b>%amount%</b> per each referred member.</div>');
 define ('CBE1_INVITE_TITLE2', 'Send Invitation');
 define ('CBE1_INVITE_LINK', 'Your referral link');
 define ('CBE1_INVITE_SENT', 'Thank you! Message has been sent to your friends.');

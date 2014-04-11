@@ -38,13 +38,27 @@ $(document).ready(function () {
                 color: "#373737"
             }, 180);
         }, function () {
+			$(this).stop(20);
             $(this).children("span").animate({
                 backgroundColor: "#373737",
                 color: "#fff"
             }, 180);
         }
     );
-
+	$(".customCommentArea .comment-respond .comment-form #submit").hover(
+        function () {
+            $(this).animate({
+                backgroundColor: "#FBD2D1",
+                color: "#373737"
+            }, 180);
+        }, function () {
+			$(this).stop(20);
+            $(this).animate({
+                backgroundColor: "#373737",
+                color: "#fff"
+            }, 180);
+        }
+    );	
 
     $('.topTrends').bxSlider({
         auto: false,
@@ -89,5 +103,10 @@ $(document).ready(function () {
             right: "43"
         }, 300);
     });
-
+	
+	
+	$(".sendInvitationButton span").on("click", function () {
+		$( "#Send" ).trigger( "click" );
+	});
+	
 });

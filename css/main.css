@@ -759,8 +759,7 @@ height:auto !important;
 .advertisement300
 {
 	text-align: center;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-top: 31px;	
 	}	
 .standardSignUpContainer
 	{
@@ -1164,6 +1163,7 @@ left:-10px;
 .expertList .expertInformation .expertBlog {
 	font-size: 11px;
 	font-family: 'open_sansregular';
+	padding-right:2px;
 }
 
 .Advertisement728 {
@@ -1171,7 +1171,7 @@ left:-10px;
 	max-height: 146px;
 	padding-top: 28px;
 	padding-bottom: 28px;
-	margin-top: 20px;
+	margin-top: 30px;
 	margin-bottom: -30px;
 }
 .categoryHeading
@@ -1761,6 +1761,10 @@ font-size:13px;
 	width: 200px;
 	border-right:1px solid #DEBBBA; 
 	}	
+	.retailerTable tr td
+	{
+	
+	}
 	.storeCashBackScheme
 	{
 	width: 191px;
@@ -3539,4 +3543,517 @@ border-radius:5px;
 -webkit-border-radius:5px;
 padding-top:25px;
 padding-bottom:25px;
+}
+
+
+/* The New Sign Up Popup Design */
+
+.signUpPopup {
+	position:relative;
+	width:573px;
+	height:334px;	
+	margin:auto;
+	background-color:#fff;
+	padding:10px;
+}
+.popupLogoSection
+{
+border-bottom:2px dotted #373737;
+padding-bottom:15px;
+padding-top:5px;
+}
+.popupLogoSection img
+{
+width:255px;
+}
+.popupLeadLine
+{
+font-size: 23px;
+font-family: 'open_sansbold';
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.popupLeadLine span
+{
+color:#F7D2D1;
+}
+.leftAligned
+{
+float:left;
+}
+.rightAligned
+{
+float:right;
+}
+.inputArea
+{
+width:360px;
+margin-top:10px;
+}
+.logoArea
+{
+width:197px;
+}
+.popupEndingLines
+{
+text-align:center;
+font-family: 'open_sansregular';
+font-size: 12px;
+}
+.popupEndingLines div
+{
+margin-top:3px;
+margin-bottom:3px;
+}
+.popupEndingLines span
+{
+color:#FFD2D2;
+}
+.popupFormSection .standardInputBox input
+{
+width:238px;
+margin-top:3px;
+margin-bottom:3px;
+font-size:14px;
+padding-top:5px;
+padding-botttom:5px;
+padding-left:5px;
+padding-right:5px;
+outline:none;
+}
+.inputArea .alreadyMember
+{
+font-size:14px;
+}
+.inputArea .alreadyMember span
+{
+color:#FFD2D2;
+}
+.popupFormSectionButton span
+{
+font-size:13.5px;
+}
+.popupFormSectionButton
+{
+margin-top:7px;
+display:inline-block;
+float:right;
+}
+.popupFormSection .inputArea .standardInputBox input::-webkit-input-placeholder
+{
+font-size:14px;
+}
+.popupFormSection .inputArea .standardInputBox input:-moz-placeholder
+{
+font-size:14px;
+}
+.popupFormSection .inputArea .standardInputBox input::-moz-placeholder
+{
+font-size:14px;
+}
+.popupFormSection .inputArea .standardInputBox input:-ms-input-placeholder
+{
+font-size:14px;
+}
+.logoArea
+{
+text-align:right;
+}
+.logoArea img
+{
+width:130px;
+padding-right:20px;
+}
+.popupEndingLines
+{
+position:absolute;
+left:0px;
+right:0px;
+bottom:10px;
+width:100%;
+}
+.cashBackCaptionAligned
+{
+text-align:center;
+}
+.siteButton
+{
+cursor:pointer;
+}
+.referAFriend
+{
+font-size:14px;
+font-family: 'open_sansregular';
+padding-top:0px;
+}
+.referAFriend div
+{
+margin-top:10px;
+margin-bottom:10px;
+}
+.referenceSectionHeadings
+{
+margin-bottom:10px;
+}
+.referenceSectionHeadings h1
+{
+border-bottom:1px solid #d3d3d3;
+display:block;
+margin-bottom:0px;
+}
+.yourReferralLink
+{
+margin-top:10px;
+margin-bottom:10px;
+}
+.yourReferralLink .rightAligned
+{
+margin-top:5px;
+}
+.yourReferralLinkContainer
+{
+padding:8px;
+text-align:center;
+width:470px;
+background-color:#efefef;
+border-radius:5px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+-ms-border-radius:5px;
+}
+.yourReferralLinkContainer input
+{
+width:325px;
+font-size:14px;
+vertical-align:middle;
+}
+.yourReferralLinkContainer b
+{
+font-family: 'open_sanssemibold';
+font-weight:normal;
+font-size:14px;
+}
+.referalForm
+{
+background-color:#EFEFEF;
+width:490px;
+border-radius:5px;
+padding-top:8px;
+padding-bottom:8px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+-ms-border-radius:5px;
+}
+.referalForm b
+{
+font-family: 'open_sanssemibold';
+font-weight:normal;
+font-size:14px;
+}
+.referalForm table tr td
+{
+vertical-align:middle;
+text-align:left;
+padding:3px 9px 3px 9px;
+}
+.referalForm table tr td.listCount
+{
+vertical-align:middle;
+text-align:right;
+padding:3px 0px 3px 0px;
+font-family: 'open_sanssemibold';
+font-weight:normal;
+font-size:14px;
+}
+.referalForm table tr td input
+{
+font-size:14px;
+padding:4px 5px;
+width:195px;
+}
+
+.referalForm table tr td textarea
+{
+font-size:14px;
+padding:4px 5px;
+width:422px;
+resize:vertical;
+}
+
+.sendInvitationButton
+{
+text-align:right;
+margin-top:10px;
+margin-bottom:10px;
+margin-right:20px;
+}
+
+.sendInvitationButton span
+{
+font-size:12px;
+padding-left:15px;
+padding-right:15px;
+}
+
+.alignCenter
+{
+text-align:center;
+}
+
+.referFriendSectionContainers
+{
+width:625px;
+font-size:14px;
+}
+.sortBarOnTop
+{
+margin-bottom:13px;
+margin-top:13px;
+}
+.standardDropDown
+{
+padding:3px 5px;
+margin-left:5px;
+margin-right:5px;
+min-width:130px;
+border:1px solid #CACACA;
+}
+.sortBarOnTop .rightAligned
+{
+margin-top:5px;
+}
+.referralsTable tr td
+{
+font-family: 'open_sansregular';
+}
+.messageCaption
+{
+margin-bottom:5px;
+margin-top:5px;
+}
+.hide
+{
+display:none;
+}
+
+/* Blog Page Design  */
+.blogPostHeading
+{
+margin-top:0px;
+margin-bottom:0px;
+padding-left:0px;
+}
+.blogPostHeading h1
+{
+margin-left:0px;
+padding-left:0px;
+margin-bottom:2px;
+margin-top:10px;
+display:block;
+}
+.blogPostContainer
+{
+width:625px;
+font-size:14px;
+}
+.customCommentList
+{
+list-style:none;
+margin:0px;
+padding:0px;
+}
+.customCommentArea
+{
+width:625px;
+font-size:14px;
+}
+.customCommentList ul
+{
+list-style:none;
+}
+.customComment
+{
+min-height:42px;
+}
+.commentPoster,
+.customComment,
+.customReply
+{
+float:right;
+width:87%;
+}
+.commentTime
+{
+font-size:13px;
+font-family: 'open_sansregular';
+color:#878787;
+}
+.commentPoster b
+{
+text-transform:uppercase;
+font-family: 'open_sansbold';
+font-weight:normal;
+}
+.comment-meta > img
+{
+float:left;
+width:11%;
+}
+.customReply span
+{
+display:none;
+}
+.customReply
+{
+font-size:13px;
+font-family: 'open_sanssemibold';
+}
+.customComment p
+{
+margin-top:6px;
+margin-bottom:6px;
+}
+.comments-title
+{
+font-family: 'open_sanssemibold';
+    font-size: 16px;
+    font-weight: normal;
+	border-bottom:1px solid #CACACA;
+	padding-bottom:5px;
+}
+.blogPostContainer .socialIcons
+{
+margin-right:0px;
+}
+.commentSectionBlock
+{
+margin-top:10px;
+margin-bottom:10px;
+padding-bottom:10px;
+}
+.comment-awaiting-moderation
+{
+display:none;
+}
+.blogTimeStamp
+{
+border-bottom:1px solid #CACACA;
+margin-bottom:5px;
+padding-bottom:2px;
+text-align:right;
+font-family: 'open_sanssemibold';
+font-size:12px;
+font-style:italic;
+}
+.blogAuthorNameSection
+{
+margin-bottom:10px;
+font-size:12px;
+background-color:#EFEFEF;
+border-left:5px solid #FBD2D1;
+padding:4px 10px;
+display:inline-block;
+font-family: 'open_sanssemibold';
+min-width:100px;
+}
+.blogAuthorDetail
+{
+margin-top:5px;
+width:150px;
+}
+.blogDescriptionSection
+{
+width:465px;
+}
+.blogAuthorDetail img
+{
+width:145px;
+}
+.blogPostContainer .blogSection
+{
+width:100%;
+}
+.blogPostContainer
+{
+margin-top:24px;
+}
+.comment-form
+{
+background-color:#EFEFEF;
+font-family: 'open_sansregular';
+font-size:14px;
+border-radius:5px;
+padding:10px;
+padding-left:20px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+-ms-border-radius:5px;
+width:490px;
+}
+.comment-reply-title
+{
+font-size:16px;
+font-family: 'open_sanssemibold';
+font-weight:normal;
+}
+.comment-form p
+{
+margin-top:8px;
+margin-bottom:8px;
+}
+.comment-form input
+{
+font-size:14px;
+padding:4px 5px;
+width:345px;
+}
+.comment-form textarea
+{
+width:350px;
+resize:vertical;
+}
+.comment-form label
+{
+width:100px;
+display:inline-block;
+font-family: 'open_sanssemibold';
+font-size:13px;
+}
+.comment-form span.required
+{
+font-size:11px;
+color:red;
+position:relative;
+top:-3px;
+margin-left:-2px;
+}
+.inviteMoreButton
+{
+margin-top:20px;
+}
+.inviteMoreButton span
+{
+font-size:12px;
+padding-left:20px;
+padding-right:20px;
+}
+.customCommentArea .comment-respond .comment-form #submit
+{
+background-color: #373737;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-family: "Garamond_bold";
+    font-size: 12px;
+    letter-spacing: 1px;    
+    padding: 6px 8px 6px;
+	text-transform:uppercase;
+	border:0px;
+	width:170px;	
+	margin-left:290px;
+}
+.customCommentArea .comment-notes
+{
+margin-bottom:15px;
+font-family: 'open_sanssemibold';
+    font-size: 13px;
 }

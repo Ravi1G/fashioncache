@@ -152,7 +152,7 @@
 			<div class="SiteContentLeft">
 				<div class="RetailerContainer">
 					<div class="categoryHeading categoryHeadingWithMargins">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
-					<table class="categoryTable" id="categoryTable">
+					<table class="categoryTable retailerTable" id="categoryTable">
 					<thead>
 						<tr class="categoryTableHeading">
 							<td class="bulletIcon topLeft"></td>
@@ -165,12 +165,13 @@
 						<tr>
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td><?php echo $row['title'];?></td>
-							<td class="cashBackCaption"><?php echo $row['cashback'];?></td>
+							<td class="cashBackCaptionAligned">
+								<?php echo $row['cashback'];?>
+							</td>
 							<td>
 								<div class="shopNowBotton siteButton">
 									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
 								</div>
-									
 						<?php /*
 						if (isset($cat_id) && is_numeric($cat_id))
 							echo "<li".$lilast."><a href=\"".SITE_URL."retailers.php?".$view_a."cat=$cat_id&letter=$letter\" $liclass>$letter</a></li>";
@@ -180,7 +181,6 @@
 							</td>
 						</tr>
 						<?php }?>
-						
 					</table>	
 				</div>
 			</div>

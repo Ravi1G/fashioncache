@@ -12,36 +12,58 @@ get_header(); ?>
 <div class="container content blog standardContainer">
 	    <div class="SiteContentSection">
 	        <div class="SiteContentLeft">            
-	            <!-- <h1>BLOG</h1>-->
-	            <h1><?php the_title();?></h1>
-	            <div class="blogSection"> 
-	            <?php /*
-			if (has_post_thumbnail( $post_id )) {?> 
-				<?php the_post_thumbnail( array(225,225) );
-			}*/
-			?>
-	           		<?php if ( have_posts() ) : ?>
-		           		<?php while ( have_posts() ) : the_post(); ?>
-							<?php get_template_part( 'content', get_post_format() ); 
-							?>
-<!-- <div class="blogSocialIcons">				
-	<span class="countContainer"><?php comments_number( '0', '1', '% ' ); ?></span>
-</div>-->
-							
-						<?php endwhile; ?>
-					<?php else : ?>
-						No posts to show.
-	           		<?php endif;?>
-	           		<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
-	                <!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
-	                <?php //posts_nav_link(); ?>
-	            </div> 
-	             
-	            <div class="cb"></div>   
-		   </div>
-	        <?php get_sidebar();?>
-	        <?php comments_template( '', true ); ?><!-- For the comments panel to be shown -->
-			<?php //@todo put fashion experts here ?>
+				<div class="blogPostContainer">
+					<!-- <h1>BLOG</h1>-->					
+					<div class="blogPostContainer">
+					<?php /* ?>
+					<div class="leftAligned blogAuthorDetail">					
+						<?php 
+						if (has_post_thumbnail( $post_id )) {?> 
+							<?php the_post_thumbnail( array(225,225) );
+						} 
+						?>												
+					</div>
+					<?php */  ?>
+					<div>					
+					<div class="categoryHeading blogPostHeading">						
+						<div class="blogTimeStamp">Posted on: <?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+						<h1><?php the_title();?></h1>
+						<div class="blogAuthorNameSection">
+							<?php if ( have_posts() ) : ?>
+								<?php while ( have_posts() ) : the_post(); ?>									
+									<?php echo get_the_author(); ?>									
+								<?php endwhile; ?>
+							<?php else : ?>
+								
+							<?php endif;?>
+						</div>					
+					</div>
+						<div class="blogSection"> 						
+							<?php if ( have_posts() ) : ?>
+								<?php while ( have_posts() ) : the_post(); ?>									
+									<?php get_template_part( 'content', get_post_format() ); 
+									?>
+									<!-- <div class="blogSocialIcons">				
+										<span class="countContainer"><?php comments_number( '0', '1', '% ' ); ?></span>
+									</div>-->
+									
+								<?php endwhile; ?>
+							<?php else : ?>
+								No posts to show.
+							<?php endif;?>
+							<div class="olderPost"><?php twentytwelve_content_nav( 'nav-below' ); ?></div>
+							<!-- <div class="olderPost"><a href="#">Older Posts&#x003E;</a></div> -->
+							<?php //posts_nav_link(); ?>
+						</div> 
+					</div>
+					<div class="cb"></div>
+					 </div>
+					 </div>
+					<div class="cb"></div>
+					<?php comments_template( '', true ); ?><!-- For the comments panel to be shown -->
+			   </div>						
+				<?php get_sidebar();?>
+				<?php //@todo put fashion experts here ?>				
 	    </div>   
 	</div>
 	<?php /*?>
