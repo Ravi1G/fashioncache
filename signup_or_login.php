@@ -10,12 +10,14 @@
 	session_start();
 	require_once("inc/iflogged.inc.php");
 	require_once("inc/config.inc.php");
-	
+
 	//For Session variables from pop-up of index page
 	if(isset($_SESSION['action']) && $_SESSION['action']=='signup' && isset($_SESSION['email']))
 	{
 		$username	=	$_SESSION['email'];
 		$email		=	$_SESSION['email'];
+		$temp		=	explode( '@', $email );
+		$fname		=	$temp[0];
 		$pwd		=	$_SESSION['password'];
 		$action		=	$_SESSION['action'];
 		unset($_SESSION['email']);
@@ -24,25 +26,50 @@
 		
 		$action = $_POST['action'] = 'signup';
 		$_POST['email'] = $email;
-		$_POST['action'] = $pwd;
+		//$_POST['action'] = $pwd;
 	}
+	
 	//For post variables from the same page
 	if(isset($_POST['action']) && $_POST['action'] == "signup")
 	{
 		$email		= mysql_real_escape_string(getPostParameter('email'));
+		$temp		= explode( '@', $email );
+		$fname		= $temp[0];
 		$username	= mysql_real_escape_string(getPostParameter('email'));
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
 		$action		= $_POST['action'];
 	}
 
-	// Login
-	if (isset($_POST['action']) && $_POST['action'] == "login")
+	// Setting variables - Login from popup
+	
+	if(isset($_SESSION['action']) && $_SESSION['action']=='login' && isset($_SESSION['email']))
+	{	
+		$username	=	$_SESSION['email'];
+		$email		=	$_SESSION['email'];
+		$pwd		=	$_SESSION['password'];
+
+		$action = $_POST['action'] = 'login';
+		unset($_SESSION['email']);
+		unset($_SESSION['password']);
+		unset($_SESSION['action']);		
+		
+		$action = $_POST['action'] = 'login';
+		$_POST['email'] = $email;
+		$_POST['password'] = $pwd;
+		
+	}
+	//Setting variables - Login from the same page
+	if(isset($_POST['action']) && $_POST['action'] =='login')
 	{
 		$username	= mysql_real_escape_string(getPostParameter('email'));
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
 		$remember	= (int)getPostParameter('rememberme');
-		$ip			= getenv("REMOTE_ADDR");
-
+		$action 	= $_POST['action'];
+	}
+	if (isset($action) && $action == "login")
+	{	
+		$ip		= getenv("REMOTE_ADDR");
+		
 		if (!($username && $pwd))
 		{
 			$errs[] = CBE1_LOGIN_ERR;
@@ -131,12 +158,12 @@
 							smart_mysql_query("UPDATE cashbackengine_users SET status='inactive', block_reason='login attempts limit' WHERE username='$username' LIMIT 1"); 
 							unset($_SESSION['attems_'.$username."_".$ip], $_SESSION['attems_left']);
 					
-							header("Location: login.php?msg=6");
+							header("Location: signup_or_login.php?msg=6");
 							exit();
 						}
 						else
 						{
-							header("Location: login.php?msg=5");
+							header("Location: signup_or_login.php?msg=5");
 							exit();
 						}
 					}
@@ -203,6 +230,10 @@
 						$ref_id=mysql_fetch_assoc($check_referral_result);
 						$ref_id = $ref_id['user_id'];
 					}
+					else if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
+					{
+						$ref_id = $_COOKIE['referer_id'];echo 'REFERAL ID:'.$ref_id;
+					}
 					else
 					{
 						$ref_id = 0;
@@ -214,11 +245,11 @@
 				if (ACCOUNT_ACTIVATION == 1)
 				{
 					$activation_key = GenerateKey($username);
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', status='inactive',ref_id='$ref_id', activation_key='$activation_key', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', fname='$fname', status='inactive',ref_id='$ref_id', activation_key='$activation_key', created=NOW()";
 				}
 				else
 				{
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', status='active',ref_id='$ref_id',  activation_key='', unsubscribe_key='$unsubscribe_key', last_login=NOW(), login_count='1', last_ip='$ip', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email',fname='$fname', ip='$ip', status='active',ref_id='$ref_id',  activation_key='', unsubscribe_key='$unsubscribe_key', last_login=NOW(), login_count='1', last_ip='$ip', created=NOW()";
 				}
 
 				smart_mysql_query($insert_query);
@@ -296,7 +327,7 @@
 					$_SESSION['userid']		= $new_user_id;
 					$_SESSION['FirstName']	= $fname;
 
-					header("Location: myaccount.php?msg=welcome"); // forward new user to member dashboard
+					header("Location: index.php?msg=welcome"); // forward new user to member dashboard
 					exit();
 				}
 		}
@@ -381,9 +412,9 @@
             <div class="contentTitle">Returning Members</div>
             <form action="" method="post" id="frmlogin">
                 <label class="standardLabel">Email:<sup class="manadatoryField">*</sup></label>
-                <div class="standardInputBox"><input name="email" class='login_' type="text" value="<?php if(getPostParameter('action')=="login") { echo getPostParameter('email');} ?>"/></div>
+                <div class="standardInputBox"><input name="email" class='login_' type="text" value="<?php if(getPostParameter('action')=="login") { echo getPostParameter('email');} else {echo "";} ?>"/></div>
                 <label class="standardLabel">Password:<sup class="manadatoryField">*</sup></label>
-                <div class="standardInputBox"><input name="password" class='login_' type="password" value=""/></div>
+                <div class="standardInputBox"><input name="password" class='login_' type="password" value="<?php echo "";?>"/></div>
                 <div class="rememberMe">
           		  <input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
           		</div>

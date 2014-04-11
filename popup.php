@@ -15,13 +15,21 @@ include_once 'inc/config.inc.php';?>
     </head>
     
     <?php	// session variable to store information which will be used in signup_or_login page 
-    	if( isset($_POST['action']) && $_POST['action'] != "" )
+    	if( isset($_POST['action']) && $_POST['action'] != "" && $_POST['action']=='signup')
     	{
     		$close_popup = 1;
     		$_SESSION['email']		=	$_POST['email'];
     		$_SESSION['password']	=	$_POST['password'];
     		$_SESSION['action']		=	'signup';
-    	}else{
+    	}
+    	else if( isset($_POST['action']) && $_POST['action'] != "" && $_POST['action']=='login')
+    	{
+    		$close_popup = 1;
+    		$_SESSION['email']		=	$_POST['email'];
+    		$_SESSION['password']	=	$_POST['password'];
+    		$_SESSION['action']		=	'login';
+    	}
+    	else{
     		$close_popup = 0;
     	}
     ?>
@@ -52,7 +60,7 @@ include_once 'inc/config.inc.php';?>
 							<div class="cb"></div>
 						</div>						
 					</div>
-					<div class="popUpContentRight">
+					<div id="signupBlock" class="popUpContentRight">
 						<div class="formHeader">SIGN UP TODAY!</div>
 						<div class="formBody">
 							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onclick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
@@ -77,14 +85,51 @@ include_once 'inc/config.inc.php';?>
 						</div>
 					</div>
 					
+					<!-- Login Block -->
+					<div id="loginBlock" class="popUpContentRight">
+						<div class="formHeader">Login!</div>
+						<div class="formBody">
+							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onclick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
+							<div class="signUpWithEmail">Or- Login</div>
+						
+						
+							<form action="" method="post">
+								<div class="customInputBox"><input id="popupEmail" type="text" name="email" placeholder="Email"/></div>
+								<div class="customInputBox"><input type="password" name="password" placeholder="Password"/></div>
+								<div class="formActions">
+									<div class="formActionsLeft">
+										<button type="submit" id='submitform' class="customButton customButtonHomePage"><span>LOGIN</span></button>	                            		
+									</div>
+									<div class="formActionsRight">
+										<div class="alreadyMember">New Member?</div>
+										<div class="login" ><a href="" id='signupLink'>Signup</a></div>
+									</div>
+									<div class="cb"></div>
+								</div>
+								<input type='hidden' name='action' value='login'>
+							</form>
+							
+						</div>
+					</div>
+					
+					
+					
 				<!-- Close the pop up and refresh the parent -->
 					<script>
 						$(function(){
+							$("#loginBlock").hide();//Hide the login block when the popup loads first time
 							<?php if($close_popup){ ?>
 							parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
 							<?php } ?>
 							$('#loginLink').click(function(){
-								parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
+								$("#loginBlock").show();
+								$("#signupBlock").hide();
+								return false;
+							});
+							$('#signupLink').click(function(){
+								$("#loginBlock").hide();
+								$("#signupBlock").show();
+								return false;
 							});
 							    //alert($.session.get("close_popup"));
 							

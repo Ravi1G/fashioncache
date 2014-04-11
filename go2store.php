@@ -78,8 +78,11 @@
 			{
 				$_SESSION['goRetailerID']	= $retailer_id;
 				$_SESSION['goCouponID']		= $coupon_id;
-
-				header("Location: signup_or_login.php?msg=4");
+				
+				//print_r($_SESSION);exit;
+				//header("Location: signup_or_login.php?msg=4");
+				
+				header("Location: retailers.php?show=111111&p=1");//p = 1 to show the popup in retailer if the user is logged in
 				exit();
 			}
 
