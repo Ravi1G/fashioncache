@@ -1,0 +1,579 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: captcha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-03 17:22+0300\n"
+"PO-Revision-Date: 2014-02-03 17:22+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: captcha.php:32
+#: captcha.php:382
+#, fuzzy
+msgid "Captcha Settings"
+msgstr "Captcha opties"
+
+#: captcha.php:32
+msgid "Captcha"
+msgstr "Captcha"
+
+#: captcha.php:49
+msgid "requires"
+msgstr ""
+
+#: captcha.php:49
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr ""
+
+#: captcha.php:49
+msgid "Back to the WordPress"
+msgstr ""
+
+#: captcha.php:49
+#, fuzzy
+msgid "Plugins page"
+msgstr "BWS Plugins"
+
+#: captcha.php:57
+msgid "Login form"
+msgstr "Inlogscherm"
+
+#: captcha.php:58
+#: captcha.php:424
+#, fuzzy
+msgid "Registration form"
+msgstr "Registratieformulier"
+
+#: captcha.php:58
+msgid "Register form"
+msgstr "Registratieformulier"
+
+#: captcha.php:59
+#, fuzzy
+msgid "Reset Password form"
+msgstr "Formulier voor vergeten wachtwoord"
+
+#: captcha.php:59
+msgid "Lost password form"
+msgstr "Formulier voor vergeten wachtwoord"
+
+#: captcha.php:60
+#: captcha.php:425
+msgid "Comments form"
+msgstr "Commentaar formulier"
+
+#: captcha.php:61
+msgid "Hide CAPTCHA for registered users"
+msgstr "Verberg Captcha voor geregistreerde gebruikers"
+
+#: captcha.php:66
+msgid "Plus (&#43;)"
+msgstr "Plus (&#43;)"
+
+#: captcha.php:66
+msgid "Plus"
+msgstr "Plus (&#43;)"
+
+#: captcha.php:67
+msgid "Minus (&minus;)"
+msgstr "Min (&minus;)"
+
+#: captcha.php:67
+msgid "Minus"
+msgstr "Min (&minus;)"
+
+#: captcha.php:68
+#, fuzzy
+msgid "Multiplication (&times;)"
+msgstr "Vermenigvuldigen (&times;)"
+
+#: captcha.php:68
+#, fuzzy
+msgid "Multiply"
+msgstr "Vermenigvuldigen (&times;)"
+
+#: captcha.php:73
+msgid "Numbers"
+msgstr "Cijfers"
+
+#: captcha.php:74
+msgid "Words"
+msgstr "Woorden"
+
+#: captcha.php:192
+#: captcha.php:204
+#: captcha.php:384
+msgid "Settings"
+msgstr "Instellingen"
+
+#: captcha.php:205
+msgid "FAQ"
+msgstr "Meest gestelde vragen"
+
+#: captcha.php:206
+msgid "Support"
+msgstr "Support"
+
+#: captcha.php:248
+#, fuzzy
+msgid "Please select one item in the block Arithmetic and Complexity for CAPTCHA"
+msgstr "Selecteer een punt in de blokken Arithmetic acties en Moeilijkheidsgraad voor de CAPTCHA"
+
+#: captcha.php:252
+#, fuzzy
+msgid "Settings saved."
+msgstr "Opties opgeslagen."
+
+#: captcha.php:275
+#: captcha.php:314
+msgid "Wrong license key"
+msgstr ""
+
+#: captcha.php:307
+msgid "Something went wrong. Try again later. If the error will appear again, please, contact us <a href=http://support.bestwebsoft.com>BestWebSoft</a>. We are sorry for inconvenience."
+msgstr ""
+
+#: captcha.php:316
+msgid "This license key is bind to another site"
+msgstr ""
+
+#: captcha.php:318
+#: captcha.php:540
+msgid "Unfortunately, you have exceeded the number of available tries per day. Please, upload the plugin manually."
+msgstr ""
+
+#: captcha.php:336
+msgid "Failed to open the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: captcha.php:342
+msgid "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually"
+msgstr ""
+
+#: captcha.php:346
+#: captcha.php:355
+msgid "Failed to download the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: captcha.php:359
+msgid "Something went wrong. Try again later or upload the plugin manually. We are sorry for inconvienience."
+msgstr ""
+
+#: captcha.php:374
+msgid "Please, enter Your license key"
+msgstr ""
+
+#: captcha.php:385
+msgid "Go PRO"
+msgstr ""
+
+#: captcha.php:387
+msgid "Notice:"
+msgstr ""
+
+#: captcha.php:387
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr ""
+
+#: captcha.php:394
+#: captcha.php:421
+#, fuzzy
+msgid "Enable CAPTCHA for:"
+msgstr "Schakel captcha in bij:"
+
+#: captcha.php:406
+#: captcha.php:408
+#: captcha.php:411
+msgid "Contact form"
+msgstr "Contact formulier"
+
+#: captcha.php:406
+#: captcha.php:408
+#: captcha.php:411
+msgid "powered by"
+msgstr ""
+
+#: captcha.php:408
+msgid "Activate contact form"
+msgstr "Activeer het contactformulier"
+
+#: captcha.php:411
+msgid "Download contact form"
+msgstr "Download het contactformulier"
+
+#: captcha.php:413
+#, fuzzy
+msgid "If you would like to customize this plugin for a custom form, please see"
+msgstr "Als je deze plugin wilt bewerken voor een speciaal formulier, neem dan contact met ons op via <a href=\"Mailto:plugin@bestwebsoft.com\">plugin@bestwebsoft.com</a> of gebruik het contactformulier op onze website"
+
+#: captcha.php:426
+msgid "\"Create a Group\" form"
+msgstr ""
+
+#: captcha.php:432
+#, fuzzy
+msgid "Enable CAPTCHA:"
+msgstr "Schakel captcha in bij:"
+
+#: captcha.php:440
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr ""
+
+#: captcha.php:445
+msgid "This functionality is available in the Pro version of the plugin. For more details, please follow the link"
+msgstr ""
+
+#: captcha.php:454
+#, fuzzy
+msgid "Title for CAPTCHA in the form"
+msgstr "Label/tekst voor Captcha in het formulier"
+
+#: captcha.php:458
+msgid "Required symbol"
+msgstr ""
+
+#: captcha.php:464
+msgid "Arithmetic actions for CAPTCHA"
+msgstr "rekenkundige bewerkingen voor Captcha"
+
+#: captcha.php:478
+msgid "CAPTCHA complexity level"
+msgstr ""
+
+#: captcha.php:494
+msgid "Save Changes"
+msgstr "wijzigingen opslaan"
+
+#: captcha.php:500
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr ""
+
+#: captcha.php:501
+#, fuzzy
+msgid "Rate the plugin"
+msgstr "Aanbevolen plugins"
+
+#: captcha.php:504
+msgid "If there is something wrong about it, please contact us"
+msgstr ""
+
+#: captcha.php:515
+msgid "Congratulations! The PRO version of the plugin is successfully download and activated."
+msgstr ""
+
+#: captcha.php:517
+msgid "Please, go to"
+msgstr ""
+
+#: captcha.php:517
+msgid "the setting page"
+msgstr ""
+
+#: captcha.php:518
+msgid "You will be redirected automatically in 5 seconds."
+msgstr ""
+
+#: captcha.php:523
+msgid "You can download and activate"
+msgstr ""
+
+#: captcha.php:525
+msgid "version of this plugin by entering Your license key."
+msgstr ""
+
+#: captcha.php:527
+msgid "You can find your license key on your personal page Client area, by clicking on the link"
+msgstr ""
+
+#: captcha.php:529
+msgid "(your username is the email you specify when purchasing the product)."
+msgstr ""
+
+#: captcha.php:537
+#: captcha.php:547
+msgid "Go!"
+msgstr ""
+
+#: captcha.php:597
+#: captcha.php:604
+#: captcha.php:783
+#: captcha.php:791
+#: captcha.php:806
+#: captcha.php:814
+msgid "ERROR"
+msgstr "Fout"
+
+#: captcha.php:597
+#: captcha.php:744
+#: captcha.php:783
+#: captcha.php:806
+#: captcha.php:835
+msgid "Please fill the form."
+msgstr ""
+
+#: captcha.php:604
+#: captcha.php:791
+#: captcha.php:814
+#, fuzzy
+msgid "Please enter a valid CAPTCHA value."
+msgstr "Maak de Captcha opgave alstublieft"
+
+#: captcha.php:623
+msgid "<strong>ERROR</strong>: Please fill the form."
+msgstr ""
+
+#: captcha.php:633
+#, fuzzy
+msgid "<strong>ERROR</strong>: Please enter a valid CAPTCHA value."
+msgstr "Maak de Captcha opgave alstublieft"
+
+#: captcha.php:750
+#: captcha.php:843
+#, fuzzy
+msgid "Error: You have entered an incorrect CAPTCHA value. Click the BACK button on your browser, and try again."
+msgstr "Fout: Je gaf het verkeerde antwoord, gebruik de vorige pagina knop van je browser om het opnieuw te proberen"
+
+#: captcha.php:862
+#: captcha.php:1161
+msgid "zero"
+msgstr "nul"
+
+#: captcha.php:863
+#: captcha.php:1162
+#: captcha.php:1375
+msgid "one"
+msgstr "een"
+
+#: captcha.php:864
+#: captcha.php:1163
+msgid "two"
+msgstr "twee"
+
+#: captcha.php:865
+#: captcha.php:1164
+msgid "three"
+msgstr "drie"
+
+#: captcha.php:866
+#: captcha.php:1165
+msgid "four"
+msgstr "vier"
+
+#: captcha.php:867
+#: captcha.php:1166
+msgid "five"
+msgstr "vijf"
+
+#: captcha.php:868
+#: captcha.php:1167
+#: captcha.php:1375
+msgid "six"
+msgstr "zes"
+
+#: captcha.php:869
+#: captcha.php:1168
+#: captcha.php:1363
+#: captcha.php:1369
+msgid "seven"
+msgstr "zeven"
+
+#: captcha.php:870
+#: captcha.php:1169
+#: captcha.php:1366
+msgid "eight"
+msgstr "acht"
+
+#: captcha.php:871
+#: captcha.php:1170
+msgid "nine"
+msgstr "negen"
+
+#: captcha.php:874
+#: captcha.php:1173
+msgid "eleven"
+msgstr "elf"
+
+#: captcha.php:875
+#: captcha.php:1174
+msgid "twelve"
+msgstr "twaalf"
+
+#: captcha.php:876
+#: captcha.php:1175
+msgid "thirteen"
+msgstr "dertien"
+
+#: captcha.php:877
+#: captcha.php:1176
+msgid "fourteen"
+msgstr "veertien"
+
+#: captcha.php:878
+#: captcha.php:1177
+msgid "fifteen"
+msgstr "vijftien"
+
+#: captcha.php:879
+#: captcha.php:1178
+msgid "sixteen"
+msgstr "zestien"
+
+#: captcha.php:880
+#: captcha.php:1179
+msgid "seventeen"
+msgstr "zeventien"
+
+#: captcha.php:881
+#: captcha.php:1180
+msgid "eighteen"
+msgstr "achttien"
+
+#: captcha.php:882
+#: captcha.php:1181
+msgid "nineteen"
+msgstr "negentien"
+
+#: captcha.php:885
+#: captcha.php:1184
+msgid "ten"
+msgstr "tien"
+
+#: captcha.php:886
+#: captcha.php:1185
+msgid "twenty"
+msgstr "twintig"
+
+#: captcha.php:887
+#: captcha.php:1186
+msgid "thirty"
+msgstr "dertig"
+
+#: captcha.php:888
+#: captcha.php:1187
+msgid "forty"
+msgstr "veertig"
+
+#: captcha.php:889
+#: captcha.php:1188
+msgid "fifty"
+msgstr "vijftig"
+
+#: captcha.php:890
+#: captcha.php:1189
+msgid "sixty"
+msgstr "zestig"
+
+#: captcha.php:891
+#: captcha.php:1190
+msgid "seventy"
+msgstr "zeventig"
+
+#: captcha.php:892
+#: captcha.php:1191
+msgid "eighty"
+msgstr "tachtig"
+
+#: captcha.php:893
+#: captcha.php:1192
+msgid "ninety"
+msgstr "negentig"
+
+#: captcha.php:980
+#: captcha.php:1279
+msgid "and"
+msgstr "en"
+
+#: captcha.php:1055
+#, fuzzy
+msgid "Encryption password is not set"
+msgstr "Er is geen decoderings wachtwoord ingesteld"
+
+#: captcha.php:1075
+#, fuzzy
+msgid "Decryption password is not set"
+msgstr "Er is geen decoderings wachtwoord ingesteld"
+
+#: captcha.php:1437
+msgid "It's time to upgrade your <strong>Captcha plugin</strong> to <strong>PRO</strong> version"
+msgstr ""
+
+#: captcha.php:1438
+msgid "Extend standard plugin functionality with new great options"
+msgstr ""
+
+#, fuzzy
+#~ msgid "to"
+#~ msgstr "twee"
+
+#, fuzzy
+#~ msgid "Please enter a valid email address."
+#~ msgstr "Maak de Captcha opgave alstublieft"
+
+#~ msgid "Activated plugins"
+#~ msgstr "Geactiveerde plugins"
+
+#~ msgid "Read more"
+#~ msgstr "Lees meer"
+
+#~ msgid "Installed plugins"
+#~ msgstr "Geïnstalleerde plugins"
+
+#~ msgid "Recommended plugins"
+#~ msgstr "Aanbevolen plugins"
+
+#~ msgid "Download"
+#~ msgstr "Download"
+
+#~ msgid "Install %s"
+#~ msgstr "Installeren %s"
+
+#~ msgid "Install now from wordpress.org"
+#~ msgstr "Installeer nu vanaf wordpress.org"
+
+#, fuzzy
+#~ msgid "Active Plugins"
+#~ msgstr "Geactiveerde plugins"
+
+#, fuzzy
+#~ msgid "Inactive Plugins"
+#~ msgstr "Geactiveerde plugins"
+
+#, fuzzy
+#~ msgid "Send to support"
+#~ msgstr "Support"
+
+#, fuzzy
+#~ msgid "(powered by bestwebsoft.com)"
+#~ msgstr "(gemaakt door bestwebsoft.com)"
+
+#, fuzzy
+#~ msgid ""
+#~ "If you have any questions, please contact us via plugin@bestwebsoft.com "
+#~ "or fill in the contact form on our website"
+#~ msgstr ""
+#~ "Voor vragen kun je mailen met plugin@bestwebsoft.com of het "
+#~ "contactformulier op onze website invullen"
+
+#~ msgid "Difficulty for CAPTCHA"
+#~ msgstr "Moeilijkheidsgraad"
+
+#~ msgid "That CAPTCHA was incorrect."
+#~ msgstr "Dit Captcha antwoord is fout"
+
+#~ msgid "The password of encryption is not set"
+#~ msgstr "Er is geen wachtwoord voor encryptie ingesteld"
+
+#~ msgid "null"
+#~ msgstr "nul"
+
+#~ msgid "Install Now"
+#~ msgstr "Nu installeren"

@@ -1,0 +1,670 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: captcha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-03 17:24+0300\n"
+"PO-Revision-Date: 2014-02-03 17:24+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: Roozbeh Jalali <rjalali@languageconnect.net>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: captcha.php:32
+#: captcha.php:382
+msgid "Captcha Settings"
+msgstr "Mga Captcha Setting"
+
+#: captcha.php:32
+msgid "Captcha"
+msgstr "Captcha"
+
+#: captcha.php:49
+msgid "requires"
+msgstr ""
+
+#: captcha.php:49
+msgid "or higher, that is why it has been deactivated! Please upgrade WordPress and try again."
+msgstr ""
+
+#: captcha.php:49
+msgid "Back to the WordPress"
+msgstr ""
+
+#: captcha.php:49
+#, fuzzy
+msgid "Plugins page"
+msgstr "Mga Pro plugin"
+
+#: captcha.php:57
+msgid "Login form"
+msgstr "Form ng login"
+
+#: captcha.php:58
+#: captcha.php:424
+msgid "Registration form"
+msgstr "Form ng rehistrasyon"
+
+#: captcha.php:58
+msgid "Register form"
+msgstr "Magrehistro ng form"
+
+#: captcha.php:59
+msgid "Reset Password form"
+msgstr "Mag-reset ng form ng password"
+
+#: captcha.php:59
+msgid "Lost password form"
+msgstr "Nawalang form ng password"
+
+#: captcha.php:60
+#: captcha.php:425
+msgid "Comments form"
+msgstr "Form ng mga puna"
+
+#: captcha.php:61
+msgid "Hide CAPTCHA for registered users"
+msgstr "Itago ang CAPTCHA para sa mga rehistradong gumagamit"
+
+#: captcha.php:66
+msgid "Plus (&#43;)"
+msgstr "Plus (&#43;)"
+
+#: captcha.php:66
+msgid "Plus"
+msgstr "Plus"
+
+#: captcha.php:67
+msgid "Minus (&minus;)"
+msgstr "Minus (&minus;)"
+
+#: captcha.php:67
+msgid "Minus"
+msgstr "Minus"
+
+#: captcha.php:68
+msgid "Multiplication (&times;)"
+msgstr "Multiplication (&times;)"
+
+#: captcha.php:68
+msgid "Multiply"
+msgstr "Multiplikasyon"
+
+#: captcha.php:73
+msgid "Numbers"
+msgstr "Mga bilang"
+
+#: captcha.php:74
+msgid "Words"
+msgstr "Mga salita"
+
+#: captcha.php:192
+#: captcha.php:204
+#: captcha.php:384
+msgid "Settings"
+msgstr "Mga setting"
+
+#: captcha.php:205
+msgid "FAQ"
+msgstr "FAQ"
+
+#: captcha.php:206
+msgid "Support"
+msgstr "Suporta"
+
+#: captcha.php:248
+msgid "Please select one item in the block Arithmetic and Complexity for CAPTCHA"
+msgstr "Pumili lang ng isang item sa block Arithmetic and Complexity para sa CAPTCHA"
+
+#: captcha.php:252
+#, fuzzy
+msgid "Settings saved."
+msgstr "Mga opsyong na-save"
+
+#: captcha.php:275
+#: captcha.php:314
+msgid "Wrong license key"
+msgstr ""
+
+#: captcha.php:307
+msgid "Something went wrong. Try again later. If the error will appear again, please, contact us <a href=http://support.bestwebsoft.com>BestWebSoft</a>. We are sorry for inconvenience."
+msgstr ""
+
+#: captcha.php:316
+msgid "This license key is bind to another site"
+msgstr ""
+
+#: captcha.php:318
+#: captcha.php:540
+msgid "Unfortunately, you have exceeded the number of available tries per day. Please, upload the plugin manually."
+msgstr ""
+
+#: captcha.php:336
+msgid "Failed to open the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: captcha.php:342
+msgid "Your server does not support either ZipArchive or Phar. Please, upload the plugin manually"
+msgstr ""
+
+#: captcha.php:346
+#: captcha.php:355
+msgid "Failed to download the zip archive. Please, upload the plugin manually"
+msgstr ""
+
+#: captcha.php:359
+msgid "Something went wrong. Try again later or upload the plugin manually. We are sorry for inconvienience."
+msgstr ""
+
+#: captcha.php:374
+msgid "Please, enter Your license key"
+msgstr ""
+
+#: captcha.php:385
+msgid "Go PRO"
+msgstr ""
+
+#: captcha.php:387
+msgid "Notice:"
+msgstr ""
+
+#: captcha.php:387
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr ""
+
+#: captcha.php:394
+#: captcha.php:421
+msgid "Enable CAPTCHA for:"
+msgstr "Paganahin ang CAPTCHA para:"
+
+#: captcha.php:406
+#: captcha.php:408
+#: captcha.php:411
+msgid "Contact form"
+msgstr "Kontak form"
+
+#: captcha.php:406
+#: captcha.php:408
+#: captcha.php:411
+msgid "powered by"
+msgstr ""
+
+#: captcha.php:408
+msgid "Activate contact form"
+msgstr "Aktibahin ang kontak form"
+
+#: captcha.php:411
+msgid "Download contact form"
+msgstr "I-download ang kontak form"
+
+#: captcha.php:413
+#, fuzzy
+msgid "If you would like to customize this plugin for a custom form, please see"
+msgstr "Kung nais mong ipasadya ang plugin na ito para sa custom form, paki-kontak kami sa "
+
+#: captcha.php:426
+msgid "\"Create a Group\" form"
+msgstr ""
+
+#: captcha.php:432
+#, fuzzy
+msgid "Enable CAPTCHA:"
+msgstr "Paganahin ang CAPTCHA para:"
+
+#: captcha.php:440
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr ""
+
+#: captcha.php:445
+msgid "This functionality is available in the Pro version of the plugin. For more details, please follow the link"
+msgstr ""
+
+#: captcha.php:454
+msgid "Title for CAPTCHA in the form"
+msgstr "Titulo para sa CAPTCHA na nasa form"
+
+#: captcha.php:458
+msgid "Required symbol"
+msgstr ""
+
+#: captcha.php:464
+msgid "Arithmetic actions for CAPTCHA"
+msgstr "Mga aritmetikong aksyon para sa CAPTCHA"
+
+#: captcha.php:478
+msgid "CAPTCHA complexity level"
+msgstr "Antas ng kompleksidad ng CAPTCHA "
+
+#: captcha.php:494
+msgid "Save Changes"
+msgstr "I-save ang mga Pagbabago"
+
+#: captcha.php:500
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr ""
+
+#: captcha.php:501
+#, fuzzy
+msgid "Rate the plugin"
+msgstr "Mga libreng plugin"
+
+#: captcha.php:504
+#, fuzzy
+msgid "If there is something wrong about it, please contact us"
+msgstr "Kung meron kayong anumang tanong, paki-kontak kami sa pamamagitang ng"
+
+#: captcha.php:515
+msgid "Congratulations! The PRO version of the plugin is successfully download and activated."
+msgstr ""
+
+#: captcha.php:517
+msgid "Please, go to"
+msgstr ""
+
+#: captcha.php:517
+msgid "the setting page"
+msgstr ""
+
+#: captcha.php:518
+msgid "You will be redirected automatically in 5 seconds."
+msgstr ""
+
+#: captcha.php:523
+msgid "You can download and activate"
+msgstr ""
+
+#: captcha.php:525
+msgid "version of this plugin by entering Your license key."
+msgstr ""
+
+#: captcha.php:527
+msgid "You can find your license key on your personal page Client area, by clicking on the link"
+msgstr ""
+
+#: captcha.php:529
+msgid "(your username is the email you specify when purchasing the product)."
+msgstr ""
+
+#: captcha.php:537
+#: captcha.php:547
+msgid "Go!"
+msgstr ""
+
+#: captcha.php:597
+#: captcha.php:604
+#: captcha.php:783
+#: captcha.php:791
+#: captcha.php:806
+#: captcha.php:814
+msgid "ERROR"
+msgstr "MALI"
+
+#: captcha.php:597
+#: captcha.php:744
+#: captcha.php:783
+#: captcha.php:806
+#: captcha.php:835
+msgid "Please fill the form."
+msgstr "Paki-sagot ang form"
+
+#: captcha.php:604
+#: captcha.php:791
+#: captcha.php:814
+msgid "Please enter a valid CAPTCHA value."
+msgstr "Paki-enter ang tamang halaga ng CAPTCHA"
+
+#: captcha.php:623
+#, fuzzy
+msgid "<strong>ERROR</strong>: Please fill the form."
+msgstr "Paki-sagot ang form"
+
+#: captcha.php:633
+#, fuzzy
+msgid "<strong>ERROR</strong>: Please enter a valid CAPTCHA value."
+msgstr "Paki-enter ang tamang halaga ng CAPTCHA"
+
+#: captcha.php:750
+#: captcha.php:843
+msgid "Error: You have entered an incorrect CAPTCHA value. Click the BACK button on your browser, and try again."
+msgstr "Mali: Mali ang na-enter mong halaga ng CAPTCHA. I-click ang BACK na button sa iyong browser, at subukang muli."
+
+#: captcha.php:862
+#: captcha.php:1161
+msgid "zero"
+msgstr "sero"
+
+#: captcha.php:863
+#: captcha.php:1162
+#: captcha.php:1375
+msgid "one"
+msgstr "isa"
+
+#: captcha.php:864
+#: captcha.php:1163
+msgid "two"
+msgstr "dalawa"
+
+#: captcha.php:865
+#: captcha.php:1164
+msgid "three"
+msgstr "tatlo"
+
+#: captcha.php:866
+#: captcha.php:1165
+msgid "four"
+msgstr "apat"
+
+#: captcha.php:867
+#: captcha.php:1166
+msgid "five"
+msgstr "lima"
+
+#: captcha.php:868
+#: captcha.php:1167
+#: captcha.php:1375
+msgid "six"
+msgstr "anim"
+
+#: captcha.php:869
+#: captcha.php:1168
+#: captcha.php:1363
+#: captcha.php:1369
+msgid "seven"
+msgstr "pito"
+
+#: captcha.php:870
+#: captcha.php:1169
+#: captcha.php:1366
+msgid "eight"
+msgstr "walo"
+
+#: captcha.php:871
+#: captcha.php:1170
+msgid "nine"
+msgstr "siyam"
+
+#: captcha.php:874
+#: captcha.php:1173
+msgid "eleven"
+msgstr "labing-isa"
+
+#: captcha.php:875
+#: captcha.php:1174
+msgid "twelve"
+msgstr "labing-dalawa"
+
+#: captcha.php:876
+#: captcha.php:1175
+msgid "thirteen"
+msgstr "labing-tatlo"
+
+#: captcha.php:877
+#: captcha.php:1176
+msgid "fourteen"
+msgstr "labing-apat"
+
+#: captcha.php:878
+#: captcha.php:1177
+msgid "fifteen"
+msgstr "labing-lima"
+
+#: captcha.php:879
+#: captcha.php:1178
+msgid "sixteen"
+msgstr "labing-anim"
+
+#: captcha.php:880
+#: captcha.php:1179
+msgid "seventeen"
+msgstr "labing-pito"
+
+#: captcha.php:881
+#: captcha.php:1180
+msgid "eighteen"
+msgstr "labing-walo"
+
+#: captcha.php:882
+#: captcha.php:1181
+msgid "nineteen"
+msgstr "labing-siyam"
+
+#: captcha.php:885
+#: captcha.php:1184
+msgid "ten"
+msgstr "sampu"
+
+#: captcha.php:886
+#: captcha.php:1185
+msgid "twenty"
+msgstr "dalawampu"
+
+#: captcha.php:887
+#: captcha.php:1186
+msgid "thirty"
+msgstr "tatlumpu"
+
+#: captcha.php:888
+#: captcha.php:1187
+msgid "forty"
+msgstr "apatnapu"
+
+#: captcha.php:889
+#: captcha.php:1188
+msgid "fifty"
+msgstr "limampu"
+
+#: captcha.php:890
+#: captcha.php:1189
+msgid "sixty"
+msgstr "animnapu"
+
+#: captcha.php:891
+#: captcha.php:1190
+msgid "seventy"
+msgstr "pitumpu"
+
+#: captcha.php:892
+#: captcha.php:1191
+msgid "eighty"
+msgstr "walumpu"
+
+#: captcha.php:893
+#: captcha.php:1192
+msgid "ninety"
+msgstr "siyamnapu"
+
+#: captcha.php:980
+#: captcha.php:1279
+msgid "and"
+msgstr "at"
+
+#: captcha.php:1055
+msgid "Encryption password is not set"
+msgstr "Hindi naka-set ang encryption password"
+
+#: captcha.php:1075
+msgid "Decryption password is not set"
+msgstr "Hindi naka-set ang decryption password"
+
+#: captcha.php:1437
+msgid "It's time to upgrade your <strong>Captcha plugin</strong> to <strong>PRO</strong> version"
+msgstr ""
+
+#: captcha.php:1438
+msgid "Extend standard plugin functionality with new great options"
+msgstr ""
+
+#, fuzzy
+#~ msgid "to"
+#~ msgstr "dalawa"
+
+#, fuzzy
+#~ msgid "version"
+#~ msgstr "Bersyong PHP"
+
+#~ msgid "Not set"
+#~ msgstr "Hindi set"
+
+#~ msgid "On"
+#~ msgstr "On"
+
+#~ msgid "Off"
+#~ msgstr "Off"
+
+#~ msgid "N/A"
+#~ msgstr "N/A"
+
+#~ msgid " Mb"
+#~ msgstr " Mb"
+
+#~ msgid "Yes"
+#~ msgstr "Oo"
+
+#~ msgid "No"
+#~ msgstr "Hindi"
+
+#~ msgid "Operating System"
+#~ msgstr "Sistema ng operasyon"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#~ msgid "Memory usage"
+#~ msgstr "Gamit ng memorya"
+
+#~ msgid "MYSQL Version"
+#~ msgstr "Bersyong MYSQL"
+
+#~ msgid "SQL Mode"
+#~ msgstr "SQL Mode"
+
+#~ msgid "PHP Safe Mode"
+#~ msgstr "Safe Mode na PHP"
+
+#~ msgid "PHP Allow URL fopen"
+#~ msgstr "PHP Allow URL fopen"
+
+#~ msgid "PHP Memory Limit"
+#~ msgstr "Limit ng Memoryang PHP"
+
+#~ msgid "PHP Max Upload Size"
+#~ msgstr "Max na Laki ng Upload na PHP"
+
+#~ msgid "PHP Max Post Size"
+#~ msgstr "Max na Laki ng Post na PHP"
+
+#~ msgid "PHP Max Script Execute Time"
+#~ msgstr "Max na Oras ng Script Execute na PHP"
+
+#~ msgid "PHP Exif support"
+#~ msgstr "Suportang Exif na PHP"
+
+#~ msgid "PHP IPTC support"
+#~ msgstr "Suportang IPTC na PHP"
+
+#~ msgid "PHP XML support"
+#~ msgstr "Suportang XML na PHP"
+
+#~ msgid "Site URL"
+#~ msgstr "Site URL"
+
+#~ msgid "Home URL"
+#~ msgstr "Home URL"
+
+#~ msgid "WordPress Version"
+#~ msgstr "Bersyong WordPress"
+
+#~ msgid "WordPress DB Version"
+#~ msgstr "Bersyong WordPress DB "
+
+#~ msgid "Multisite"
+#~ msgstr "Multisite"
+
+#~ msgid "Active Theme"
+#~ msgstr "Aktibong Tema"
+
+#~ msgid "Please enter a valid email address."
+#~ msgstr "Paki-enter  ang tamang email address."
+
+#~ msgid "Email with system info is sent to "
+#~ msgstr "Ang email na may sistemang info ay ipinadala sa"
+
+#~ msgid "Thank you for contacting us."
+#~ msgstr "Salamat sa pagkontak sa amin."
+
+#~ msgid "Sorry, email message could not be delivered."
+#~ msgstr "Sori, hindi naipadala ang mensahe ng email"
+
+#~ msgid "Activated plugins"
+#~ msgstr "Aktibeyted na plugins"
+
+#~ msgid "Read more"
+#~ msgstr "Magbasa pa"
+
+#~ msgid "Installed plugins"
+#~ msgstr "Mgha na-install na plugin"
+
+#~ msgid "Recommended plugins"
+#~ msgstr "Mga rekomendadong plugin"
+
+#~ msgid "Purchase"
+#~ msgstr "Bumili"
+
+#~ msgid "Download"
+#~ msgstr "Mag-download"
+
+#~ msgid "Install %s"
+#~ msgstr "Mag-install %s"
+
+#~ msgid "Install now from wordpress.org"
+#~ msgstr "Mag-install ngayon mula sa  wordpress.org"
+
+#~ msgid "System status"
+#~ msgstr "Estado ng sistema"
+
+#~ msgid "Environment"
+#~ msgstr "Kapaligiran"
+
+#~ msgid "Active Plugins"
+#~ msgstr "Mga aktibong Plugin"
+
+#~ msgid "Inactive Plugins"
+#~ msgstr "Mga di-aktibong Plugin"
+
+#~ msgid "Send to support"
+#~ msgstr "Ipadala sa suporta"
+
+#~ msgid "Send to custom email &#187;"
+#~ msgstr "Ipadala sa custom email &#187;"
+
+#~ msgid "(powered by bestwebsoft.com)"
+#~ msgstr "(pinagana ng bestwebsoft.com)"
+
+#, fuzzy
+#~ msgid ""
+#~ "If you have any questions, please contact us via plugin@bestwebsoft.com "
+#~ "or fill in the contact form on our website"
+#~ msgstr ""
+#~ "Ако имате въпроси свържете се с нас на plugin@bestwebsoft.com или "
+#~ "попълнете контактната форма на сайта ни"
+
+#~ msgid "Increase"
+#~ msgstr "Умножи"
+
+#~ msgid "Difficulty for CAPTCHA"
+#~ msgstr "Сложност на CAPTCHA"
+
+#~ msgid "The password of encryption is not set"
+#~ msgstr "Паролата за криптиране не е заложена"
+
+#~ msgid "null"
+#~ msgstr "нула"
+
+#~ msgid "Install Now"
+#~ msgstr "Инсталирай сега"
