@@ -7,11 +7,11 @@
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \*******************************************************************/
 
+	set_time_limit(120);
 	session_start();
 	require_once("../inc/adm_auth.inc.php");
 	require_once("../inc/config.inc.php");
 	require_once("./inc/admin_funcs.inc.php");
-
 
 	$pn = (int)$_GET['pn'];
 
@@ -47,9 +47,141 @@
 			$popular_retailer	= (int)getPostParameter('popular_retailer');
 			$status				= mysql_real_escape_string(getPostParameter('status'));
 
+			
+			// get previous image details
+			$id	= (int)$_GET['id'];
+			$query1 = "
+				SELECT 
+					image,
+					image_original,
+					image_120x60,
+					image_300x100
+				FROM cashbackengine_retailers 
+				WHERE retailer_id='$id' 
+				LIMIT 1
+			";
+			$rs1 = smart_mysql_query($query1);
+			$row1 = mysql_fetch_assoc($rs1);
+			$imgPreviousUrl = (empty($row1)) ? '' : $row1['image'] ;
+			
+			// no image url provided
 			if ($img == "")
 			{
 				$img = "noimg.gif";
+				
+				if ( ! empty($imgPreviousUrl)) {
+					// delete previous files from disk
+				    $previousOriginalFile = $row1['image_original'];
+					$previous120x60ThumbnailFile = $row1['image_120x60'];
+					$previous300x100ThumbnailFile = $row1['image_300x100'];
+					
+					if (file_exists("upload/$previousOriginalFile")) {
+						unlink("upload/$previousOriginalFile");
+					}
+					
+					if (file_exists("upload/$previous120x60ThumbnailFile")) {
+						unlink("upload/$previous120x60ThumbnailFile");
+					}
+					
+					if (file_exists("upload/$previous300x100ThumbnailFile")) {
+						unlink("upload/$previous300x100ThumbnailFile");
+					}
+					// save new files in db
+					$qry1 = smart_mysql_query("
+						UPDATE cashbackengine_retailers 
+						SET image_original = 'noimg.gif',
+							image_120x60 = 'noimg.gif',
+							image_300x100 = 'noimg.gif'
+						WHERE retailer_id='$id' 
+					");
+				
+				}
+			}
+			// image url provided
+			else 
+			{
+				if ($imgPreviousUrl != $img) {
+					require_once("../inc/Zebra_Image.php");
+					
+					// download the image from Web
+					$imgDownload = file_get_contents($img);
+					$originalFilename = pathinfo($imageExternalUrl, PATHINFO_FILENAME); 
+					$newFilename  = $originalFilename . '_' . md5(uniqid()) . '.jpg';
+					$status = file_put_contents("upload/$newFilename", $imgDownload);
+					
+					if (status != false) {
+		    			$image = new Zebra_Image();
+		    			$imageMedium = new Zebra_Image();
+		    		
+		    			// indicate a source image (a GIF, PNG or JPEG file)
+		    			$image->source_path = "upload/$newFilename";
+		    			$imageMedium->source_path = "upload/$newFilename";
+		    		
+			    		// indicate a target image
+					    // note that there's no extra property to set in order to specify the target 
+					    // image's type -simply by writing '.jpg' as extension will instruct the script 
+					    // to create a 'jpg' file
+					    $newParts = explode('.', $newFilename);
+						$newName = $newParts[0];
+						$newExt = $newParts[1];
+					
+						// smaller thumbnail
+						$thumbSmallerFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
+					    $image->target_path = "upload/$thumbSmallerFilename";
+				    
+					    // some additional properties that can be set
+					    // read about them in the documentation
+					    $image->preserve_aspect_ratio = true;
+					    $image->enlarge_smaller_images = false;
+					    $image->preserve_time = true;
+					
+						// resize the image to exactly 100x100 pixels by using the "crop from center" method
+					    // (read more in the overview section or in the documentation)
+					    //  and if there is an error, check what the error is about
+					    $image->resize(120, 60, ZEBRA_IMAGE_NOT_BOXED);
+				    
+					    // medium thumbnail
+				   		$thumbMediumFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
+				    	$imageMedium->target_path = "upload/$thumbMediumFilename";
+				    
+					    // some additional properties that can be set
+					    // read about them in the documentation
+					    $imageMedium->preserve_aspect_ratio = true;
+					    $imageMedium->enlarge_smaller_images = false;
+					    $imageMedium->preserve_time = true;
+					
+						// resize the image to exactly 100x100 pixels by using the "crop from center" method
+					    // (read more in the overview section or in the documentation)
+					    //  and if there is an error, check what the error is about
+					    $imageMedium->resize(300, 100, ZEBRA_IMAGE_NOT_BOXED);
+					    
+					    // delete previous files from disk
+					    $previousOriginalFile = $row1['image_original'];
+						$previous120x60ThumbnailFile = $row1['image_120x60'];
+						$previous300x100ThumbnailFile = $row1['image_300x100'];
+						
+						if (file_exists("upload/$previousOriginalFile")) {
+							unlink("upload/$previousOriginalFile");
+						}
+						
+						if (file_exists("upload/$previous120x60ThumbnailFile")) {
+							unlink("upload/$previous120x60ThumbnailFile");
+						}
+						
+						if (file_exists("upload/$previous300x100ThumbnailFile")) {
+							unlink("upload/$previous300x100ThumbnailFile");
+						}
+						
+						// save new files in db
+						$qry1 = smart_mysql_query("
+							UPDATE cashbackengine_retailers 
+							SET image_original = '$newFilename',
+								image_120x60 = '$thumbSmallerFilename',
+								image_300x100 = '$thumbMediumFilename'
+							WHERE retailer_id='$id' 
+						");
+					}
+				}			    
 			}
 
 			if (!($rname && $url && $status)) //$cashback && $cashback_sign

@@ -106,6 +106,12 @@
 
 			if ($data['image_height'] == "" || !is_numeric($data['image_height']))
 				$errs[] = "Please enter correct retailers images height";
+			
+			if ($data['image_width2'] == "" || !is_numeric($data['image_width2']))
+				$errs[] = "Please enter correct retailers images width";
+
+			if ($data['image_height2'] == "" || !is_numeric($data['image_height2']))
+				$errs[] = "Please enter correct retailers images height";
 		}
 		else if ($tabid == "coupons")
 		{
@@ -552,6 +558,13 @@
             <td valign="top">
 				<input type="text" name="data[image_width]" value="<?php echo $settings['image_width']; ?>" size="3" class="textbox" /> x 
 				<input type="text" name="data[image_height]" value="<?php echo $settings['image_height']; ?>" size="3" class="textbox" /> px
+			</td>
+          </tr>
+          <tr>
+            <td valign="middle" align="right" class="tb1">Retailer Image Size II:</td>
+            <td valign="top">
+				<input type="text" name="data[image_width2]" value="<?php echo $settings['image_width2']; ?>" size="3" class="textbox" /> x 
+				<input type="text" name="data[image_height2]" value="<?php echo $settings['image_height2']; ?>" size="3" class="textbox" /> px
 			</td>
           </tr>
           <tr>

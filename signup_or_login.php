@@ -14,6 +14,8 @@
 	//For Session variables from pop-up of index page
 	if(isset($_SESSION['action']) && $_SESSION['action']=='signup' && isset($_SESSION['email']))
 	{
+		
+		
 		$username	=	$_SESSION['email'];
 		$email		=	$_SESSION['email'];
 		$temp		=	explode( '@', $email );
@@ -24,9 +26,11 @@
 		unset($_SESSION['password']);
 		unset($_SESSION['action']);		
 		
-		$action = $_POST['action'] = 'signup';
+		$action = $_POST['action']	=	'signup';
+		$_POST['password']	=	$pwd;
 		$_POST['email'] = $email;
 		//$_POST['action'] = $pwd;
+		
 	}
 	
 	//For post variables from the same page
@@ -230,15 +234,16 @@
 						$ref_id=mysql_fetch_assoc($check_referral_result);
 						$ref_id = $ref_id['user_id'];
 					}
-					else if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
-					{
-						$ref_id = $_COOKIE['referer_id'];echo 'REFERAL ID:'.$ref_id;
-					}
 					else
 					{
 						$ref_id = 0;
 					}
 				}
+				
+				if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
+					{
+						$ref_id = $_COOKIE['referer_id'];
+					}
 
 				$unsubscribe_key = GenerateKey($username);
 
