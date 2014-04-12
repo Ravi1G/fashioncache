@@ -121,12 +121,5 @@ $(document).ready(function () {
 	
 	$(".sendInvitationButton span").on("click", function () {
 		$( "#Send" ).trigger( "click" );
-	});
-	
-	/*$('.navigationSection ul').on('click', 'li', function() {
-   	 	$('.navigationSection ul li.active').removeClass('active');
-    	$(this).addClass('active');
-	});
-	*/
-	
+	});	
 });

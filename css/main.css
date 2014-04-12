@@ -4039,6 +4039,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	border: 0px;
 	width: 170px;
 	margin-left: 290px;
+	margin-top:8px;
 }
 
 .customCommentArea .comment-notes {
@@ -4122,8 +4123,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	text-transform: uppercase;
 	border: 0px;
 	width: 150px;	
-	margin-bottom: 0px;
-	margin-top: 7px;
+	margin-bottom: 9px;
+	margin-top: 32px;
 	margin-right: 11px;
 }
 
@@ -4207,4 +4208,8 @@ width:119px !important;
 .centerAligned
 {
 text-align:center;
+}
+.comment-form .form-allowed-tags
+{
+display:none;
 }

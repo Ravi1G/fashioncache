@@ -77,7 +77,7 @@ $menu_categories = GetMenuCategories();
 			           <div class="triangle"></div>
 			           <ul>
 			            <li><b>Balance:</b> <?php echo GetUserBalance($_SESSION['userid']);?></li>
-			            <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b><?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li>             
+			            <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b> <?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li>             
 			            <li><b><a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a></b></li>
 			           </ul>
 			           <div class="cb"></div>
@@ -138,7 +138,7 @@ $menu_categories = GetMenuCategories();
 					<li class="last"><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
 				</ul>
 				<div class="searchContainer">
-					<form action="<?php echo SITE_URL; ?>search.php" method="get" id="searchfrm" name="searchfrm" onsubmit="if(searchtext.value==searchtext.defaultValue) return false" >				
+					<form action="<?php echo SITE_URL; ?>search.php" method="get" id="searchfrm" name="searchfrm" onSubmit="if(searchtext.value==searchtext.defaultValue) return false" >
 						<div class="searchIcon"><img alt="" src="<?php echo SITE_URL;?>img/search.jpg"/></div>
 						<div>
 							<input type="text" name="searchtext" placeholder="Search for stores..." class="searchCriteria" />
