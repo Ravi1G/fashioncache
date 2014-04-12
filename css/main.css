@@ -3550,7 +3550,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .popupLogoSection img {
-	width: 255px;
+	width: auto;
 }
 
 .popupLeadLine {
@@ -4067,10 +4067,12 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	border-radius: 5px;
 	padding: 10px;
 	padding-left: 20px;
+	padding-top:15px;
+	padding-bottom:8px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-ms-border-radius: 5px;
-	width: 373px;
+	width: 600px;
 }
 
 .wpcf7-form-control-wrap {
@@ -4081,32 +4083,28 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .wpcf7-form-control-wrap input {
 	border: 1px solid #D3D3D3;
 	padding: 5px 5px;
-	width: 350px;
+	width: 96%;
 	font-size: 13px;
 }
 
 .wpcf7-form-control-wrap textarea {
 	border: 1px solid #D3D3D3;
-	padding: 5px 5px;
-	width: 350px;
+	padding: 5px 5px;	
 	font-size: 13px;
 	resize: vertical;
 	height: 4em;
 }
 
-.wpcf7-captchac {
-	margin-top: -15px;
+.wpcf7-captchac {	
 	margin-bottom: 10px;
 }
 
-.captcha-793 {
-	margin-top: -35px;
+.captcha-793 {	
 	display: block;
 }
 
 .captcha-793 input {
-	width: 268px;
-	margin-left: 82px;
+	width: 268px;	
 	padding: 4px 5px;
 }
 
@@ -4123,12 +4121,90 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	padding: 6px 8px 6px;
 	text-transform: uppercase;
 	border: 0px;
-	width: 100px;
-	float: right;
-	margin-bottom: 10px;
+	width: 150px;	
+	margin-bottom: 0px;
+	margin-top: 7px;
 	margin-right: 11px;
 }
 
 .wpcf7-response-output {
 	clear: both;
+}
+.contactPersonInformation
+{
+width:101%;
+}
+.contactPersonInformation div
+{
+width:286px;
+}
+.contactPersonInformation > div
+{
+margin-right:15px;
+}
+.subjectColumn
+{
+clear:both;
+padding-top:5px;
+}
+.contactMessage
+{
+margin-top:5px;
+}
+.contactMessage textarea
+{
+width:96%;
+}
+.securityCheck 
+{
+width:101%;
+clear:both;
+padding-top:10px;
+margin-bottom:-35px;
+}
+.securityCheck .securityCheckLabel
+{
+width:155px;
+padding-top:5px;
+}
+.securityCheck .securityCheckSection
+{
+width:400px;
+}
+.securityCheck .securityCheckSection  p
+{
+margin-top:0px;
+margin-bottom:8px;
+}
+.wpcf7-not-valid-tip
+{
+color:red;
+display:block;
+margin-top:2px;
+font-family: 'open_sansregular';
+margin-left:2px;
+}
+.wpcf7-validation-errors
+{
+display:none !important;
+}
+.comment-form-url .label
+{
+float:left;
+}
+.comment-form-comment
+{
+clear:both;
+}
+.cptch_block br
+{
+display:none;
+}
+.wpcf7-captchar
+{
+width:119px !important;
+}
+.centerAligned
+{
+text-align:center;
 }
