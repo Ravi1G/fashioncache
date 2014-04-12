@@ -38,7 +38,7 @@ $(document).ready(function () {
                 color: "#373737"
             }, 180);
         }, function () {
-			$(this).stop(20);
+			$(this).children("span").stop(20);
             $(this).children("span").animate({
                 backgroundColor: "#373737",
                 color: "#fff"
@@ -121,6 +121,5 @@ $(document).ready(function () {
 	
 	$(".sendInvitationButton span").on("click", function () {
 		$( "#Send" ).trigger( "click" );
-	});
-	
+	});	
 });

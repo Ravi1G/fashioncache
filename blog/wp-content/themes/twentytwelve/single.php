@@ -25,18 +25,19 @@ get_header(); ?>
 					</div>
 					<?php */  ?>
 					<div>					
-					<div class="categoryHeading blogPostHeading">						
-						<div class="blogTimeStamp">Posted on: <?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
-						<h1><?php the_title();?></h1>
+					<div class="categoryHeading blogPostHeading">												
+						<h1><?php the_title();?></h1>						
 						<div class="blogAuthorNameSection">
 							<?php if ( have_posts() ) : ?>
 								<?php while ( have_posts() ) : the_post(); ?>									
-									<?php echo get_the_author(); ?>									
+									<?php echo get_the_author(); ?>
 								<?php endwhile; ?>
 							<?php else : ?>
 								
 							<?php endif;?>
-						</div>					
+						</div>
+						<div class="blogTimeStamp">Posted on: <?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+						<div class="cb"></div>
 					</div>
 						<div class="blogSection"> 						
 							<?php if ( have_posts() ) : ?>
