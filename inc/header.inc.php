@@ -36,6 +36,7 @@ $menu_categories = GetMenuCategories();
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/normalize.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic,,300,600,800' rel='stylesheet' type='text/css'/>
 <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/fonts.css">
 <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/main.css">
 <link href="<?php echo SITE_URL;?>css/jquery.bxslider.css" rel="stylesheet"/>
@@ -48,6 +49,10 @@ $menu_categories = GetMenuCategories();
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
 <script src="<?php echo SITE_URL; ?>js/jquery.dataTables.js"></script>
  <script src="<?php echo SITE_URL; ?>js/fb.js" type="text/javascript"></script>
+<?php /* ?> 
+         <script type="text/javascript" src="<?php echo SITE_URL?>js/fb.js"></script>
+         <script type="text/javascript" src="//use.typekit.net/aym2cwi.js"></script>
+<?php */ ?> 
 <script>
 	var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 	var FACEBOOK_APPID= "<?php echo FACEBOOK_APPID;?>";
@@ -63,7 +68,7 @@ $menu_categories = GetMenuCategories();
 		<div class="container">
 			<div class="saleCouponsSection">
 				<a href="<?php echo SITE_URL; ?>coupons.php">SEE ALL SALES &#x0026; COUPONS</a> <img alt="" src="<?php echo SITE_URL;?>img/downArrow.jpg"/>
-			</div>			
+			</div>						
 			<div class="userActivitySection">
 				<?php if (isLoggedIn()) { ?>
 				
@@ -149,11 +154,13 @@ $menu_categories = GetMenuCategories();
 				</div>
 				<div class="cb"></div>
 			</div>
+			<?php /* ?>
 			<?php if(!isset($is_index)){?>
 			<div class="saleAlertSection siteInnerBanner">
 			  <div class="sectionTitle"><span>SALE ALERT!</span><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>&s=<?php echo $sale_alert['sale_alert_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
 			</div>
 			<?php } ?>
+			<?php */ ?>
 		</div>
 		<!-- No record functionality is pending -->
 <?php 

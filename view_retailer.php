@@ -170,9 +170,6 @@
 						</div>
 						<div class="cb"></div>
 					</div>
-					
-					
-					
 					<!-- OLD CODE STARTS -->
 						<?php
 				// start coupons //
@@ -185,7 +182,7 @@
 				{
 		?>
 			<a name="coupons"></a>
-			<h3 class="store_coupons"> <?php echo CBE1_STORE_COUPONS; ?></h3>
+			<!--<h3 class="store_coupons"><?php echo CBE1_STORE_COUPONS; ?></h3>-->
 			<div class="RetailerOffersHeading"><?php echo $row['title']; ?> <?php echo CBE1_STORE_COUPONS; ?> &#x0026; Specials</div>
 			
 			<table class="RetailerOffersTable">

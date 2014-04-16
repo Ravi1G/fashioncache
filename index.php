@@ -49,18 +49,18 @@
 	require_once("inc/header.inc.php");
 	if(!isLoggedIn()){
 	?>
-		<script>
-		$.colorbox({
-		    iframe      : true,
-		    width: 795,
-	        height: 875,
-	        opacity: 0.8,
-	        scrolling: false,
-	        closeButton: false,
-	        fixed: false,
-	        top: 20,
-		    href : "<?php echo SITE_URL?>popup.php"
-		});
+		<script type="application/javascript">
+			$.colorbox({
+				iframe      : true,
+				width: 795,
+				height: 875,
+				opacity: 0.8,
+				scrolling: false,
+				closeButton: false,
+				fixed: false,
+				top: 20,
+				href : "<?php echo SITE_URL?>popup.php"
+			});
 		</script>
 	<?php } ?>
 		<div class="container content">
@@ -147,8 +147,8 @@
 							<?php 	}?>
                         </ul>                        
                         <!-- <div class="noTricks">No Catches, Tricks or Gimmicks.</div> -->
-                        <div class="topTrendSection">
-                            <div class="title">TOP TRENDING SALES</div>                                                        
+                        <div class="topTrendSection dealsOfWeekContainer">
+                            <div class="title">DEALS OF THE WEEK </div>
                             <div class="body"> 
                                 <ul class="topTrends">
                                 <?php 
@@ -192,8 +192,7 @@
                                 <?php } ?>
                                 </ul>
                                 <div class="cb"></div>
-                                <div class="allStores">
-                                    <a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
+                                <div class="allStores"><a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
                             </div>
                         </div>
                     </div>                                       
@@ -277,8 +276,7 @@
 							$i++;  
 															
 					}
-				?>
-							
+				?>							
 				<?php } ?>				
 				</ul>
 				<div class="cb"></div>
@@ -302,7 +300,7 @@
                 <?php if(!isLoggedIn()) {  ?>
                 <!-- Sign Up Section -->
                 <div class="signUpContainer">
-                    <div class="title">SIGN UP TODAY TO EARN CASH BACK!</div>
+                    <div class="title">SIGN UP TODAY TO<br/>EARN CASH BACK!</div>
                     <div class="body">
                         <div><a href="javascript: void(0);" onclick="fbLogin();"><img alt="" src="<?php echo SITE_URL;?>img/fbSignUp.jpg"/></a></div>
                         <div class="emailSignUp">Or- Sign up with Email</div>
@@ -326,8 +324,7 @@
 							<div class="horizontalSteps"><img src="<?php echo SITE_URL;?>img/stepThreeDark.jpg" alt=""/> Get Cash Back!</div>
 							<div class="learnMoreAboutSteps">
 								<div class="learnMoreAlert">No Catches, Tricks or Gimmicks.</div>
-								<div class="learnMoreLink"><a href="#">Learn More &#x003E;</a></div>
-								
+								<div class="learnMoreLink"><a href="#">Learn More &#x003E;</a></div>								
 							</div>
 						</div>	
 					</div>
@@ -344,7 +341,7 @@
                 </div>
                 
                 <!-- Featured Articles Section -->
-                <div class="heading3">FEATURED ARTICLES</div>
+                <?php /* ?><div class="heading3">FEATURED ARTICLES</div><?php */ ?>
                 <a href="<?php echo SITE_URL;?>blog.php" class="noUnderline">
 					<span class="captionContainer readOurBlog">				
 						<span><img alt="" src="<?php echo SITE_URL;?>img/blog.jpg"/></span>
@@ -353,10 +350,12 @@
 						<span class="caption">Read More</span>
 					</span>
 				</a>
+				<?php /* ?>
                 <div class="captionContainer">
                     <div class="image"><img alt="" src="<?php echo SITE_URL;?>img/handBags.jpg"/></div>
                     <div class="caption">Lorem ipsum dolor</div>
                 </div>
+				<?php */ ?>
             </div>
             </div>
 		    <div class="cb"></div>
@@ -571,5 +570,19 @@
 				</li>
 				<?php 	}?>
 		<?php */ ?>
+		<script>
+		$(function(){
+				$('.contentSlider').bxSlider({
+						auto: true,
+						pause: 2000,
+						speed: BANNER_SPEED,
+						pager: false, // carasuls
+						controls: false,
+						autoHover : true<?php if(count($allbanners)<2){?>,
+						infiniteLoop: false 
+						<?php }?>
+				});				
+			})
 		
+		</script>
 <?php require_once("inc/footer.inc.php"); ?>

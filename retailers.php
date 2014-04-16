@@ -156,7 +156,7 @@
 		<div class="SiteContentSection">
 			<div class="SiteContentLeft">
 				<div class="RetailerContainer">
-					<div class="categoryHeading categoryHeadingWithMargins">Category: <h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
+					<div class="categoryHeading"><h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
 					<table class="categoryTable retailerTable" id="categoryTable">
 					<thead>
 						<tr class="categoryTableHeading">

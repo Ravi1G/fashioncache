@@ -54,18 +54,23 @@ include_once 'inc/config.inc.php';?>
 					<div class="leftAligned inputArea">
 						<div class="standardInputBox"><input type="text" name="email" placeholder="Email"/></div>
 						<div class="standardInputBox">						
-						<input type="password" name="password" placeholder="Password (6-12 Characters)"/> 
-						<div class="shopNowBotton siteButton popupFormSectionButton">
-							<a href="#" id="submitloginform">
-								<span>Login &#x003E;</span>
-							</a>
-						</div>
+						<input type="password" name="password" placeholder="Password (6-12 Characters)"/> 						
 						</div>
 						<div class="cb"></div>
-						<div class="alreadyMember"><a class="colorLink" href="" id='signupLink'>Click here</a> if you are a new member</div>
+						<div class="alreadyMember">
+							<div class="shopNowBotton siteButton popupFormSectionButton">
+								<a href="#" id="submitloginform">
+									<span>Login &#x003E;</span>
+								</a>
+							</div>
+							<div class="colorLinkNew">
+							<a class="colorLink" href="" id='signupLink'>New Member?</a>
+							</div>
+							<div class="cb"></div>
+						</div>
 					</div>
 					<div class="rightAligned logoArea">
-						<img src="img/hangerIcon.png" alt="Fashion Cache"/>
+						<img src="img/fashionCacheNewLogo.png" alt="Fashion Cache"/>
 					</div>
 					<div class="cb"></div>
 					<input type='hidden' name='action' value='login'>
@@ -78,25 +83,30 @@ include_once 'inc/config.inc.php';?>
 					<div class="leftAligned inputArea">
 						<div class="standardInputBox"><input type="text" name="email" placeholder="Email"/></div>
 						<div class="standardInputBox">						
-						<input type="password" name="password"  placeholder="Password (6-12 Characters)"/> 
-						<div class="shopNowBotton siteButton popupFormSectionButton">							
-							<a href="#" id="submitsignupform">
-								<span>Sign Up &#x003E;</span>
-							</a>
-						</div>
+						<input type="password" name="password"  placeholder="Password (6-12 Characters)"/> 						
 						</div>
 						<div class="cb"></div>
-						<div class="alreadyMember"><a class="colorLink" href="" id='loginLink'>Click here</a> if you are already a member</div>
+						<div class="alreadyMember">
+							<div class="shopNowBotton siteButton popupFormSectionButton">
+								<a href="#" id="submitsignupform">
+									<span>Sign Up &#x003E;</span>
+								</a>
+							</div>
+							<div class="colorLinkNew">
+								<a class="colorLink" href="" id='loginLink'>Already a Member?</a>
+							</div>
+							<div class="cb"></div>
+							</div>
 					</div>
 					<div class="rightAligned logoArea">
-						<img src="img/hangerIcon.png" alt="Fashion Cache"/>
+						<img src="img/fashionCacheNewLogo.png" alt="Fashion Cache"/>
 					</div>
 					<div class="cb"></div>
 					<input type='hidden' name='action' value='signup'>
 				</form>
 			</div>
 			
-			<div class="popupEndingLines">
+			<div class="popupEndingLines popupEndingLinesMargins">
 				<div>By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
 				<div>&#x00A9; 1998-2014 Fashion Cache. All rights reserved. <a class="colorLink" href="#">Privacy Policy</a></div>
 			</div>

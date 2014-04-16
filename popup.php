@@ -63,7 +63,7 @@ include_once 'inc/config.inc.php';?>
 					<div id="signupBlock" class="popUpContentRight">
 						<div class="formHeader">SIGN UP TODAY!</div>
 						<div class="formBody">
-							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onclick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
+							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onClick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
 							<div class="signUpWithEmail">Or- Sign up with Email</div>
 
 							<form action="" method="post">
@@ -87,9 +87,9 @@ include_once 'inc/config.inc.php';?>
 					
 					<!-- Login Block -->
 					<div id="loginBlock" class="popUpContentRight">
-						<div class="formHeader">Login!</div>
+						<div class="formHeader">LOGIN</div>
 						<div class="formBody">
-							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onclick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
+							<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onClick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApiLogin1.jpg"/></a></div>
 							<div class="signUpWithEmail">Or- Login</div>
 						
 						
@@ -102,7 +102,7 @@ include_once 'inc/config.inc.php';?>
 									</div>
 									<div class="formActionsRight">
 										<div class="alreadyMember">New Member?</div>
-										<div class="login" ><a href="" id='signupLink'>Signup</a></div>
+										<div class="login" ><a href="" id='signupLink'>SIGN UP</a></div>
 									</div>
 									<div class="cb"></div>
 								</div>
@@ -140,7 +140,7 @@ include_once 'inc/config.inc.php';?>
 					
 					<div class="cb"></div>
 				</div>
-				<div class="CashBackStores">EARN CASH BACK AT THESE STORES PLUS MORE!</div>
+				<div class="CashBackStores marginFixes">EARN CASH BACK AT THESE STORES PLUS MORE!</div>
 				<div class="storeIconsContainer">
 					<div class="sites"><img src="<?php echo SITE_URL?>img/storeLogos/sample1.jpg" alt=""/></div>
 					<div class="sites"><img src="<?php echo SITE_URL?>img/storeLogos/sample6.jpg" alt=""/></div>

@@ -400,13 +400,15 @@
                 </form>
             </div>
             <div>By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
-            <h3>Benefits of an Ebates membership:</h3>
+			<?php /* ?>
+            <h3>Benefits of Fashion Cache membership:</h3>
             <ul class="standardList">
                 <li>Up to 25% Cash Back on all purchases</li>
                 <li>Hundreds of exclusive coupons and free shipping offers</li>
                 <li>TRUSTe certified to protect your privacy</li>
                 <li>Excellent customer service</li>
             </ul>
+			<?php */ ?>
         </div>			
         <div class="leftContainer loginActivity rightLine">
             <div class="contentTitle">Returning Members</div>

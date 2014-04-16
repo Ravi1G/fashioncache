@@ -109,7 +109,8 @@ a:hover {
 	width: 200px;
 	float: left;
 	margin-top: 24px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 14px;
 	color: #373737;
 }
@@ -119,7 +120,7 @@ a:hover {
 	float: right;
 	text-align: right;
 	font-size: 17px;
-	margin-top: 15px;	
+	margin-top: 15px;
 }
 
 .userActivitySection .signUpSection span {
@@ -139,7 +140,8 @@ a:hover {
 }
 
 .userActivitySection .signUpCaption {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 14px;
 	text-align: left;
 	margin-top: -4px;
@@ -150,7 +152,7 @@ a:hover {
 	width: 138px;
 	float: left;
 	text-align: left;
-	margin-left:300px;
+	margin-left: 300px;
 }
 
 .loginSection {
@@ -199,6 +201,7 @@ a:hover {
 .navigationSection {
 	border-top: 1px solid #e3e3e3;
 	margin-top: 10px;
+	border-bottom: 1px solid #e3e3e3;
 }
 
 .navigationSection ul {
@@ -206,26 +209,36 @@ a:hover {
 	padding: 0px;
 	width: 770px;
 	float: left;
+	margin-top:-2px;
 }
-
+table.retailerTable thead tr.categoryTableHeading td
+{
+background-color:#373737;
+color:#fff;
+}
+table.retailerTable thead tr.categoryTableHeading td.storeName,
+table.retailerTable thead tr.categoryTableHeading td.storeCashBackScheme
+{
+border-right:1px solid #fff;
+}
 .navigationSection ul li {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	display: inline-block;
 	*display: inline;
-    zoom: 1;
+	zoom: 1;
 	margin-right: 40px;
 	color: #ababab;
 	text-align: left;
 	font-size: 14px;
 	margin-top: 18px;
 	*display: inline;
-    zoom: 1;
+	zoom: 1;
 }
 
 .navigationSection ul li.last {
 	margin-right: 0px;
 }
-
 
 .navigationSection ul li.active {
 	color: #373737;
@@ -253,10 +266,11 @@ a:hover {
 	letter-spacing: 4px;
 	text-align: center;
 	max-height: 40px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	font-family: Garamond_bold;
 	font-size: 17.2px;
+	margin-top:10px;
 }
 
 .saleAlertSection .sectionTitle {
@@ -264,10 +278,12 @@ a:hover {
 	color: #2d2f2e;
 	text-align: center;
 	max-height: 40px;
-	padding-top: 10px;
-	padding-bottom: 10px;	
-	font-family: 'open_sansregular';
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 15px;
+	margin-top:10px;
 }
 
 .saleAlertSection .sectionTitle span {
@@ -276,18 +292,19 @@ a:hover {
 	margin-right: 10px;
 	color: #373737;
 }
-.contentSectionSlides
-{
-	max-width:437px;
-	margin-left:10px;
-	padding-right:5px;	
-	padding-top:0px;
+
+.contentSectionSlides {
+	max-width: 437px;
+	margin-left: 10px;
+	padding-right: 5px;
+	padding-top: 0px;
 }
-.contentSectionSlides .contentSlider
-{
-max-height:325px;
-margin-top:0px;
+
+.contentSectionSlides .contentSlider {
+	max-height: 325px;
+	margin-top: 0px;
 }
+
 .content {
 	margin-top: 2px;
 }
@@ -298,9 +315,10 @@ margin-top:0px;
 	padding-top: 12px;
 	min-height: 53px;
 }
-.store .icon img
-{
-max-height:49px;
+
+.store .icon img {
+	max-height: 60px;
+	max-width: 120px;
 }
 
 .lastItem {
@@ -311,7 +329,7 @@ max-height:49px;
 	text-align: center;
 	float: left;
 	width: 180px;
-	display:block;
+	display: block;
 }
 
 .cashBack {
@@ -319,7 +337,7 @@ max-height:49px;
 	width: 116px;
 	float: right;
 	text-align: center;
-	display:block;
+	display: block;
 	background-color: #efefef;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -329,10 +347,11 @@ max-height:49px;
 
 .percentage {
 	font-size: 30.85px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	margin-top: -3px;
 	margin-bottom: 2px;
-	display:block;
+	display: block;
 }
 
 .percentage span.percentageSymbol {
@@ -347,6 +366,7 @@ max-height:49px;
 	right: -2px;
 	font-size: 12.25px;
 	font-family: "Garamond_bold";
+    font-weight: normal;
 }
 
 .percentage span.upToText i {
@@ -357,8 +377,9 @@ max-height:49px;
 .cashBackCaption {
 	font-size: 12px;
 	font-family: "Garamond_bold";
+    font-weight: normal;
 	margin-top: -10px;
-	display:block;
+	display: block;
 }
 
 .saleAlertSection .sectionBody {
@@ -375,6 +396,7 @@ max-height:49px;
 	{
 	text-align: center;
 	font-family: "Garamond_bold";
+    font-weight: normal;
 	font-weight: normal;
 }
 
@@ -402,28 +424,31 @@ max-height:49px;
 
 h1 {
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 24px;
 	margin-top: 18px;
 	margin-bottom: 10px;
 	margin-left: 10px;
 	font-weight: normal;
 }
-.standardContainer .fashionExpertSection
-{
+
+.standardContainer .fashionExpertSection {
 	margin-top: 50px;
-	}
-.blogSection
-{	
+}
+
+.blogSection {
 	width: 641px;
-	}
-.olderPost
-	{
+}
+
+.olderPost {
 	text-align: right;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 12px;
-	}
+}
+
 .blog .blogContentContainer {
 	width: 641px;
 	border-bottom: 1px solid #EFEFEF;
@@ -458,39 +483,46 @@ h1 {
 .blogContentContainerRight .postDate {
 	font-size: 12px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	border-bottom: 1px solid #EFEFEF;
 }
 
 .blogContentContainerRight .blogCategory {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 12px;
 	margin-top: -1px;
 	height: 50px;
 }
 
 .blogContentContainerRight .blogAuthor {
-	font-family: "open_sansitalic";
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-style: italic;
 	font-size: 12px;
 }
 
 .blogContentContainerRight .blogTitle {
 	font-size: 18px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	margin-top: 11px;
 	margin-bottom: 39px;
 	line-height: 21px;
 	letter-spacing: 2px;
-	text-transform:uppercase;
+	text-transform: uppercase;
 }
 
 .blogContentContainerRight .blogDescription {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 12px;
 	line-height: 14px;
 }
 
 .blogContentContainerRight .blogReadMore {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 12px;
 	margin-top: 15px;
 }
@@ -508,33 +540,34 @@ h1 {
 .blogSocialIcons .countContainer {
 	background-image: url("../img/comments.png");
 	background-position: top left;
-	color:#fff;
+	color: #fff;
 	background-repeat: no-repeat;
 	display: inline-block;
 	*display: inline;
-    zoom: 1;
+	zoom: 1;
 	*display: inline;
-    zoom: 1;
+	zoom: 1;
 	width: 24px;
-	height:23px;	
+	height: 23px;
 	text-align: center;
-	font-size: 11px;	
-	font-family: 'open_sansregular';
+	font-size: 11px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	padding-top: 5px;
 	position: relative;
 	top: 6px;
 }
 
 .allStores {
-	text-align: center;	
+	text-align: center;
 }
 
-.allStores span 
-{	
+.allStores span {
 	background-color: #373737;
 	color: #fff;
 	font-size: 10px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	padding: 13px 18px 13px 18px;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -560,14 +593,17 @@ h1 {
 
 .steps .title {
 	font-size: 14px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	margin-top: 15px;
 }
 
 .steps .subTitle {
 	margin-top: -2px;
 	font-size: 14px;
-	font-family: "open_sansitalic";
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-style: italic;
 	margin-bottom: 14px;
 }
 
@@ -592,27 +628,81 @@ h1 {
 	margin-top: 27px;
 	margin-bottom: 27px;
 	text-align: center;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	color: #373737;
 	font-size: 12px;
 }
-
+.dealsOfWeekContainer
+{
+	border: 1px solid #E7E7F7;
+    margin-left: -5px;
+    overflow: hidden;
+    padding-top:0px;
+	padding-left:10px;
+	padding-bottom:10px;
+    position: relative;
+    width: 426px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;			
+	-webkit-border-radius:5px;			
+}
+.dealsOfWeekContainer div.InfoContainer
+{
+width:141px !important;
+}
+.dealsOfWeekContainer div.bx-viewport ul.topTrends li
+{
+right:-8px;
+}
+.dealsOfWeekContainer div.bx-viewport ul.topTrends li div.InfoContainer:nth-child(3)
+{
+border-right:0px;
+}
 .topTrendSection .title {
 	text-align: center;
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	font-size: 14px;
 	padding-top: 9px;
 	padding-bottom: 9px;
 	border-top: 1px solid #E5E5E5;
 	border-bottom: 1px solid #E5E5E5;
 	letter-spacing: 4px;
-	margin-right: 10px;
+	margin-right: 0px;
 }
-.topTrendSection .bx-wrapper .bx-viewport
+.dealsOfWeekContainer .title
 {
-min-height:200px !important;
-height:auto !important;
+border:0px;
+background-color:#F8F8F8;
+position:relative;
+left:-10px;
+width:102%;
+margin-top:0px;
+letter-spacing:1px;
+text-align:left;
+padding-left:20px;
 }
+
+.dealsOfWeekContainer .body .bx-wrapper
+{
+margin-bottom:9px;
+}
+
+.dealsOfWeekContainer .allStores
+{
+margin-bottom:10px;
+}
+.dealsOfWeekContainer .storeTitle
+{
+margin-bottom:10px;
+}
+.topTrendSection .bx-wrapper .bx-viewport {
+	min-height: 200px !important;
+	height: auto !important;
+}
+
 .topTrendSection .body .last {
 	border: 0px;
 }
@@ -632,11 +722,12 @@ height:auto !important;
 
 .body .InfoContainer .storeTitle {
 	text-align: center;
-	font-size:20px;
+	font-size: 20px;
 	font-family: "Garamond_bold";
-	line-height:21px;
-	margin-botttom:8px;
-	text-transform:uppercase;
+font-weight: normal;
+	line-height: 21px;
+	margin-botttom: 8px;
+	text-transform: uppercase;
 }
 
 .body .InfoContainer .storeTitle img {
@@ -644,18 +735,21 @@ height:auto !important;
 }
 
 .body .InfoContainer .storeText {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	color: #373737;
 	text-align: center;
 	font-size: 12px;
 }
 
 .body .InfoContainer .storeText .runningHead {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 }
 
 .body .InfoContainer .addition {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 21px;
 	text-align: center;
 	margin-bottom: 10px;
@@ -704,7 +798,8 @@ height:auto !important;
 	width: 130px;
 	position: absolute;
 	top: 7px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 12px;
 	padding: 5px;
 	border: 1px solid #e3e3e3;
@@ -738,69 +833,73 @@ height:auto !important;
 	margin-left: 7px;
 	margin-right: 7px;
 }
-.blog .followUs
-{
+
+.blog .followUs {
 	margin-top: 10px;
-	}
-.howItWorks
-	{
+}
+
+.howItWorks {
 	text-align: center;
 	font-size: 12px;
-	font-family: 'open_sansbold';	
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	margin-bottom: 5px;
-	}
-	.standardBody
-	{
+}
+
+.standardBody {
 	min-height: 164px;
-	}
-.howItWorksSteps
-{
+}
+
+.howItWorksSteps {
 	width: 290px;
-	}
-.advertisement300
-{
+}
+
+.advertisement300 {
 	text-align: center;
-	margin-top: 31px;	
-	}	
-.standardSignUpContainer
-	{
+	margin-top: 31px;
+}
+
+.standardSignUpContainer {
 	margin-top: 8px !important;
 	margin-bottom: 8px !important;
-	}
-.howItWorksSteps .stepSection
-{
+}
+
+.howItWorksSteps .stepSection {
 	width: 90px;
 	float: left;
-	border-right:1px solid #D0D0D0;
+	border-right: 1px solid #D0D0D0;
 	text-align: center;
-	padding-top: 18px; 
+	padding-top: 18px;
 	padding-bottom: 5px;
-	padding-left: 3px; 
+	padding-left: 3px;
 	padding-right: 3px;
 	min-height: 73px;
-	}
-.howItWorksSteps .howItWorksStepOne
-	{
+}
+
+.howItWorksSteps .howItWorksStepOne {
 	width: 80px;
-	}
-.howItWorksSteps .stepSection .stepTitle
-	{
-	font-family: 'open_sansbold';
-    font-size: 11px;
-    margin-top: 12px;
-	}
-.howItWorksSteps .stepSection .stepTitle span
-	{
-	font-family: "open_sansitalic";
-    font-size: 11px;
-    margin-bottom: 14px;
-    margin-top: -2px;
-	}
-.howItWorksSteps .last
-{
+}
+
+.howItWorksSteps .stepSection .stepTitle {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 11px;
+	margin-top: 12px;
+}
+
+.howItWorksSteps .stepSection .stepTitle span {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-style: italic;
+	font-size: 11px;
+	margin-bottom: 14px;
+	margin-top: -2px;
+}
+
+.howItWorksSteps .last {
 	border: 0px;
-	}	
-	
+}
+
 .signUpContainer {
 	text-align: center;
 	margin-top: 2px;
@@ -815,6 +914,7 @@ height:auto !important;
 	padding-bottom: 8px;
 	font-size: 12px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	min-height: 19px;
 	letter-spacing: 2px;
 	letter-spacing: 2px;
@@ -831,7 +931,8 @@ height:auto !important;
 }
 
 .emailSignUp {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 12px;
 	text-align: center;
 	margin-top: 3px;
@@ -843,7 +944,8 @@ height:auto !important;
 	background-repeat: no-repeat;
 	border: 0px;
 	font-size: 12px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	color: #fff;
 	width: 161px;
 	height: 14px;
@@ -852,9 +954,11 @@ height:auto !important;
 	margin-bottom: 5px;
 	padding: 5px;
 }
+
 .howItWorksContainer {
 	font-size: 12px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	text-align: left;
 }
 
@@ -888,11 +992,13 @@ height:auto !important;
 	text-align: center;
 	font-size: 14px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 }
 
 .howItWorksContainer .title .subTitleSec {
 	font-size: 10px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 }
 
 .horizontalSteps {
@@ -903,7 +1009,8 @@ height:auto !important;
 }
 
 .horizontalSteps span {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 .learnMoreAboutSteps {
@@ -916,12 +1023,15 @@ height:auto !important;
 
 .learnMoreAlert {
 	font-size: 10px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 .learnMoreLink {
 	font-size: 14px;
 	font-family: "Garamond_bold";
+font-weight: normal;
+	font-weight:normal;
 }
 
 .horizontalSteps img {
@@ -947,6 +1057,7 @@ height:auto !important;
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 11px;
@@ -974,12 +1085,14 @@ height:auto !important;
 
 .giftCardContainer .title {
 	font-size: 16px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 }
 
 .giftCardContainer .giftCardAmount {
 	color: #FBD2D1;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 109.65px;
 	margin-top: -32px;
 	margin-bottom: -42px;
@@ -993,6 +1106,7 @@ height:auto !important;
 
 .giftCardContainer .giftCardCaption {
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 23.11px;
 	color: #FBD2D1;
 	margin-top: -1.8em;
@@ -1001,7 +1115,8 @@ height:auto !important;
 
 .giftCardContainer .giftCardCaption1 {
 	font-size: 12px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	margin-top: 0px;
 	margin-bottom: 00px;
 }
@@ -1011,6 +1126,7 @@ height:auto !important;
 	margin-bottom: 0px;
 	font-size: 14px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	letter-spacing: 3px;
 	position: relative;
 	z-index: 2;
@@ -1018,6 +1134,7 @@ height:auto !important;
 
 .heading3 {
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 12px;
 	letter-spacing: 2px;
 	text-align: center;
@@ -1045,7 +1162,8 @@ height:auto !important;
 	max-height: 15px;
 	width: 91%;
 	text-align: right;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 12px;
 	color: #fff;
 	padding: 9px;
@@ -1073,7 +1191,8 @@ a.noUnderline,a.noUnderline:hover {
 
 .readOurBlog .subText {
 	font-size: 23.34px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	margin-top: 0em;
 	margin-bottom: 0em;
 }
@@ -1082,6 +1201,7 @@ a.noUnderline,a.noUnderline:hover {
 	margin-top: -0.4em;
 	margin-bottom: 0em;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 42.79px;
 }
 
@@ -1148,18 +1268,21 @@ a.noUnderline,a.noUnderline:hover {
 	text-transform: uppercase;
 	color: #FBD2D1;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	margin-top: 22px;
 	margin-bottom: -0.1em;
 }
 
 .expertList .expertInformation .expertLocation {
 	font-size: 12px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 .expertList .expertInformation .expertBlog {
 	font-size: 11px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	padding-right: 2px;
 }
 
@@ -1175,8 +1298,8 @@ a.noUnderline,a.noUnderline:hover {
 .categoryHeading {
 	font-family: "Garamond";
 	font-size: 24px;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 7px;
+	margin-bottom: 7px;
 }
 
 .categoryHeading h1 {
@@ -1236,7 +1359,8 @@ a.noUnderline,a.noUnderline:hover {
 
 .footer .footernavlinks div {
 	font-size: 14px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	margin-top: 12px;
 	margin-bottom: 12px;
 	color: #898989;
@@ -1247,6 +1371,7 @@ a.noUnderline,a.noUnderline:hover {
 	color: #FBD2D1;
 	letter-spacing: 3px;
 	font-family: "Garamond";
+	font-weight:normal;
 }
 
 .footer .copyright {
@@ -1256,7 +1381,8 @@ a.noUnderline,a.noUnderline:hover {
 	margin-top: 12px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	font-family: 'open_sanslight';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 }
 
 .expertSectoinSlider {
@@ -1348,6 +1474,7 @@ img.colorful {
 
 .piDark:hover img.colorful {
 	display: inline;
+
 }
 
 .SiteContentSection .featuredStoresSection,.SiteContentSection .saleAlertSection
@@ -1399,6 +1526,7 @@ img.colorful {
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	padding-top: 13px;
 	padding-bottom: 13px;
 	padding-left: 23px;
@@ -1411,13 +1539,15 @@ img.colorful {
 }
 
 .formActionsRight .alreadyMember {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 12px;
 }
 
 .formActionsRight .login {
 	font-size: 12px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	color: #5D77AF;
 }
 
@@ -1445,7 +1575,10 @@ img.colorful {
 	width: 583px;
 	margin-left: 18px;
 }
-
+.RetailerContainer .RetailerShopNow
+{
+margin-bottom:22px;
+}
 .RetailerContainer h1 {
 	margin-left: 0px;
 }
@@ -1509,7 +1642,8 @@ img.colorful {
 }
 
 .RetailerCashBack .percentageCount {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 60px;
 	margin-bottom: 2px;
 	margin-top: -9px;
@@ -1519,6 +1653,7 @@ img.colorful {
 	font-size: 30px;
 	position: relative;
 	top: -22px;
+	left: -14px;
 }
 
 .RetailerCashBack .cashBackCaption {
@@ -1529,6 +1664,7 @@ img.colorful {
 
 .percentageCount .upToText {
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	font-size: 28px;
 	position: relative;
 	right: -8px;
@@ -1542,7 +1678,8 @@ img.colorful {
 
 .RetailerDescription {
 	font-size: 12px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	margin-top: 34px;
 	margin-bottom: 36px;
 }
@@ -1550,6 +1687,7 @@ img.colorful {
 .RetailerOffersHeading {
 	font-size: 24px;
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	padding-top: 12px;
 	padding-bottom: 12px;
 	border-top: 1px solid #D3D3D3;
@@ -1628,33 +1766,39 @@ table.couponTable tr td span.offerExpiryDate {
 }
 
 .discountTitle {
-	font-family: 'open_sansextrabold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
 	font-size: 12px;
 }
 
 .offerName {
-	font-family: 'open_sansextrabold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
 	font-size: 12px;
 }
 
 .offerName span.offerExpiryDate {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 12px;
 }
 
 .cashBackOnOffer {
 	font-size: 12px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	margin-top: 5px;
 	margin-bottom: 1px;
 }
 
 .cashBackOnOffer span {
-	font-family: 'open_sansextrabold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
 }
 
 .requirement {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 12px;
 }
 
@@ -1671,6 +1815,7 @@ table.couponTable tr td span.offerExpiryDate {
 	color: #FFFFFF;
 	max-height: 19px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 9px;
 	letter-spacing: 1px;
 	padding-top: 5px;
@@ -1690,14 +1835,16 @@ table.couponTable tr td span.offerExpiryDate {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	font-size: 12px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	border-bottom: 0px;
 }
 
 .categoryTable tr td {
 	border-bottom: 1px solid #CCCCCC;
 	font-size: 12px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	padding-top: 5px;
 	padding-bottom: 7px;
 	vertical-align: middle;
@@ -1711,13 +1858,17 @@ table.couponTable tr td span.offerExpiryDate {
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
-
+.siteButton
+{
+font-weight:normal;
+}
 .bulletIconAlignment {
 	margin-left: 10px;
 }
 
 .cashBackCaption span {
 	font-family: "Garamond_bold";
+font-weight: normal;
 }
 
 .selectedRow td {
@@ -1731,7 +1882,8 @@ table.couponTable tr td span.offerExpiryDate {
 
 .categoryTable tr td.cashBackCaption {
 	text-align: center;
-	font-family: 'open_sansextrabold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
 	margin-top: 0px;
 }
 
@@ -1750,10 +1902,6 @@ table.couponTable tr td span.offerExpiryDate {
 .storeName {
 	width: 200px;
 	border-right: 1px solid #DEBBBA;
-}
-
-.retailerTable tr td {
-	
 }
 
 .storeCashBackScheme {
@@ -1787,7 +1935,8 @@ table.couponTable tr td span.offerExpiryDate {
 	width: 99%;
 	margin: auto;
 	padding-top: 7px;
-	padding-bottom: 7px;
+	padding-bottom: 8px;
+	margin-top:2px;
 }
 
 .WhyToJoinContainerLeft {
@@ -1801,6 +1950,7 @@ table.couponTable tr td span.offerExpiryDate {
 	text-align: right;
 	font-size: 25px;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	color: #FBD2D1;
 	letter-spacing: 3px;
 }
@@ -1821,14 +1971,16 @@ table.couponTable tr td span.offerExpiryDate {
 	padding-right: 21px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 10px;
 	color: #fff;
 	letter-spacing: 1px;
 }
 
 .WhyToJoinContainerRight div span {
-	font-family: 'open_sansextrabold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
 }
 
 /* ==========================================================================
@@ -2028,7 +2180,8 @@ table.couponTable tr td span.offerExpiryDate {
 }
 
 .emailSignUp {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 12px;
 	text-align: center;
 	margin-top: 3px;
@@ -2040,7 +2193,8 @@ table.couponTable tr td span.offerExpiryDate {
 	background-repeat: no-repeat;
 	border: 0px;
 	font-size: 12px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	color: #fff;
 	width: 161px;
 	height: 14px;
@@ -2073,6 +2227,7 @@ span {
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 11px;
@@ -2459,7 +2614,8 @@ a
 }
 
 .emailSignUp {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 12px;
 	text-align: center;
 	margin-top: 3px;
@@ -2471,7 +2627,8 @@ a
 	background-repeat: no-repeat;
 	border: 0px;
 	font-size: 12px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	color: #fff;
 	width: 161px;
 	height: 14px;
@@ -2496,6 +2653,7 @@ span {
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond_bold";
+font-weight: normal;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 11px;
@@ -2538,9 +2696,10 @@ span {
 
 .popUpContainer .title {
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	font-size: 24px;
 	color: #FBD2D1;
-	padding-top: 0px;
+	padding-top: 3px;
 	padding-bottom: 0px;
 	text-align: center;
 	letter-spacing: 3px;
@@ -2558,6 +2717,7 @@ span {
 
 .welcomeContainer .welcomeTitle {
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 12px;
 	text-align: center;
 	letter-spacing: 3px;
@@ -2591,13 +2751,14 @@ span {
 	text-align: center;
 	font-size: 24px;
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	letter-spacing: 5px;
 	color: #FBD2D1;
 	background-color: #373737;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	padding-top: 6px;
-	padding-bottom: 6px;
+	padding-bottom: 4px;
 }
 
 .popUpContentRight .formBody {
@@ -2620,7 +2781,8 @@ span {
 	margin-bottom: 7px;
 	margin-top: 7px;
 	font-size: 12px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 }
 
 .customInputBox input {
@@ -2629,7 +2791,8 @@ span {
 	outline: none;
 	color: #fff;
 	font-size: 12px !important;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	padding: 8px 9px;
 	background-color: #D0D0D0;
 	margin-top: 7px;
@@ -2642,6 +2805,10 @@ span {
 	padding-bottom: 8px !important;
 	margin-left: -4px !important;
 }
+.formActionsLeft button
+{
+display:inline-block;
+}
 
 .CashBackStores {
 	width: 96.5555%;
@@ -2650,13 +2817,17 @@ span {
 	background-color: #373737;
 	font-size: 17.2px;
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	color: #fff;
 	padding-top: 6px;
 	padding-bottom: 6px;
 	letter-spacing: 4px;
 	margin-top: 8px;
 }
-
+.marginFixes
+{
+padding-bottom:4px;
+}
 .popUpSteps {
 	width: 410px;
 	margin-top: 36px;
@@ -2680,13 +2851,15 @@ span {
 }
 
 .dashboardInfo {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 12px;
 	padding-top: 8px;
 }
 
 .dashboardInfo span {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 14px;
 }
 
@@ -2708,7 +2881,8 @@ span {
 }
 
 .welcomeSection1 div.userName {
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-size: 14px;
 	margin-top: -5px;
 }
@@ -2927,7 +3101,8 @@ a
 }
 
 .userActivityContainer {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 12px;
 	width: 650px;
 	margin-top: 10px;
@@ -2937,7 +3112,8 @@ a
 
 .rightLine {
 	border-right: 1px solid #e1e1e1;
-	min-height: 465px;
+/*	min-height: 465px;    Original;*/
+	min-height: 285px;
 }
 
 .signUpActivity {
@@ -2952,6 +3128,7 @@ a
 
 .userActivityContainer .contentTitle {
 	font-family: "Garamond_bold";
+font-weight: normal;
 	font-size: 15px;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -2996,8 +3173,9 @@ a
 }
 
 h3 {
-	font-family: 'open_sansregular';
-	font-size: 13px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size: 13px;	
 }
 
 .loginActions {
@@ -3023,7 +3201,8 @@ h3 {
 }
 
 .haveAccount {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	margin-bottom: 8px;
 	margin-top: -6px;
 }
@@ -3063,7 +3242,8 @@ h3 {
 }
 
 .errorMessage {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 13px;
 	text-shadow: 1px 1px 1px #fbfbfb;
 	text-align: left;
@@ -3135,7 +3315,8 @@ h3 {
 
 .dataTables_info {
 	font-size: 13px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 .categoryHeadingWithMargins {
@@ -3146,7 +3327,8 @@ h3 {
 .dataTables_empty div {
 	text-align: center;
 	font-size: 13px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-weight: normal;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -3163,7 +3345,8 @@ h3 {
 
 .manadatoryField {
 	color: #FF0000;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 ul.singleError {
@@ -3201,7 +3384,8 @@ ul.singleError {
 
 /* Search Retailer Page Design */
 .searchRetailer {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 12px;
 }
 
@@ -3439,33 +3623,37 @@ ul.menuDropDown li a {
 
 .lt-ie9 .dropOut {
 	zoom: 1;
-	filter: progid : DXImageTransform.Microsoft.Shadow ( color = #dddddd,
-		direction = 0, strength = 1 ), progid :
-		DXImageTransform.Microsoft.Shadow ( color = #dddddd, direction = 45,
-		strength = 1 ), progid : DXImageTransform.Microsoft.Shadow ( color =
-		#dddddd, direction = 90, strength = 2 ), progid :
-		DXImageTransform.Microsoft.Shadow ( color = #dddddd, direction = 135,
-		strength = 3 ), progid : DXImageTransform.Microsoft.Shadow ( color =
-		#cccccc, direction = 180, strength = 10 ), progid :
-		DXImageTransform.Microsoft.Shadow ( color = #dddddd, direction = 225,
-		strength = 3 ), progid : DXImageTransform.Microsoft.Shadow ( color =
-		#dddddd, direction = 270, strength = 2 ), progid :
-		DXImageTransform.Microsoft.Shadow ( color = #dddddd, direction = 315,
-		strength = 1 );
+	filter: progid :   DXImageTransform.Microsoft.Shadow (   color =  
+		#dddddd, direction =   0, strength =   1 ), progid : 
+		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
+		  45, strength =   1 ), progid :   DXImageTransform.Microsoft.Shadow (
+		  color = 
+		 #dddddd, direction =   90, strength =   2 ), progid : 
+		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
+		  135, strength =   3 ), progid :   DXImageTransform.Microsoft.Shadow
+		(   color = 
+		 #cccccc, direction =   180, strength =   10 ), progid : 
+		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
+		  225, strength =   3 ), progid :   DXImageTransform.Microsoft.Shadow
+		(   color = 
+		 #dddddd, direction =   270, strength =   2 ), progid : 
+		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
+		  315, strength =   1 );
 }
 
 .dropOut ul {
 	float: left;
 	list-style: none;
-	font-family: open_sanslight;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
 	font-size: 12px;
 	padding: 0;
 }
 
 .dropOut ul li b {
-	font-family: open_sansbold;
-	color: #555;
-	font-weight: 400;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	color: #555;	
 }
 
 .dropOut ul li {
@@ -3523,7 +3711,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	padding: 5px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	border: 1px solid #555555;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -3555,7 +3744,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .popupLeadLine {
 	font-size: 23px;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -3573,18 +3763,19 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .inputArea {
-	width: 360px;
+	width: 280px;
 	margin-top: 10px;
 }
 
 .logoArea {
-	width: 197px;
+	width: 280px;
 }
 
 .popupEndingLines {
 	text-align: center;
-	font-family: 'open_sansregular';
-	font-size: 12px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 12px;	
 }
 
 .popupEndingLines div {
@@ -3615,17 +3806,30 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .inputArea .alreadyMember span {
 	color: #FFD2D2;
 }
-
+.inputArea .alreadyMember .popupFormSectionButton span {
+	color: #fff;
+	padding-left: 15px;
+    padding-right: 8px;
+	margin-left:5px;
+}
 .popupFormSectionButton span {
-	font-size: 13.5px;
+	font-size: 13.5px;	
 }
-
-.popupFormSectionButton {
-	margin-top: 7px;
-	display: inline-block;
-	float: right;
+.popupFormSectionButton {	
+    display: inline-block;
+    float: left;
+    margin-top: 7px;
+    text-align: left;
+    width: 116px;
 }
-
+.colorLinkNew
+{
+float:left;
+width:158px;
+font-size:14px;
+line-height:normal;
+margin-top:8px;
+}
 .popupFormSection .inputArea .standardInputBox input::-webkit-input-placeholder
 	{
 	font-size: 14px;
@@ -3645,19 +3849,20 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .logoArea {
-	text-align: right;
+	text-align: left;
 }
 
 .logoArea img {
-	width: 130px;
+	width: 248px;
 	padding-right: 20px;
+	padding-top:19px;
 }
 
 .popupEndingLines {
 	position: absolute;
 	left: 0px;
 	right: 0px;
-	bottom: 10px;
+	bottom: 4px;
 	width: 100%;
 }
 
@@ -3671,7 +3876,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .referAFriend {
 	font-size: 13px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	padding-top: 0px;
 }
 
@@ -3717,10 +3923,11 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .yourReferralLinkContainer b {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-weight: normal;
 	font-size: 13px;
-	padding-right:5px;
+	padding-right: 5px;
 }
 
 .referalForm {
@@ -3735,7 +3942,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .referalForm b {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-weight: normal;
 	font-size: 13px;
 }
@@ -3750,7 +3958,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	vertical-align: middle;
 	text-align: right;
 	padding: 3px 0px 3px 0px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-weight: normal;
 	font-size: 14px;
 }
@@ -3808,7 +4017,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .referralsTable tr td {
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 }
 
 .messageCaption {
@@ -3842,7 +4052,6 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .customCommentList {
 	list-style: none;
-
 	margin: 0px;
 	padding: 0px;
 }
@@ -3867,13 +4076,15 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .commentTime {
 	font-size: 13px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	color: #878787;
 }
 
 .commentPoster b {
 	text-transform: uppercase;
-	font-family: 'open_sansbold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
 	font-weight: normal;
 }
 
@@ -3888,7 +4099,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .customReply {
 	font-size: 13px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 }
 
 .customComment p {
@@ -3897,7 +4109,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .comments-title {
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 16px;
 	font-weight: normal;
 	border-bottom: 1px solid #CACACA;
@@ -3918,17 +4131,18 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	display: none;
 }
 
-.blogTimeStamp {	
+.blogTimeStamp {
 	margin-bottom: 10px;
-	margin-left:10px;	
+	margin-left: 10px;
 	font-size: 12px;
 	background-color: #EFEFEF;
 	border-left: 5px solid #FBD2D1;
 	padding: 4px 10px;
 	display: inline-block;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	min-width: 100px;
-	float:left;
+	float: left;
 }
 
 .blogAuthorNameSection {
@@ -3938,9 +4152,10 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	border-left: 5px solid #FBD2D1;
 	padding: 4px 10px;
 	display: inline-block;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	min-width: 100px;
-	float:left;
+	float: left;
 }
 
 .blogAuthorDetail {
@@ -3966,7 +4181,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .comment-form {
 	background-color: #EFEFEF;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	font-size: 14px;
 	border-radius: 5px;
 	padding: 10px;
@@ -3979,7 +4195,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .comment-reply-title {
 	font-size: 16px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-weight: normal;
 }
 
@@ -4002,7 +4219,8 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .comment-form label {
 	width: 100px;
 	display: inline-block;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 13px;
 }
 
@@ -4032,6 +4250,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	-ms-border-radius: 10px;
 	color: #FFFFFF;
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	font-size: 12px;
 	letter-spacing: 1px;
 	padding: 6px 8px 6px;
@@ -4039,18 +4258,24 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	border: 0px;
 	width: 170px;
 	margin-left: 290px;
-	margin-top:8px;
+	margin-top: 8px;
 }
 
 .customCommentArea .comment-notes {
 	margin-bottom: 15px;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 13px;
+}
+.dealsOfWeekContainer .bx-default-pager
+{
+right:-6px;
 }
 
 .standardSiteContainer {
 	width: 640px;
-	font-family: 'open_sansregular';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
 	padding-left: 10px;
 	font-size: 13px;
 }
@@ -4063,13 +4288,14 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 /* Contact us form Design Modification*/
 .wpcf7 .wpcf7-form {
 	background-color: #EFEFEF;
-	font-family: 'open_sanssemibold';
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 	font-size: 13px;
 	border-radius: 5px;
 	padding: 10px;
 	padding-left: 20px;
-	padding-top:15px;
-	padding-bottom:8px;
+	padding-top: 15px;
+	padding-bottom: 8px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-ms-border-radius: 5px;
@@ -4090,22 +4316,22 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 
 .wpcf7-form-control-wrap textarea {
 	border: 1px solid #D3D3D3;
-	padding: 5px 5px;	
+	padding: 5px 5px;
 	font-size: 13px;
 	resize: vertical;
 	height: 4em;
 }
 
-.wpcf7-captchac {	
+.wpcf7-captchac {
 	margin-bottom: 10px;
 }
 
-.captcha-793 {	
+.captcha-793 {
 	display: block;
 }
 
 .captcha-793 input {
-	width: 268px;	
+	width: 268px;
 	padding: 4px 5px;
 }
 
@@ -4117,12 +4343,13 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	-ms-border-radius: 8px;
 	color: #FFFFFF;
 	font-family: "Garamond_bold";
+	font-weight: normal;
 	font-size: 12px;
 	letter-spacing: 1px;
 	padding: 6px 8px 6px;
 	text-transform: uppercase;
 	border: 0px;
-	width: 150px;	
+	width: 150px;
 	margin-bottom: 9px;
 	margin-top: 32px;
 	margin-right: 11px;
@@ -4131,85 +4358,195 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .wpcf7-response-output {
 	clear: both;
 }
-.contactPersonInformation
-{
-width:101%;
+
+.contactPersonInformation {
+	width: 101%;
 }
-.contactPersonInformation div
-{
-width:286px;
+
+.contactPersonInformation div {
+	width: 286px;
 }
-.contactPersonInformation > div
-{
-margin-right:15px;
+
+.contactPersonInformation>div {
+	margin-right: 15px;
 }
-.subjectColumn
-{
-clear:both;
-padding-top:5px;
+
+.subjectColumn {
+	clear: both;
+	padding-top: 5px;
 }
-.contactMessage
-{
-margin-top:5px;
+
+.contactMessage {
+	margin-top: 5px;
 }
-.contactMessage textarea
-{
-width:96%;
+
+.contactMessage textarea {
+	width: 96%;
 }
-.securityCheck 
-{
-width:101%;
-clear:both;
-padding-top:10px;
-margin-bottom:-35px;
+
+.securityCheck {
+	width: 101%;
+	clear: both;
+	padding-top: 10px;
+	margin-bottom: -35px;
 }
-.securityCheck .securityCheckLabel
-{
-width:155px;
-padding-top:5px;
+
+.securityCheck .securityCheckLabel {
+	width: 155px;
+	padding-top: 5px;
 }
-.securityCheck .securityCheckSection
-{
-width:400px;
+
+.securityCheck .securityCheckSection {
+	width: 400px;
 }
-.securityCheck .securityCheckSection  p
-{
-margin-top:0px;
-margin-bottom:8px;
+
+.securityCheck .securityCheckSection  p {
+	margin-top: 0px;
+	margin-bottom: 8px;
 }
-.wpcf7-not-valid-tip
-{
-color:red;
-display:block;
-margin-top:2px;
-font-family: 'open_sansregular';
-margin-left:2px;
+
+.wpcf7-not-valid-tip {
+	color: red;
+	display: block;
+	margin-top: 2px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	margin-left: 2px;
 }
-.wpcf7-validation-errors
-{
-display:none !important;
+
+.wpcf7-validation-errors {
+	display: none !important;
 }
-.comment-form-url .label
-{
-float:left;
+
+.comment-form-url .label {
+	float: left;
 }
-.comment-form-comment
-{
-clear:both;
+
+.comment-form-comment {
+	clear: both;
 }
-.cptch_block br
+
+.cptch_block br {
+	display: none;
+}
+
+.wpcf7-captchar {
+	width: 119px !important;
+}
+
+.centerAligned {
+	text-align: center;
+}
+
+.comment-form .form-allowed-tags {
+	display: none;
+}
+
+/* Transition Popup Design */
+.transitionPopup {
+	width: 440px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 12px;
+	text-align: center;
+	margin: auto;
+}
+.transitionPopup .loadingLine
+{
+margin-top:10px;
+margin-bottom:10px;
+}
+.transitionPopup
+{
+box-shadow:0 0 10px #373737;
+position:fixed;
+top:25%;
+left:0%;
+right:0%;
+}
+.transitionPopup .themePink {
+	background-color: #FDD3D1;
+	padding: 10px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+}
+
+.transitionPopup .descriptionMessage {
+	font-size: 19px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.transitionPopup .themeWhite {
+	padding: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color:#fff;
+}
+
+.transitionPopup .themeWhite .webIcon {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.themePink>div {
+	font-size: 13px;
+}
+
+.themePink>div>img {
+	width: 26px;
+	margin-left: 8px;
+	margin-top: -19px;
+}
+.dealsOfWeekContainer .storeText
+{
+padding-left:3px;
+padding-right:3px;
+}
+
+
+/* Custom Slide Panel */
+
+.dealsOfWeekContainer .bx-wrapper .bx-pager
+{
+width:auto !important;
+margin-right:13px;
+}
+
+.prevSlideIcon,
+.nextSlideIcon
+{
+background-image:url(../img/nextPrevButtons.png);
+width:15px;
+height:15px;
+display:inline-block;
+cursor:pointer;
+position:relative;
+top:-5px;
+}
+.prevSlideIcon
+{
+background-position:-15px 0px;
+margin-right:5px;
+}
+.nextSlideIcon
+{
+background-position:0px 0px;
+margin-left:5px;
+}
+.dealsOfWeekContainer .bx-controls-direction
 {
 display:none;
 }
-.wpcf7-captchar
-{
-width:119px !important;
-}
-.centerAligned
-{
-text-align:center;
-}
-.comment-form .form-allowed-tags
-{
-display:none;
+.bx-wrapper .bx-pager.bx-default-pager a {
+	background: #E4E4E4;
+	text-indent: -9999px;
+	display: block;
+	width: 7px !important;
+	height: 7px !important;
+	margin: 0 3px !important;
+	outline: 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
