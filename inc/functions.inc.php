@@ -1330,7 +1330,7 @@ if (!function_exists('RemoveCashbackType')) {
 if (!function_exists('GetTrendingSaleCoupons')) {
 	function GetTrendingSaleCoupons(){
 		$coupons = array();
-		$r = smart_mysql_query("SELECT r.cashback,r.retailer_id, r.image as retailer_image, c.title, c.coupon_id, c.description FROM cashbackengine_coupons c 
+		$r = smart_mysql_query("SELECT r.cashback,r.retailer_id, r.image as retailer_image,r.image_I,r.image_II,r.image_III, c.title, c.coupon_id, c.description FROM cashbackengine_coupons c 
 		LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id
 		WHERE 
 		c.status='active' and 

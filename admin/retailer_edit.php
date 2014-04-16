@@ -7,14 +7,13 @@
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \*******************************************************************/
 
+	set_time_limit(120);
 	session_start();
 	require_once("../inc/adm_auth.inc.php");
 	require_once("../inc/config.inc.php");
 	require_once("./inc/admin_funcs.inc.php");
 
-
 	$pn = (int)$_GET['pn'];
-
 
 	if (isset($_POST["action"]) && $_POST["action"] == "edit")
 	{
@@ -47,10 +46,145 @@
 			$popular_retailer	= (int)getPostParameter('popular_retailer');
 			$status				= mysql_real_escape_string(getPostParameter('status'));
 
+			$r_img_I			= $_FILES['image_I']['name'];
+			$r_img_II			= $_FILES['image_II']['name'];
+			$r_img_III			= $_FILES['image_III']['name'];
+			
+			// get previous image details
+			/*$id	= (int)$_GET['id'];
+			$query1 = "
+				SELECT 
+					image,
+					image_original,
+					image_120x60,
+					image_300x100
+				FROM cashbackengine_retailers 
+				WHERE retailer_id='$id' 
+				LIMIT 1
+			";
+			$rs1 = smart_mysql_query($query1);
+			$row1 = mysql_fetch_assoc($rs1);
+			$imgPreviousUrl = (empty($row1)) ? '' : $row1['image'] ;
+			
+			// no image url provided
 			if ($img == "")
 			{
 				$img = "noimg.gif";
+				
+				if ( ! empty($imgPreviousUrl)) {
+					// delete previous files from disk
+				    $previousOriginalFile = $row1['image_original'];
+					$previous120x60ThumbnailFile = $row1['image_120x60'];
+					$previous300x100ThumbnailFile = $row1['image_300x100'];
+					
+					if (file_exists("upload/$previousOriginalFile")) {
+						unlink("upload/$previousOriginalFile");
+					}
+					
+					if (file_exists("upload/$previous120x60ThumbnailFile")) {
+						unlink("upload/$previous120x60ThumbnailFile");
+					}
+					
+					if (file_exists("upload/$previous300x100ThumbnailFile")) {
+						unlink("upload/$previous300x100ThumbnailFile");
+					}
+					// save new files in db
+					$qry1 = smart_mysql_query("
+						UPDATE cashbackengine_retailers 
+						SET image_original = 'noimg.gif',
+							image_120x60 = 'noimg.gif',
+							image_300x100 = 'noimg.gif'
+						WHERE retailer_id='$id' 
+					");
+				
+				}
 			}
+			// image url provided
+			else 
+			{
+				if ($imgPreviousUrl != $img) {
+					require_once("../inc/Zebra_Image.php");
+					
+					// download the image from Web
+					$imgDownload = file_get_contents($img);
+					$originalFilename = pathinfo($imageExternalUrl, PATHINFO_FILENAME); 
+					$newFilename  = $originalFilename . '_' . md5(uniqid()) . '.jpg';
+					$status = file_put_contents("upload/$newFilename", $imgDownload);
+					
+					if (status != false) {
+		    			$image = new Zebra_Image();
+		    			$imageMedium = new Zebra_Image();
+		    		
+		    			// indicate a source image (a GIF, PNG or JPEG file)
+		    			$image->source_path = "upload/$newFilename";
+		    			$imageMedium->source_path = "upload/$newFilename";
+		    		
+			    		// indicate a target image
+					    // note that there's no extra property to set in order to specify the target 
+					    // image's type -simply by writing '.jpg' as extension will instruct the script 
+					    // to create a 'jpg' file
+					    $newParts = explode('.', $newFilename);
+						$newName = $newParts[0];
+						$newExt = $newParts[1];
+					
+						// smaller thumbnail
+						$thumbSmallerFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
+					    $image->target_path = "upload/$thumbSmallerFilename";
+				    
+					    // some additional properties that can be set
+					    // read about them in the documentation
+					    $image->preserve_aspect_ratio = true;
+					    $image->enlarge_smaller_images = false;
+					    $image->preserve_time = true;
+					
+						// resize the image to exactly 100x100 pixels by using the "crop from center" method
+					    // (read more in the overview section or in the documentation)
+					    //  and if there is an error, check what the error is about
+					    $image->resize(120, 60, ZEBRA_IMAGE_NOT_BOXED);
+				    
+					    // medium thumbnail
+				   		$thumbMediumFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
+				    	$imageMedium->target_path = "upload/$thumbMediumFilename";
+				    
+					    // some additional properties that can be set
+					    // read about them in the documentation
+					    $imageMedium->preserve_aspect_ratio = true;
+					    $imageMedium->enlarge_smaller_images = false;
+					    $imageMedium->preserve_time = true;
+					
+						// resize the image to exactly 100x100 pixels by using the "crop from center" method
+					    // (read more in the overview section or in the documentation)
+					    //  and if there is an error, check what the error is about
+					    $imageMedium->resize(300, 100, ZEBRA_IMAGE_NOT_BOXED);
+					    
+					    // delete previous files from disk
+					    $previousOriginalFile = $row1['image_original'];
+						$previous120x60ThumbnailFile = $row1['image_120x60'];
+						$previous300x100ThumbnailFile = $row1['image_300x100'];
+						
+						if (file_exists("upload/$previousOriginalFile")) {
+							unlink("upload/$previousOriginalFile");
+						}
+						
+						if (file_exists("upload/$previous120x60ThumbnailFile")) {
+							unlink("upload/$previous120x60ThumbnailFile");
+						}
+						
+						if (file_exists("upload/$previous300x100ThumbnailFile")) {
+							unlink("upload/$previous300x100ThumbnailFile");
+						}
+						
+						// save new files in db
+						$qry1 = smart_mysql_query("
+							UPDATE cashbackengine_retailers 
+							SET image_original = '$newFilename',
+								image_120x60 = '$thumbSmallerFilename',
+								image_300x100 = '$thumbMediumFilename'
+							WHERE retailer_id='$id' 
+						");
+					}
+				}			    
+			}*/
 
 			if (!($rname && $url && $status)) //$cashback && $cashback_sign
 			{
@@ -107,11 +241,211 @@
 				$old_cashback = "";
 				$retailer_cashback = "";
 			}
+			if( (isset($_FILES['image_I'])&& ($_FILES['image_I']['name']!="")) || (isset($_FILES['image_II']) && ($_FILES['image_II']['name']!="")) || (isset($_FILES['image_III'])&& ($_FILES['image_III']['name']!="")) )
+			{
+				if ($_FILES["image_I"]["error"] > 0)
+		  			{
+						$error[]= $_FILES["image_I"]["error"];
+					}
+					else if($_FILES["image_II"]["error"] > 0)
+					{
+						$error[]= $_FILES["image_II"]["error"];
+					}
+					else if($_FILES["image_III"]["error"] > 0 )
+					{
+						$error[]= $_FILES["image_III"]["error"];
+					}
+					else
+					{
+						$valid_mime_types = array(
+							"image/gif",
+							"image/jpeg",
+							"image/jpg",
+							"image/pjpeg",
+							"image/x-png",
+							"image/png",
+						);
+						//For Image I
+						$allowedExts = array("gif", "jpeg", "jpg", "png");
+						$temp_I = explode(".", $_FILES["image_I"]["name"]);
+						$extension_I = end($temp_I);
+						
+						if(isset($_FILES['image_I'])&& $_FILES['image_I']['name']!="")
+						{
+							if (!(in_array($extension_I, $allowedExts) && in_array($_FILES["image_II"]["type"], $valid_mime_types)))
+							{
+						  		$errors[] = 'Invalid Image_I type - only gif, jpeg, jpg or png are allowed to upload';
+							}
+							
+							if($_FILES["image_II"]["size"] > 5242880){
+								$errors[] = 'Allowed maximum file size is 5MB.';
+							}
+						}
+						//For Image-II
+						if(isset($_FILES['image_II'])&& $_FILES['image_II']['name']!="")
+						{
+							$temp_II = explode(".", $_FILES["image_II"]["name"]);
+							$extension_II = end($temp_II);
+				
+							if (!(in_array($extension_II, $allowedExts) && in_array($_FILES["image_II"]["type"], $valid_mime_types)))
+							{
+						  		$errors[] = 'Invalid Image_II type - only gif, jpeg, jpg or png are allowed to upload';
+							}
+							
+							if($_FILES["image_II"]["size"] > 5242880){
+								$errors[] = 'Allowed maximum file size is 5MB.';
+							}
+						}
+						//For Image-III
+						if(isset($_FILES['image_III'])&& $_FILES['image_III']['name']!="")
+						{
+							$temp_III = explode(".", $_FILES["image_III"]["name"]);
+							$extension_III = end($temp_III);
+				
+							if (!(in_array($extension_III, $allowedExts) && in_array($_FILES["image_III"]["type"], $valid_mime_types)))
+							{
+						  		$errors[] = 'Invalid Image_III type - only gif, jpeg, jpg or png are allowed to upload';
+							}
+							
+							if($_FILES["image_III"]["size"] > 5242880){
+								$errors[] = 'Allowed maximum file size is 5MB.';
+							}
+						}
+					}
+				}
 
 
 			if (count($errors) == 0)
 			{
-				$qry=smart_mysql_query("UPDATE cashbackengine_retailers SET title='$rname', network_id='$network_id', program_id='$program_id', url='$url', image='$img', old_cashback='$retailer_old_cashback', cashback='$retailer_cashback', conditions='$conditions', description='$description', meta_description='$meta_description', meta_keywords='$meta_keywords', end_date='$retailer_end_date', featured='$featured', deal_of_week='$deal_of_week',popular_retailer='$popular_retailer', status='$status' WHERE retailer_id='$retailer_id'");
+				//Image upload functionality in case of image change
+				unset($img_upload_arr);
+				$img_upload_arr = array();
+				
+				//Fetch the previous location of retailer images - to unlink in case user upload new images
+				if (isset($_GET['id']) && is_numeric($_GET['id']))
+				{
+					$id	= (int)$_GET['id'];
+					$query = "SELECT image_I,image_III,image_III FROM cashbackengine_retailers WHERE retailer_id='$id' LIMIT 1";
+					$rs	= smart_mysql_query($query);
+					$total = mysql_num_rows($rs);
+				}
+				if ($total > 0) {
+					$row_images = mysql_fetch_array($rs);
+				}
+				if(isset($_FILES['image_I'])&& $_FILES['image_I']['name']!="")
+				{
+				if (file_exists("upload/retailer/" . $_FILES["image_I"]["name"]))
+					{
+						//rename the file and upload
+						$temp_I = explode(".", $_FILES["image_I"]["name"]);
+						$extension_I = end($temp_I);
+						$name =	$temp_I[0].'1.';
+						$name = $name.$extension_I;
+						while(file_exists("upload/retailer/" . $name)) //If file with new name already exist then change the name
+						{
+							$temp_I = explode(".", $name);
+							$name = $temp_I[0].'1.';
+							$name = $name.$extension_I;
+						}
+						move_uploaded_file($_FILES["image_I"]["tmp_name"],
+						"upload/retailer/" . $name);
+				     	$loc_image_I = $name;
+				     	
+					}
+					else
+					{
+						move_uploaded_file($_FILES["image_I"]["tmp_name"],
+						"upload/retailer/" . $_FILES["image_I"]["name"]);
+				     	$loc_image_I = $_FILES["image_I"]["name"];
+					}
+					$img_upload_arr['image_I']=$loc_image_I ;
+					
+					unlink("upload/retailer/".$row_images['image_I']);
+				}
+				if(isset($_FILES['image_II'])&& $_FILES['image_II']['name']!="")
+				{
+					//Image_II functionlity - upload
+					if (file_exists("upload/retailer/" . $_FILES["image_II"]["name"]))
+					{
+						//rename the file and upload 
+						$temp_II = explode(".", $_FILES["image_II"]["name"]);
+						$extension_II = end($temp_II);
+						
+						$name =	$temp_II[0].'1.';
+						$name = $name.$extension_II;
+						while(file_exists("upload/retailer/" . $name)) //If file with new name already exist then change the name
+						{
+							$temp_II = explode(".", $name);
+							$name = $temp_II[0].'1.';
+							$name = $name.$extension_II;
+						}
+						move_uploaded_file($_FILES["image_II"]["tmp_name"],
+						"upload/retailer/" . $name);
+				     	$loc_image_II = $name;
+					}
+					else
+					{
+						move_uploaded_file($_FILES["image_II"]["tmp_name"],
+						"upload/retailer/" . $_FILES["image_II"]["name"]);
+				     	$loc_image_II = $_FILES["image_II"]["name"];
+					}
+					$img_upload_arr['image_II'] = $loc_image_II ;
+					unlink("upload/retailer/".$row_images['image_II']);
+				}
+				if(isset($_FILES['image_III'])&& $_FILES['image_III']['name']!="")
+				{
+				//Image_III functionlity - upload
+					if (file_exists("upload/retailer/" . $_FILES["image_III"]["name"]))
+					{
+						//rename the file and upload - pending
+						$temp_III = explode(".", $_FILES["image_III"]["name"]);
+						$extension_III = end($temp_III);
+						
+						$name =	$temp_III[0].'1.';
+						$name = $name.$extension_III;
+						while(file_exists("upload/retailer/" . $name)) //If file with new name already exist then change the name
+						{
+							$temp_III = explode(".", $name);
+							$name = $temp_III[0].'1.';
+							$name = $name.$extension_III;
+						}
+						move_uploaded_file($_FILES["image_III"]["tmp_name"],
+						"upload/retailer/" . $name);
+				     	$loc_image_III = $name;
+					}
+					else
+					{
+						move_uploaded_file($_FILES["image_III"]["tmp_name"],
+						"upload/retailer/" . $_FILES["image_III"]["name"]);
+				     	$loc_image_III = $_FILES["image_III"]["name"];
+					}
+					$img_upload_arr['image_III'] = $loc_image_III;
+					unlink("upload/retailer/".$row_images['image_III']);
+				}
+					foreach($img_upload_arr as $img_key=>$img_val)
+					{ 
+						$str_img.= $img_key.'='.'"'.$img_val.'"'.',';
+					}
+				
+					
+				$qry=smart_mysql_query("
+						UPDATE cashbackengine_retailers SET 
+							title='$rname', 
+							network_id='$network_id', 
+							program_id='$program_id', 
+							url='$url', image='$img', 
+							old_cashback='$retailer_old_cashback', 
+							cashback='$retailer_cashback', 
+							conditions='$conditions', 
+							description='$description', 
+							meta_description='$meta_description', 
+							meta_keywords='$meta_keywords', 
+							end_date='$retailer_end_date', 
+							featured='$featured', 
+							deal_of_week='$deal_of_week',
+							popular_retailer='$popular_retailer', 
+							$str_img
+							status='$status' WHERE retailer_id='$retailer_id'");
 	
 				smart_mysql_query("DELETE FROM cashbackengine_retailer_to_category WHERE retailer_id='$retailer_id'");
 				if (count($category) > 0)
@@ -186,7 +520,7 @@
 		<div class="error_box"><?php echo $errormsg; ?></div>
 	<?php } ?>
 
-      <form action="" method="post" name="form1">
+      <form action="" method="post" name="form1" enctype="multipart/form-data">
         <table width="100%" cellpadding="2" cellspacing="5" border="0" align="center">
           <tr>
             <td colspan="2" align="right" valign="top"><font color="red">* denotes required field</font></td>
@@ -294,14 +628,39 @@
 				</div>
 			</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 			<td valign="middle" align="right" class="tb1">Current Image:</td>
-			<td align="left" valign="top"><img src="<?php if (!stristr($row['image'], 'http')) echo "/img/"; echo $row['image']; ?>" width="120" height="60" align="left" alt="" title="" border="0" class="imgs" /></td>
+			<td align="left" valign="top"><img src="<?php if (!stristr($row['image'], 'http')) echo "/img/"; echo $row['image']; ?>" style="max-width:88px;max-height:31px" align="left" alt="" title="" border="0" class="imgs" /></td>
 			</tr>
 			<tr>
 			<td valign="middle" align="right" class="tb1">Image URL:</td>
 			<td align="left" valign="top"><input type="text" name="image_url" class="textbox" value="<?php echo $row['image']; ?>" size="100" /></td>
-			</tr>
+			</tr>-->
+			<!-- Image functionality -->
+				<tr>
+					<td valign="middle" align="right" class="tb1">Current Image_I:</td>
+					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_I'], 'http')) echo 'upload/retailer/'.$row['image_I']; ?>"  style="max-width:120px;max-height:60px" align="left" alt="" title="" border="0" class="imgs" /></td>
+				</tr>
+	          <tr>
+	            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image I:</td>
+	            <td valign="top"><input type="file" name="image_I" class="textbox"  size="100" />(120x60)</td>
+	          </tr>
+	          <tr>
+					<td valign="middle" align="right" class="tb1">Current Image_II:</td>
+					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_II'], 'http')) echo 'upload/retailer/'.$row['image_II']; ?>"  style="max-width:150px;max-height:50px" align="left" alt="" title="" border="0" class="imgs" /></td>
+				</tr>
+	          <tr>
+	            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image II:</td>
+	            <td valign="top"><input type="file" name="image_II" class="textbox" size="100" />(300x100)</td>
+	          </tr>
+	          <tr>
+					<td valign="middle" align="right" class="tb1">Current Image_III:</td>
+					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_III'], 'http')) echo 'upload/retailer/'.$row['image_III']; ?>"  style="max-width:88px;max-height:31px" align="left" alt="" title="" border="0" class="imgs" /></td>
+				</tr>
+	          <tr>
+	            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image III:</td>
+	            <td valign="top"><input type="file" name="image_III" class="textbox" size="100" />(88x31)</td>
+	          </tr>
             <tr>
             <td width="30%" valign="top" align="right" class="tb1"><span class="req">* </span>URL:</td>
             <td nowrap="nowrap" width="70%" valign="top">

@@ -138,11 +138,11 @@
 					<div class="RetailerIcon">
 						<div>
 							<?php /*if ($row['featured'] == 1) { ?><span class="featured" alt="<?php echo CBE1_FEATURED_STORE; ?>" title="<?php echo CBE1_FEATURED_STORE; ?>"></span><?php } */ ?>
-							<div class="imagebox"><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row['image'], 'http')) echo SITE_URL."img/"; echo $row['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" /></a></div>
+							
+							<div class="imagebox"><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row['image_II'], 'http')) echo SITE_URL."admin/upload/retailer/"; echo $row['image_II']; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" /></a></div>
 							<?php echo GetStoreRating($row['retailer_id'], $show_start = 1); ?>
 						</div>
 					</div>
-					
 					<div class="RetailerCashBack">
 						<div class="percentageCount"><span class="upToText"><i></i></span>
 							<?php echo $cashback?>					
@@ -212,8 +212,7 @@
 								</div>
 							</td>
 						</tr>
-				
-				
+
 				<?php } ?>
 			
 		<?php } // end coupons // ?>

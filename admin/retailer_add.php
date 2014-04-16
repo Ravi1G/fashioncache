@@ -7,14 +7,12 @@
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \*******************************************************************/
 
+	set_time_limit(120);
 	session_start();
 	require_once("../inc/adm_auth.inc.php");
 	require_once("../inc/config.inc.php");
 	require_once("./inc/admin_funcs.inc.php");
-
-
 	$url = "http://";
-
 
 	if (isset($_POST['action']) && $_POST['action'] == "add")
 	{
@@ -45,18 +43,154 @@
 			$deal_of_week		= (int)getPostParameter('deal_of_week');
 			$popular_retailer	= (int)getPostParameter('popular_retailer');
 			$status				= mysql_real_escape_string(getPostParameter('status'));
-
+			
+			$r_img_I			= $_FILES['image_I']['name'];
+			$r_img_II			= $_FILES['image_II']['name'];
+			$r_img_III			= $_FILES['image_III']['name'];
+			
+			$newFilename  = '';
+			$thumbSmallerFilename = '';
+			$thumbMediumFilename = '' ;
+			
+			//Retailer Image functionality
+			
+			
+			// no image url provided
 			if ($img == "")
 			{
 				$img = "noimg.gif";
 			}
+			// image url provided
+			else {/*
+				require_once("../inc/Zebra_Image.php");
+				
+				// download the image from Web
+				$imgDownload = file_get_contents($img);
+				$originalFilename = pathinfo($imageExternalUrl, PATHINFO_FILENAME); 
+				$newFilename  = $originalFilename . '_' . md5(uniqid()) . '.jpg';
+				$status = file_put_contents("upload/$newFilename", $imgDownload);
+				
+				if (status != false) {
+	    			$image = new Zebra_Image();
+	    			$imageMedium = new Zebra_Image();
+	    		
+	    			// indicate a source image (a GIF, PNG or JPEG file)
+	    			$image->source_path = "upload/$newFilename";
+	    			$imageMedium->source_path = "upload/$newFilename";
+	    		
+		    		// indicate a target image
+				    // note that there's no extra property to set in order to specify the target 
+				    // image's type -simply by writing '.jpg' as extension will instruct the script 
+				    // to create a 'jpg' file
+				    $newParts = explode('.', $newFilename);
+					$newName = $newParts[0];
+					$newExt = $newParts[1];
+				
+					// smaller thumbnail
+					$thumbSmallerFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
+				    $image->target_path = "upload/$thumbSmallerFilename";
+			    
+				    // some additional properties that can be set
+				    // read about them in the documentation
+				    $image->preserve_aspect_ratio = true;
+				    $image->enlarge_smaller_images = false;
+				    $image->preserve_time = true;
+				
+					// resize the image to exactly 100x100 pixels by using the "crop from center" method
+				    // (read more in the overview section or in the documentation)
+				    //  and if there is an error, check what the error is about
+				    $image->resize(120, 60, ZEBRA_IMAGE_NOT_BOXED);
+			    
+				    // medium thumbnail
+			   		$thumbMediumFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
+			    	$imageMedium->target_path = "upload/$thumbMediumFilename";
+			    
+				    // some additional properties that can be set
+				    // read about them in the documentation
+				    $imageMedium->preserve_aspect_ratio = true;
+				    $imageMedium->enlarge_smaller_images = false;
+				    $imageMedium->preserve_time = true;
+				
+					// resize the image to exactly 100x100 pixels by using the "crop from center" method
+				    // (read more in the overview section or in the documentation)
+				    //  and if there is an error, check what the error is about
+				    $imageMedium->resize(300, 100, ZEBRA_IMAGE_NOT_BOXED);
+					
+					// adding to db later in this file
+				}*/
+			}
 
-			if (!($rname && $url)) //$cashback && $cashback_sign
+			if (!($rname && $url && $r_img_I && $r_img_II && $r_img_III)) //$cashback && $cashback_sign
 			{
 				$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 			}
 			else
 			{
+				//Validation for r_img_I,r_img_II,r_img_II
+
+					if ($_FILES["image_I"]["error"] > 0)
+		  			{
+						$error[]= $_FILES["image_I"]["error"];
+					}
+					else if($_FILES["image_II"]["error"] > 0)
+					{
+						$error[]= $_FILES["image_II"]["error"];
+					}
+					else if($_FILES["image_III"]["error"] > 0 )
+					{
+						$error[]= $_FILES["image_III"]["error"];
+					}
+					else
+					{
+						$valid_mime_types = array(
+							"image/gif",
+							"image/jpeg",
+							"image/jpg",
+							"image/pjpeg",
+							"image/x-png",
+							"image/png",
+						);
+						//For Image I
+						$allowedExts = array("gif", "jpeg", "jpg", "png");
+						$temp_I = explode(".", $_FILES["image_I"]["name"]);
+						$extension_I = end($temp_I);
+			
+						if (!(in_array($extension_I, $allowedExts) && in_array($_FILES["image_II"]["type"], $valid_mime_types)))
+						{
+					  		$errors[] = 'Invalid Image_I type - only gif, jpeg, jpg or png are allowed to upload';
+						}
+						
+						if($_FILES["image_I"]["size"] > 5242880){
+							$errors[] = 'Allowed maximum file size is 5MB.';
+						}
+						
+						//For Image-II
+						$temp_II = explode(".", $_FILES["image_II"]["name"]);
+						$extension_II = end($temp_II);
+			
+						if (!(in_array($extension_II, $allowedExts) && in_array($_FILES["image_II"]["type"], $valid_mime_types)))
+						{
+					  		$errors[] = 'Invalid Image_II type - only gif, jpeg, jpg or png are allowed to upload';
+						}
+						
+						if($_FILES["image_II"]["size"] > 5242880){
+							$errors[] = 'Allowed maximum file size is 5MB.';
+						}
+						
+						//For Image-III
+						$temp_III = explode(".", $_FILES["image_III"]["name"]);
+						$extension_III = end($temp_III);
+			
+						if (!(in_array($extension_III, $allowedExts) && in_array($_FILES["image_III"]["type"], $valid_mime_types)))
+						{
+					  		$errors[] = 'Invalid Image_III type - only gif, jpeg, jpg or png are allowed to upload';
+						}
+						
+						if($_FILES["image_III"]["size"] > 5242880){
+							$errors[] = 'Allowed maximum file size is 5MB.';
+						}
+					}
+				
 				if (substr($url, 0, 7) != 'http://' && substr($url, 0, 8) != 'https://')
 				{
 					$errors[] = "Enter correct url format, enter the 'http://' or 'https://' statement before your link";
@@ -114,7 +248,107 @@
 
 			if (count($errors) == 0)
 			{
-					$insert_sql = "INSERT INTO cashbackengine_retailers SET title='$rname', network_id='$network_id', program_id='$program_id', url='$url', image='$img', old_cashback='$retailer_old_cashback', cashback='$retailer_cashback', conditions='$conditions', description='$description', meta_description='$meta_description', meta_keywords='$meta_keywords', end_date='$retailer_end_date', featured='$featured',popular_retailer='$popular_retailer', deal_of_week='$deal_of_week', status='$status', added=NOW()";
+				//Image_I functionlity - upload
+					if (file_exists("upload/retailer/" . $_FILES["image_I"]["name"]))
+					{
+						//rename the file and upload
+						$name =	$temp_I[0].'1.';
+						$name = $name.$extension_I;
+						while(file_exists("upload/retailer/" . $name)) //If file with new name already exist then change the name
+						{
+							$temp_I = explode(".", $name);
+							$name = $temp_I[0].'1.';
+							$name = $name.$extension_I;
+						}
+						move_uploaded_file($_FILES["image_I"]["tmp_name"],
+						"upload/retailer/" . $name);
+				     	$loc_image_I = $name;
+				     	
+					}
+					else
+					{
+						move_uploaded_file($_FILES["image_I"]["tmp_name"],
+						"upload/retailer/" . $_FILES["image_I"]["name"]);
+				     	$loc_image_I = $_FILES["image_I"]["name"];
+					}
+				
+				//Image_II functionlity - upload
+					if (file_exists("upload/retailer/" . $_FILES["image_II"]["name"]))
+					{
+						//rename the file and upload 
+						$name =	$temp_II[0].'1.';
+						$name = $name.$extension_II;
+						while(file_exists("upload/retailer/" . $name)) //If file with new name already exist then change the name
+						{
+							$temp_II = explode(".", $name);
+							$name = $temp_II[0].'1.';
+							$name = $name.$extension_II;
+						}
+						move_uploaded_file($_FILES["image_II"]["tmp_name"],
+						"upload/retailer/" . $name);
+				     	$loc_image_II = $name;
+					}
+					else
+					{
+						move_uploaded_file($_FILES["image_II"]["tmp_name"],
+						"upload/retailer/" . $_FILES["image_II"]["name"]);
+				     	$loc_image_II = $_FILES["image_II"]["name"];
+					}				
+				
+				//Image_III functionlity - upload
+					if (file_exists("upload/retailer/" . $_FILES["image_III"]["name"]))
+					{
+						//rename the file and upload - pending
+						$name =	$temp_III[0].'1.';
+						$name = $name.$extension_III;
+						while(file_exists("upload/retailer/" . $name)) //If file with new name already exist then change the name
+						{
+							$temp_III = explode(".", $name);
+							$name = $temp_III[0].'1.';
+							$name = $name.$extension_III;
+						}
+						move_uploaded_file($_FILES["image_III"]["tmp_name"],
+						"upload/retailer/" . $name);
+				     	$loc_image_III = $name;
+					}
+					else
+					{
+						move_uploaded_file($_FILES["image_III"]["tmp_name"],
+						"upload/retailer/" . $_FILES["image_III"]["name"]);
+				     	$loc_image_III = $_FILES["image_III"]["name"];
+					}
+					
+					//Get maximum sort order of the retailers who are active in status
+					$max= smart_mysql_query("SELECT max(sort_order) as max_order FROM cashbackengine_retailers WHERE status='active'");
+					$max_order = mysql_fetch_assoc($max);	 
+					$max_val = $max_order['max_order']+1;
+					$insert_sql = "
+						INSERT INTO cashbackengine_retailers 
+						SET title='$rname', 
+						network_id='$network_id', 
+						program_id='$program_id', 
+						url='$url', image='$img', 
+						old_cashback='$retailer_old_cashback', 
+						cashback='$retailer_cashback', 
+						conditions='$conditions', 
+						description='$description', 
+						meta_description='$meta_description', 
+						meta_keywords='$meta_keywords', 
+						end_date='$retailer_end_date', 
+						featured='$featured',
+						popular_retailer='$popular_retailer', 
+						deal_of_week='$deal_of_week', 
+						status='$status', 
+						added=NOW(),
+						image_original = '$newFilename',
+						image_120x60 = '$thumbSmallerFilename',
+						image_300x100 = '$thumbMediumFilename',
+						image_I	=	'$loc_image_I',
+						image_II =	'$loc_image_II',
+						image_III =	'$loc_image_III',
+						sort_order = '$max_val'
+						
+					";
 					$result = smart_mysql_query($insert_sql);
 					$new_retailer_id = mysql_insert_id();
 
@@ -173,7 +407,7 @@
 		<div class="success_box">Retailer has been successfully added</div>
 	<?php } ?>
 
-      <form action="" method="post" name="form1">
+      <form action="" method="post" name="form1" enctype="multipart/form-data">
         <table width="100%" cellpadding="2" cellspacing="5" border="0" align="center">
           <tr>
             <td colspan="2" align="right" valign="top"><font color="red">* denotes required field</font></td>
@@ -258,9 +492,23 @@
 				</div>
 			</td>
           </tr>
-          <tr>
+         <!-- <tr>
             <td valign="middle" align="right" class="tb1">Image URL:</td>
             <td valign="top"><input type="text" name="image_url" class="textbox" value="<?php echo $image_url; ?>" size="100" /></td>
+          </tr>-->
+          <!-- Image functionality -->
+          <tr>
+            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image I:</td>
+            <td valign="top"><input type="file" name="image_I" class="textbox"  size="100" />(120x60)</td>
+            
+          </tr>
+          <tr>
+            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image II:</td>
+            <td valign="top"><input type="file" name="image_II" class="textbox" size="100" />(300x100)</td>
+          </tr>
+          <tr>
+            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image III:</td>
+            <td valign="top"><input type="file" name="image_III" class="textbox" size="100" />(88x31)</td>
           </tr>
           <tr>
             <td width="30%" valign="top" align="right" class="tb1"><span class="req">* </span>URL:</td>

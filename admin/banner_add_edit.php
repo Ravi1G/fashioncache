@@ -94,7 +94,7 @@ if ($isPost)
 
 			if (!(in_array($extension, $allowedExts) && in_array($_FILES["image"]["type"], $valid_mime_types)))
 			{
-		  		$errors[] = 'Uplaod valid image.';
+		  		$errors[] = 'Upload valid image.';
 			}
 			
 			if($_FILES["image"]["size"] > 5242880){

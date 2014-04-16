@@ -82,21 +82,21 @@
 		            <?php
 					if (FEATURED_STORES_LIMIT > 0)
 					{
-						// show featured retailers //
-						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY RAND() LIMIT ".FEATURED_STORES_LIMIT);
+						// show featured retailers
+						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY sort_order asc LIMIT ".FEATURED_STORES_LIMIT);
 						$total_fetaured = mysql_num_rows($result_featured);
-		
+					
 						if ($total_fetaured > 0) { 
 							$looped_featured = 0;
 						?>
 							<?php 
-								while ($row_featured = mysql_fetch_array($result_featured)) { 
+								while ($row_featured = mysql_fetch_array($result_featured)) {
 									$looped_featured++;
 							?>							
 									<div class="store<?php if($looped_featured==$total_fetaured){?> lastItem<?php }?>">
 									  <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 						                <span class="icon">						                    
-						                    	<img alt="" src="<?php if (!stristr($row_featured['image'], 'http')) echo SITE_URL."img/"; echo $row_featured['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row_featured['title']; ?>"/>
+						                    	<img alt="" src="<?php if (!stristr($row_featured['image_I'], 'http')) echo SITE_URL."admin/upload/retailer/"; echo $row_featured['image_I']; ?>" alt="<?php echo $row_featured['title']; ?>"/>
 										</span>				
 						                <span class="cashBack">
 						                	<?php
@@ -156,6 +156,7 @@
                                 	$i = 1;
                                 	$total_trending_coupons_processed = 0;
                                 	foreach($trending_sale_coupons as $trending_coupon){
+                                		//print_r($trending_coupon);
 										$total_trending_coupons_processed++;
                                 		if($i==1){
 											echo '<li>';
@@ -165,13 +166,22 @@
                                             <div class="storeTitle">
                                                 <!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
                                                 <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $trending_coupon['retailer_id']; ?>&c=<?php echo $trending_coupon['coupon_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
-                                                	<?php echo $trending_coupon['title'];?>
+                                                	<img src="<?php echo SITE_URL.'admin/upload/retailer/';echo $trending_coupon['image_III'];?>">
                                                 </a>
                                             </div>
                                             <div class="storeText"><?php echo $trending_coupon['description']; ?></div>
                                             <div class="addition">+</div>
                                             <div class="cashBack">
-                                                <div class="percentage">2.5<span class="percentageSymbol">%</span></div>
+                                                <div class="percentage">
+                                                 <?php
+                                                 	
+						                			$trending_coupon_type = GetCashbackType($trending_coupon['cashback']);
+						                			$cashback = RemoveCashbackType($trending_coupon['cashback']);
+						                		?>
+						                    	<?php echo $cashback;?>
+						                   	<span class="percentageSymbol"><?php echo $trending_coupon_type;?></span>
+						                   </div>
+                                               
                                                 <div class="cashBackCaption">Cash Back</div>
                                             </div>
                                         </div>
@@ -231,7 +241,7 @@
 									<?php //Image link if author image is present otherwise show the default image
 										$img_link =isset($author['Author_Profile_Picture']) && $author['Author_Profile_Picture']!="" ? $author['Author_Profile_Picture'] : SITE_URL.'img/hangerIconSmall.png' ; 
 									?>
-									<img width="92" height="92" src='<?php echo $author['Author_Profile_Picture'];?>'/>
+									<img width="92" height="92" src='<?php echo $img_link;?>'/>
 								</a>
 							</div>
 							<?php 
