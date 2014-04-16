@@ -630,7 +630,7 @@
 			</tr>
 			<!-- <tr>
 			<td valign="middle" align="right" class="tb1">Current Image:</td>
-			<td align="left" valign="top"><img src="<?php if (!stristr($row['image'], 'http')) echo "/img/"; echo $row['image']; ?>" width="120" height="60" align="left" alt="" title="" border="0" class="imgs" /></td>
+			<td align="left" valign="top"><img src="<?php if (!stristr($row['image'], 'http')) echo "/img/"; echo $row['image']; ?>" style="max-width:88px;max-height:31px" align="left" alt="" title="" border="0" class="imgs" /></td>
 			</tr>
 			<tr>
 			<td valign="middle" align="right" class="tb1">Image URL:</td>
@@ -639,7 +639,7 @@
 			<!-- Image functionality -->
 				<tr>
 					<td valign="middle" align="right" class="tb1">Current Image_I:</td>
-					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_I'], 'http')) echo 'upload/retailer/'.$row['image_I']; ?>" width="120" height="60" align="left" alt="" title="" border="0" class="imgs" /></td>
+					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_I'], 'http')) echo 'upload/retailer/'.$row['image_I']; ?>"  style="max-width:120px;max-height:60px" align="left" alt="" title="" border="0" class="imgs" /></td>
 				</tr>
 	          <tr>
 	            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image I:</td>
@@ -647,7 +647,7 @@
 	          </tr>
 	          <tr>
 					<td valign="middle" align="right" class="tb1">Current Image_II:</td>
-					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_II'], 'http')) echo 'upload/retailer/'.$row['image_II']; ?>" width="120" height="60" align="left" alt="" title="" border="0" class="imgs" /></td>
+					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_II'], 'http')) echo 'upload/retailer/'.$row['image_II']; ?>"  style="max-width:150px;max-height:50px" align="left" alt="" title="" border="0" class="imgs" /></td>
 				</tr>
 	          <tr>
 	            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image II:</td>
@@ -655,7 +655,7 @@
 	          </tr>
 	          <tr>
 					<td valign="middle" align="right" class="tb1">Current Image_III:</td>
-					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_III'], 'http')) echo 'upload/retailer/'.$row['image_III']; ?>" width="120" height="60" align="left" alt="" title="" border="0" class="imgs" /></td>
+					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_III'], 'http')) echo 'upload/retailer/'.$row['image_III']; ?>"  style="max-width:88px;max-height:31px" align="left" alt="" title="" border="0" class="imgs" /></td>
 				</tr>
 	          <tr>
 	            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Image III:</td>

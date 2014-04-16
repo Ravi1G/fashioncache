@@ -217,7 +217,9 @@
 			<tr>
 				<th width="3%"><input type="checkbox" name="selectAll" onclick="checkAll();" class="checkbox" /></th>
 				<th width="10%">ID</th>
+				<?php if($only_featured){?>
 				<th width="10%">Sort Order</th>
+				<?php } ?>
 				<th width="38%">Title</th>
 				<th width="17%">Affiliate Network</th>
 				<th width="10%">Cashback</th>
@@ -231,10 +233,11 @@
 				  <tr class="<?php if (($cc%2) == 0) echo "even"; else echo "odd"; ?>">
 					<td nowrap="nowrap" align="center" valign="middle"><input type="checkbox" class="checkbox" name="id_arr[<?php echo $row['retailer_id']; ?>]" id="id_arr[<?php echo $row['retailer_id']; ?>]" value="<?php echo $row['retailer_id']; ?>" /></td>
 					<td align="center" valign="middle"><?php echo $row['retailer_id']; ?></td>
-					
+					<?php if($only_featured){?>
 					<td align="center" valign="middle">
-					<input type="text" id="retailer_<?php echo ++$i; ?>" class="sort_order_arr" name="sort_arr[<?php echo $row['retailer_id']; ?>]" size="3" value="<?php echo $row['sort_order']; ?>"></td>
-					
+						<input type="text" rid="<?php echo $row['retailer_id']; ?>" current-order="<?php echo $row['sort_order']; ?>" class="sort_order_arr" name="sort_arr[<?php echo $row['retailer_id']; ?>]" size="3" value="<?php echo $row['sort_order']; ?>">
+					</td>
+					<?php } ?>
 					
 					<td align="left" valign="middle" class="row_title">
 						<a href="retailer_details.php?id=<?php echo $row['retailer_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>">
@@ -312,51 +315,24 @@
 		$(".sort_order_arr").blur(function()
 		{
 			var current_value=$(this).val();
-			var current_id =$(this).attr('id');
-			var current_index = $(".sort_order_arr").index(this)+1;
-			var highest = 0;
-			var max_index = 0;
-			var matches = document.querySelectorAll(".sort_order_arr");
-
-			jQuery.each(matches, function(index)
-			{
-				var iteration_index = index+1;
-				var iteration_value = $(this).val();
-				
-				if(iteration_index<=current_index)
-				{
-					arr[iteration_index-1]= iteration_value;;
-				}
-
-				if(current_index>iteration_index && current_value==iteration_value)
-				{
-					max_index = iteration_index;
+			var retailer_id =$(this).attr('rid');
+			var sort_input_boxes = $(".sort_order_arr");
+			var old_order = $(this).attr('current-order');
+			
+			jQuery.each(sort_input_boxes, function(index){
+				if((retailer_id!=$(this).attr('rid')) && current_value==$(this).val()){
+					matched_index = index;				
 				}
 			});
 			
-			highest = getHighestVal(arr)+1;//Storing maximum value
-
-			if(max_index!=0 && highest !=0)
-			{
-				changeval(max_index,highest);
+			if(typeof matched_index !== 'undefined'){
+				$(".sort_order_arr").eq(matched_index).val(old_order);
+				$(".sort_order_arr").eq(matched_index).attr('current-order', old_order);
+				delete matched_index;
 			}
-		});
 
-		
-		function changeval(max_index,highest)
-		{
-			$("#retailer_"+max_index).val(highest);
-		}
-		function getHighestVal(data)
-		{	
-			var max = 0;
-		 $.each(data, function (i,v)
-		 {
-			thisVal = parseInt(v);
-			max = (max < thisVal) ? thisVal : max;
-		 });
-		    return max;
-		}
+			$(this).attr('current-order', current_value);
+		});
 	});
 </script>
           

@@ -82,8 +82,8 @@
 		            <?php
 					if (FEATURED_STORES_LIMIT > 0)
 					{
-						// show featured retailers //
-						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY RAND() LIMIT ".FEATURED_STORES_LIMIT);
+						// show featured retailers
+						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY sort_order asc LIMIT ".FEATURED_STORES_LIMIT);
 						$total_fetaured = mysql_num_rows($result_featured);
 					
 						if ($total_fetaured > 0) { 
