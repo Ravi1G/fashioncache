@@ -169,7 +169,9 @@
 						<?php while($row=mysql_fetch_assoc($result)){?>
 						<tr>
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
-							<td><?php echo $row['title'];?></td>
+							<td>
+								<a href="view_retailer.php?id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>
+							</td>
 							<td class="cashBackCaptionAligned">
 								<?php echo $row['cashback'];?>
 							</td>

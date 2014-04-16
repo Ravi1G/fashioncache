@@ -34,16 +34,16 @@ include_once 'inc/config.inc.php';?>
     	if(isset($_SESSION['goRetailerID']) && $_SESSION['goRetailerID']!="")
     	{
     		$retailerId		=	$_SESSION['goRetailerID'];
-    		$query			=	mysql_query("SELECT image, cashback FROM cashbackengine_retailers WHERE retailer_id=$retailerId");
+    		$query			=	mysql_query("SELECT image,image_I,image_II,image_III, cashback FROM cashbackengine_retailers WHERE retailer_id=$retailerId");
     		$row			=	mysql_fetch_assoc($query);
-    		$retailerImg	=	$row['image'];
+    		$retailerImg	=	$row['image_III'];
     		$cashback		=	$row['cashback'];		
     	}
     ?>  
     <body>
 		<div class="signUpPopup">
 			<div class="popupLogoSection">
-				<img src="<?php echo $retailerImg;?>" height=50 alt="Logo"/>
+				<img src="<?php echo SITE_URL.'admin/upload/retailer/'.$retailerImg;?>" alt="Logo"/>
 			</div>
 			<div class="popupLeadLine">
 				Join FREE now and get <span><?php echo $cashback;?> Cash Back</span> on Fashion Cache orders.

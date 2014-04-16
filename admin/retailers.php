@@ -13,12 +13,44 @@
 	require_once("../inc/pagination.inc.php");
 	require_once("./inc/admin_funcs.inc.php");
 
+	if(isset($_POST['GoUpdate']) && isset($_POST['sort_arr']))
+	{
+		$sort_arr = $_POST['sort_arr'];
+		
+		if(isset($_GET['featured']) && is_numeric($_GET['featured']))
+		{
+			$only_featured=1;
+		}
+		
+		foreach($sort_arr AS $key=>$val)
+		{
+			$query_update = "UPDATE cashbackengine_retailers SET sort_order = $val WHERE retailer_id = $key";
+			smart_mysql_query($query_update);	
+		}
+		if($only_featured==1)
+		{
+			header("Location: retailers.php?featured=1&msg=updated");
+			exit();	
+		}
+		header("Location: retailers.php?msg=updated");
+		exit();
+	}
+	
+	if(isset($_GET['featured']) && is_numeric($_GET['featured']))
+	{
+		$only_featured=1;
+		$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added, DATE_FORMAT(end_date, '%d %b %Y %h:%i') AS retailer_end_date, UNIX_TIMESTAMP(end_date) - UNIX_TIMESTAMP() AS time_left FROM cashbackengine_retailers WHERE featured=1 ORDER BY sort_order";
+		$result = smart_mysql_query($query);
 
+		 $total = mysql_num_rows($result);
+	}
+	else{
+		$only_featured = 0;
 	// results per page
-	if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0)
-		$results_per_page = (int)$_GET['show'];
-	else
-		$results_per_page = 10;
+		if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0)
+			$results_per_page = (int)$_GET['show'];
+		else	
+			$results_per_page = 10;
 
 
 		// Delete retailers //
@@ -105,7 +137,7 @@
 			exit();
 		}
 
-
+	}
 		$title = "Retailers";
 		require_once ("inc/header.inc.php");
 
@@ -163,12 +195,16 @@
 			<option value="111111111" <?php if ($_GET['show'] == "111111111") echo "selected"; ?>>ALL</option>
           </select>
 			</td>
-			<td nowrap="nowrap" width="30%" valign="middle" align="left">
+			<td nowrap="nowrap" width="25%" valign="middle" align="left">
 				<div class="admin_filter">
 					<input type="text" name="filter" value="<?php echo $filter; ?>" class="textbox" size="30" title="Title or Program ID" /> <input type="submit" class="submit" value="Search" />
 					<?php if (isset($filter) && $filter != "") { ?><a title="Cancel Search" href="retailers.php"><img align="absmiddle" src="images/icons/delete_filter.png" border="0" alt="Cancel Search" /></a><?php } ?> 
 				</div>
 			</td>
+			<td nowrap="nowrap" width="5%" valign="middle" align="left">
+				Show Featured Only<input type="checkbox" id="chk_featured" <?php if($only_featured==1){?>checked<?php }?>/>
+			</td>
+			
 			<td nowrap="nowrap" width="35%" valign="middle" align="right">
 			   Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?>
 			</td>
@@ -181,6 +217,7 @@
 			<tr>
 				<th width="3%"><input type="checkbox" name="selectAll" onclick="checkAll();" class="checkbox" /></th>
 				<th width="10%">ID</th>
+				<th width="10%">Sort Order</th>
 				<th width="38%">Title</th>
 				<th width="17%">Affiliate Network</th>
 				<th width="10%">Cashback</th>
@@ -194,6 +231,11 @@
 				  <tr class="<?php if (($cc%2) == 0) echo "even"; else echo "odd"; ?>">
 					<td nowrap="nowrap" align="center" valign="middle"><input type="checkbox" class="checkbox" name="id_arr[<?php echo $row['retailer_id']; ?>]" id="id_arr[<?php echo $row['retailer_id']; ?>]" value="<?php echo $row['retailer_id']; ?>" /></td>
 					<td align="center" valign="middle"><?php echo $row['retailer_id']; ?></td>
+					
+					<td align="center" valign="middle">
+					<input type="text" id="retailer_<?php echo ++$i; ?>" class="sort_order_arr" name="sort_arr[<?php echo $row['retailer_id']; ?>]" size="3" value="<?php echo $row['sort_order']; ?>"></td>
+					
+					
 					<td align="left" valign="middle" class="row_title">
 						<a href="retailer_details.php?id=<?php echo $row['retailer_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>">
 							<?php if (strlen($row['title']) > 100) echo substr($row['title'], 0, 100)."..."; else echo $row['title']; ?>
@@ -231,12 +273,15 @@
 					<input type="hidden" name="order" value="<?php echo $rorder; ?>" />
 					<input type="hidden" name="page" value="<?php echo $page; ?>" />
 					<input type="hidden" name="action" value="delete" />
+					<input type="submit" class="submit" name="GoUpdate" id="GoUpdate" value="Update Sort Order" />&nbsp;
 					<input type="submit" class="submit" name="GoDelete" id="GoDelete" value="Delete Selected" />
 				</td>
 				</tr>
 				<tr>
 				  <td colspan="10" align="center">
+				  <?php if($only_featured==0){?>
 					<?php echo ShowPagination("retailers",$results_per_page,"retailers.php?column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by); ?>
+					<?php }?>
 				  </td>
 				</tr>
             </table>
@@ -250,4 +295,69 @@
 				<?php } ?>
           <?php } ?>
 
+<script>
+	$(function(){
+		var arr	= new Array();
+		$("#chk_featured").click(function(){
+			if ($(this).is(':checked')) 
+			{
+	           window.location="<?php echo SITE_URL?>admin/retailers.php?featured=1";
+	        }
+			else
+			{
+				window.location="<?php echo SITE_URL?>admin/retailers.php?column=title&order=asc&show=10&page=1";
+			}
+		});
+		
+		$(".sort_order_arr").blur(function()
+		{
+			var current_value=$(this).val();
+			var current_id =$(this).attr('id');
+			var current_index = $(".sort_order_arr").index(this)+1;
+			var highest = 0;
+			var max_index = 0;
+			var matches = document.querySelectorAll(".sort_order_arr");
+
+			jQuery.each(matches, function(index)
+			{
+				var iteration_index = index+1;
+				var iteration_value = $(this).val();
+				
+				if(iteration_index<=current_index)
+				{
+					arr[iteration_index-1]= iteration_value;;
+				}
+
+				if(current_index>iteration_index && current_value==iteration_value)
+				{
+					max_index = iteration_index;
+				}
+			});
+			
+			highest = getHighestVal(arr)+1;//Storing maximum value
+
+			if(max_index!=0 && highest !=0)
+			{
+				changeval(max_index,highest);
+			}
+		});
+
+		
+		function changeval(max_index,highest)
+		{
+			$("#retailer_"+max_index).val(highest);
+		}
+		function getHighestVal(data)
+		{	
+			var max = 0;
+		 $.each(data, function (i,v)
+		 {
+			thisVal = parseInt(v);
+			max = (max < thisVal) ? thisVal : max;
+		 });
+		    return max;
+		}
+	});
+</script>
+          
 <?php require_once ("inc/footer.inc.php"); ?>
