@@ -36,7 +36,7 @@ include_once 'inc/config.inc.php';?>
     		$retailerId		=	$_SESSION['goRetailerID'];
     		$query			=	mysql_query("SELECT image,image_I,image_II,image_III, cashback FROM cashbackengine_retailers WHERE retailer_id=$retailerId");
     		$row			=	mysql_fetch_assoc($query);
-    		$retailerImg	=	$row['image_III'];
+    		$retailerImg	=	$row['image_I'];
     		$cashback		=	$row['cashback'];		
     	}
     ?>  

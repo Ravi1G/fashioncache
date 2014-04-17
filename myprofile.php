@@ -10,7 +10,7 @@
 	session_start();
 	require_once("inc/auth.inc.php");
 	require_once("inc/config.inc.php");
-
+		
 	$query	= "SELECT * FROM cashbackengine_users WHERE user_id='$userid' AND status='active' LIMIT 1";
 	$result = smart_mysql_query($query);
 
@@ -47,9 +47,17 @@
 			$errs[] = CBE1_MYPROFILE_ERR;
 		}
 
-		if(isset($email) && $email !="" && !preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email))
+		if(isset($email) && $email !="" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email))
 		{
 			$errs[] = CBE1_MYPROFILE_ERR1;
+		}
+		if(isset($zip) && !is_numeric($zip))
+		{
+			$errs[] = "Zip code must be numeric";
+		}
+		if(isset($phone) && !is_numeric($phone))
+		{
+			$errs[] = "Phone number must be numeric";
 		}
 
 		if (count($errs) == 0)
@@ -65,7 +73,8 @@
 		}
 	}
 
-
+	/*
+		PREVIOUS CHANGE PASSWORD 
 	if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 	{
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
@@ -109,7 +118,7 @@
 				exit();
 			}	
 		}
-	}
+	}*/
 
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = CBE1_MYPROFILE_TITLE;
@@ -119,7 +128,13 @@
 ?>
 
         <h1><?php echo CBE1_MYPROFILE_TITLE; ?></h1>
-
+        
+        <!-- Show the leftside bar if the user is logged in -->
+		<?php 
+			if(isLoggedIn())	
+				require_once("inc/left_sidebar.php");
+		?>
+			
 		<?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && !$_POST['action']) { ?>
 			<div class="success_msg">
 				<?php
@@ -127,7 +142,6 @@
 					switch ($_GET['msg'])
 					{
 						case "1": echo CBE1_MYPROFILE_MSG1; break;
-						case "2": echo CBE1_MYPROFILE_MSG2; break;
 					}
 
 				?>
@@ -221,7 +235,7 @@
             <td colspan="2" align="center" valign="bottom">
 				<input type="hidden" name="action" value="editprofile" />
 				<input type="submit" class="submit" name="Update" id="Update" value="<?php echo CBE1_MYPROFILE_UPBUTTON; ?>" />
-				<input type="button" class="cancel" name="cancel" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />
+				<!-- <input type="button" class="cancel" name="cancel" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />-->
 			</td>
           </tr>
           </table>
@@ -229,7 +243,7 @@
 		<br/>
 
 
-		<center><h3><?php echo CBE1_MYPROFILE_PASSWORD; ?></h3></center>
+		<!-- <center><h3><?php echo CBE1_MYPROFILE_PASSWORD; ?></h3></center>-->
 
 		<?php
 				if (count($errs2) > 0)
@@ -238,6 +252,7 @@
 					echo "<div class='error_msg' style='width: 60%'>".$allerrors."</div>";
 				}
 		?>
+		<!-- OLD CHANGE PASSWORD FUNCTIONALITY
 		  <form action="" method="post">
           <table width="70%" align="center" cellpadding="3" cellspacing="0" border="0">
             <tr>
@@ -261,5 +276,5 @@
           </tr>
           </table>
         </form>
-
+ -->
 <?php require_once ("inc/footer.inc.php"); ?>

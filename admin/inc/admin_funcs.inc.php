@@ -80,6 +80,22 @@ if (!function_exists('DeleteRetailer')) {
 function DeleteRetailer ($retailer_id)
 {
 	$rid = (int)($retailer_id);
+	//Delete the retailer images - fetch the location of images then unlink the files if exists
+	$query=smart_mysql_query("SELECT image_I,image_II,image_III from cashbackengine_retailers WHERE retailer_id='$rid'");
+	$row = mysql_fetch_assoc($query);
+
+	if(file_exists('upload/retailer/'.$row['image_I']))
+	{	
+		unlink('upload/retailer/'.$row['image_I']);
+	}
+	if(file_exists('upload/retailer/'.$row['image_II']))
+	{
+		unlink('upload/retailer/'.$row['image_II']);
+	}
+	if(file_exists('upload/retailer/'.$row['image_III']))
+	{
+		unlink('upload/retailer/'.$row['image_III']);
+	}
 	smart_mysql_query("DELETE FROM cashbackengine_retailers WHERE retailer_id='$rid'");
 	smart_mysql_query("DELETE FROM cashbackengine_retailer_to_category WHERE retailer_id='$rid'");
 	smart_mysql_query("DELETE FROM cashbackengine_clickhistory WHERE retailer_id='$rid'");

@@ -276,7 +276,9 @@
 					<input type="hidden" name="order" value="<?php echo $rorder; ?>" />
 					<input type="hidden" name="page" value="<?php echo $page; ?>" />
 					<input type="hidden" name="action" value="delete" />
+					<?php if($only_featured){?>
 					<input type="submit" class="submit" name="GoUpdate" id="GoUpdate" value="Update Sort Order" />&nbsp;
+					<?php }?>
 					<input type="submit" class="submit" name="GoDelete" id="GoDelete" value="Delete Selected" />
 				</td>
 				</tr>

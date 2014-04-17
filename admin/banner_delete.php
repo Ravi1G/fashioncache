@@ -22,8 +22,10 @@ if(isset($_GET['id']) && $_GET['id']!="")
 	$row	= mysql_fetch_assoc($sql);
 	$image_loc	= $row['image'];
 	
-	if($image_loc != "" )	
+	if($image_loc != "" && file_exists($image_loc))	
+	{	
 		$img_del_result = unlink($image_loc);
+	}
 	$sql=mysql_query("DELETE FROM cashbackengine_banners WHERE banner_id='$id'");
 	
 	if($sql > 0)
