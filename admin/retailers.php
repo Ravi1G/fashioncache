@@ -170,46 +170,48 @@
 			<?php } ?>
 
 
-		<form id="form1" name="form1" method="get" action="">
-		<table bgcolor="#F9F9F9" align="center" width="100%" border="0" cellpadding="3" cellspacing="0">
-		<tr>
-		<td nowrap="nowrap" width="47%" valign="middle" align="left">
-           Sort by: 
-          <select name="column" id="column" onChange="document.form1.submit()">
-			<option value="title" <?php if ($_GET['column'] == "title") echo "selected"; ?>>Name</option>
-			<option value="visits" <?php if ($_GET['column'] == "visits") echo "selected"; ?>>Popularity</option>
-			<option value="added" <?php if ($_GET['column'] == "added") echo "selected"; ?>>Newest</option>
-			<option value="network_id" <?php if ($_GET['column'] == "network_id") echo "selected"; ?>>Network</option>
-			<option value="cashback" <?php if ($_GET['column'] == "cashback") echo "selected"; ?>>Cashback</option>
-			<option value="status" <?php if ($_GET['column'] == "status") echo "selected"; ?>>Status</option>
-          </select>
-          <select name="order" id="order" onChange="document.form1.submit()">
-			<option value="desc" <?php if ($_GET['order'] == "desc") echo "selected"; ?>>Descending</option>
-			<option value="asc" <?php if ($_GET['order'] == "asc") echo "selected"; ?>>Ascending</option>
-          </select>
-		  &nbsp;&nbsp;View: 
-          <select name="show" id="show" onChange="document.form1.submit()">
-			<option value="10" <?php if ($_GET['show'] == "10") echo "selected"; ?>>10</option>
-			<option value="50" <?php if ($_GET['show'] == "50") echo "selected"; ?>>50</option>
-			<option value="100" <?php if ($_GET['show'] == "100") echo "selected"; ?>>100</option>
-			<option value="111111111" <?php if ($_GET['show'] == "111111111") echo "selected"; ?>>ALL</option>
-          </select>
-			</td>
-			<td nowrap="nowrap" width="25%" valign="middle" align="left">
-				<div class="admin_filter">
-					<input type="text" name="filter" value="<?php echo $filter; ?>" class="textbox" size="30" title="Title or Program ID" /> <input type="submit" class="submit" value="Search" />
-					<?php if (isset($filter) && $filter != "") { ?><a title="Cancel Search" href="retailers.php"><img align="absmiddle" src="images/icons/delete_filter.png" border="0" alt="Cancel Search" /></a><?php } ?> 
-				</div>
-			</td>
-			<td nowrap="nowrap" width="5%" valign="middle" align="left">
-				Show Featured Only<input type="checkbox" id="chk_featured" <?php if($only_featured==1){?>checked<?php }?>/>
-			</td>
-			
-			<td nowrap="nowrap" width="35%" valign="middle" align="right">
-			   Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?>
-			</td>
-			</tr>
-			</table>
+			<form id="form1" name="form1" method="get" action="">
+				<div class="resultRow">Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?></div>
+				<table bgcolor="#F9F9F9" align="center" width="100%" border="0" cellpadding="3" cellspacing="0">
+					<tr>
+						<td nowrap="nowrap" valign="middle" align="left">
+							   Sort by: 
+							  <select name="column" id="column" onChange="document.form1.submit()">
+								<option value="title" <?php if ($_GET['column'] == "title") echo "selected"; ?>>Name</option>
+								<option value="visits" <?php if ($_GET['column'] == "visits") echo "selected"; ?>>Popularity</option>
+								<option value="added" <?php if ($_GET['column'] == "added") echo "selected"; ?>>Newest</option>
+								<option value="network_id" <?php if ($_GET['column'] == "network_id") echo "selected"; ?>>Network</option>
+								<option value="cashback" <?php if ($_GET['column'] == "cashback") echo "selected"; ?>>Cashback</option>
+								<option value="status" <?php if ($_GET['column'] == "status") echo "selected"; ?>>Status</option>
+							  </select>
+							  <select name="order" id="order" onChange="document.form1.submit()">
+								<option value="desc" <?php if ($_GET['order'] == "desc") echo "selected"; ?>>Descending</option>
+								<option value="asc" <?php if ($_GET['order'] == "asc") echo "selected"; ?>>Ascending</option>
+							  </select>
+							  &nbsp;&nbsp;View: 
+							  <select name="show" id="show" onChange="document.form1.submit()">
+								<option value="10" <?php if ($_GET['show'] == "10") echo "selected"; ?>>10</option>
+								<option value="50" <?php if ($_GET['show'] == "50") echo "selected"; ?>>50</option>
+								<option value="100" <?php if ($_GET['show'] == "100") echo "selected"; ?>>100</option>
+								<option value="111111111" <?php if ($_GET['show'] == "111111111") echo "selected"; ?>>ALL</option>
+							  </select>
+						</td>
+						<td nowrap="nowrap" valign="middle" align="left" class="showFeaturedOnly">
+							Show Featured Only<input type="checkbox" id="chk_featured" <?php if($only_featured==1){?>checked<?php }?>/>
+						</td>
+						<td nowrap="nowrap" valign="middle" align="left" class="retailerSearchSection">
+							<div class="admin_filter">
+								<input type="text" name="filter" value="<?php echo $filter; ?>" class="textbox" size="30" title="Title or Program ID" /> <input type="submit" class="submit" value="Search" />
+								<?php if (isset($filter) && $filter != "") { ?><a title="Cancel Search" href="retailers.php"><img align="absmiddle" src="images/icons/delete_filter.png" border="0" alt="Cancel Search" /></a><?php } ?>
+							</div>
+						</td>			
+						<?php /* ?>
+						<td nowrap="nowrap" width="35%" valign="middle" align="right">
+						   Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?>
+						</td>
+						<?php */ ?>
+					</tr>
+				</table>
 			</form>
 
 			<form id="form2" name="form2" method="post" action="">
@@ -271,13 +273,15 @@
 				  </tr>
 			<?php } ?>
 				<tr>
-				<td style="border-top: 1px solid #F5F5F5" colspan="10" align="left">
+				<td style="border-top: 1px solid #F5F5F5" colspan="11" align="left">
 					<input type="hidden" name="column" value="<?php echo $rrorder; ?>" />
 					<input type="hidden" name="order" value="<?php echo $rorder; ?>" />
 					<input type="hidden" name="page" value="<?php echo $page; ?>" />
 					<input type="hidden" name="action" value="delete" />
 					<input type="submit" class="submit" name="GoUpdate" id="GoUpdate" value="Update Sort Order" />&nbsp;
 					<input type="submit" class="submit" name="GoDelete" id="GoDelete" value="Delete Selected" />
+					<span class="resultRow">Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?></div>
+					<div class="cb"></div>
 				</td>
 				</tr>
 				<tr>
@@ -287,7 +291,7 @@
 					<?php }?>
 				  </td>
 				</tr>
-            </table>
+            </table>			
 			</form>
 
           <?php }else{ ?>

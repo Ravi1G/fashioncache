@@ -52,13 +52,13 @@
 		<script type="application/javascript">
 			$.colorbox({
 				iframe      : true,
-				width: 795,
-				height: 875,
+				width: 548,
+				height: 631,
 				opacity: 0.8,
 				scrolling: false,
 				closeButton: false,
-				fixed: false,
-				top: 20,
+				fixed: true,
+				top: 10,
 				href : "<?php echo SITE_URL?>popup.php"
 			});
 		</script>
