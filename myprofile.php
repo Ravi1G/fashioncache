@@ -51,11 +51,11 @@
 		{
 			$errs[] = CBE1_MYPROFILE_ERR1;
 		}
-		if(isset($zip) && !is_numeric($zip))
+		if(isset($zip) && $zip!="" && !is_numeric($zip))
 		{
 			$errs[] = "Zip code must be numeric";
 		}
-		if(isset($phone) && !is_numeric($phone))
+		if(isset($phone) && $phone!="" && !is_numeric($phone))
 		{
 			$errs[] = "Phone number must be numeric";
 		}
@@ -190,21 +190,21 @@
 					<div class="customTable">
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_FNAME; ?><sup class="manadatoryField">*</sup></div>
-							<div class="data"><input type="text" name="fname" id="fname" value="<?php echo $row['fname'];?>" size="25" /></div>
+							<div class="data"><input type="text" class="textbox" name="fname" id="fname" value="<?php if(isset($fname) && ($fname!="")){echo $fname;} elseif(isset($row['fname'])&& ($row['fname']!="")) {echo $row['fname'];} ?>" size="25" /></div>
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_LNAME; ?><sup class="manadatoryField">*</sup></div>
-							<div class="data"><input type="text" name="lname" id="lname" value="<?php echo $row['lname']; ?>" size="25" /></div>
+							<div class="data"><input type="text" class="textbox" name="lname" id="lname" value="<?php  if(isset($lname) && ($lname!="")){echo $lname;}elseif(isset($row['lname']) && ($row['lname']!="")){echo $row['lname'];} ?>" size="25" /></div>
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_EMAIL; ?><sup class="manadatoryField">*</sup></div>
-							<div class="data"><input type="text" name="email" id="email" value="<?php echo $row['email']; ?>" size="25" /></div>
+              				<div class="data"><input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" disabled="disabled" /></div>
 						</div>
 						<div class="cb"></div>						
 						<?php /*  
 						<div class="row leftAligned namePlates FnamePlate">
 							<div class="label"><?php echo CBE1_LABEL_FNAME; ?><sup class="manadatoryField">*</sup></div>
-							<div class="data"><input type="text" name="fname" id="fname" value="<?php echo $row['fname'];?>" size="25" /></div>
+             				<div class="data"><input type="text" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" /></div>
 						</div>
 						<div class="row leftAligned namePlates">
 							<div class="label"><?php echo CBE1_LABEL_LNAME; ?><sup class="manadatoryField">*</sup></div>
@@ -214,37 +214,37 @@
 						<div class="row">
 							<div class="label"><?php echo CBE1_LABEL_EMAIL; ?><sup class="manadatoryField">*</sup></div>
 							<div class="data emailPlate">
-								<input type="text" name="email" id="email" value="<?php echo $row['email']; ?>" size="25" />
+            						  	<input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" />
 							</div>				
 						</div> */ ?>
 						<div class="row">
 							<div class="label"><?php echo CBE1_LABEL_ADDRESS1; ?></div>
 							<div class="data emailPlate">
-								<input type="text" name="address" id="address" value="<?php echo $row['address']; ?>" size="25" />
+             							<input type="text" name="address" id="address" value="<?php if(isset($address) && ($address!="")){echo $address;} elseif(isset($row['address'])&& ($row['address']!="")){echo $row['address'];} ?>" size="25" />
 							</div>				
 						</div>
 						<div class="row">
 							<div class="label"><?php echo CBE1_LABEL_ADDRESS2; ?></div>
 							<div class="data emailPlate">
-								<input type="text" name="address2" id="address2" value="<?php echo $row['address2']; ?>" size="25" />
+             						    <input type="text" name="address2" id="address2" value="<?php if(isset($address2)&& ($address2!="")){echo $address2;} elseif(isset($row['address2'])&& ($row['address2']!=""))echo $row['address2']; ?>" size="25" />
 							</div>				
 						</div>					
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_CITY; ?></div>
 							<div class="data">
-								<input type="text" name="city" id="city" value="<?php echo $row['city']; ?>" size="25" />
+           						        <input type="text" name="city" id="city" value="<?php if(isset($city) && ($city!="")){echo $city;} elseif(isset($row['city']) && ($row['city']!="")){echo $row['city'];} ?>" size="25" />
 							</div>				
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_STATE; ?></div>
 							<div class="data ">
-								<input type="text" name="state" id="state" value="<?php echo $row['state']; ?>" size="25" />
+            							<input type="text" name="state" id="state" value="<?php if(isset($state) && ($state!="")){echo $state;} elseif(isset($row['state']) && ($row['state']!="")){echo $row['state'];} ?>" size="25" />
 							</div>				
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_ZIP; ?></div>
 							<div class="data ">
-								<input type="text" name="zip" id="zip" value="<?php echo $row['zip']; ?>" size="25" />
+             							<input type="text" name="zip" id="zip" value="<?php if(isset($zip) && ($zip!="")){echo $zip;} elseif(isset($row['zip']) && ($row['zip']!="")) {echo $row['zip'];} ?>" size="25" />
 							</div>				
 						</div>
 						<div class="row leftAligned locationPlate">
@@ -261,10 +261,18 @@
 									{
 										while ($row_country = mysql_fetch_array($rs_country))
 										{
-											if ($row['country'] == $row_country['country_id'])
+											if(isset($country) && ($country!="") && ($country==$row_country['country_id']))
+												{
+													echo "<option value='".$row_country['country_id']."' selected>".$row_country['name']."</option>\n";
+												}
+											elseif ($row['country'] == $row_country['country_id'])
+												{
 												echo "<option value='".$row_country['country_id']."' selected>".$row_country['name']."</option>\n";
-											else
-												echo "<option value='".$row_country['country_id']."'>".$row_country['name']."</option>\n";
+												}
+															else
+											{
+																echo "<option value='".$row_country['country_id']."'>".$row_country['name']."</option>\n";
+											}
 										}
 									}
 				
@@ -275,11 +283,11 @@
 						<div class="row phonePlates leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_PHONE; ?></div>
 							<div class="data">
-								<input type="text" class="phoneInput" name="phone" id="phone" value="<?php echo $row['phone']; ?>" size="25" />
+              							<input type="text" class="phoneInput" name="phone" id="phone" value="<?php if(isset($phone) && ($phone!="")){echo $phone;} elseif(isset($row['phone']) && ($row['phone']!="")) {echo $row['phone'];} ?>" size="25" />
 							</div>								
 						</div>
 						<div class="cb"></div>
-						 <div class="newsLetters"><input type="checkbox" name="newsletter" class="yesNewsletter" value="1" <?php echo (@$row['newsletter'] == 1) ? "checked" : "" ?>/> <?php echo CBE1_MYPROFILE_NEWSLETTER; ?></div>
+						<div class="newsLetters"><input type="checkbox" name="newsletter" class="yesNewsletter" value="1" <?php if(isset($newsletter) && ($newsletter!="")){ echo "checked";}elseif(isset($newsletter) && ($newsletter=="")){echo "";} elseif(isset($row['newsletter']) && ($row['newsletter']!="")){echo "checked";}else{ echo "";} ?>/> <?php echo CBE1_MYPROFILE_NEWSLETTER; ?></div>
 						<input type="hidden" name="action" value="editprofile" />
 						<input type="submit" class="hidden" name="Update" id="Update" value="<?php echo CBE1_MYPROFILE_UPBUTTON; ?>" />
 						<input type="button" class="hidden" name="cancel" id="CancelIt" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />
