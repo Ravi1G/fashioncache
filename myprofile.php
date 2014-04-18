@@ -185,11 +185,11 @@
 					<div class="customTable">
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_FNAME; ?><sup class="manadatoryField">*</sup></div>
-							<div class="data"><input type="text" class="textbox" name="fname" id="fname" value="<?php if(isset($fname) && ($fname!="")){echo $fname;} elseif(isset($row['fname'])&& ($row['fname']!="")) {echo $row['fname'];} ?>" size="25" /></div>
+							<div class="data"><input type="text" class="textbox" name="fname" id="fname" value="<?php if(isset($fname)){echo $fname;} elseif(isset($row['fname'])&& ($row['fname']!="")) {echo $row['fname'];} ?>" size="25" /></div>
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_LNAME; ?><sup class="manadatoryField">*</sup></div>
-							<div class="data"><input type="text" class="textbox" name="lname" id="lname" value="<?php  if(isset($lname) && ($lname!="")){echo $lname;}elseif(isset($row['lname']) && ($row['lname']!="")){echo $row['lname'];} ?>" size="25" /></div>
+							<div class="data"><input type="text" class="textbox" name="lname" id="lname" value="<?php  if(isset($lname)){echo $lname;}elseif(isset($row['lname']) && ($row['lname']!="")){echo $row['lname'];} ?>" size="25" /></div>
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_EMAIL; ?><sup class="manadatoryField">*</sup></div>

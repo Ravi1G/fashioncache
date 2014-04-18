@@ -71,7 +71,6 @@ $menu_categories = GetMenuCategories();
 			</div>						
 			<div class="userActivitySection">
 				<?php if (isLoggedIn()) { ?>
-				
 				<div class="welcomeContainer1">
 			      <div class="myAccount">
 			       <ul class="menuDropDown">       
