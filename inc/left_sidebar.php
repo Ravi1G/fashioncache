@@ -3,11 +3,11 @@
 		<h2>My Fashion Cache</h2>
 		<div class="secondaryNavigation">
 			<div>Account Info</div>
-			<div class="current"><a href="<?php echo SITE_URL.'myprofile.php';?>">My Profile</a></div>
+			<div <?php if($pageURL=='/myprofile.php'){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'myprofile.php';?>">My Profile</a></div>			
 			<div>Purchase History</div>
-			<div><a href="<?php echo SITE_URL.'cashback_method.php';?>">Cash Back Method</a></div>
+			<div <?php if($pageURL=='/cashback_method.php'){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'cashback_method.php';?>">Cash Back Method</a></div>
 			<div>Invite Friends &#x0026; Earn $</div>
-			<div><a href="<?php echo SITE_URL.'change_pwd.php';?>">Change Password</a></div>
+			<div <?php if($pageURL=='/change_pwd.php'){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'change_pwd.php';?>">Change Password</a></div>
 		</div>
 	</div>
 	<?php /*?>

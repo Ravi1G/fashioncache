@@ -156,7 +156,6 @@
                                 	$i = 1;
                                 	$total_trending_coupons_processed = 0;
                                 	foreach($trending_sale_coupons as $trending_coupon){
-                                		//print_r($trending_coupon);
 										$total_trending_coupons_processed++;
                                 		if($i==1){
 											echo '<li>';
@@ -250,7 +249,7 @@
 									$username = $author['user_nicename'];
 								}
 							?>
-							<!-- Information about the author: authorname,city,jalandhar -->
+							<!-- Information about the author: authorname,city,state -->
 							<div class="expertName">
 								<?php 
 									if($username!="") 

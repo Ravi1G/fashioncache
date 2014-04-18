@@ -47,10 +47,6 @@
 			$errs[] = CBE1_MYPROFILE_ERR;
 		}
 
-		if(isset($email) && $email !="" && !preg_match("/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/", $email))
-		{
-			$errs[] = CBE1_MYPROFILE_ERR1;
-		}
 		if(isset($zip) && $zip!="" && !is_numeric($zip))
 		{
 			$errs[] = "Zip code must be numeric";
@@ -197,7 +193,7 @@
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_EMAIL; ?><sup class="manadatoryField">*</sup></div>
-              				<div class="data"><input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" readonly="readonly"/></div>
+              				<div class="data"><input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" readonly="readonly" /></div>
 						</div>
 						<div class="cb"></div>						
 						<?php /*  
@@ -268,9 +264,9 @@
 												{
 												echo "<option value='".$row_country['country_id']."' selected>".$row_country['name']."</option>\n";
 												}
-															else
+											else
 											{
-																echo "<option value='".$row_country['country_id']."'>".$row_country['name']."</option>\n";
+												echo "<option value='".$row_country['country_id']."'>".$row_country['name']."</option>\n";
 											}
 										}
 									}
