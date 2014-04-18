@@ -4505,7 +4505,8 @@ padding-right:3px;
 }
 
 
-/* Custom Slide Panel */
+/* Custom Slide Panel with arrows */
+
 
 .dealsOfWeekContainer .bx-wrapper .bx-pager
 {
@@ -4549,4 +4550,406 @@ display:none;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
+}
+
+
+/* Retailer logo image (Max) Dimension Settings */
+
+
+.RetailerIcon .imagebox img
+{
+max-height:100px;
+max-width:300px;
+}
+.dealsOfWeekContainer .storeTitle img
+{
+max-height:31px;
+max-width:88px;
+}
+.signUpPopup .popupLogoSection img
+{
+max-width:120px;
+max-height:60px;
+}
+
+
+/*  Resized homepage popup styles */
+
+
+.resizedPopup .popUpContainer
+{
+background-position:center top;
+width:555px;
+background-image:url(../img/resized.jpg);
+}
+.resizedPopup .welcomeContainer
+{
+width:237px;
+margin-left:37px;
+}
+.resizedPopup .welcomeContainer .welcomeTitle
+{
+font-size:11px;
+margin-bottom:5px;
+text-align:center;
+letter-spacing:2px;
+}
+.resizedPopup .welcomeContainer img
+{
+width:237px;
+}
+
+.resizedPopup .popUpContainer .title,
+.resizedPopup .popUpContentRight .formHeader,
+.resizedPopup .popUpContentLeft .heading
+{
+font-size:18px
+}
+.resizedPopup .popUpContainer .title,
+.resizedPopup .popUpContentRight .formHeader
+{
+letter-spacing:2px;
+padding-bottom: 2px;
+padding-top: 3px;
+}
+.resizedPopup .fbApi img
+{
+width: 180px;
+}
+.resizedPopup .formBody .signUpWithEmail
+{
+font-size:10px;
+margin-top:5px;
+margin-bottom:5px;
+}
+.resizedPopup .customInputBox input
+{
+width:169px;
+margin-bottom: 5px;
+margin-top: 5px;
+padding: 5px 5px;
+}
+.resizedPopup .formActions
+{
+width:189px;
+margin: 5px auto;
+}
+.resizedPopup .customButtonHomePage
+{
+margin-top:-3px !important;
+padding-left:9px;
+}
+.resizedPopup .formBody .customButton span
+{
+font-size:10px;
+border-radius:8px;
+-moz-border-radius:8px;
+-ms-border-radius:8px;
+-webkit-border-radius:8px;
+letter-spacing:1px;
+padding:8px 15px;
+}
+.resizedPopup .formActionsRight .alreadyMember,
+.resizedPopup .formActionsRight .login
+{
+font-size:10px;
+}
+.resizedPopup .formActions .formActionsLeft
+{
+width: 90px;
+}
+.resizedPopup .formActions .formActionsRight
+{
+width: 99px;
+}
+.resizedPopup .popUpContainer .body 
+{
+margin-top:95px;
+}
+.resizedPopup .popUpContent
+{
+margin-top:65px;
+}
+.resizedPopup .popUpContentLeft .heading
+{
+margin-top:5px;
+}
+.resizedPopup .popUpSteps
+{
+width:auto;
+}
+.resizedPopup .popUpSteps .stepSection .stepTitle
+{
+font-size:11px !important;
+}
+.resizedPopup .popUpSteps .stepSection
+{
+height:100px;
+padding-left:10px;
+padding-right:7px;
+}
+.resizedPopup .popUpSteps
+{
+margin-top:18px;
+}
+.resizedPopup .popUpSteps .howItWorksStepThree
+{
+width:83px;
+}
+.resizedPopup .popUpSteps .howItWorksStepTwo
+{
+width:83px;
+}
+.resizedPopup .popUpSteps .stepSection img
+{
+width:44px;
+}
+.resizedPopup .CashBackStores
+{
+font-size:13px;
+letter-spacing:3px;
+}
+.resizedPopup .storeIconsContainer
+{
+width:555px;
+}
+.resizedPopup .storeIconsContainer .sites img
+{
+width:90%;
+}
+.resizedPopup .WhyToJoinContainerLeft
+{
+font-size:18px;
+padding: 17px 13px;
+}
+.resizedPopup .WhyToJoinContainerLeft .heightChange
+{
+font-size:12px;
+margin-top:0px;
+}
+.resizedPopup .WhyToJoinContainerRight div
+{
+ padding: 5px 5px 10px 15px;
+ font-size:9px;
+ line-height:11px;
+}
+.resizedPopup .WhyToJoinContainerContent
+{
+padding-bottom:3px;
+}
+.resizedPopup .storeIconsContainer
+{
+margin: 7px auto;
+}
+.resizedPopup .popUpContentRight .formBody
+{
+padding: 4px 7px 3px 7px;
+}
+
+
+/* Profile Page */
+
+.innerRegularPages
+{
+font-size:13px;
+margin-top:15px;
+}
+.sidebarContainment
+{
+width:300px;
+min-height:200px;
+}
+.sidebar2
+{
+width:230px;
+}
+.flowContent
+{
+width:630px;
+min-height:200px;
+}
+.flowContent1
+{
+width:74%;
+}
+.secondaryNavigation
+{
+font-size:13px;
+font-family: 'Open Sans', sans-serif;
+}
+.secondaryNavigation div
+{
+margin-top:2px;
+margin-bottom:2px;
+margin-left:5px;
+margin-right:5px;
+padding:3px 2px;
+padding-left:14px;
+transition: background-color 0.1s ease-out 0s;
+}
+.secondaryNavigation div:hover
+{
+background-color:#FDD3D1;
+cursor:pointer;
+font-family: 'Open Sans', sans-serif;
+margin-left:5px;
+margin-right:5px;
+border-radius:3px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+-ms-border-radius:3px;
+}
+.secondaryNavigation .current,
+.secondaryNavigation .current:hover
+{
+background-color:#FDD3D1;
+font-family: 'Open Sans', sans-serif;
+font-weight:700;
+/*background-image:url(../img/rightControl.jpg);
+background-repeat:no-repeat;
+background-position:left;*/
+padding-left:15px;
+margin-left:5px;
+margin-right:5px;
+border-radius:3px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+-ms-border-radius:3px;
+}
+.selfSection
+{
+border:1px solid #D3D3D3;
+padding-bottom:5px;
+margin-bottom:15px;
+border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-webkit-border-radius:5px;
+}
+.selfSection h2
+{
+font-family: 'Open Sans', sans-serif;
+font-weight:700;
+font-size:15px;
+background-color:#EFEFEF;
+margin-top:0px;
+margin-bottom:10px;
+padding-top:7px;
+padding-bottom:7px;
+padding-left:10px;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+-moz-border-top-left-radius:5px;
+-moz-border-top-right-radius:5px;
+-webkit-border-top-left-radius:5px;
+-webkit-border-top-right-radius:5px;
+-ms-border-top-left-radius:5px;
+-ms-border-top-right-radius:5px;
+}
+
+.flowContent1 h1
+{
+font-family: "Garamond_bold";
+font-size: 24px;
+font-weight: normal;
+margin-bottom: 10px;
+margin-left: 0px;
+margin-top: 0px;
+}
+
+.customTable .row
+{
+padding-top:5px;
+padding-bottom:5px;
+}
+.customTable .row .label
+{
+font-family: 'Open Sans', sans-serif;
+font-weight:600;
+font-size:13px;
+margin-top:2px;
+margin-bottom:2px;
+}
+.customTable
+{
+    background-color: #EFEFEF;
+    margin-bottom: 3%;
+    padding-bottom: 26px;
+    padding-left: 16px;
+    padding-top: 10px;
+    width: 694px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+.customTable .forSignUp
+{
+text-align:center; 
+}
+.forSignUp span
+{
+cursor:pointer;
+}
+.customTable .row .data input
+{
+width:90%;
+padding:5px 5px;
+border:1px solid #dedfe0;
+}
+.customTable select
+{
+border:1px solid #dedfe0;
+}
+.namePlates
+{
+width:300px;
+}
+.FnamePlate input
+{
+width:93.3% !important;
+}
+input.yesNewsletter
+{
+width:auto !important;
+margin-right:3px;
+position:relative;
+top:1px;
+}
+.phonePlates input.phoneInput
+{
+width:181px !important;
+}
+.newsLetters
+{
+text-align:center;
+font-size:14px;
+vertical-align:middle;
+margin-top:25px;
+margin-bottom:2px;
+}
+.emailPlate
+{
+width:633px;
+}
+.locationPlate
+{
+width:197px;
+}
+.locationPlate select
+{
+padding:4px 5px;
+width:189px;
+}
+.flowContent1 .successMessageContainer
+{
+width:604px;
+}
+.flowContent1 .errorMessageContainer
+{
+width:604px;
+}
+.secondaryNavigation a
+{
+text-decoration:none;
 }

@@ -886,3 +886,40 @@ div.pagination span.curPage {
 	padding: 10px;
 	border-radius: 0 0 10px 10px;
 }
+
+/* New Styles Addded */
+
+.resultRow
+{
+padding-bottom:5px;
+text-align:right;
+}
+span.resultRow
+{
+margin-top:5px;
+padding-bottom:5px;
+text-align:right;
+display:inline-block;
+float:right;
+}
+.retailerSearchSection input.textbox
+{
+width:218px;
+}
+.retailerSearchSection
+{
+text-align:right;
+}
+.showFeaturedOnly #chk_featured
+{
+vertical-align:middle;
+margin-top:1px;
+}
+.showFeaturedOnly
+{
+padding-top:7px;
+}
+.cb
+{
+clear:both;
+}

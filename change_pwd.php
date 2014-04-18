@@ -74,55 +74,62 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 	$PAGE_TITLE = "Change Password";
 	require_once ("inc/header.inc.php");
 ?>
-
-
-<center><h3><?php echo CBE1_MYPROFILE_PASSWORD; ?></h3></center>
-	<?php 
-			if(isLoggedIn())	
-				require_once("inc/left_sidebar.php");
-	?>
-	<?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && !$_POST['action']) { ?>
-			<div class="success_msg">
-				<?php
-
-					switch ($_GET['msg'])
-					{
-						case "2": echo CBE1_MYPROFILE_MSG2; break;
-					}
-
-				?>
-			</div>
-		<?php } ?>
+<div class="container standardContainer innerRegularPages">
+			
+			<?php 
+			/* Left SideBar Content */
+			if(isLoggedIn())
+			{
+				require_once("inc/left_sidebar.php");				
+			}
+			?>
+			
+			<div class="rightAligned flowContent1">
+			<h1><?php echo CBE1_MYPROFILE_PASSWORD; ?></h1>	
+			<?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && !$_POST['action']) { ?>
+					<div class="success_msg">
+						<?php
 		
-		<?php
-				if (count($errs2) > 0)
-				{
-					foreach ($errs2 as $errorname) { $allerrors .= "&#155; ".$errorname."<br/>\n"; }
-					echo "<div class='error_msg' style='width: 60%'>".$allerrors."</div>";
-				}
-		?>
- 
-		  <form action="" method="post">
-          <table width="70%" align="center" cellpadding="3" cellspacing="0" border="0">
-            <tr>
-              <td width="150" nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_OPASSWORD; ?>:</td>
-              <td align="left" valign="top"><input type="password" class="textbox" name="password" id="password" value="" size="25" /></td>
-            </tr>
-            <tr>
-              <td nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_NPASSWORD; ?>:</td>
-              <td align="left" valign="top"><input type="password" class="textbox" name="newpassword" id="newpassword" value="" size="25" /></td>
-            </tr>
-            <tr>
-              <td nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_CNPASSWORD; ?>:</td>
-              <td align="left" valign="top"><input type="password" class="textbox" name="newpassword2" id="newpassword2" value="" size="25" /></td>
-            </tr>
-          <tr>
-            <td colspan="2" align="center" valign="bottom">
-				<input type="hidden" name="action" value="changepwd" />
-				<input type="submit" class="submit" name="Change" id="Change" value="<?php echo CBE1_MYPROFILE_PWD_BUTTON; ?>" />
-				<!-- <input type="button" class="cancel" name="cancel" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />-->
-			</td>
-          </tr>
-          </table>
-        </form>
- 
+							switch ($_GET['msg'])
+							{
+								case "2": echo CBE1_MYPROFILE_MSG2; break;
+							}
+		
+						?>
+					</div>
+				<?php } ?>
+				
+				<?php
+						if (count($errs2) > 0)
+						{
+							foreach ($errs2 as $errorname) { $allerrors .= "&#155; ".$errorname."<br/>\n"; }
+							echo "<div class='error_msg' style='width: 60%'>".$allerrors."</div>";
+						}
+				?>
+		 
+				  <form action="" method="post">
+				  <table width="70%" align="center" cellpadding="3" cellspacing="0" border="0">
+					<tr>
+					  <td width="150" nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_OPASSWORD; ?>:</td>
+					  <td align="left" valign="top"><input type="password" class="textbox" name="password" id="password" value="" size="25" /></td>
+					</tr>
+					<tr>
+					  <td nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_NPASSWORD; ?>:</td>
+					  <td align="left" valign="top"><input type="password" class="textbox" name="newpassword" id="newpassword" value="" size="25" /></td>
+					</tr>
+					<tr>
+					  <td nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_CNPASSWORD; ?>:</td>
+					  <td align="left" valign="top"><input type="password" class="textbox" name="newpassword2" id="newpassword2" value="" size="25" /></td>
+					</tr>
+				  <tr>
+					<td colspan="2" align="center" valign="bottom">
+						<input type="hidden" name="action" value="changepwd" />
+						<input type="submit" class="submit" name="Change" id="Change" value="<?php echo CBE1_MYPROFILE_PWD_BUTTON; ?>" />
+						<!-- <input type="button" class="cancel" name="cancel" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />-->
+					</td>
+				  </tr>
+				  </table>
+				</form>
+ 			</div>
+	</div>
+			

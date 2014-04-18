@@ -142,4 +142,10 @@ $(document).ready(function () {
 	$(".sendInvitationButton span").on("click", function () {
 		$( "#Send" ).trigger( "click" );
 	});	
+	$("#updateForm").on("click", function () {
+		$( "#Update" ).trigger( "click" );
+	});	
+	$("#cancelForm").on("click", function () {
+		$( "#CancelIt" ).trigger( "click" );
+	});	
 });
