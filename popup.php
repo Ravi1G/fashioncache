@@ -150,7 +150,7 @@ include_once 'inc/config.inc.php';?>
 						<div class="sites"><img src="<?php echo SITE_URL?>img/storeLogos/sample4.jpg" alt=""/></div>
 						<div class="cb"></div>
 					</div>
-					<div class="WhyToJoinContainer">
+					<?php /* <div class="WhyToJoinContainer">
 						<div class="WhyToJoinContainerContent">
 							<div class="WhyToJoinContainerLeft">
 								<div>WHY YOU</div>
@@ -161,7 +161,7 @@ include_once 'inc/config.inc.php';?>
 							</div>	
 							<div class="cb"></div>
 						</div>
-					</div>
+					</div> */ ?>
 				</div>
 			</div>
 		</div>

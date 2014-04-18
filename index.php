@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2010-2014 CashbackEngine Software. All rights reserved.
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
-\*******************************************************************/
+\******************************************************************/
 	$is_index = 1;
 	if (file_exists("./install.php"))
 	{
@@ -47,18 +47,18 @@
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
+
 	if(!isLoggedIn()){
 	?>
 		<script type="application/javascript">
 			$.colorbox({
 				iframe      : true,
 				width: 548,
-				height: 631,
+				height: 542,
 				opacity: 0.8,
 				scrolling: false,
 				closeButton: false,
-				fixed: true,
-				top: 10,
+				fixed: true,				
 				href : "<?php echo SITE_URL?>popup.php"
 			});
 		</script>
@@ -95,10 +95,10 @@
 							?>							
 									<div class="store<?php if($looped_featured==$total_fetaured){?> lastItem<?php }?>">
 									  <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_featured['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
-						                <span class="icon">						                    
+						                <span class="icon middleIconMod">						                    
 						                    	<img alt="" src="<?php if (!stristr($row_featured['image_I'], 'http')) echo SITE_URL."admin/upload/retailer/"; echo $row_featured['image_I']; ?>" alt="<?php echo $row_featured['title']; ?>"/>
 										</span>				
-						                <span class="cashBack">
+						                <span class="cashBack cashBackMod">
 						                	<?php
 						                	$cashback_type = GetCashbackType($row_featured['cashback']);
 						                	$cashback = RemoveCashbackType($row_featured['cashback']);
@@ -148,60 +148,131 @@
                         </ul>                        
                         <!-- <div class="noTricks">No Catches, Tricks or Gimmicks.</div> -->
                         <div class="topTrendSection dealsOfWeekContainer">
-                            <div class="title">DEALS OF THE WEEK </div>
+                            <div class="title">TRENDING SALES</div>
                             <div class="body"> 
                                 <ul class="topTrends">
                                 <?php 
                                 if($total_trending_sale_coupons>0){ 
+								    $number_of_columns = 3;
+								    $multiple_of_three =$total_trending_sale_coupons+ ($total_trending_sale_coupons%$number_of_columns);
+									$total_iterations = floor($multiple_of_three/$number_of_columns);
                                 	$i = 1;
-                                	$total_trending_coupons_processed = 0;
-                                	foreach($trending_sale_coupons as $trending_coupon){
-										$total_trending_coupons_processed++;
-                                		if($i==1){
-											echo '<li>';
-										}
-								?>
-										<div class="InfoContainer">
-                                            <div class="storeTitle">
-                                                <!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
-                                                <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $trending_coupon['retailer_id']; ?>&c=<?php echo $trending_coupon['coupon_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
-                                                	<img src="<?php echo SITE_URL.'admin/upload/retailer/';echo $trending_coupon['image_III'];?>">
-                                                </a>
-                                            </div>
-                                            <div class="storeText"><?php echo $trending_coupon['description']; ?></div>
-                                            <div class="addition">+</div>
-                                            <div class="cashBack">
-                                                <div class="percentage">
-                                                 <?php
-                                                 	
-						                			$trending_coupon_type = GetCashbackType($trending_coupon['cashback']);
-						                			$cashback = RemoveCashbackType($trending_coupon['cashback']);
-						                		?>
-						                    	<?php echo $cashback;?>
-						                   	<span class="percentageSymbol"><?php echo $trending_coupon_type;?></span>
-						                   </div>
-                                               
-                                                <div class="cashBackCaption">Cash Back</div>
-                                            </div>
-                                        </div>
-								<?php 			
-										if($i==3 || $total_trending_coupons_processed==$total_trending_sale_coupons){
-											echo '</li>';
-										}
+									$start_index = 0;
+									//how many blocks we need to create
+                                	for($i = 0; $i<$total_iterations; $i++){
+										echo '<li><table>';
+
+										//how many rows we need to create for every block
+										for($k=0;$k<4;$k++){
+											$next_index = $start_index;
+											echo '<tr>';
+											if($k==0){
+												for($m=0;$m<$number_of_columns;$m++){
+													$trending_coupon = array();
+													if(array_key_exists($next_index, $trending_sale_coupons)){
+														$trending_coupon = $trending_sale_coupons[$next_index];
+													}
+												?>
+													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
+													    <?php if($trending_coupon){?>
+														<div class="InfoContainer">
+															<div class="storeTitle">
+																<!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
+																<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $trending_coupon['retailer_id']; ?>&c=<?php echo $trending_coupon['coupon_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+																	<img src="<?php echo SITE_URL.'admin/upload/retailer/';echo $trending_coupon['image_III'];?>">
+																</a>
+															</div>
+														</div>
+														<?php } ?>
+													</td>
+												<?php
+												$next_index++;
+												}
+											}
 											
+											
+											if($k==1){
+												for($m=0;$m<$number_of_columns;$m++){
+													$trending_coupon = array();
+													if(array_key_exists($next_index, $trending_sale_coupons)){
+														$trending_coupon = $trending_sale_coupons[$next_index];
+													}
+												?>
+													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
+													    <?php if($trending_coupon){?>
+														<div class="InfoContainer">
+															<div class="storeText"><?php echo $trending_coupon['description']; ?></div>
+														</div>
+														<?php } ?>
+													</td>
+												<?php
+												$next_index++;
+												}
+											}
+											
+											
+											if($k==2){
+												for($m=0;$m<$number_of_columns;$m++){
+													$trending_coupon = array();
+													if(array_key_exists($next_index, $trending_sale_coupons)){
+														$trending_coupon = $trending_sale_coupons[$next_index];
+													}
+												?>
+													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
+													    <?php if($trending_coupon){?>
+														<div class="InfoContainer">
+															<div class="addition">+</div>
+														</div>
+														<?php } ?>
+													</td>
+												<?php
+												$next_index++;
+												}
+											}
+											
+											
+											if($k==3){
+												for($m=0;$m<$number_of_columns;$m++){
+													$trending_coupon = array();
+													if(array_key_exists($next_index, $trending_sale_coupons)){
+														$trending_coupon = $trending_sale_coupons[$next_index];
+													}
+												?>
+													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
+													    <?php if($trending_coupon){?>
+														<div class="InfoContainer">
+															<div class="cashBack">
+																<div class="percentage">
+																	 <?php														
+																		$trending_coupon_type = GetCashbackType($trending_coupon['cashback']);
+																		$cashback = RemoveCashbackType($trending_coupon['cashback']);
+																	?>
+																	<?php echo $cashback;?>
+																	<span class="percentageSymbol"><?php echo $trending_coupon_type;?></span>
+															   </div>                                               
+																<div class="cashBackCaption">Cash Back</div>
+															</div>
+														</div>
+														<?php } ?>
+													</td>
+												<?php
+												$next_index++;
+												}
+											}
+											echo '</tr>';
+										}
+										$start_index = $i+$number_of_columns;
 										
-										if($i==3)
-											$i = 1;
-										else 
-											$i++;  
-										                              		
-                                	}
-                                ?>
-                                			
-                                <?php } ?>
+										?>
+									</tr>
+								</table>								
+								</li>
+
+                                <?php	}
+								 } ?>
                                 </ul>
-                                <div class="cb"></div>
-                                <div class="allStores"><a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
+                                <div class="cb"></div>                                
+								<div class="allStores"><a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
                             </div>
                         </div>
                     </div>                                       
