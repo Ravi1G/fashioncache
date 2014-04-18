@@ -156,8 +156,7 @@
 							
 												switch ($_GET['msg'])
 												{
-													case "1": echo CBE1_MYPROFILE_MSG1; break;
-													case "2": echo CBE1_MYPROFILE_MSG2; break;
+													case "1": echo CBE1_MYPROFILE_MSG1; break;													
 												}
 							
 											?>
@@ -198,7 +197,7 @@
 						</div>
 						<div class="row leftAligned locationPlate">
 							<div class="label"><?php echo CBE1_LABEL_EMAIL; ?><sup class="manadatoryField">*</sup></div>
-              				<div class="data"><input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" disabled="disabled" /></div>
+              				<div class="data"><input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" readonly="readonly"/></div>
 						</div>
 						<div class="cb"></div>						
 						<?php /*  
