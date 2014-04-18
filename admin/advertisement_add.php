@@ -160,7 +160,7 @@ if ($isPost)
 				$row=mysql_fetch_assoc($sql);
 				$image_loc = $row['image_name'];
 			
-				if($image_loc!="" )	
+				if($image_loc!="" && file_exists($image_loc))	
 					$img_del_result=unlink($image_loc);
 			}	
 			//remove block ends		

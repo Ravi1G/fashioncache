@@ -4877,7 +4877,7 @@ margin-bottom:2px;
     padding-bottom: 26px;
     padding-left: 16px;
     padding-top: 10px;
-    width: 600px;
+    width: 694px;
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-ms-border-radius:5px;
@@ -4885,9 +4885,7 @@ margin-bottom:2px;
 }
 .customTable .forSignUp
 {
-text-align:right;
-margin-right:16px;
-margin-top:30px;
+text-align:center; 
 }
 .forSignUp span
 {
@@ -4924,10 +4922,10 @@ width:181px !important;
 }
 .newsLetters
 {
-text-align:left;
+text-align:center;
 font-size:14px;
 vertical-align:middle;
-margin-top:5px;
+margin-top:25px;
 margin-bottom:2px;
 }
 .emailPlate
@@ -4950,4 +4948,8 @@ width:604px;
 .flowContent1 .errorMessageContainer
 {
 width:604px;
+}
+.secondaryNavigation a
+{
+text-decoration:none;
 }

@@ -359,8 +359,8 @@
 				     	$loc_image_I = $_FILES["image_I"]["name"];
 					}
 					$img_upload_arr['image_I']=$loc_image_I ;
-					
-					unlink("upload/retailer/".$row_images['image_I']);
+					if(file_exists("upload/retailer/".$row_images['image_I']))
+						unlink("upload/retailer/".$row_images['image_I']);
 				}
 				if(isset($_FILES['image_II'])&& $_FILES['image_II']['name']!="")
 				{
@@ -390,7 +390,8 @@
 				     	$loc_image_II = $_FILES["image_II"]["name"];
 					}
 					$img_upload_arr['image_II'] = $loc_image_II ;
-					unlink("upload/retailer/".$row_images['image_II']);
+					if(file_exists("upload/retailer/".$row_images['image_II']))
+						unlink("upload/retailer/".$row_images['image_II']);
 				}
 				if(isset($_FILES['image_III'])&& $_FILES['image_III']['name']!="")
 				{
@@ -420,7 +421,8 @@
 				     	$loc_image_III = $_FILES["image_III"]["name"];
 					}
 					$img_upload_arr['image_III'] = $loc_image_III;
-					unlink("upload/retailer/".$row_images['image_III']);
+					if(file_exists("upload/retailer/".$row_images['image_III']))
+						unlink("upload/retailer/".$row_images['image_III']);
 				}
 					foreach($img_upload_arr as $img_key=>$img_val)
 					{ 
@@ -628,6 +630,7 @@
 				</div>
 			</td>
 			</tr>
+			<!-- comment functionality is the previous one in which the url was prodided by the user to be shown as icons-->
 			<!-- <tr>
 			<td valign="middle" align="right" class="tb1">Current Image:</td>
 			<td align="left" valign="top"><img src="<?php if (!stristr($row['image'], 'http')) echo "/img/"; echo $row['image']; ?>" style="max-width:88px;max-height:31px" align="left" alt="" title="" border="0" class="imgs" /></td>
@@ -636,7 +639,8 @@
 			<td valign="middle" align="right" class="tb1">Image URL:</td>
 			<td align="left" valign="top"><input type="text" name="image_url" class="textbox" value="<?php echo $row['image']; ?>" size="100" /></td>
 			</tr>-->
-			<!-- Image functionality -->
+			
+			<!-- Image functionality (by this functionality the user upload three different images of different size)-->
 				<tr>
 					<td valign="middle" align="right" class="tb1">Current Image_I:</td>
 					<td align="left" valign="top"><img src="<?php if (!stristr($row['image_I'], 'http')) echo 'upload/retailer/'.$row['image_I']; ?>"  style="max-width:120px;max-height:60px" align="left" alt="" title="" border="0" class="imgs" /></td>

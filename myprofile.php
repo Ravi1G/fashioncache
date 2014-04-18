@@ -51,6 +51,14 @@
 		{
 			$errs[] = CBE1_MYPROFILE_ERR1;
 		}
+		if(isset($zip) && !is_numeric($zip))
+		{
+			$errs[] = "Zip code must be numeric";
+		}
+		if(isset($phone) && !is_numeric($phone))
+		{
+			$errs[] = "Phone number must be numeric";
+		}
 
 		if (count($errs) == 0)
 		{
@@ -65,7 +73,8 @@
 		}
 	}
 
-
+	/*
+		PREVIOUS CHANGE PASSWORD 
 	if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 	{
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
@@ -109,7 +118,7 @@
 				exit();
 			}	
 		}
-	}
+	}*/
 
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE = CBE1_MYPROFILE_TITLE;
@@ -123,27 +132,15 @@
 
 		<!--<p align="right"><span class="req">* <?php echo CBE1_LABEL_REQUIRED; ?></span></p>-->
 		<div class="container standardContainer innerRegularPages">
-			<div class="leftAligned sidebar2">
-				<div class="selfSection">
-					<h2>My Fashion Cache</h2>
-					<div class="secondaryNavigation">
-						<div>Account Info</div>
-						<div class="current">My Profile</div>
-						<div>Purchase History</div>
-						<div>Cash Back Method</div>
-						<div>Invite Friends &#x0026; Earn $</div>
-					</div>
-				</div>
-				<div class="selfSection">
-					<h2>Cash Back Summary</h2>
-					<div class="secondaryNavigation">
-						<div>Pending Cash Back</div>
-						<div>Recently Added</div>
-						<div>Big Fat Payments</div>
-						<div>Total Cash Back</div>
-					</div>
-				</div>
-			</div>
+			
+			<?php 
+			/* Left SideBar Content */
+			if(isLoggedIn())
+			{
+				require_once("inc/left_sidebar.php");				
+			}
+			?>
+			
 			<div class="rightAligned flowContent1">
 				<h1><?php echo CBE1_MYPROFILE_TITLE; ?></h1>				
 				<?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && !$_POST['action']) { ?>
@@ -191,6 +188,20 @@
 				?>
 				<form action="" method="post">
 					<div class="customTable">
+						<div class="row leftAligned locationPlate">
+							<div class="label"><?php echo CBE1_LABEL_FNAME; ?><sup class="manadatoryField">*</sup></div>
+							<div class="data"><input type="text" name="fname" id="fname" value="<?php echo $row['fname'];?>" size="25" /></div>
+						</div>
+						<div class="row leftAligned locationPlate">
+							<div class="label"><?php echo CBE1_LABEL_LNAME; ?><sup class="manadatoryField">*</sup></div>
+							<div class="data"><input type="text" name="lname" id="lname" value="<?php echo $row['lname']; ?>" size="25" /></div>
+						</div>
+						<div class="row leftAligned locationPlate">
+							<div class="label"><?php echo CBE1_LABEL_EMAIL; ?><sup class="manadatoryField">*</sup></div>
+							<div class="data"><input type="text" name="email" id="email" value="<?php echo $row['email']; ?>" size="25" /></div>
+						</div>
+						<div class="cb"></div>						
+						<?php /*  
 						<div class="row leftAligned namePlates FnamePlate">
 							<div class="label"><?php echo CBE1_LABEL_FNAME; ?><sup class="manadatoryField">*</sup></div>
 							<div class="data"><input type="text" name="fname" id="fname" value="<?php echo $row['fname'];?>" size="25" /></div>
@@ -205,7 +216,7 @@
 							<div class="data emailPlate">
 								<input type="text" name="email" id="email" value="<?php echo $row['email']; ?>" size="25" />
 							</div>				
-						</div>
+						</div> */ ?>
 						<div class="row">
 							<div class="label"><?php echo CBE1_LABEL_ADDRESS1; ?></div>
 							<div class="data emailPlate">
@@ -273,113 +284,11 @@
 						<input type="submit" class="hidden" name="Update" id="Update" value="<?php echo CBE1_MYPROFILE_UPBUTTON; ?>" />
 						<input type="button" class="hidden" name="cancel" id="CancelIt" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />
 						<div class="allStores forSignUp">
-							<span id="updateForm">UPDATE</span>&#x00A0;&#x00A0;&#x00A0;<span id="cancelForm">CANCEL</span>
+							<span id="updateForm">UPDATE</span><?php /* &#x00A0;&#x00A0;&#x00A0;<span id="cancelForm">CANCEL</span> */ ?>
 						</div>			
 					</div>		
 				</form>
 			</div>
 			<div class="cb"></div>
 		</div>
-
-
-
-
-
-
-		<!--<form action="" method="post">
-          <table width="70%" align="center" cellpadding="3" cellspacing="0" border="0">
-            <tr>
-              <td width="150" align="right" valign="middle"><?php echo CBE1_LABEL_USERNAME; ?>:</td>
-              <td align="left" valign="top"><span class="username"><?php echo $row['username']; ?></span></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle"><span class="req">* </span>:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle"><span class="req">* </span>:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle"><span class="req">* </span>:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top">
-				
-			  </td>
-            </tr>
-            <tr>
-              <td align="right" valign="middle">:</td>
-              <td align="left" valign="top"></td>
-            </tr>
-			<tr>
-				<td align="right" valign="top">&nbsp;</td>
-				<td align="left" valign="top">
-				</td>
-			</tr>
-           <tr>
-            <td colspan="2" align="center" valign="bottom">
-				
-			</td>
-          </tr>
-          </table>
-        </form>-->
-		
-
-
-		<center><h3><?php echo CBE1_MYPROFILE_PASSWORD; ?></h3></center>
-
-		<?php
-				if (count($errs2) > 0)
-				{
-					foreach ($errs2 as $errorname) { $allerrors .= "&#155; ".$errorname."<br/>\n"; }
-					echo "<div class='error_msg' style='width: 60%'>".$allerrors."</div>";
-				}
-		?>
-		  <form action="" method="post">
-          <table width="70%" align="center" cellpadding="3" cellspacing="0" border="0">
-            <tr>
-              <td width="150" nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_OPASSWORD; ?>:</td>
-              <td align="left" valign="top"><input type="password" class="textbox" name="password" id="password" value="" size="25" /></td>
-            </tr>
-            <tr>
-              <td nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_NPASSWORD; ?>:</td>
-              <td align="left" valign="top"><input type="password" class="textbox" name="newpassword" id="newpassword" value="" size="25" /></td>
-            </tr>
-            <tr>
-              <td nowrap="nowrap" align="right" valign="middle"><?php echo CBE1_MYPROFILE_CNPASSWORD; ?>:</td>
-              <td align="left" valign="top"><input type="password" class="textbox" name="newpassword2" id="newpassword2" value="" size="25" /></td>
-            </tr>
-          <tr>
-            <td colspan="2" align="center" valign="bottom">
-				<input type="hidden" name="action" value="changepwd" />
-				<input type="submit" class="submit" name="Change" id="Change" value="<?php echo CBE1_MYPROFILE_PWD_BUTTON; ?>" />
-				<input type="button" class="cancel" name="cancel" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />
-			</td>
-          </tr>
-          </table>
-        </form>
-
 <?php require_once ("inc/footer.inc.php"); ?>

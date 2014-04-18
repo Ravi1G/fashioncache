@@ -278,7 +278,9 @@
 					<input type="hidden" name="order" value="<?php echo $rorder; ?>" />
 					<input type="hidden" name="page" value="<?php echo $page; ?>" />
 					<input type="hidden" name="action" value="delete" />
+					<?php if($only_featured){?>
 					<input type="submit" class="submit" name="GoUpdate" id="GoUpdate" value="Update Sort Order" />&nbsp;
+					<?php }?>
 					<input type="submit" class="submit" name="GoDelete" id="GoDelete" value="Delete Selected" />
 					<span class="resultRow">Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?></div>
 					<div class="cb"></div>

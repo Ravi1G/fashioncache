@@ -76,7 +76,7 @@ $menu_categories = GetMenuCategories();
 			      <div class="myAccount">
 			       <ul class="menuDropDown">       
 			        <li class="drop">
-			         <img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <a href="#" class="menuItem">my account</a>
+			         <img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <a href="<?php echo SITE_URL;?>myprofile.php" class="menuItem">my account</a>
 			         <div class="dropdownContain">          
 			          <div class="dropOut">
 			           <div class="triangle"></div>
