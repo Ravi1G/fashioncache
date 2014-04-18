@@ -38,7 +38,7 @@
 		$country		= (int)getPostParameter('country');
 		$phone			= mysql_real_escape_string(getPostParameter('phone'));
 		$newsletter		= (int)getPostParameter('newsletter');
-		
+
 		unset($errs);
 		$errs = array();
 
@@ -51,11 +51,11 @@
 		{
 			$errs[] = CBE1_MYPROFILE_ERR1;
 		}
-		if(isset($zip) && !is_numeric($zip))
+		if(isset($zip) && $zip!="" && !is_numeric($zip))
 		{
 			$errs[] = "Zip code must be numeric";
 		}
-		if(isset($phone) && !is_numeric($phone))
+		if(isset($phone) && $phone!="" && !is_numeric($phone))
 		{
 			$errs[] = "Phone number must be numeric";
 		}
@@ -167,35 +167,35 @@
             </tr>
             <tr>
               <td align="right" valign="middle"><span class="req">* </span><?php echo CBE1_LABEL_FNAME; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="fname" id="fname" value="<?php echo $row['fname']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="fname" id="fname" value="<?php if(isset($fname) && ($fname!="")){echo $fname;} elseif(isset($row['fname'])&& ($row['fname']!="")) {echo $row['fname'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><span class="req">* </span><?php echo CBE1_LABEL_LNAME; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="lname" id="lname" value="<?php echo $row['lname']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="lname" id="lname" value="<?php  if(isset($lname) && ($lname!="")){echo $lname;}elseif(isset($row['lname']) && ($row['lname']!="")){echo $row['lname'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><span class="req">* </span><?php echo CBE1_LABEL_EMAIL; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="email" id="email" value="<?php echo $row['email']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="email" id="email" value="<?php if(isset($email)&& ($email!="")){echo $email;} elseif(isset($row['email'])&& ($row['email']!="")) {echo $row['email'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_ADDRESS1; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="address" id="address" value="<?php echo $row['address']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="address" id="address" value="<?php if(isset($address) && ($address!="")){echo $address;} elseif(isset($row['address'])&& ($row['address']!="")){echo $row['address'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_ADDRESS2; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="address2" id="address2" value="<?php echo $row['address2']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="address2" id="address2" value="<?php if(isset($address2)&& ($address2!="")){echo $address2;} elseif(isset($row['address2'])&& ($row['address2']!=""))echo $row['address2']; ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_CITY; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="city" id="city" value="<?php echo $row['city']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="city" id="city" value="<?php if(isset($city) && ($city!="")){echo $city;} elseif(isset($row['city']) && ($row['city']!="")){echo $row['city'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_STATE; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="state" id="state" value="<?php echo $row['state']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="state" id="state" value="<?php if(isset($state) && ($state!="")){echo $state;} elseif(isset($row['state']) && ($row['state']!="")){echo $row['state'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_ZIP; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="zip" id="zip" value="<?php echo $row['zip']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="zip" id="zip" value="<?php if(isset($zip) && ($zip!="")){echo $zip;} elseif(isset($row['zip']) && ($row['zip']!="")) {echo $row['zip'];} ?>" size="25" /></td>
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_COUNTRY; ?>:</td>
@@ -211,10 +211,18 @@
 					{
 						while ($row_country = mysql_fetch_array($rs_country))
 						{
-							if ($row['country'] == $row_country['country_id'])
-								echo "<option value='".$row_country['country_id']."' selected>".$row_country['name']."</option>\n";
+							if(isset($country) && ($country!="") && ($country==$row_country['country_id']))
+								{
+									echo "<option value='".$row_country['country_id']."' selected>".$row_country['name']."</option>\n";
+								}
+							elseif ($row['country'] == $row_country['country_id'])
+								{
+									echo "<option value='".$row_country['country_id']."' selected>".$row_country['name']."</option>\n";
+								}
 							else
+							{
 								echo "<option value='".$row_country['country_id']."'>".$row_country['name']."</option>\n";
+							}
 						}
 					}
 
@@ -224,11 +232,11 @@
             </tr>
             <tr>
               <td align="right" valign="middle"><?php echo CBE1_LABEL_PHONE; ?>:</td>
-              <td align="left" valign="top"><input type="text" class="textbox" name="phone" id="phone" value="<?php echo $row['phone']; ?>" size="25" /></td>
+              <td align="left" valign="top"><input type="text" class="textbox" name="phone" id="phone" value="<?php if(isset($phone) && ($phone!="")){echo $phone;} elseif(isset($row['phone']) && ($row['phone']!="")) {echo $row['phone'];} ?>" size="25" /></td>
             </tr>
 			<tr>
 				<td align="right" valign="top">&nbsp;</td>
-				<td align="left" valign="top"><input type="checkbox" name="newsletter" class="checkboxx" value="1" <?php echo (@$row['newsletter'] == 1) ? "checked" : "" ?>/> <?php echo CBE1_MYPROFILE_NEWSLETTER; ?>
+				<td align="left" valign="top"><input type="checkbox" name="newsletter" class="checkboxx" value="1" <?php if(isset($newsletter) && ($newsletter!="")){ echo "checked";}elseif(isset($newsletter) && ($newsletter=="")){echo "";} elseif(isset($row['newsletter']) && ($row['newsletter']!="")){echo "checked";}else{ echo "";} ?>/> <?php echo CBE1_MYPROFILE_NEWSLETTER; ?>
 				</td>
 			</tr>
            <tr>
