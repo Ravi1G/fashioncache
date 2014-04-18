@@ -129,18 +129,21 @@ $menu_categories = GetMenuCategories();
 			</div>
 			<div class="cb"></div>
 			<div class="navigationSection">
+			<?php 
+				$pageURL = $_SERVER["REQUEST_URI"];
+			?>
 				<ul>
-					<li class="active"><a href="<?php echo SITE_URL; ?>retailers.php?show=111111">ALL STORES</a></li>
+					<li <?php if($pageURL=="/retailers.php?show=111111"){?>class="active"<?php }?>><a href="<?php echo SITE_URL; ?>retailers.php?show=111111">ALL STORES</a></li>
 					<?php 
 					if($menu_categories){ 
 						foreach($menu_categories as $menu_category){
 					?>
-						<li><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a></li>
+						<li <?php if($menu_category['category_id']==$_GET['cat']){?>class="active"<?php }?>><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a></li>
 					<?php 
 						}
 					}
 					?>
-					<li class="last"><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
+					<li <?php if($pageURL=='/blog/'){?>class="active"<?php } else {?>class="last"<?php }?>><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
 				</ul>
 				<div class="searchContainer">
 					<form action="<?php echo SITE_URL; ?>search.php" method="get" id="searchfrm" name="searchfrm" onSubmit="if(searchtext.value==searchtext.defaultValue) return false" >
