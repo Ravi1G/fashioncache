@@ -13,8 +13,31 @@
 	
 	if(!isset($_POST['payment_method']))
 	{
-		$show_venmo		= 1;
+		$select_radio_method		= "venmo";
 	}
+	
+	//On page load, check the user's record is already in the cashback_method table , if exists then update
+	$cashback_id	=	0;
+	$query			=	"SELECT * FROM  cashbackengine_cashback_method WHERE user_id ='$userid'";
+	$result 		=	smart_mysql_query($query);
+
+	if (mysql_num_rows($result) > 0)
+	{
+		$cashback_row	=	mysql_fetch_array($result);
+		
+		$cashback_id	=	$cashback_row['cashback_method_id'];
+		$payment_method	=	$cashback_row['cashback_method'];
+		$venmo_username	=	$cashback_row['venmo_username'];
+		$paypal_email	=	$cashback_row['paypal_email'];
+		$address		=	$cashback_row['address'];
+		$city			=	$cashback_row['city'];
+		$state			=	$cashback_row['state'];
+		$country		=	$cashback_row['country'];
+		$zip			=	$cashback_row['zip'];
+		
+		$select_radio_method	=	$cashback_row['cashback_method'];
+	}
+	//Section to deal with the post after insert or update
 	if( isset($_POST['payment_method']) && ($_POST['payment_method']!="") )
 	{
 		$payment_method	=	mysql_real_escape_string(getPostParameter('payment_method'));
@@ -59,8 +82,40 @@
 				$errs[]= 'Please fill in all required fields';
 			}
 		}
-		
-		if(count($errs) == 0)
+		if(($cashback_id!=0) && (count($errs) == 0)){
+			//Query to clear the previous record
+			$clear_sql = "UPDATE cashbackengine_cashback_method SET 
+				venmo_username	=	'',
+				cashback_method	=	'',
+				paypal_email	=	'',
+				address			=	'',
+				city			=	'',
+				state			=	'',
+				country			=	'',
+				zip				=	''
+				WHERE user_id	=	'$userid'";
+			
+			smart_mysql_query($clear_sql);
+			
+			$update_sql = "UPDATE cashbackengine_cashback_method SET 
+				venmo_username	=	'$venmo_username',
+				cashback_method	=	'$payment_method',
+				paypal_email	=	'$paypal_email',
+				address			=	'$address',
+				city			=	'$city',
+				state			=	'$state',
+				country			=	'$country',
+				zip				=	'$zip'
+				WHERE user_id	=	'$userid'";
+			
+		if (smart_mysql_query($update_sql))
+			{
+				header("Location: cashback_method.php?msg=2");
+				exit();
+			}
+			
+		}
+		elseif(($cashback_id==0) && (count($errs) == 0))
 		{
 			$sql = "INSERT INTO cashbackengine_cashback_method SET 
 				venmo_username	=	'$venmo_username',
@@ -95,7 +150,7 @@
 	require_once("inc/left_sidebar.php");				
 ?>			
 <div class="rightAligned flowContent1">
-	<h1>CASH BACK METHOD</h1>
+	<h1>CASH BACK METHOD<?php echo $select_radio_method;?></h1>
 	
 <?php 
 	// Section to display errors or success message
@@ -127,7 +182,8 @@
 						<?php
 							switch ($_GET['msg'])
 							{
-								case "1": echo "Your Payment Method has been changed successfully"; break;													
+								case "1": echo "Your Payment Method has been saved successfully"; break;
+								case "2": echo "Your Payment Method has been updated successfully"; break;													
 							}
 						?>
 					 </div>
@@ -140,14 +196,14 @@
 
 	<div class="customTable cashBackMethod">
 		<div class="cashBackWays">
-			<h3>Select Method: <span class="data"><label>Venmo</label> <input type="radio" id='venmo_radio' class="radioBtnClass" name="cashback_method_radio" value='venmo' <?php if($show_venmo==1){echo "checked='true'";}?>>
-			 <label>Pay Pal</label> <input type="radio" id='paypal_radio' class="radioBtnClass radio" name="cashback_method_radio" value='paypal' >
-			  <label>Check</label> <input type="radio" id='check_radio' class="radioBtnClass radio" name="cashback_method_radio" value='check' ></span></h3>
+			<h3>Select Method: <span class="data"><label>Venmo</label> <input type="radio" id='venmo_radio' class="radioBtnClass" name="cashback_method_radio" value='venmo' <?php if($select_radio_method=="venmo"){echo "checked='true'";}?>>
+			 <label>Pay Pal</label> <input type="radio" id='paypal_radio' class="radioBtnClass radio" name="cashback_method_radio" value='paypal' <?php if($select_radio_method=="paypal"){echo "checked='true'";}?>>
+			  <label>Check</label> <input type="radio" id='check_radio' class="radioBtnClass radio" name="cashback_method_radio" value='check' <?php if($select_radio_method=="check"){echo "checked='true'";}?>></span></h3>
 		</div>
 				
 				
 <!--  Venmo Section  -->
-		<div id='venmo_div' class="cashBackContent <?php if($show_venmo!=1){echo 'hidden';}?>">
+		<div id='venmo_div' class="cashBackContent <?php if($select_radio_method!="venmo"){echo 'hidden';}?>">
 		<form id="frm_venmo" method='post' action=''>
 			<div class="row locationPlate">
 				<div class="label">User Name<sup class="manadatoryField">*</sup></div>
