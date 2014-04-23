@@ -209,18 +209,19 @@ a:hover {
 	padding: 0px;
 	width: 770px;
 	float: left;
-	margin-top:-2px;
+	margin-top: -2px;
 }
-table.retailerTable thead tr.categoryTableHeading td
-{
-background-color:#373737;
-color:#fff;
+
+table.retailerTable thead tr.categoryTableHeading td {
+	background-color: #373737;
+	color: #fff;
 }
-table.retailerTable thead tr.categoryTableHeading td.storeName,
-table.retailerTable thead tr.categoryTableHeading td.storeCashBackScheme
-{
-border-right:1px solid #fff;
+
+table.retailerTable thead tr.categoryTableHeading td.storeName,table.retailerTable thead tr.categoryTableHeading td.storeCashBackScheme
+	{
+	border-right: 1px solid #fff;
 }
+
 .navigationSection ul li {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
@@ -270,7 +271,7 @@ border-right:1px solid #fff;
 	padding-bottom: 5px;
 	font-family: Garamond;
 	font-size: 17.2px;
-	margin-top:10px;
+	margin-top: 10px;
 }
 
 .saleAlertSection .sectionTitle {
@@ -283,7 +284,7 @@ border-right:1px solid #fff;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	font-size: 15px;
-	margin-top:10px;
+	margin-top: 10px;
 }
 
 .saleAlertSection .sectionTitle span {
@@ -366,7 +367,7 @@ border-right:1px solid #fff;
 	right: -2px;
 	font-size: 12.25px;
 	font-family: "Garamond";
-    font-weight: normal;
+	font-weight: normal;
 }
 
 .percentage span.upToText i {
@@ -377,7 +378,7 @@ border-right:1px solid #fff;
 .cashBackCaption {
 	font-size: 12px;
 	font-family: "Garamond";
-    font-weight: normal;
+	font-weight: normal;
 	margin-top: -10px;
 	display: block;
 }
@@ -396,7 +397,7 @@ border-right:1px solid #fff;
 	{
 	text-align: center;
 	font-family: "Garamond";
-    font-weight: normal;
+	font-weight: normal;
 	font-weight: normal;
 }
 
@@ -424,7 +425,7 @@ border-right:1px solid #fff;
 
 h1 {
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 24px;
 	margin-top: 18px;
 	margin-bottom: 10px;
@@ -445,7 +446,7 @@ font-weight: normal;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 12px;
 }
 
@@ -483,7 +484,7 @@ font-weight: normal;
 .blogContentContainerRight .postDate {
 	font-size: 12px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	border-bottom: 1px solid #EFEFEF;
 }
 
@@ -505,7 +506,7 @@ font-weight: normal;
 .blogContentContainerRight .blogTitle {
 	font-size: 18px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	margin-top: 11px;
 	margin-bottom: 39px;
 	line-height: 21px;
@@ -567,7 +568,7 @@ font-weight: normal;
 	color: #fff;
 	font-size: 10px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	padding: 13px 18px 13px 18px;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -633,33 +634,35 @@ font-weight: normal;
 	color: #373737;
 	font-size: 12px;
 }
-.dealsOfWeekContainer
-{
+
+.dealsOfWeekContainer {
 	border: 1px solid #E7E7F7;
-    margin-left: -5px;
-    overflow: hidden;
-    padding-top:0px;
-	padding-left:10px;
-	padding-bottom:10px;
-    position: relative;
-    width: 426px;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-ms-border-radius:5px;			
-	-webkit-border-radius:5px;			
+	margin-left: -5px;
+	overflow: hidden;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	width: 426px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
-.dealsOfWeekContainer div.InfoContainer
-{
-width:141px !important;
+
+.dealsOfWeekContainer div.InfoContainer {
+	width: 141px !important;
 }
-.dealsOfWeekContainer div.bx-viewport ul.topTrends li
-{
-right:-8px;
+
+.dealsOfWeekContainer div.bx-viewport ul.topTrends li {
+	right: -8px;
 }
+
 .dealsOfWeekContainer div.bx-viewport ul.topTrends li div.InfoContainer:nth-child(3)
-{
-border-right:0px;
+	{
+	border-right: 0px;
 }
+
 .topTrendSection .title {
 	text-align: center;
 	font-family: "Garamond";
@@ -672,35 +675,30 @@ border-right:0px;
 	letter-spacing: 4px;
 	margin-right: 0px;
 }
-.dealsOfWeekContainer .title
-{
-border:0px;
-background-color:#F8F8F8;
-position:relative;
-left:-10px;
-width:102%;
-margin-top:0px;
-letter-spacing:1px;
-text-align:left;
-padding-left:20px;
+
+.dealsOfWeekContainer .title {
+	border: 0px;
+	background-color: #F8F8F8;
+	position: relative;
+	left: -10px;
+	width: 102%;
+	margin-top: 0px;
+	letter-spacing: 1px;
+	text-align: left;
+	padding-left: 20px;
 }
 
-.dealsOfWeekContainer .body .bx-wrapper
-{
-margin-bottom:9px;
+.dealsOfWeekContainer .body .bx-wrapper {
+	margin-bottom: 9px;
 }
 
-.dealsOfWeekContainer .allStores
-{
-margin-bottom:10px;
+.dealsOfWeekContainer .allStores {
+	margin-bottom: 10px;
+	margin-top: 20px;
 }
-.dealsOfWeekContainer .storeTitle
-{
-margin-bottom:10px;
-}
-.topTrendSection .bx-wrapper .bx-viewport {
-	min-height: 200px !important;
-	height: auto !important;
+
+.dealsOfWeekContainer .storeTitle {
+	margin-bottom: 10px;
 }
 
 .topTrendSection .body .last {
@@ -724,7 +722,7 @@ margin-bottom:10px;
 	text-align: center;
 	font-size: 20px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	line-height: 21px;
 	margin-botttom: 8px;
 	text-transform: uppercase;
@@ -772,10 +770,11 @@ font-weight: normal;
 	position: relative;
 	top: -3px;
 }
+
 .body .InfoContainer  .cashBack .percentage span.percentageSymbol {
 	position: relative;
 	top: -11px;
-	margin-left:-6px;
+	margin-left: -6px;
 }
 
 .body .InfoContainer  .cashBack .cashBackCaption {
@@ -919,7 +918,7 @@ font-weight: normal;
 	padding-bottom: 8px;
 	font-size: 12px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	min-height: 19px;
 	letter-spacing: 2px;
 	letter-spacing: 2px;
@@ -997,7 +996,7 @@ font-weight: normal;
 	text-align: center;
 	font-size: 14px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 }
 
 .howItWorksContainer .title .subTitleSec {
@@ -1035,8 +1034,8 @@ font-weight: normal;
 .learnMoreLink {
 	font-size: 14px;
 	font-family: "Garamond";
-font-weight: normal;
-	font-weight:normal;
+	font-weight: normal;
+	font-weight: normal;
 }
 
 .horizontalSteps img {
@@ -1062,7 +1061,7 @@ font-weight: normal;
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 11px;
@@ -1097,7 +1096,7 @@ font-weight: normal;
 .giftCardContainer .giftCardAmount {
 	color: #FBD2D1;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 109.65px;
 	margin-top: -32px;
 	margin-bottom: -42px;
@@ -1111,7 +1110,7 @@ font-weight: normal;
 
 .giftCardContainer .giftCardCaption {
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 23.11px;
 	color: #FBD2D1;
 	margin-top: -1.8em;
@@ -1131,7 +1130,7 @@ font-weight: normal;
 	margin-bottom: 0px;
 	font-size: 14px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	letter-spacing: 3px;
 	position: relative;
 	z-index: 2;
@@ -1139,7 +1138,7 @@ font-weight: normal;
 
 .heading3 {
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 12px;
 	letter-spacing: 2px;
 	text-align: center;
@@ -1206,7 +1205,7 @@ a.noUnderline,a.noUnderline:hover {
 	margin-top: -0.4em;
 	margin-bottom: 0em;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 42.79px;
 }
 
@@ -1273,7 +1272,7 @@ font-weight: normal;
 	text-transform: uppercase;
 	color: #FBD2D1;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	margin-top: 22px;
 	margin-bottom: -0.1em;
 }
@@ -1376,7 +1375,7 @@ font-weight: normal;
 	color: #FBD2D1;
 	letter-spacing: 3px;
 	font-family: "Garamond";
-	font-weight:normal;
+	font-weight: normal;
 }
 
 .footer .copyright {
@@ -1479,7 +1478,6 @@ img.colorful {
 
 .piDark:hover img.colorful {
 	display: inline;
-
 }
 
 .SiteContentSection .featuredStoresSection,.SiteContentSection .saleAlertSection
@@ -1531,7 +1529,7 @@ img.colorful {
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	padding-top: 13px;
 	padding-bottom: 13px;
 	padding-left: 23px;
@@ -1576,14 +1574,90 @@ font-weight: normal;
 }
 
 /* Retailer Page Design */
+.flowContent1 .RetailerContainer {
+	width: 100%;
+	margin-left: 0px;
+}
+
+.flowContent1 .categoryHeadingWithMargins,.flowContent1 .categoryHeading
+	{
+	margin-top: 0px;
+}
+
+.flowContent1 .referFriendSectionContainers {
+	margin-bottom: 22px !important;
+}
+
+.flowContent1 .categoryTable {
+	width: 100%;
+}
+
+.flowContent1 .yourReferralLinkContainer {
+	width: 556px;
+}
+
+.flowContent1 .yourReferralLinkContainer input {
+	padding: 4px;
+	width: 381px;
+	border: 1px solid #DEDFE0;
+}
+
+.flowContent1 .yourReferralLink .rightAligned {
+	margin-top: 8px;
+}
+
+.flowContent1 .referalForm {
+	width: 100%;
+	padding-top: 15px;
+}
+
+.flowContent1 .referalForm table tr td {
+	padding-bottom: 5px;
+}
+
+.flowContent1 .referalForm b,.flowContent1 .yourReferralLinkContainer b
+	{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.flowContent1 .referalForm table tr td input {
+	width: 290px;
+}
+
+.flowContent1 .referalForm table tr td textarea {
+	width: 98%;
+}
+
+.flowContent1 .sendInvitationButton {
+	margin-top: 18px;
+	margin-bottom: 18px;
+	margin-right: 38px;
+}
+
+.flowContent1 .sendInvitationButton span {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.flowContent1 .siteButton {
+	cursor: default;
+}
+
+.flowContent1 .siteButton span {
+	cursor: pointer;
+}
+
 .RetailerContainer {
 	width: 583px;
 	margin-left: 18px;
 }
-.RetailerContainer .RetailerShopNow
-{
-margin-bottom:22px;
+
+.RetailerContainer .RetailerShopNow {
+	margin-bottom: 22px;
 }
+
 .RetailerContainer h1 {
 	margin-left: 0px;
 }
@@ -1791,7 +1865,7 @@ table.couponTable tr td span.offerExpiryDate {
 .cashBackOnOffer {
 	font-size: 12px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	margin-top: 5px;
 	margin-bottom: 1px;
 }
@@ -1820,7 +1894,7 @@ font-weight: normal;
 	color: #FFFFFF;
 	max-height: 19px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 9px;
 	letter-spacing: 1px;
 	padding-top: 5px;
@@ -1863,17 +1937,18 @@ font-weight: normal;
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
-.siteButton
-{
-font-weight:normal;
+
+.siteButton {
+	font-weight: normal;
 }
+
 .bulletIconAlignment {
 	margin-left: 10px;
 }
 
 .cashBackCaption span {
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 }
 
 .selectedRow td {
@@ -1941,7 +2016,7 @@ font-weight: normal;
 	margin: auto;
 	padding-top: 7px;
 	padding-bottom: 8px;
-	margin-top:2px;
+	margin-top: 2px;
 }
 
 .WhyToJoinContainerLeft {
@@ -1955,7 +2030,7 @@ font-weight: normal;
 	text-align: right;
 	font-size: 25px;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	color: #FBD2D1;
 	letter-spacing: 3px;
 }
@@ -2232,7 +2307,7 @@ span {
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 11px;
@@ -2658,7 +2733,7 @@ span {
 	color: #fff;
 	background-color: #373737;
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 11px;
@@ -2722,7 +2797,7 @@ font-weight: normal;
 
 .welcomeContainer .welcomeTitle {
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 12px;
 	text-align: center;
 	letter-spacing: 3px;
@@ -2810,9 +2885,9 @@ font-weight: normal;
 	padding-bottom: 8px !important;
 	margin-left: -4px !important;
 }
-.formActionsLeft button
-{
-display:inline-block;
+
+.formActionsLeft button {
+	display: inline-block;
 }
 
 .CashBackStores {
@@ -2829,10 +2904,11 @@ display:inline-block;
 	letter-spacing: 4px;
 	margin-top: 8px;
 }
-.marginFixes
-{
-padding-bottom:4px;
+
+.marginFixes {
+	padding-bottom: 4px;
 }
+
 .popUpSteps {
 	width: 410px;
 	margin-top: 36px;
@@ -3117,7 +3193,7 @@ a
 
 .rightLine {
 	border-right: 1px solid #e1e1e1;
-/*	min-height: 465px;    Original;*/
+	/*	min-height: 465px;    Original;*/
 	min-height: 285px;
 }
 
@@ -3133,7 +3209,7 @@ a
 
 .userActivityContainer .contentTitle {
 	font-family: "Garamond";
-font-weight: normal;
+	font-weight: normal;
 	font-size: 15px;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -3180,7 +3256,7 @@ font-weight: normal;
 h3 {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
-	font-size: 13px;	
+	font-size: 13px;
 }
 
 .loginActions {
@@ -3628,22 +3704,27 @@ ul.menuDropDown li a {
 
 .lt-ie9 .dropOut {
 	zoom: 1;
-	filter: progid :   DXImageTransform.Microsoft.Shadow (   color =  
-		#dddddd, direction =   0, strength =   1 ), progid : 
-		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
-		  45, strength =   1 ), progid :   DXImageTransform.Microsoft.Shadow (
-		  color = 
-		 #dddddd, direction =   90, strength =   2 ), progid : 
-		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
-		  135, strength =   3 ), progid :   DXImageTransform.Microsoft.Shadow
-		(   color = 
-		 #cccccc, direction =   180, strength =   10 ), progid : 
-		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
-		  225, strength =   3 ), progid :   DXImageTransform.Microsoft.Shadow
-		(   color = 
-		 #dddddd, direction =   270, strength =   2 ), progid : 
-		 DXImageTransform.Microsoft.Shadow (   color =   #dddddd, direction =
-		  315, strength =   1 );
+	filter: progid :     DXImageTransform.Microsoft.Shadow (     color =   
+		 #dddddd, direction =     0, strength =     1 ), progid :  
+		  DXImageTransform.Microsoft.Shadow (     color =     #dddddd,
+		direction = 
+		   45, strength =     1 ), progid :    
+		DXImageTransform.Microsoft.Shadow ( 
+		   color =  
+		  #dddddd, direction =     90, strength =     2 ), progid :  
+		  DXImageTransform.Microsoft.Shadow (     color =     #dddddd,
+		direction = 
+		   135, strength =     3 ), progid :    
+		DXImageTransform.Microsoft.Shadow (     color =  
+		  #cccccc, direction =     180, strength =     10 ), progid :  
+		  DXImageTransform.Microsoft.Shadow (     color =     #dddddd,
+		direction = 
+		   225, strength =     3 ), progid :    
+		DXImageTransform.Microsoft.Shadow (     color =  
+		  #dddddd, direction =     270, strength =     2 ), progid :  
+		  DXImageTransform.Microsoft.Shadow (     color =     #dddddd,
+		direction = 
+		   315, strength =     1 );
 }
 
 .dropOut ul {
@@ -3658,7 +3739,7 @@ ul.menuDropDown li a {
 .dropOut ul li b {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
-	color: #555;	
+	color: #555;
 }
 
 .dropOut ul li {
@@ -3780,7 +3861,7 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	text-align: center;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	font-size: 12px;	
+	font-size: 12px;
 }
 
 .popupEndingLines div {
@@ -3811,30 +3892,34 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 .inputArea .alreadyMember span {
 	color: #FFD2D2;
 }
+
 .inputArea .alreadyMember .popupFormSectionButton span {
 	color: #fff;
 	padding-left: 15px;
-    padding-right: 8px;
-	margin-left:5px;
+	padding-right: 8px;
+	margin-left: 5px;
 }
+
 .popupFormSectionButton span {
-	font-size: 13.5px;	
+	font-size: 13.5px;
 }
-.popupFormSectionButton {	
-    display: inline-block;
-    float: left;
-    margin-top: 7px;
-    text-align: left;
-    width: 116px;
+
+.popupFormSectionButton {
+	display: inline-block;
+	float: left;
+	margin-top: 7px;
+	text-align: left;
+	width: 116px;
 }
-.colorLinkNew
-{
-float:left;
-width:158px;
-font-size:14px;
-line-height:normal;
-margin-top:8px;
+
+.colorLinkNew {
+	float: left;
+	width: 158px;
+	font-size: 14px;
+	line-height: normal;
+	margin-top: 8px;
 }
+
 .popupFormSection .inputArea .standardInputBox input::-webkit-input-placeholder
 	{
 	font-size: 14px;
@@ -3860,7 +3945,7 @@ margin-top:8px;
 .logoArea img {
 	width: 248px;
 	padding-right: 20px;
-	padding-top:19px;
+	padding-top: 19px;
 }
 
 .popupEndingLines {
@@ -3973,6 +4058,7 @@ margin-top:8px;
 	font-size: 14px;
 	padding: 4px 5px;
 	width: 195px;
+	border: 1px solid #DEDFE0;
 }
 
 .referalForm table tr td textarea {
@@ -3980,6 +4066,7 @@ margin-top:8px;
 	padding: 4px 5px;
 	width: 422px;
 	resize: vertical;
+	border: 1px solid #DEDFE0;
 }
 
 .sendInvitationButton {
@@ -4000,7 +4087,7 @@ margin-top:8px;
 }
 
 .referFriendSectionContainers {
-	width: 625px;
+	width: 100%;
 	font-size: 14px;
 }
 
@@ -4272,9 +4359,9 @@ margin-top:8px;
 	font-weight: 600;
 	font-size: 13px;
 }
-.dealsOfWeekContainer .bx-default-pager
-{
-right:-6px;
+
+.dealsOfWeekContainer .bx-default-pager {
+	right: -6px;
 }
 
 .standardSiteContainer {
@@ -4456,19 +4543,20 @@ right:-6px;
 	text-align: center;
 	margin: auto;
 }
-.transitionPopup .loadingLine
-{
-margin-top:10px;
-margin-bottom:10px;
+
+.transitionPopup .loadingLine {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
-.transitionPopup
-{
-box-shadow:0 0 10px #373737;
-position:fixed;
-top:25%;
-left:0%;
-right:0%;
+
+.transitionPopup {
+	box-shadow: 0 0 10px #373737;
+	position: fixed;
+	top: 25%;
+	left: 0%;
+	right: 0%;
 }
+
 .transitionPopup .themePink {
 	background-color: #FDD3D1;
 	padding: 10px;
@@ -4486,7 +4574,7 @@ right:0%;
 	padding: 10px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background-color:#fff;
+	background-color: #fff;
 }
 
 .transitionPopup .themeWhite .webIcon {
@@ -4503,47 +4591,42 @@ right:0%;
 	margin-left: 8px;
 	margin-top: -19px;
 }
-.dealsOfWeekContainer .storeText
-{
-padding-left:3px;
-padding-right:3px;
-}
 
+.dealsOfWeekContainer .storeText {
+	padding-left: 3px;
+	padding-right: 3px;
+}
 
 /* Custom Slide Panel with arrows */
-
-
-.dealsOfWeekContainer .bx-wrapper .bx-pager
-{
-width:auto !important;
-margin-right:13px;
+.dealsOfWeekContainer .bx-wrapper .bx-pager {
+	width: auto !important;
+	margin-right: 13px;
 }
 
-.prevSlideIcon,
-.nextSlideIcon
-{
-background-image:url(../img/nextPrevButtons.png);
-width:15px;
-height:15px;
-display:inline-block;
-cursor:pointer;
-position:relative;
-top:-5px;
+.prevSlideIcon,.nextSlideIcon {
+	background-image: url(../img/nextPrevButtons.png);
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	top: -5px;
 }
-.prevSlideIcon
-{
-background-position:-15px 0px;
-margin-right:5px;
+
+.prevSlideIcon {
+	background-position: -15px 0px;
+	margin-right: 5px;
 }
-.nextSlideIcon
-{
-background-position:0px 0px;
-margin-left:5px;
+
+.nextSlideIcon {
+	background-position: 0px 0px;
+	margin-left: 5px;
 }
-.dealsOfWeekContainer .bx-controls-direction
-{
-display:none;
+
+.dealsOfWeekContainer .bx-controls-direction {
+	display: none;
 }
+
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #E4E4E4;
 	text-indent: -9999px;
@@ -4557,512 +4640,496 @@ display:none;
 	border-radius: 5px;
 }
 
-
 /* Retailer logo image (Max) Dimension Settings */
-
-
-.RetailerIcon .imagebox img
-{
-max-height:100px;
-max-width:300px;
-}
-.dealsOfWeekContainer .storeTitle img
-{
-max-height:31px;
-max-width:88px;
-}
-.signUpPopup .popupLogoSection img
-{
-max-width:120px;
-max-height:60px;
+.RetailerIcon .imagebox img {
+	max-height: 100px;
+	max-width: 300px;
 }
 
+.dealsOfWeekContainer .storeTitle img {
+	max-height: 31px;
+	max-width: 88px;
+}
+
+.signUpPopup .popupLogoSection img {
+	max-width: 120px;
+	max-height: 60px;
+}
 
 /*  Resized homepage popup styles */
-
-
-.resizedPopup .popUpContainer
-{
-background-position:center top;
-width:555px;
-background-image:url(../img/resized.jpg);
-}
-.resizedPopup .welcomeContainer
-{
-width:237px;
-margin-left:37px;
-}
-.resizedPopup .welcomeContainer .welcomeTitle
-{
-font-size:11px;
-margin-bottom:5px;
-text-align:center;
-letter-spacing:2px;
-}
-.resizedPopup .welcomeContainer img
-{
-width:237px;
+.resizedPopup .popUpContainer {
+	background-position: center top;
+	width: 555px;
+	background-image: url(../img/resized.jpg);
 }
 
-.resizedPopup .popUpContainer .title,
-.resizedPopup .popUpContentRight .formHeader,
-.resizedPopup .popUpContentLeft .heading
-{
-font-size:18px
-}
-.resizedPopup .popUpContainer .title,
-.resizedPopup .popUpContentRight .formHeader
-{
-letter-spacing:2px;
-padding-bottom: 2px;
-padding-top: 3px;
-}
-.resizedPopup .fbApi img
-{
-width: 180px;
-}
-.resizedPopup .formBody .signUpWithEmail
-{
-font-size:10px;
-margin-top:5px;
-margin-bottom:5px;
-}
-.resizedPopup .customInputBox input
-{
-width:169px;
-margin-bottom: 5px;
-margin-top: 5px;
-padding: 5px 5px;
-}
-.resizedPopup .formActions
-{
-width:189px;
-margin: 5px auto;
-}
-.resizedPopup .customButtonHomePage
-{
-margin-top:-3px !important;
-padding-left:9px;
-}
-.resizedPopup .formBody .customButton span
-{
-font-size:10px;
-border-radius:8px;
--moz-border-radius:8px;
--ms-border-radius:8px;
--webkit-border-radius:8px;
-letter-spacing:1px;
-padding:8px 15px;
-}
-.resizedPopup .formActionsRight .alreadyMember,
-.resizedPopup .formActionsRight .login
-{
-font-size:10px;
-}
-.resizedPopup .formActions .formActionsLeft
-{
-width: 90px;
-}
-.resizedPopup .formActions .formActionsRight
-{
-width: 99px;
-}
-.resizedPopup .popUpContainer .body 
-{
-margin-top:95px;
-}
-.resizedPopup .popUpContent
-{
-margin-top:65px;
-}
-.resizedPopup .popUpContentLeft .heading
-{
-margin-top:5px;
-}
-.resizedPopup .popUpSteps
-{
-width:auto;
-}
-.resizedPopup .popUpSteps .stepSection .stepTitle
-{
-font-size:11px !important;
-}
-.resizedPopup .popUpSteps .stepSection
-{
-height:100px;
-padding-left:10px;
-padding-right:7px;
-}
-.resizedPopup .popUpSteps
-{
-margin-top:18px;
-}
-.resizedPopup .popUpSteps .howItWorksStepThree
-{
-width:83px;
-}
-.resizedPopup .popUpSteps .howItWorksStepTwo
-{
-width:83px;
-}
-.resizedPopup .popUpSteps .stepSection img
-{
-width:44px;
-}
-.resizedPopup .CashBackStores
-{
-font-size:13px;
-letter-spacing:3px;
-}
-.resizedPopup .storeIconsContainer
-{
-width:555px;
-}
-.resizedPopup .storeIconsContainer .sites img
-{
-width:90%;
-}
-.resizedPopup .WhyToJoinContainerLeft
-{
-font-size:18px;
-padding: 17px 13px;
-}
-.resizedPopup .WhyToJoinContainerLeft .heightChange
-{
-font-size:12px;
-margin-top:0px;
-}
-.resizedPopup .WhyToJoinContainerRight div
-{
- padding: 5px 5px 10px 15px;
- font-size:9px;
- line-height:11px;
-}
-.resizedPopup .WhyToJoinContainerContent
-{
-padding-bottom:3px;
-}
-.resizedPopup .storeIconsContainer
-{
-margin: 7px auto;
-}
-.resizedPopup .popUpContentRight .formBody
-{
-padding: 4px 7px 3px 7px;
+.resizedPopup .welcomeContainer {
+	width: 237px;
+	margin-left: 37px;
 }
 
+.resizedPopup .welcomeContainer .welcomeTitle {
+	font-size: 11px;
+	margin-bottom: 5px;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.resizedPopup .welcomeContainer img {
+	width: 237px;
+}
+
+.resizedPopup .popUpContainer .title,.resizedPopup .popUpContentRight .formHeader,.resizedPopup .popUpContentLeft .heading
+	{
+	font-size: 18px
+}
+
+.resizedPopup .popUpContainer .title,.resizedPopup .popUpContentRight .formHeader
+	{
+	letter-spacing: 2px;
+	padding-bottom: 2px;
+	padding-top: 3px;
+}
+
+.resizedPopup .fbApi img {
+	width: 180px;
+}
+
+.resizedPopup .formBody .signUpWithEmail {
+	font-size: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.resizedPopup .customInputBox input {
+	width: 169px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	padding: 5px 5px;
+}
+
+.resizedPopup .formActions {
+	width: 189px;
+	margin: 5px auto;
+}
+
+.resizedPopup .customButtonHomePage {
+	margin-top: -3px !important;
+	padding-left: 9px;
+}
+
+.resizedPopup .formBody .customButton span {
+	font-size: 10px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	letter-spacing: 1px;
+	padding: 8px 15px;
+}
+
+.resizedPopup .formActionsRight .alreadyMember,.resizedPopup .formActionsRight .login
+	{
+	font-size: 10px;
+}
+
+.resizedPopup .formActions .formActionsLeft {
+	width: 90px;
+}
+
+.resizedPopup .formActions .formActionsRight {
+	width: 99px;
+}
+
+.resizedPopup .popUpContainer .body {
+	margin-top: 95px;
+}
+
+.resizedPopup .popUpContent {
+	margin-top: 65px;
+}
+
+.resizedPopup .popUpContentLeft .heading {
+	margin-top: 5px;
+}
+
+.resizedPopup .popUpSteps {
+	width: auto;
+}
+
+.resizedPopup .popUpSteps .stepSection .stepTitle {
+	font-size: 11px !important;
+}
+
+.resizedPopup .popUpSteps .stepSection {
+	height: 100px;
+	padding-left: 10px;
+	padding-right: 7px;
+}
+
+.resizedPopup .popUpSteps {
+	margin-top: 18px;
+}
+
+.resizedPopup .popUpSteps .howItWorksStepThree {
+	width: 83px;
+}
+
+.resizedPopup .popUpSteps .howItWorksStepTwo {
+	width: 83px;
+}
+
+.resizedPopup .popUpSteps .stepSection img {
+	width: 44px;
+}
+
+.resizedPopup .CashBackStores {
+	font-size: 13px;
+	letter-spacing: 3px;
+}
+
+.resizedPopup .storeIconsContainer {
+	width: 555px;
+}
+
+.resizedPopup .storeIconsContainer .sites img {
+	width: 90%;
+}
+
+.resizedPopup .WhyToJoinContainerLeft {
+	font-size: 18px;
+	padding: 17px 13px;
+}
+
+.resizedPopup .WhyToJoinContainerLeft .heightChange {
+	font-size: 12px;
+	margin-top: 0px;
+}
+
+.resizedPopup .WhyToJoinContainerRight div {
+	padding: 5px 5px 10px 15px;
+	font-size: 9px;
+	line-height: 11px;
+}
+
+.resizedPopup .WhyToJoinContainerContent {
+	padding-bottom: 3px;
+}
+
+.resizedPopup .storeIconsContainer {
+	margin: 7px auto;
+}
+
+.resizedPopup .popUpContentRight .formBody {
+	padding: 4px 7px 3px 7px;
+}
 
 /* Profile Page */
+.innerRegularPages {
+	font-size: 13px;
+	margin-top: 15px;
+}
 
-.innerRegularPages
-{
-font-size:13px;
-margin-top:15px;
+.sidebarContainment {
+	width: 300px;
+	min-height: 200px;
 }
-.sidebarContainment
-{
-width:300px;
-min-height:200px;
+
+.sidebar2 {
+	width: 230px;
 }
-.sidebar2
-{
-width:230px;
+
+.flowContent {
+	width: 630px;
+	min-height: 200px;
 }
-.flowContent
-{
-width:630px;
-min-height:200px;
+
+.flowContent1 {
+	width: 74%;
 }
-.flowContent1
-{
-width:74%;
+
+.secondaryNavigation {
+	font-size: 13px;
+	font-family: 'Open Sans', sans-serif;
 }
-.secondaryNavigation
-{
-font-size:13px;
-font-family: 'Open Sans', sans-serif;
+
+.secondaryNavigation div {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 3px 2px;
+	padding-left: 14px;
+	transition: background-color 0.1s ease-out 0s;
 }
-.secondaryNavigation div
-{
-margin-top:2px;
-margin-bottom:2px;
-margin-left:5px;
-margin-right:5px;
-padding:3px 2px;
-padding-left:14px;
-transition: background-color 0.1s ease-out 0s;
+
+.secondaryNavigation div:hover {
+	background-color: #FDD3D1;
+	cursor: pointer;
+	font-family: 'Open Sans', sans-serif;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-ms-border-radius: 3px;
 }
-.secondaryNavigation div:hover
-{
-background-color:#FDD3D1;
-cursor:pointer;
-font-family: 'Open Sans', sans-serif;
-margin-left:5px;
-margin-right:5px;
-border-radius:3px;
--moz-border-radius:3px;
--webkit-border-radius:3px;
--ms-border-radius:3px;
-}
-.secondaryNavigation .current,
-.secondaryNavigation .current:hover
-{
-background-color:#FDD3D1;
-font-family: 'Open Sans', sans-serif;
-font-weight:700;
-/*background-image:url(../img/rightControl.jpg);
+
+.secondaryNavigation .current,.secondaryNavigation .current:hover {
+	background-color: #FDD3D1;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	/*background-image:url(../img/rightControl.jpg);
 background-repeat:no-repeat;
 background-position:left;*/
-padding-left:15px;
-margin-left:5px;
-margin-right:5px;
-border-radius:3px;
--moz-border-radius:3px;
--webkit-border-radius:3px;
--ms-border-radius:3px;
-}
-.selfSection
-{
-border:1px solid #D3D3D3;
-padding-bottom:5px;
-margin-bottom:15px;
-border-radius:5px;
--moz-border-radius:5px;
--ms-border-radius:5px;
--webkit-border-radius:5px;
-}
-.selfSection h2
-{
-font-family: 'Open Sans', sans-serif;
-font-weight:700;
-font-size:15px;
-background-color:#EFEFEF;
-margin-top:0px;
-margin-bottom:10px;
-padding-top:7px;
-padding-bottom:7px;
-padding-left:10px;
-border-top-left-radius:5px;
-border-top-right-radius:5px;
--moz-border-top-left-radius:5px;
--moz-border-top-right-radius:5px;
--webkit-border-top-left-radius:5px;
--webkit-border-top-right-radius:5px;
--ms-border-top-left-radius:5px;
--ms-border-top-right-radius:5px;
+	padding-left: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-ms-border-radius: 3px;
 }
 
-.flowContent1 h1
-{
-font-family: "Garamond";
-font-size: 24px;
-font-weight: normal;
-margin-bottom: 10px;
-margin-left: 0px;
-margin-top: 0px;
+.selfSection {
+	border: 1px solid #D3D3D3;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
-.customTable .row
-{
-padding-top:5px;
-padding-bottom:5px;
-}
-.customTable .row .label
-{
-font-family: 'Open Sans', sans-serif;
-font-weight:600;
-font-size:13px;
-margin-top:2px;
-margin-bottom:2px;
-}
-.customTable
-{
-    background-color: #EFEFEF;
-    margin-bottom: 3%;
-    padding-bottom: 26px;
-    padding-left: 16px;
-    padding-top: 10px;
-    width: 694px;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-ms-border-radius:5px;
-	-webkit-border-radius:5px;
-	min-height:150px;
-}
-.customTable .forSignUp
-{
-text-align:center; 
-}
-.forSignUp span
-{
-cursor:pointer;
-}
-.customTable .row .data input
-{
-width:90%;
-padding:5px 5px;
-border:1px solid #dedfe0;
-}
-.customTable select
-{
-border:1px solid #dedfe0;
+.selfSection h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	background-color: #EFEFEF;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-ms-border-top-left-radius: 5px;
+	-ms-border-top-right-radius: 5px;
 }
 
-.namePlates
-{
-width:300px;
+.flowContent1 h1 {
+	font-family: "Garamond";
+	font-size: 24px;
+	font-weight: normal;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-top: 0px;
 }
 
-.FnamePlate input
-{
-width:93.3% !important;
+.customTable .row {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
-input.yesNewsletter
-{
-width:auto !important;
-margin-right:3px;
-position:relative;
-top:1px;
+
+.customTable .row .label {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size: 13px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
-.phonePlates input.phoneInput
-{
-width:207px !important;
+
+.customTable {
+	background-color: #EFEFEF;
+	margin-bottom: 3%;
+	padding-bottom: 26px;
+	padding-left: 16px;
+	padding-top: 10px;
+	width: 694px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	min-height: 150px;
 }
-.newsLetters
-{
-text-align:center;
-font-size:14px;
-vertical-align:middle;
-margin-top:25px;
-margin-bottom:2px;
+
+.customTable .forSignUp {
+	text-align: center;
 }
-.emailPlate
-{
-width:741px;
+
+.forSignUp span {
+	cursor: pointer;
 }
-.locationPlate
-{
-width:230px;
+
+.customTable .row .data input {
+	width: 90%;
+	padding: 5px 5px;
+	border: 1px solid #dedfe0;
 }
-.locationPlate select
-{
-padding:4px 5px;
-width:219px;
-line-height:22px;
+
+.customTable select {
+	border: 1px solid #dedfe0;
 }
-.flowContent1 .successMessageContainer,
-.flowContent1 .errorMessageContainer
-{
-width:698px;
+
+.namePlates {
+	width: 300px;
 }
-.secondaryNavigation a
-{
-text-decoration:none;
+
+.FnamePlate input {
+	width: 93.3% !important;
 }
-.changePassword .passwordContent
-{
-width:219px;
-margin-bottom:5px;
-margin-top:5px;
+
+input.yesNewsletter {
+	width: auto !important;
+	margin-right: 3px;
+	position: relative;
+	top: 1px;
 }
-.changePassword .passwordContent .forSignUp
-{
-margin-top:20px;
+
+.phonePlates input.phoneInput {
+	width: 207px !important;
 }
-.radio
-{
-width:auto !important;
-vertical-align:top;
+
+.newsLetters {
+	text-align: center;
+	font-size: 14px;
+	vertical-align: middle;
+	margin-top: 25px;
+	margin-bottom: 2px;
 }
-.cashBackContent .row .data input
-{
-width:250px;
+
+.emailPlate {
+	width: 741px;
 }
-.cashBackContent .row .data select
-{
-width:262px;
-line-height:22px;
+
+.locationPlate {
+	width: 230px;
 }
-.cashBackWays
-{
-margin-bottom:10px;
-margin-top:10px;
+
+.locationPlate select {
+	padding: 4px 5px;
+	width: 219px;
+	line-height: 22px;
 }
-.cashBackWays h3
-{
-margin-top:5px;
-margin-bottom:0px;
-font-size:14px;
+
+.flowContent1 .successMessageContainer,.flowContent1 .errorMessageContainer
+	{
+	width: 698px;
 }
-.cashBackWays h3 .data
-{
-font-size:14px;
-font-family: 'Open Sans', sans-serif;
-font-weight:400;
-margin-left:12px;
+
+.secondaryNavigation a {
+	text-decoration: none;
 }
-.cashBackWays .data input
-{
-margin-right:13px;
-position:relative;
-top:4px;
+
+.changePassword .passwordContent {
+	width: 219px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }
-.cashBackMethod .forSignUp
-{
-text-align:left;
-margin-top:20px;
+
+.changePassword .passwordContent .forSignUp {
+	margin-top: 20px;
 }
-.cashBackMethod .row span.forSignUp
-{
-display:inline-block;
+
+.radio {
+	width: auto !important;
+	vertical-align: top;
 }
-.cashBackMethod .locationPlate
-{
-width:262px;
+
+.cashBackContent .row .data input {
+	width: 250px;
 }
-.cashBackMod
-{
-margin-bottom: 8px;
-margin-top: 6px;
+
+.cashBackContent .row .data select {
+	width: 262px;
+	line-height: 22px;
 }
-.middleIconMod
-{
-min-height:60px;
-line-height:60px;
+
+.cashBackWays {
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
-.dealsOfWeekContainer .topTrends li table
-{
-margin-bottom:5px;
+
+.cashBackWays h3 {
+	margin-top: 5px;
+	margin-bottom: 0px;
+	font-size: 14px;
 }
-.dealsOfWeekContainer .topTrends li table tr td .InfoContainer
-{
-padding-bottom:0px;
-padding-top:0px;
- border-right: 0px;
+
+.cashBackWays h3 .data {
+	font-size: 14px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	margin-left: 12px;
 }
+
+.cashBackWays .data input {
+	margin-right: 13px;
+	position: relative;
+	top: 2px;
+}
+
+.cashBackMethod .forSignUp {
+	text-align: left;
+	margin-top: 20px;
+}
+
+.cashBackMethod .row span.forSignUp {
+	display: inline-block;
+}
+
+.cashBackMethod .locationPlate {
+	width: 262px;
+}
+
+.cashBackMod {
+	margin-bottom: 8px;
+	margin-top: 6px;
+}
+
+.middleIconMod {
+	min-height: 60px;
+	line-height: 60px;
+}
+
+.dealsOfWeekContainer .topTrends li table {
+	margin-bottom: 5px;
+}
+
+.dealsOfWeekContainer .topTrends li table tr td .InfoContainer {
+	padding-bottom: 0px;
+	padding-top: 0px;
+	border-right: 0px;
+}
+
 .dealsOfWeekContainer .topTrends li table tr td .InfoContainer .cashBack
-{
-margin-bottom:15px;
+	{
+	margin-bottom: 15px;
 }
+
 .dealsOfWeekContainer .topTrends li table tr td .InfoContainer .storeTitle
-{
-margin-top:15px;
+	{
+	margin-top: 15px;
 }
-.dealsOfWeekContainer .topTrends li table tr td
-{
- border-right: 1px dashed #E5E5E5;
- vertical-align:top;
- width:144px;
+
+.dealsOfWeekContainer .topTrends li table tr td {
+	border-right: 1px dashed #E5E5E5;
+	vertical-align: top;
+	width: 144px;
 }
-.dealsOfWeekContainer .topTrends li table tr td:last-child
-{
- border-right: 0px;
+
+.dealsOfWeekContainer .topTrends li table tr td:last-child {
+	border-right: 0px;
 }
-.dealsOfWeekContainer .topTrends li table tr td.empty
-{
- border-right: 0px;
+
+.dealsOfWeekContainer .topTrends li table tr td.empty {
+	border-right: 0px;
 }
-.dealsOfWeekContainer
-{
-position:relative;
+
+.dealsOfWeekContainer {
+	position: relative;
 }

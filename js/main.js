@@ -75,6 +75,7 @@ $(document).ready(function () {
     );	
 
     $('.topTrends').bxSlider({
+		adaptiveHeight: true,
         auto: false,
         pause: 2000,
         speed: 800,
@@ -92,26 +93,9 @@ $(document).ready(function () {
 				$('.dealsOfWeekContainer .bx-prev').trigger('click');
 			})
 		}
-    });  
-	
-
-	//var slider = $('.topTrends').bxSlider();	
-	/*$('div.customControls a.bx-next').on("click", function () {
-    	slider.goToNextSlide();
-		var current = slider.getCurrentSlide();
-		alert(current)
-		$('.bx-pager-item').find('a').removeClass('active');
-		$('[data-slide-index="'+current+'"]').addClass('active');
-		
     });
-	$('div.customControls a.bx-prev').on("click", function () {
-    	slider.goToPrevSlide();		
-    });*/
 	
-	
-	
-
-    $('.expertSectoinSlider').bxSlider({
+	$('.expertSectoinSlider').bxSlider({
         auto: false,
         pause: 1000,
         speed: 920,
@@ -139,6 +123,8 @@ $(document).ready(function () {
     });
 	
 	
+	//	Submit Buttons
+	
 	$(".sendInvitationButton span").on("click", function () {
 		$( "#Send" ).trigger( "click" );
 	});	
@@ -147,7 +133,6 @@ $(document).ready(function () {
 	});	
 	$("#cancelForm").on("click", function () {
 		$( "#CancelIt" ).trigger( "click" );
-	});		
-	
+	});	
 	
 });

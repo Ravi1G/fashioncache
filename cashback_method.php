@@ -140,9 +140,9 @@
 
 	<div class="customTable cashBackMethod">
 		<div class="cashBackWays">
-			<h3>Select Method: <span class="data"><label>Venmo</label> <input type="radio" id='venmo_radio' class="radioBtnClass" name="cashback_method_radio" value='venmo' <?php if($show_venmo==1){echo "checked='true'";}?>>
-			 <label>Pay Pal</label> <input type="radio" id='paypal_radio' class="radioBtnClass radio" name="cashback_method_radio" value='paypal' >
-			  <label>Check</label> <input type="radio" id='check_radio' class="radioBtnClass radio" name="cashback_method_radio" value='check' ></span></h3>
+			<h3>Select Method: <span class="data"><label for="venmo_radio">Venmo</label> <input type="radio" id='venmo_radio' class="radioBtnClass" name="cashback_method_radio" value='venmo' <?php if($show_venmo==1){echo "checked='true'";}?>>
+			 <label for="paypal_radio">Pay Pal</label> <input type="radio" id='paypal_radio' class="radioBtnClass radio" name="cashback_method_radio" value='paypal' >
+			  <label for="check_radio">Check</label> <input type="radio" id='check_radio' class="radioBtnClass radio" name="cashback_method_radio" value='check' ></span></h3>
 		</div>
 				
 				

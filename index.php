@@ -198,7 +198,7 @@
 														$trending_coupon = $trending_sale_coupons[$next_index];
 													}
 												?>
-													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
+													<td class="saleInfo <?php if(!$trending_coupon){?>empty<?php } ?>">
 													    <?php if($trending_coupon){?>
 														<div class="InfoContainer">
 															<div class="storeText"><?php echo $trending_coupon['description']; ?></div>
