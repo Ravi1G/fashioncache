@@ -14,8 +14,6 @@
 	//For Session variables from pop-up of index page
 	if(isset($_SESSION['action']) && $_SESSION['action']=='signup' && isset($_SESSION['email']))
 	{
-		
-		
 		$username	=	$_SESSION['email'];
 		$email		=	$_SESSION['email'];
 		$temp		=	explode( '@', $email );
@@ -29,8 +27,6 @@
 		$action = $_POST['action']	=	'signup';
 		$_POST['password']	=	$pwd;
 		$_POST['email'] = $email;
-		//$_POST['action'] = $pwd;
-		
 	}
 	
 	//For post variables from the same page
@@ -172,9 +168,10 @@
 						}
 					}
 				}
-
-				header("Location: signup_or_login.php?msg=1");
-				exit();
+				else
+				{ 
+					$errs[] = CBE1_LOGIN_ERR1;
+				}
 			}
 		}
 	}

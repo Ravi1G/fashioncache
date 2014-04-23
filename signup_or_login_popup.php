@@ -12,13 +12,23 @@ include_once 'inc/config.inc.php';?>
           <title><?php echo SITE_TITLE;?></title>
           <?php include 'inc/common.php';?>          
     </head>
+    <?php 
+    if(!isset($_POST['action']))
+	{
+		$section	= "signup";
+		$email		= "";
+	}
+    ?>
+    
      <?php	// session variable to store information which will be used in signup_or_login page 
     	if( isset($_POST['action']) && $_POST['action'] != "" && $_POST['action']=='signup')
     	{
     		$close_popup = 1;
     		$_SESSION['email']		=	$_POST['email'];
     		$_SESSION['password']	=	$_POST['password'];
-    		$_SESSION['action']		=	'signup';//var_dump($_SESSION);exit;
+    		$_SESSION['action']		=	'signup';
+    		$section				=	'signup';
+    		$email					=	$_POST['email'];
     	}
     	else if( isset($_POST['action']) && $_POST['action'] != "" && $_POST['action']=='login')
     	{
@@ -26,6 +36,8 @@ include_once 'inc/config.inc.php';?>
     		$_SESSION['email']		=	$_POST['email'];
     		$_SESSION['password']	=	$_POST['password'];
     		$_SESSION['action']		=	'login';
+    		$section				=	'login';
+    		$email					=	$_POST['email'];
     	}
     	else{
     		$close_popup = 0;
@@ -49,10 +61,10 @@ include_once 'inc/config.inc.php';?>
 				Join FREE now and get <span><?php echo $cashback;?> Cash Back</span> on Fashion Cache orders.
 			</div>
 			<!-- Block for login -->
-			 <div id="loginBlock" class="popupFormSection">
+			 <div id="loginBlock" class="popupFormSection <?php if($section=='signup'){ echo 'hidden';}?>">
 				<form action="" method="post" id="frmlogin">
 					<div class="leftAligned inputArea">
-						<div class="standardInputBox"><input type="text" name="email" placeholder="Email"/></div>
+						<div class="standardInputBox"><input type="text" name="email" placeholder="Email" value="<?php echo $email;?>"/></div>
 						<div class="standardInputBox">						
 						<input type="password" name="password" placeholder="Password (6-12 Characters)"/> 						
 						</div>
@@ -78,10 +90,10 @@ include_once 'inc/config.inc.php';?>
 			</div>
 			
 			<!-- Block for Signup -->
-			<div id="signupBlock" class="popupFormSection">
+			<div id="signupBlock" class="popupFormSection <?php if($section=='login'){ echo 'hidden';}?>">
 				<form action="" id="frmsignup" method="post">
 					<div class="leftAligned inputArea">
-						<div class="standardInputBox"><input type="text" name="email" placeholder="Email"/></div>
+						<div class="standardInputBox"><input type="text" name="email" placeholder="Email" value="<?php echo $email;?>"/></div>
 						<div class="standardInputBox">						
 						<input type="password" name="password"  placeholder="Password (6-12 Characters)"/> 						
 						</div>
@@ -113,32 +125,29 @@ include_once 'inc/config.inc.php';?>
 		</div>
 		<script>
 			$(function(){
-			
-				$("#loginBlock").hide();//Hide the login block when the popup loads first time
 				<?php if($close_popup){ ?>
 					parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
 				<?php } ?>
 				$('#loginLink').click(function(e){
-					$("#loginBlock").show();
-					$("#signupBlock").hide();
+					$("#loginBlock").removeClass('hidden');
+					$("#signupBlock").addClass('hidden');
+					<?php $section = "";?>
 					return false;
 				});
 				$('#signupLink').click(function(e){
-					$("#loginBlock").hide();
-					$("#signupBlock").show();
+					$("#loginBlock").addClass('hidden');
+					$("#signupBlock").removeClass('hidden');
+					<?php $section = "";?>
 					return false;
 				});
-
 				$('#submitsignupform').click(function(e){
 					e.preventDefault();
 					$('#frmsignup').submit();
 				});
-
 				$('#submitloginform').click(function(e){
 					e.preventDefault();
 					$('#frmlogin').submit();
 				});
-
 			});
 		</script>
 		
