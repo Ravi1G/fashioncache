@@ -694,7 +694,7 @@ h1 {
 
 .dealsOfWeekContainer .allStores {
 	margin-bottom: 10px;
-	margin-top: 20px;
+	margin-top: 19px;
 }
 
 .dealsOfWeekContainer .storeTitle {
@@ -5132,4 +5132,12 @@ input.yesNewsletter {
 
 .dealsOfWeekContainer {
 	position: relative;
+}
+.dealsOfWeekContainer .topTrends li table tr td .InfoContainer .storeTitle
+{
+margin-top:0px;
+}
+.dealsOfWeekContainer .topTrends li table tr td .InfoContainer .cashBack
+{
+margin-bottom:10px;
 }
