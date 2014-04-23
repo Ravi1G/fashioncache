@@ -13,7 +13,13 @@ include_once 'inc/config.inc.php';?>
           <?php include 'inc/common.php'; ?>
           
     </head>
-    
+    <?php 
+	    if(!isset($_POST['action']))
+		{
+			$section	= "signup";
+			$email		= "";
+		}
+    ?>
     <?php	// session variable to store information which will be used in signup_or_login page 
     	if( isset($_POST['action']) && $_POST['action'] != "" && $_POST['action']=='signup')
     	{
@@ -21,6 +27,8 @@ include_once 'inc/config.inc.php';?>
     		$_SESSION['email']		=	$_POST['email'];
     		$_SESSION['password']	=	$_POST['password'];
     		$_SESSION['action']		=	'signup';
+    		$section				=	'signup';
+    		$email					=	$_POST['email'];
     	}
     	else if( isset($_POST['action']) && $_POST['action'] != "" && $_POST['action']=='login')
     	{
@@ -28,6 +36,8 @@ include_once 'inc/config.inc.php';?>
     		$_SESSION['email']		=	$_POST['email'];
     		$_SESSION['password']	=	$_POST['password'];
     		$_SESSION['action']		=	'login';
+    		$section				=	'login';
+    		$email					=	$_POST['email'];
     	}
     	else{
     		$close_popup = 0;
@@ -61,14 +71,14 @@ include_once 'inc/config.inc.php';?>
 								<div class="cb"></div>
 							</div>						
 						</div>
-						<div id="signupBlock" class="popUpContentRight">
+						<div id="signupBlock" class="popUpContentRight <?php if($section=='login'){echo 'hidden';}?>">
 							<div class="formHeader">SIGN UP TODAY!</div>
 							<div class="formBody">
 								<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onClick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApi.jpg"/></a></div>
 								<div class="signUpWithEmail">Or- Sign up with Email</div>
 	
 								<form action="" method="post">
-									<div class="customInputBox"><input id="popupEmail" type="text" name="email" placeholder="Email"/></div>
+									<div class="customInputBox"><input id="popupEmail" type="text" name="email" placeholder="Email" value="<?php echo $email;?>"/></div>
 									<div class="customInputBox"><input type="password" name="password" placeholder="Password"/></div>
 									<div class="formActions">
 										<div class="formActionsLeft">
@@ -87,7 +97,7 @@ include_once 'inc/config.inc.php';?>
 						</div>
 						
 						<!-- Login Block -->
-						<div id="loginBlock" class="popUpContentRight">
+						<div id="loginBlock" class="popUpContentRight <?php if($section=='signup'){echo 'hidden';}?>">
 							<div class="formHeader">LOGIN</div>
 							<div class="formBody">
 								<div class="fbApi"><a id="fbLogin" href="javascript: void(0);" onClick="fbLogin();"><img alt="" src="<?php echo SITE_URL?>img/fbApiLogin1.jpg"/></a></div>
@@ -95,7 +105,7 @@ include_once 'inc/config.inc.php';?>
 							
 							
 								<form action="" method="post">
-									<div class="customInputBox"><input id="popupEmail" type="text" name="email" placeholder="Email"/></div>
+									<div class="customInputBox"><input id="popupEmail" type="text" name="email" placeholder="Email" value="<?php echo $email;?>" /></div>
 									<div class="customInputBox"><input type="password" name="password" placeholder="Password"/></div>
 									<div class="formActions">
 										<div class="formActionsLeft">
@@ -109,33 +119,28 @@ include_once 'inc/config.inc.php';?>
 									</div>
 									<input type='hidden' name='action' value='login'>
 								</form>
-								
 							</div>
 						</div>
-						
-						
-						
+					
 					<!-- Close the pop up and refresh the parent -->
 						<script>
 							$(function(){
-								$("#loginBlock").hide();//Hide the login block when the popup loads first time
 								<?php if($close_popup){ ?>
-								parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
+									parent.location.href = '<?php echo SITE_URL;?>signup_or_login.php';
 								<?php } ?>
 								$('#loginLink').click(function(){
-									$("#loginBlock").show();
-									$("#signupBlock").hide();
+									$("#loginBlock").removeClass('hidden');
+									$("#signupBlock").addClass('hidden');
+									<?php $section = 'login';?>
 									return false;
 								});
 								$('#signupLink').click(function(){
-									$("#loginBlock").hide();
-									$("#signupBlock").show();
+									$("#loginBlock").addClass('hidden');
+									$("#signupBlock").removeClass('hidden');
+									<?php $section = 'signup';?>
 									return false;
-								});
-									//alert($.session.get("close_popup"));
-								
+								});								
 							});
-							
 						</script>
 						
 						
