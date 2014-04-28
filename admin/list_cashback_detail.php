@@ -48,9 +48,12 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 
 	if((isset($result_detail) && (mysql_num_rows($result_detail) > 0)))
 	{	?>
-		<table>
+		<table class="retailersCashbackTable1">
 			<tr>
-				<th>Retailer</th><th>Amount</th><th>Date of transaction</th><th>Mark as paid</th>
+				<th width="35%">Retailer</th>
+				<th width="16%" class="alignRight">Amount</th>
+				<th width="32%" class="alignCenter">Date of transaction</th>
+				<th width="17%" class="alignCenter">Mark as paid</th>
 			</tr>
 			<?php 
 			while($row = mysql_fetch_assoc($result_detail))
@@ -68,9 +71,9 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 				}
 				echo '<tr>
 						<td>'.$row['retailer'].'</td>
-						<td>'.$row['amount'].'</td>
-						<td>'.$row['transaction_date']."</td>
-						<td>
+						<td class="alignRight">'.$row['amount'].'</td>
+						<td class="alignCenter">'.$row['transaction_date']."</td>
+						<td class='alignCenter'>
 							<a href='#' style='$style_for_update_link' class='update_link' r_id=".$row['transaction_id'].">Update</a>
 							<span class='show_paid' style='$style_for_paid_link'>PAID</span>
 							<img class='updateLoadingImg' height='20' width='20' style='display:none;' src='https://www.theratchetshop.com/skin/frontend/default/default/images/ajaxcart/loading.gif' />
@@ -102,7 +105,6 @@ $(".update_link").click(function(e){
         }
 	});
 	
-});
-	
+});	
 
 </script>

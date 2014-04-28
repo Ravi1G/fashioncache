@@ -94,63 +94,61 @@
 			<?php 
 		}
 	}
-?>
+?>	
 	<table>
-	<form method='post'>
-		<tr>
-			<td>Enter the number of days, before which you want to list the retailers cashback</td>
-			<td><input type='text' name='no_of_days' value='<?php echo $no_days;?>'></td>
-			<td>
-			<?php $select_option = mysql_real_escape_string(getPostParameter('select_option'));?>
-			
-				<select id='select_option' name ='select_option'>
-					<option value="showall" <?php if($select_option=='showall'){echo "selected";}?>>Show All</option>
-					<option value="paid" <?php if($select_option=='paid'){echo "selected";}?>>Paid</option>
-					<option value="unpaid" <?php if($select_option=='unpaid'){echo "selected";}?>>Unpaid</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<input type='hidden' name='action' value='show'>
-				<input type='submit' value='Show'>
-			</td>
-		</tr>
-	</form>
+		<form method='post'>
+			<tr class="showResultsForm">
+				<td>Show Transaction happened atleast X days back:</td>
+				<td><input class="noOfDays" type='text' name='no_of_days' placeholder="Enter no. of days, e.g. 3" value='<?php echo $no_days;?>'></td>
+				<td>
+				<?php $select_option = mysql_real_escape_string(getPostParameter('select_option'));?>				
+					<select id='select_option' name ='select_option'>
+						<option value="showall" <?php if($select_option=='showall'){echo "selected";}?>>Show All</option>
+						<option value="paid" <?php if($select_option=='paid'){echo "selected";}?>>Paid</option>
+						<option value="unpaid" <?php if($select_option=='unpaid'){echo "selected";}?>>Unpaid</option>
+					</select>			
+					<input type='hidden' name='action' value='show'>
+					<input type='submit' value='Show' class="showResults">
+				</td>
+			</tr>
+		</form>
 	</table>
 	
 	<?php if((isset($result_retailers) && (mysql_num_rows($result_retailers) > 0))){?>
-	<table bgcolor="#F7F7F7" style="padding: 5px;" width="85%" align="center" cellpadding="3" cellspacing="0" border="0">
+	<table class="retailersCashbackTable">
 	<tr>
-		<th>User</th>
-		<th>Total Amount</th>
-		<th>Click for detail</th>
+		<th width="30%" class="alignLeft">User</th>
+		<th width="20%" class="alignright">Total Amount</th>
+		<th width="50%" class="alignCenter">Click for detail</th>
 	</tr>
 		<?php 
+		$i = 1;
 		while($rows = mysql_fetch_assoc($result_retailers))
 			{
 				?>
-					<tr >
+					<tr <?php if($i%2){ ?>class="even" <?php } else {?> class="odd" <?php } ?>>
 						<td>
 							<?php echo $rows['fname'];?>
 						</td>
-						<td>
+						<td class="alignRight">
 							<?php echo $rows['total_amount'];?>
 						</td>
-						<td>
+						<td align="center" class="actionCenter">
 							<a href="#" class="show_transactions" u_id="<?php echo $rows['user_id'];?>" t_date="<?php echo $rows['transaction_date'];?>">Show Transactions</a>
 							<a href="#" style="display:none;" class="hide_transactions">Hide Transactions</a>
 							<img class="transactionLoadingImg" height="20" width="20" style="display:none;" src="https://www.theratchetshop.com/skin/frontend/default/default/images/ajaxcart/loading.gif" />
 						</td>
 					</tr>
-			<?php }
+			<?php $i++; }
 		?>
 	</table>
 	<?php }?>
 <script>
 $(function(){
-	$(".show_transactions").click(function(e){
-
+	// Slide Up-Down's Speed
+	var AnimationSpeed = 300;
+	
+	$(".show_transactions").click(function(e){		
 		var no_of_days = "<?php echo mysql_real_escape_string(getPostParameter('no_of_days'))?>";
 		var select_option = "<?php echo mysql_real_escape_string(getPostParameter('select_option'))?>";
 		var currentParentTr = $(this).parents('tr').eq(0);
@@ -159,8 +157,8 @@ $(function(){
 		currentElem.hide();
 		currentParentTr.find('.transactionLoadingImg').show();
 		
-		if(hasTransactions){
-			currentParentTr.next('tr.transactions').show();
+		if(hasTransactions){			
+			currentParentTr.next().find('div.innerData').hide().slideDown(AnimationSpeed);			
 			currentParentTr.find('.transactionLoadingImg').hide();
 			currentParentTr.find('.hide_transactions').show();
 		}else{
@@ -171,8 +169,13 @@ $(function(){
 				type: "POST",
 				url: "<?php echo SITE_URL.'admin/list_cashback_detail.php';?>",
 				data: { user_id: user_id , t_date: t_date,no_of_days : no_of_days, select_option: select_option},
-				success: function(response) { 
-					currentParentTr.after('<tr class="transactions"><td colspan="4">'+response+'</td></tr>');
+				success: function(response) { 										
+					currentParentTr.after('<tr class="transactions"><td colspan="4"><div class="innerData">'+response+'</div></td></tr>');
+					currentParentTr.next().find('div.innerData').hide().slideDown(AnimationSpeed);					
+					if(currentParentTr.hasClass("even"))
+						{
+							currentParentTr.next().addClass("even");
+						}					
 					currentParentTr.find('.transactionLoadingImg').hide();
 					currentParentTr.find('.hide_transactions').show();
 		        }
@@ -185,7 +188,7 @@ $(function(){
 		var currentElem = $(this);
 		currentElem.hide();
 		currentParentTr.find('.show_transactions').show();
-		currentParentTr.next().hide();
+		currentParentTr.next().find('div.innerData').show().slideUp(AnimationSpeed);		
 	});
 })
 </script>
