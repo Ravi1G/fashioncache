@@ -94,19 +94,16 @@
 
 		$title = "Payments";
 		require_once ("inc/header.inc.php");
-?>
-	<div style='float:left'>
-       <h2>
-       	<?php echo $title;?>
-       </h2>
-	</div>
-	<div style = 'float:right'>
-	<form method = "post" action = "export_to_csv.php">
-		<input type = "hidden" name = "file_name" value="payments">
-		<input type = "hidden" name = "query" value="<?php echo $query;?>">
-	    <input id="export_to_csv" type="submit" class="submit" value="Export" />
-     </form>
-	</div>
+?>		
+		<div id="addnew" class="exportCsvContainer">
+			<form method = "post" action = "export_to_csv.php">
+				<input type = "hidden" name = "file_name" value="payments">
+				<input type = "hidden" name = "query" value="<?php echo $query;?>">
+				<input id="export_to_csv" type="submit" value="Export" style="display:none;"/>
+			 </form>
+			<a href="#" class="import" onclick="document.getElementById('export_to_csv').click()">Export Payment Detail</a>
+		</div>
+       <h2><?php echo $title;?></h2>
 	<div style='clear:both'></div>
        <?php if ($total > 0) { ?>
 			<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>

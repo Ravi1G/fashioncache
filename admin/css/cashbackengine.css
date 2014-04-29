@@ -977,12 +977,13 @@ span.resultRow {
 }
 
 .retailersCashbackTable .transactions > td {
-	padding: 0px;
+	padding: 0px !important;
+	height:auto !important
 }
 
 .transactions div.innerData {
 	padding-bottom: 0px;
-	margin-top:-1px;
+	margin-top:0px;
 }
 .actionCenter
 {
@@ -995,6 +996,8 @@ padding:3px 5px 5px 5px;
 margin:auto;
 color:#555555;
 font-weight:bold;
+position:relative;
+bottom:-1px;
 }
 .actionCenter a:hover
 {
@@ -1019,6 +1022,7 @@ color:#555555;
 .showResultsForm input.showResults {
 	font-size: 11px;
 	padding: 2px 10px;
+	margin-left:1px;
 }
 .retailersCashbackTable1 .alignLeft,
 .alignLeft
@@ -1046,4 +1050,8 @@ width:100%;
 .editRetailerAdminAction td textarea
 {
 width:97.5%;
+}
+.exportCsvContainer a.import
+{
+margin-right:0px !important;
 }

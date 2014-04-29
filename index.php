@@ -430,12 +430,12 @@
 						<span class="caption">Read More</span>
 					</span>
 				</a>
-				<div>
+				<div class="homepageAdsContainer">
 					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 						<img height="163" width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_name']?>">
 					</a>
 				</div>
-				<div>
+				<div class="homepageAdsContainer">
 					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 						<img height="163" width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_name']?>">
 					</a>
