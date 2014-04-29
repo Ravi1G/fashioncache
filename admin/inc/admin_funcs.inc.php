@@ -370,7 +370,7 @@ if (!function_exists('getSaleAlert')) {
 	{
 		$sale_alert = array();
 		$result = smart_mysql_query("SELECT ".implode(',', $columns)." FROM cashbackengine_sale_alert as sale
-		join cashbackengine_retailers as retailer on retailer.retailer_id = sale.retailer_id
+		LEFT JOIN cashbackengine_retailers as retailer on retailer.retailer_id = sale.retailer_id
 		where sale_alert_id = $id");
 		$total = mysql_num_rows($result);
 	

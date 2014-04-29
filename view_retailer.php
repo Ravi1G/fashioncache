@@ -196,7 +196,7 @@
 								<span class="offerExpiryDate"><?php if ($row_coupons['end_date'] != "0000-00-00 00:00:00") { ?>
 								<span class="expires">(exp. <?php echo $row_coupons['coupon_end_date']; ?>)</span>								
 							<?php } ?></span></div>
-								<div class="offerDescription">The McDonald's Corporation is the world's largest chain of hamburger fast food restaurants, serving around 1 million customers daily in countries.</div>
+								<div class="offerDescription"><?php echo $row_coupons['description'];?></div>
 								<div class="cashBackOnOffer">Plus <span><?php echo $cashback.$cashback_type;?></span> Cash Back</div>
 								<div class="requirement">
 									<?php if ($row_coupons['code'] != "") { ?>

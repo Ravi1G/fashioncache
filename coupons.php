@@ -101,7 +101,7 @@
 								<?php } ?>								
 							</span>
 						</div>
-						<div class="offerDescription1">The McDonald's Corporation is the world's largest chain of hamburger fast food restaurants, serving around 1 million customers daily in countries.</div>
+						<div class="offerDescription1"><?php echo $row['description']?></div>
                         <div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
                         <div class="requirement">
                         	<?php if($row['code']!=""){?>
