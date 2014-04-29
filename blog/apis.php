@@ -25,7 +25,8 @@ function fc_get_users()
 	user.user_nicename,
 	t1.meta_value AS "author_city", 
 	t2.meta_value AS "author_state",
-	t3.meta_value AS "Author_Profile_Picture" 
+	t3.meta_value AS "Author_Profile_Picture" ,
+        t4.meta_value AS "first_name"
 	FROM wp_users AS user 
 	LEFT JOIN wp_usermeta AS t1 
 	ON user.ID=t1.user_id 
@@ -33,10 +34,13 @@ function fc_get_users()
 	ON t1.user_id=t2.user_id 
 	LEFT JOIN wp_usermeta AS t3 
 	ON t2.user_id = t3.user_id 
+    LEFT JOIN wp_usermeta AS t4
+    ON t3.user_id = t4.user_id
 	WHERE 
 	t1.meta_key="author_city" && 
 	t2.meta_key="author_state" && 
-	t3.meta_key="author_profile_picture"', $conn);
+	t3.meta_key="author_profile_picture" &&
+    t4.meta_key = "first_name"', $conn);
 	
 	while($row=mysql_fetch_assoc($r))
 	{
