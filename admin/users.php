@@ -103,7 +103,6 @@
 	<div style = 'float:right'>
 	<form method = "post" action = "export_to_csv.php">
 		<input type = "hidden" name = "file_name" value="users">
-		<input type = "hidden" name = "query" value="<?php echo $query;?>">
 	    <input id="export_to_csv" type="submit" class="submit" value="Export" />
      </form>
 	</div>

@@ -172,7 +172,7 @@ include_once 'inc/config.inc.php';?>
 		</div>
 	   <script type="text/javascript" src="<?php echo SITE_URL?>js/plugins.js"></script>
 	   <script type="text/javascript" src="<?php echo SITE_URL?>js/main.js"></script>
-	   <script src="<?php echo SITE_URL; ?>js/fb.js"></script>
+	   <script src="<?php echo SITE_URL;?>js/fb.js"></script>
 	   
 	   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	   <script type="text/javascript">
