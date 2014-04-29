@@ -523,17 +523,17 @@
 	<?php } ?>
 
       <form action="" method="post" name="form1" enctype="multipart/form-data">
-        <table width="100%" cellpadding="2" cellspacing="5" border="0" align="center">
+        <table class="editRetailerAdminAction" cellpadding="2" cellspacing="5" border="0" align="center">
           <tr>
             <td colspan="2" align="right" valign="top"><font color="red">* denotes required field</font></td>
           </tr>
           <tr>
-            <td width="30%" valign="middle" align="right" class="tb1"><span class="req">* </span>Title:</td>
-            <td width="70%" valign="top"><input type="text" name="rname" id="rname" value="<?php echo $row['title']; ?>" size="62" class="textbox" /></td>
+            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Title:</td>
+            <td valign="top"><input type="text" name="rname" id="rname" value="<?php echo $row['title']; ?>" size="62" class="textbox" /></td>
 			</tr>
           <tr>
-            <td width="30%" valign="middle" align="right" class="tb1">Affiliate Network:</td>
-            <td width="70%" valign="top">
+            <td valign="middle" align="right" class="tb1">Affiliate Network:</td>
+            <td valign="top">
 			<select class="textbox2" id="network_id" name="network_id" onchange="javascript:hiddenDiv('network_id','program_id')" <?php if ($network_id) echo "style='display: block;'"; ?>>
 				<option value="">-----------------------</option>
 				<?php
@@ -551,12 +551,12 @@
 			</td>
 			</tr>
           <tr id="program_id" <?php if ($row['network_id'] == 0) { ?>style="display: none;" <?php } ?>>
-            <td width="30%" valign="middle" align="right" class="tb1"><span class="req">* </span>Program ID:</td>
-            <td width="70%" valign="top"><input type="text" name="program_id" value="<?php echo $row['program_id']; ?>" size="15" class="textbox" /><span class="note">Program ID from affiliate network</span></td>
+            <td valign="middle" align="right" class="tb1"><span class="req">* </span>Program ID:</td>
+            <td valign="top"><input type="text" name="program_id" value="<?php echo $row['program_id']; ?>" size="15" class="textbox" /><span class="note">Program ID from affiliate network</span></td>
 			</tr>
           <tr>
-            <td width="30%" valign="middle" align="right" class="tb1">Category:</td>
-            <td width="70%" valign="top">
+            <td valign="middle" align="right" class="tb1">Category:</td>
+            <td valign="top">
 				<div class="scrollbox">
 				<?php
 
@@ -666,9 +666,9 @@
 	            <td valign="top"><input type="file" name="image_III" class="textbox" size="100" />(88x31)</td>
 	          </tr>
             <tr>
-            <td width="30%" valign="top" align="right" class="tb1"><span class="req">* </span>URL:</td>
-            <td nowrap="nowrap" width="70%" valign="top">
-				<input type="text" name="url" id="url" value="<?php echo $row['url']; ?>" size="100" class="textbox" /><br/>
+            <td valign="top" align="right" class="tb1"><span class="req">* </span>URL:</td>
+            <td nowrap="nowrap" valign="top">
+				<input type="text" name="url" id="url" value="<?php echo $row['url']; ?>" size="96" class="textbox" /><br/>
 				<font color="#838383">Please DO NOT forget to add '<font color="#E72085">{USERID}</font>' to your affiliate link to track members.</font>
 			</td>
 			</tr>
@@ -693,8 +693,8 @@
 					}
 			?>
             <tr>
-            <td width="30%" valign="middle" align="right" class="tb1">Old Cashback:</td>
-            <td width="70%" valign="top">
+            <td valign="middle" align="right" class="tb1">Old Cashback:</td>
+            <td valign="top">
 				<input type="text" name="old_cashback" id="old_cashback" value="<?php echo $old_cashback; ?>" size="4" class="textbox" />
 				 <select name="old_cashback_sign">
 					<option value="currency" <?php echo $old_selected1; ?>><?php echo SITE_CURRENCY; ?></option>
@@ -724,8 +724,8 @@
 					}
 			?>
             <tr>
-				<td width="30%" valign="middle" align="right" class="tb1">Cashback:</td>
-				<td width="70%" valign="top">
+				<td valign="middle" align="right" class="tb1">Cashback:</td>
+				<td valign="top">
 					<input type="text" name="cashback" id="cashback" value="<?php echo $cashback; ?>" size="4" class="textbox" />
 					 <select name="cashback_sign">
 						<option value="currency" <?php echo $selected1; ?>><?php echo SITE_CURRENCY; ?></option>
@@ -752,7 +752,7 @@
             </tr>
 			<tr>
 				<td valign="middle" align="right" class="tb1">Meta Keywords:</td>
-				<td valign="top"><input type="text" name="meta_keywords" id="meta_keywords" value="<?php echo $row['meta_keywords']; ?>" size="115" class="textbox" /></td>
+				<td valign="top"><input type="text" name="meta_keywords" id="meta_keywords" value="<?php echo $row['meta_keywords']; ?>" size="96" class="textbox" /></td>
             </tr>
 			<script>
 				$(function() {

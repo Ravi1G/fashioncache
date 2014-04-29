@@ -1039,3 +1039,11 @@ text-align:center;
 {
 width:118px;
 }
+.editRetailerAdminAction
+{
+width:100%;
+}
+.editRetailerAdminAction td textarea
+{
+width:97.5%;
+}
