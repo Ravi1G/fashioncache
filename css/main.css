@@ -1915,7 +1915,7 @@ table.couponTable tr td span.offerExpiryDate {
 	padding-bottom: 10px;
 	font-size: 12px;
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 700;
+	font-weight: 400;
 	border-bottom: 0px;
 }
 
@@ -1923,7 +1923,7 @@ table.couponTable tr td span.offerExpiryDate {
 	border-bottom: 1px solid #CCCCCC;
 	font-size: 12px;
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 700;
+	font-weight: 400;
 	padding-top: 5px;
 	padding-bottom: 7px;
 	vertical-align: middle;
@@ -5140,4 +5140,17 @@ margin-top:0px;
 .dealsOfWeekContainer .topTrends li table tr td .InfoContainer .cashBack
 {
 margin-bottom:10px;
+}
+.offerDescription
+{
+font-size:13px;
+font-family: "Garamond";
+margin-top:3px;
+}
+.offerDescription1
+{
+font-size:14px;
+line-height:17px;
+font-family: "Garamond";
+margin-top:4px;
 }

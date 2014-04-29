@@ -36,8 +36,8 @@
 				<li><a href="categories.php">Categories</a></li>
 				<li><a href="trending_sales.php">Trending Sales</a></li>
 				<li><a href="sale_alert_add_edit.php">Sale Alert</a></li>
-				<li><a href="countries.php">Countries</a></li>
-				<li><a href="reviews.php">Reviews</a></li>
+				<!--<li><a href="countries.php">Countries</a></li>-->
+				<!--<li><a href="reviews.php">Reviews</a></li>-->
 				<?php if (GetInvitationsTotal() > 0) { ?>
 					<li><a href="invitations.php">Invitations</a></li>
 				<?php } ?>
@@ -48,10 +48,10 @@
 				<?php } ?>
 				<li><a href="money2user.php">Manual Credit</a></li>
 				<li><a href="csv_import.php">Upload CSV-Report</a></li>
-				<li><a href="messages.php">Messages <?php if (GetMessagesTotal() > 0) { ?> <span class="new_count"><?php echo GetMessagesTotal(); ?></span><?php } ?></a></li>
-				<li><a href="pmethods.php">Payment Methods</a></li>
-				<li><a href="news.php">News</a></li>
-				<li><a href="content.php">Content</a></li>
+				<?php /* <li><a href="messages.php">Messages <?php if (GetMessagesTotal() > 0) { ?> <span class="new_count"><?php echo GetMessagesTotal(); ?></span><?php } ?></a></li> */ ?>
+				<!--<li><a href="pmethods.php">Payment Methods</a></li>-->
+				<!--<li><a href="news.php">News</a></li>-->
+				<!--<li><a href="content.php">Content</a></li>-->
 				<li><a href="etemplates.php">Email Templates</a></li>
 				<li><a href="email2users.php">Email Members</a></li>
 				<li><a href="settings.php">Settings</a></li>

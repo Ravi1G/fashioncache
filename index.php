@@ -340,7 +340,7 @@
 							if(isset($author_address)){
 							?>
 							<div class="expertLocation">
-								<?php echo implode(',', $author_address);?>
+								<?php echo implode(', ', $author_address);?>
 							</div>
 							<?php } ?>
 							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
@@ -404,7 +404,7 @@
 							<div class="horizontalSteps"><img src="<?php echo SITE_URL;?>img/stepThreeDark.jpg" alt=""/> Get Cash Back!</div>
 							<div class="learnMoreAboutSteps">
 								<div class="learnMoreAlert">No Catches, Tricks or Gimmicks.</div>
-								<div class="learnMoreLink"><a href="#">Learn More &#x003E;</a></div>								
+								<div class="learnMoreLink"><a href="<?php echo SITE_URL;?>blog/about-fasion-smart/">Learn More &#x003E;</a></div>								
 							</div>
 						</div>	
 					</div>
@@ -417,7 +417,7 @@
                     </div>
                     <div class="giftCardCaption">GIFT CARD</div>
                     <div class="giftCardCaption1">when you refer a friend!</div>
-                    <div class="giftCardLearnMore"><a href="<?php echo SITE_URL.'invite.php';?>">LEARN MORE &#x003E;</a></div>
+                    <div class="giftCardLearnMore"><a href="<?php echo SITE_URL;?>invite.php">LEARN MORE &#x003E;</a></div>
                 </div>
                 
                 <!-- Featured Articles Section -->

@@ -192,11 +192,11 @@
 								<div class="discountTitle">Discount:</div>
 							</td>
 							<td class="columnTwo">
-								<div class="offerName"><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row_coupons['coupon_id']; ?>" target="_blank"><b><?php echo $row_coupons['title']; ?></b></a> 
+								<div class="offerName"><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row_coupons['coupon_id']; ?>" target="_blank"><b><?php echo $row_coupons['title']; ?></b></a>
 								<span class="offerExpiryDate"><?php if ($row_coupons['end_date'] != "0000-00-00 00:00:00") { ?>
-								<span class="expires">(exp. <?php echo $row_coupons['coupon_end_date']; ?>)</span> 
-								
+								<span class="expires">(exp. <?php echo $row_coupons['coupon_end_date']; ?>)</span>								
 							<?php } ?></span></div>
+								<div class="offerDescription">The McDonald's Corporation is the world's largest chain of hamburger fast food restaurants, serving around 1 million customers daily in countries.</div>
 								<div class="cashBackOnOffer">Plus <span><?php echo $cashback.$cashback_type;?></span> Cash Back</div>
 								<div class="requirement">
 									<?php if ($row_coupons['code'] != "") { ?>

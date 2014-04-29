@@ -7,7 +7,7 @@
 <div class="footer">
 		<div class="container">
 			<div class="footerNavigation footernavlinks">
-				<div><a href="<?php echo SITE_URL.'blog/about-fasion-smart/';?>">About Fashion Smart</a></div>
+				<div><a href="<?php echo SITE_URL.'blog/about-fasion-smart/';?>">About Fashion Cache</a></div>
 				<div><a href="<?php echo SITE_URL.'blog/advertise-with-us/';?>">Advertise With Us</a></div>
 				<div><a href="<?php echo SITE_URL.'blog/contact-us/';?>">Contact Us</a></div>
 				<div><a href="<?php echo SITE_URL.'blog/privacy-policy/';?>">Privacy Policy</a></div>

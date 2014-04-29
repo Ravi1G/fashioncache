@@ -27,8 +27,8 @@ $menu_categories = GetMenuCategories();
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/cashbackengine.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/easySlider1.7.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL; ?>js/jquery.tools.tabs.min.js"></script>
-<link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" />
-<link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" />
+<link rel="shortcut icon" href="<?php echo SITE_URL; ?>img/favicon.png" />
+<link rel="icon" type="image/png" href="<?php echo SITE_URL; ?>img/favicon.png" />
 <!-- Cashback engine items ends -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
