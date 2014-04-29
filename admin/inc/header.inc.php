@@ -43,6 +43,7 @@
 				<?php } ?>
 				<li><a href="affnetworks.php">Affiliate Networks</a></li>
 				<li><a href="payments.php">Payments</a></li>
+				<li><a href="list_cashback.php">List Cashback</a></li>
 				<?php if (GetRequestsTotal() > 0) { ?>
 					<li><a href="cashout_requests.php">Cash Out Requests <span class="new_count"><?php echo GetRequestsTotal(); ?></span></a></li>
 				<?php } ?>

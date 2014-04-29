@@ -92,28 +92,32 @@
 
 		$cc = 0;
 
-
 		$title = "Payments";
 		require_once ("inc/header.inc.php");
-
 ?>
-
-       <h2>Payments</h2>
-
+	<div style='float:left'>
+       <h2>
+       	<?php echo $title;?>
+       </h2>
+	</div>
+	<div style = 'float:right'>
+	<form method = "post" action = "export_to_csv.php">
+		<input type = "hidden" name = "file_name" value="payments">
+		<input type = "hidden" name = "query" value="<?php echo $query;?>">
+	    <input id="export_to_csv" type="submit" class="submit" value="Export" />
+     </form>
+	</div>
+	<div style='clear:both'></div>
        <?php if ($total > 0) { ?>
-
-
 			<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
 			<div class="success_box">
 				<?php
-
 					switch ($_GET['msg'])
 					{
 						case "processed": echo "Payment has been successfully processed"; break;
 						case "updated": echo "Payment has been successfully updated"; break;
 						case "deleted": echo "Payment has been successfully deleted"; break;
 					}
-
 				?>
 			</div>
 			<?php } ?>

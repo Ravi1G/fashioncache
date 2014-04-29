@@ -90,17 +90,24 @@
 		$query2 = "SELECT * FROM cashbackengine_users".$filter_by;
 		$result2 = smart_mysql_query($query2);
         $total = mysql_num_rows($result2);
-
 		$cc = 0;
-
-
 		$title = "Members";
-
 		require_once ("inc/header.inc.php");
-
 ?>
 
-       <h2>Members</h2>
+     <div style='float:left'>
+       <h2>
+       	<?php echo $title;?>
+       </h2>
+	</div>
+	<div style = 'float:right'>
+	<form method = "post" action = "export_to_csv.php">
+		<input type = "hidden" name = "file_name" value="users">
+		<input type = "hidden" name = "query" value="<?php echo $query;?>">
+	    <input id="export_to_csv" type="submit" class="submit" value="Export" />
+     </form>
+	</div>
+	<div style='clear:both'></div>
 
         <?php if ($total > 0) { ?>
 

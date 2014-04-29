@@ -142,7 +142,7 @@ $menu_categories = GetMenuCategories();
 						}
 					}
 					?>
-					<li <?php if($pageURL=='/blog/'){?>class="active"<?php } else {?>class="last"<?php }?>><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
+					<li <?php if($pageURL=='/blog/'){?>class="active last"<?php } else {?>class="last"<?php }?>><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
 				</ul>
 				<div class="searchContainer">
 					<form action="<?php echo SITE_URL; ?>search.php" method="get" id="searchfrm" name="searchfrm" onSubmit="if(searchtext.value==searchtext.defaultValue) return false" >

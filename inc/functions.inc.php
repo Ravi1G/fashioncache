@@ -1314,6 +1314,8 @@ if (!function_exists('GetCashbackType')) {
 		$cashback_type = 'currency';
 		if(strpos($cashback,'%')!== false)
 			$cashback_type = '%';
+		if(strpos($cashback,'$')!== false)
+			$cashback_type = '$';	
 		elseif(strpos($cashback,'points')!== false) 
 			$cashback_type = 'points';
 			
@@ -1323,7 +1325,7 @@ if (!function_exists('GetCashbackType')) {
 
 if (!function_exists('RemoveCashbackType')) {
 	function RemoveCashbackType($cashback){
-		return str_replace(array('%', 'points'), array('', ''), $cashback);
+		return str_replace(array('%', 'points', '$'), array('', '', ''), $cashback);
 	}
 }
 

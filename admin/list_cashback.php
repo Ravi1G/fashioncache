@@ -108,7 +108,7 @@
 						<option value="unpaid" <?php if($select_option=='unpaid'){echo "selected";}?>>Unpaid</option>
 					</select>			
 					<input type='hidden' name='action' value='show'>
-					<input type='submit' value='Show' class="showResults">
+					<input type='submit' value=' Show ' class="showResults submit">
 				</td>
 			</tr>
 		</form>

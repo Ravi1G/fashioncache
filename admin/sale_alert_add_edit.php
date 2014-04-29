@@ -73,8 +73,8 @@
 	{
 		$retailer = getSaleAlert($id);
 		if(empty($retailer)){
-			header("Location: sale_alerts.php?msg=invalid_sale_alert&msg_type=error");
-			exit();
+			//header("Location: sale_alerts.php?msg=invalid_sale_alert&msg_type=error");
+			//exit();
 		}
 		
 		$retailer_id = $retailer['retailer_id'];
