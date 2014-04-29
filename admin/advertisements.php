@@ -21,7 +21,9 @@
 	require_once ("inc/header.inc.php");
 ?>
 
-		<div id="addnew"><a class="addnew" href="advertisement_add.php">Add Advertisement</a></div>
+		<div id="addnew"><!-- Uncomment to show add advertisement page -->
+			<!-- <a class="addnew" href="advertisement_add.php">Add Advertisement</a>-->
+		</div>
 
 		<h2>Advertisements</h2>
 

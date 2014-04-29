@@ -136,7 +136,7 @@
 						<td align="center" class="actionCenter">
 							<a href="#" class="show_transactions" u_id="<?php echo $rows['user_id'];?>" t_date="<?php echo $rows['transaction_date'];?>">Show Transactions</a>
 							<a href="#" style="display:none;" class="hide_transactions">Hide Transactions</a>
-							<img class="transactionLoadingImg" height="20" width="20" style="display:none;" src="https://www.theratchetshop.com/skin/frontend/default/default/images/ajaxcart/loading.gif" />
+							<img class="transactionLoadingImg" height="20" width="20" style="display:none;" src="<?php echo SITE_URL.'admin/images/loading.gif'?>" />
 						</td>
 					</tr>
 			<?php $i++; }

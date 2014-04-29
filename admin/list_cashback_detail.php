@@ -69,6 +69,8 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 					$style_for_update_link = '';
 					$style_for_paid_link = 'display:none;';
 				}
+				
+				$loading_img = SITE_URL.'admin/images/loading.gif';
 				echo '<tr>
 						<td>'.$row['retailer'].'</td>
 						<td class="alignRight">'.$row['amount'].'</td>
@@ -76,7 +78,7 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 						<td class='alignCenter'>
 							<a href='#' style='$style_for_update_link' class='update_link' r_id=".$row['transaction_id'].">Update</a>
 							<span class='show_paid' style='$style_for_paid_link'>PAID</span>
-							<img class='updateLoadingImg' height='20' width='20' style='display:none;' src='https://www.theratchetshop.com/skin/frontend/default/default/images/ajaxcart/loading.gif' />
+							<img class='updateLoadingImg' height='20' width='20' style='display:none;' src= '$loading_img'/>
 						</td>
 					</tr>";
 			}

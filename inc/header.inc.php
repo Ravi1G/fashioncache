@@ -1,7 +1,7 @@
 <?php 
 global $advertisements;
 $sale_alert =  getSaleAlert(1);
-$advertisements = GetAdvertisements(array(HOME_PAGE_HEADER_AD_ID, HOME_PAGE_FOOTER_AD_ID,SIDEBAR_TOP_IMAGE, SIDEBAR_BOTTOM_IMAGE));
+$advertisements = GetAdvertisements(array(HOME_PAGE_HEADER_AD_ID, HOME_PAGE_FOOTER_AD_ID,SIDEBAR_TOP_IMAGE, SIDEBAR_BOTTOM_IMAGE,HOME_PAGE_SIDEBAR_AD1_ID,HOME_PAGE_SIDEBAR_AD2_ID));
 $menu_categories = GetMenuCategories();
 ?>
 <!DOCTYPE html>

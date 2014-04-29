@@ -56,6 +56,8 @@
 	define('REFERRAL_COMMISSION', $settings['referral_commission']);
 	define('IMAGE_WIDTH', $settings['image_width']);
 	define('IMAGE_HEIGHT', $settings['image_height']);
+	define('IMAGE_WIDTH2', $settings['image_width2']);
+	define('IMAGE_HEIGHT2', $settings['image_height2']);
 	define('SHOW_LANDING_PAGE', $settings['show_landing_page']);
 	define('REVIEWS_APPROVE', $settings['reviews_approve']);
 	define('MAX_REVIEW_LENGTH', $settings['max_review_length']);

@@ -298,7 +298,7 @@
 				if($total_authors>0){ 
 					$i = 1;
 					$total_authors_processed = 0;
-					foreach($authors as $author){	
+					foreach($authors as $author){		
 						$total_authors_processed++;
 						if($i==1){
 							echo '<li>';
@@ -315,8 +315,10 @@
 								</a>
 							</div>
 							<?php 
-								$username = trim($author['First_Name'].' '.substr($author['Last_name'], 0, 1));
-								if($username==''){
+								if($author['first_name']!="")
+									$username = $author['first_name'];
+								//$username = trim($author['First_Name'].' '.substr($author['Last_name'], 0, 1));
+								elseif($author['user_nicename']!=''){
 									$username = $author['user_nicename'];
 								}
 							?>
@@ -325,8 +327,6 @@
 								<?php 
 									if($username!="") 
 										echo $username;
-									else 
-										echo 'Author';
 								?>
 							</div>
 							<?php 
@@ -430,6 +430,16 @@
 						<span class="caption">Read More</span>
 					</span>
 				</a>
+				<div>
+					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						<img height="163" width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_name']?>">
+					</a>
+				</div>
+				<div>
+					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+						<img height="163" width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_name']?>">
+					</a>
+				</div>
 				<?php /* ?>
                 <div class="captionContainer">
                     <div class="image"><img alt="" src="<?php echo SITE_URL;?>img/handBags.jpg"/></div>
