@@ -96,6 +96,7 @@
 		$title = "Members";
 		require_once ("inc/header.inc.php");
 ?>
+	<link href="css/jquery.qtip.css" rel="stylesheet" type="text/css"/>
 	<div id="addnew" class="exportCsvContainer">
 	<form method = "post" action = "export_to_csv.php">
 		<input type = "hidden" name = "file_name" value="users">
@@ -186,9 +187,53 @@
 					
 					<td align="center" valign="middle">
 					<!-- Open a popup on click of the payment method -->
-						<a href="#" class="payment_method" u_id="<?php echo $row['user_id']?>">
+						<a href="#" class="payment_method paymentMethodIns" u_id="<?php echo $row['user_id']?>">
 							<?php echo $row['cashback_method'];?>
 						</a>
+						<!--  For Venmo  -->
+						<!--<div class="paymentMethodDataContainer">
+							<div class="blockTitle">Venmo User Detail</div>
+							<div class="blockDescription">
+								<div><b>Username:</b> johnwalker225@gmail.com</div>
+							</div>
+						</div>-->
+						
+						<!--  For Paypal  -->
+						<!--<div class="paymentMethodDataContainer">
+							<div class="blockTitle">PayPal User Detail</div>
+							<div class="blockDescription">
+								<div><b>Email:</b> TonnyStark@starks.com</div>
+							</div>
+						</div>-->
+						
+						<!--  For Check  -->
+						<div class="paymentMethodDataContainer">
+							<div class="blockTitle">Check Details</div>
+							<div class="blockDescription">
+								<table>
+									<tr>
+										<td><b>Address:</b></td>
+										<td>GH35, Old Hills</td>
+									</tr>
+									<tr>
+										<td><b>City:</b></td>
+										<td>Chicago</td>
+									</tr>
+									<tr>
+										<td><b>State:</b></td>
+										<td>Mexico</td>
+									</tr>
+									<tr>
+										<td><b>Country:</b></td>
+										<td>Unites States of America</td>
+									</tr>
+									<tr>
+										<td><b>Zip Code:</b></td>
+										<td>155784</td>
+									</tr>
+								</table>								
+							</div>
+						</div>
 					</td>
 					
 					<td align="center" valign="middle"><a style="color: #000" href="user_payments.php?id=<?php echo $row['user_id']; ?>"><?php echo GetUserBalance($row['user_id']); ?></a></td>
@@ -231,22 +276,23 @@
 					<div class="info_box">There are no members at this time.</div>
 				<?php } ?>
         <?php } ?>
-<script>
-$(".payment_method").click(function(){
-	var user_id = $(this).attr("u_id");
-	
-	$.colorbox({
-	    iframe      : true,
-	    width: 593,
-	    height: 360,
-	    opacity: 0.8,
-	    scrolling: false,
-	    closeButton: false,
-	    fixed: false,
-	    transition: "none",
-	    href : "<?php echo SITE_URL;?>admin/payment_method_popup.php?user_id="+user_id
+<script src="js/jquery.qtip.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.paymentMethodIns').each(function() { 
+			$(this).qtip({ 
+				position: {
+						my: 'left top',
+						at: 'right bottom'
+					},
+				style: { 
+						classes: 'qtip-tipped customQtip'
+					},
+				content: {		
+						text: $(this).next('div')
+					}				
+			});
+		});
 	});
-});
-	
 </script>
 <?php require_once ("inc/footer.inc.php"); ?>

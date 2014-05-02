@@ -5,7 +5,7 @@
 <title><?php echo $title; ?> | CashbackEngine Admin Panel</title>
 <link href="css/cashbackengine.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo SITE_URL;?>css/colorbox.css" rel="stylesheet"/>
-<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script src="js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.calendrical.js"></script>
 <script language="javascript" src="js/scripts.js" type="text/javascript"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>

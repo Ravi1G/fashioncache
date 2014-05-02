@@ -79,7 +79,7 @@
 	require_once ("inc/header.inc.php");
 	
 ?>
-
+<link href="css/jquery.qtip.css" rel="stylesheet" type="text/css"/>
 <!-- Show the errors pending -->
 <?php 
 	if(count($errs)>0)
@@ -124,8 +124,8 @@
 	<tr>
 		<th width="30%" class="alignLeft">User</th>
 		<th width="20%" class="alignright">Total Amount</th>
-		<th>Payment Method</th>
-		<th width="50%" class="alignCenter">Click for detail</th>
+		<th width="20%" class="alignCenter">Payment Method</th>
+		<th width="30%" class="alignCenter">Click for detail</th>
 	</tr>
 		<?php 
 		$i = 1;
@@ -140,10 +140,55 @@
 							<?php echo $rows['total_amount'];?>
 						</td>
 						<td align="center" valign="middle">
-					<!-- Open a popup on click of the payment method -->
-						<a href="#" class="payment_method" user_id="<?php echo $rows['user_id']?>">
+						<!-- Open a popup on click of the payment method -->
+						<a href="#" class="payment_method paymentMethodIns" user_id="<?php echo $rows['user_id']?>">
 							<?php echo $rows['cashback_method'];?>
 						</a>
+						<!--  For Venmo  -->
+						<!--<div class="paymentMethodDataContainer">
+							<div class="blockTitle">Venmo User Detail</div>
+							<div class="blockDescription">
+								<div><b>Username:</b> johnwalker225@gmail.com</div>
+							</div>
+						</div>-->
+						
+						<!--  For Paypal  -->
+						<!--<div class="paymentMethodDataContainer">
+							<div class="blockTitle">PayPal User Detail</div>
+							<div class="blockDescription">
+								<div><b>Email:</b> TonnyStark@starks.com</div>
+							</div>
+						</div>-->
+						
+						<!--  For Check  -->
+						<div class="paymentMethodDataContainer">
+							<div class="blockTitle">Check Details</div>
+							<div class="blockDescription">
+								<table>
+									<tr>
+										<td><b>Address:</b></td>
+										<td>GH35, Old Hills</td>
+									</tr>
+									<tr>
+										<td><b>City:</b></td>
+										<td>Chicago</td>
+									</tr>
+									<tr>
+										<td><b>State:</b></td>
+										<td>Mexico</td>
+									</tr>
+									<tr>
+										<td><b>Country:</b></td>
+										<td>Unites States of America</td>
+									</tr>
+									<tr>
+										<td><b>Zip Code:</b></td>
+										<td>155784</td>
+									</tr>
+								</table>								
+							</div>
+						</div>
+						
 						</td>
 						<td align="center" class="actionCenter">
 							<a href="#" class="show_transactions" u_id="<?php echo $rows['user_id'];?>" t_date="<?php echo $rows['transaction_date'];?>">Show Transactions</a>
@@ -220,5 +265,26 @@ $(function(){
     $('#end_date').calendricalDate();
 });
 </script>
+<script src="js/jquery.qtip.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.paymentMethodIns').each(function() { 
+			$(this).qtip({ 
+				position: {
+						my: 'left top',
+						at: 'right bottom'
+					},
+				style: { 
+						classes: 'qtip-tipped customQtip'
+					},
+				content: {		
+						text: $(this).next('div')
+					}				
+			});
+		});
+	});
+</script>
+
+
 
 <?php require_once ("inc/footer.inc.php"); ?>
