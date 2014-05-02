@@ -98,7 +98,6 @@
 		<div id="addnew" class="exportCsvContainer">
 			<form method = "post" action = "export_to_csv.php">
 				<input type = "hidden" name = "file_name" value="payments">
-				<input type = "hidden" name = "query" value="<?php echo $query;?>">
 				<input id="export_to_csv" type="submit" value="Export" style="display:none;"/>
 			 </form>
 			<a href="#" class="import" onclick="document.getElementById('export_to_csv').click()">Export Payment Detail</a>

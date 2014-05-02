@@ -31,6 +31,7 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 		$pwd		= mysql_real_escape_string(getPostParameter('password'));
 		$newpwd		= mysql_real_escape_string(getPostParameter('newpassword'));
 		$newpwd2	= mysql_real_escape_string(getPostParameter('newpassword2'));
+		$newsletter = mysql_real_escape_string(getPostParameter('newsletter'));
 
 		$errs2 = array();
 
@@ -61,7 +62,7 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 
 		if (count($errs2) == 0)
 		{
-			$upp_query = "UPDATE cashbackengine_users SET password='".PasswordEncryption($newpwd)."' WHERE user_id='$userid' LIMIT 1";
+			$upp_query = "UPDATE cashbackengine_users SET newsletter='$newsletter', password='".PasswordEncryption($newpwd)."' WHERE user_id='$userid' LIMIT 1";
 		
 			if (smart_mysql_query($upp_query))
 			{
@@ -141,7 +142,12 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 								<div class="row locationPlate">
 									<div class="label"><?php echo CBE1_MYPROFILE_CNPASSWORD; ?></div>
 									<div class="data"><input type="password" name="newpassword2" id="newpassword2" value="" size="25" /></div>
-								</div>							
+								</div>
+								<div class="row locationPlate">
+									<div class="label">News Letter</div>
+									<div class="data"><input type="checkbox" name="newsletter" id="newsletter" value="1" size="25" <?php if($row['newsletter']){echo 'checked';}?>/></div>
+								</div>
+															
 								
 								<input type="hidden" name="action" value="changepwd" />
 								<input type="submit" class="hidden" name="Change" id="Update" value="<?php echo CBE1_MYPROFILE_PWD_BUTTON; ?>" />

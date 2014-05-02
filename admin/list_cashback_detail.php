@@ -99,7 +99,7 @@ $(".update_link").click(function(e){
 	
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:86/admin/list_cashback_detail.php",
+		url: "<?php echo SITE_URL.'admin/list_cashback_detail.php';?>",
 		data: { update_transaction_id: transaction_id },
 		success: function(response) { 
 			currentParentT.find(".updateLoadingImg").hide();
