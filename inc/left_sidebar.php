@@ -4,10 +4,10 @@
 		<div class="secondaryNavigation">
 			<div>Account Info</div>
 			<div <?php if($pageURL=='/myprofile.php'){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'myprofile.php';?>">My Profile</a></div>			
-			<div>Purchase History</div>
+			<div <?php if($pageURL=='/purchaseHistory.php'){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'purchaseHistory.php';?>">Purchase History</a></div>
 			<div <?php if(($pageURL=='/cashback_method.php') || ($pageURL=='/cashback_method.php?msg=1')|| ($pageURL=='/cashback_method.php?msg=2')){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'cashback_method.php';?>">Cash Back Method</a></div>
 			<div <?php if($pageURL=='/invite.php'){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'invite.php';?>">Invite Friends &#x0026; Earn $</a></div>
-			<div <?php if(($pageURL=='/change_pwd.php') || ($pageURL=='/change_pwd.php?msg=2')){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'change_pwd.php';?>">Change Password</a></div>
+			<div <?php if(($pageURL=='/change_pwd.php') || ($pageURL=='/change_pwd.php?msg=2')){?>class="current"<?php }?>><a href="<?php echo SITE_URL.'change_pwd.php';?>">Password and Settings</a></div>
 		</div>
 	</div>
 	<?php /*?>

@@ -352,7 +352,7 @@ define ('CBE1_BALANCE_CREQUESTED', 'Cash Out Requested');
 define ('CBE1_BALANCE_CPROCESSED', 'Cash Out Processed');
 define ('CBE1_BALANCE_LCASHBACK', 'Lifetime Cashback');
 define ('CBE1_BALANCE_TEXT', 'You can view a history of all payments made to you on ');
-define ('CBE1_BALANCE_TEXT2', '<b>Please NOTE</b>: Cashback statistics are not updated in realtime.<br/> Your cashback statistics were last updated at ');
+define ('CBE1_BALANCE_TEXT2', '<b>PLEASE NOTE</b>: Cashback statistics are not updated in realtime. Your cashback statistics were last updated at ');
 define ('CBE1_BALANCE_TITLE2', 'Stores Cashback');
 define ('CBE1_BALANCE_DATE', 'Date');
 define ('CBE1_BALANCE_STORE', 'Store');

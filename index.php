@@ -54,7 +54,7 @@
 			$.colorbox({
 				iframe      : true,
 				width: 548,
-				height: 542,
+				height: 553,
 				opacity: 0.8,
 				scrolling: false,
 				closeButton: false,
@@ -422,7 +422,7 @@
                 
                 <!-- Featured Articles Section -->
                 <?php /* ?><div class="heading3">FEATURED ARTICLES</div><?php */ ?>
-                <a href="<?php echo SITE_URL;?>blog.php" class="noUnderline">
+                <a href="<?php echo SITE_URL;?>blog/" class="noUnderline">
 					<span class="captionContainer readOurBlog">				
 						<span><img alt="" src="<?php echo SITE_URL;?>img/blog.jpg"/></span>
 						<span class="subText">READ OUR</span>
@@ -432,12 +432,12 @@
 				</a>
 				<div class="homepageAdsContainer">
 					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
-						<img height="163" width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_name']?>">
+						<img width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD1_ID]['image_name']?>">
 					</a>
 				</div>
 				<div class="homepageAdsContainer">
 					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
-						<img height="163" width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_name']?>">
+						<img width="195" src="<?php echo $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url']!='' ? $advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_SIDEBAR_AD2_ID]['image_name']?>">
 					</a>
 				</div>
 				<?php /* ?>

@@ -89,6 +89,7 @@ include_once 'inc/config.inc.php';?>
 											<div class="login" ><a href="" id='loginLink'>LOGIN</a></div>
 										</div>
 										<div class="cb"></div>
+										<div class="termsAndContidions">I agree the <a target="_parent" href="<?php echo SITE_URL;?>blog/terms-conditions/">Terms &#x0026; Conditions</a>.</div>
 									</div>
 									<input type='hidden' name='action' value='signup'>
 								</form>

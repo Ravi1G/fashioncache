@@ -85,7 +85,7 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 			?>
 			
 			<div class="rightAligned flowContent1">
-				<h1><?php echo CBE1_MYPROFILE_PASSWORD; ?></h1>	
+				<h1>Password and Settings</h1>					
 					<?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && !$_POST['action']) { ?>
 			
 								<div class="errorMessageContainer successMessageContainer">
@@ -125,9 +125,10 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 								</div>					
 								<?php 
 							}
-					?>				
-					 <form action="" method="post">
-						<div class="customTable changePassword">
+					?>	
+					<div class="customTable changePassword">
+					<h2><?php echo CBE1_MYPROFILE_PASSWORD; ?></h2>			
+					 <form action="" method="post">						
 							<div class="passwordContent">
 								<div class="row locationPlate">
 									<div class="label"><?php echo CBE1_MYPROFILE_OPASSWORD; ?></div>
@@ -148,9 +149,24 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 								<div class="allStores forSignUp">
 									<span id="updateForm">CHANGE PASSWORD</span><?php /* &#x00A0;&#x00A0;&#x00A0;<span id="cancelForm">CANCEL</span> */ ?>
 								</div>
-							</div>						
-						</div>
+							</div>												
 					</form>
+					<br/>
+					<div class="hr"></div>					
+					<h2>Receive Newsletters</h2>
+					 <div class="para">For the latest news and CashBack offers, subscribe to our Newsletter Service.</div>
+					 <div class="para">To get more from Fashion Cache, including subscription deals and exclusive news from our Blogs and Offers, simply check the checkbox below and hit subscribe.</div>
+					 <div class="subscriptionForm">
+						<input type="checkbox"/> <i>I'd like to receive the newsletter from Fashion Cache.</i><br/>
+						<div class="allStores forSignUp">
+						  <span id="updateForm">SUBSCRIBE</span>
+						</div>
+						
+					 </div>
+					
+				</div>
+			 
+			 
 			 
 			 
 					 <?php /* <form action="" method="post">
