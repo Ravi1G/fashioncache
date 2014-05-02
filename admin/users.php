@@ -13,7 +13,9 @@
 	require_once("../inc/pagination.inc.php");
 	require_once("./inc/admin_funcs.inc.php");
 
-
+?>
+	
+<?php
 	// results per page
 	if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0)
 		$results_per_page = (int)$_GET['show'];
@@ -83,7 +85,7 @@
 
 		$from = ($page-1)*$results_per_page;
 
-		$query = "SELECT *, DATE_FORMAT(created, '%e %b %Y') AS signup_date FROM cashbackengine_users $filter_by ORDER BY ".$rrorder." ".$rorder." LIMIT ".$from.",".$results_per_page;
+		$query = " select u.*,c.cashback_method, DATE_FORMAT(u.created, '%e %b %Y') AS signup_date FROM cashbackengine_users AS u LEFT JOIN cashbackengine_cashback_method AS c ON u.user_id = c.user_id $filter_by ORDER BY ".$rrorder." ".$rorder." LIMIT ".$from.",".$results_per_page;
 		$result = smart_mysql_query($query);
 		$total_on_page = mysql_num_rows($result);
 
@@ -94,20 +96,16 @@
 		$title = "Members";
 		require_once ("inc/header.inc.php");
 ?>
-
-     <div style='float:left'>
+	<div id="addnew" class="exportCsvContainer">
+	<form method = "post" action = "export_to_csv.php">
+		<input type = "hidden" name = "file_name" value="users">
+	    <input id="export_to_csv" type="submit" value="Export" style="display:none;"/>
+     </form>
+     <a href="#" class="import" onclick="document.getElementById('export_to_csv').click()">Export Members Detail</a>
+	</div>    
        <h2>
        	<?php echo $title;?>
        </h2>
-	</div>
-	<div style = 'float:right'>
-	<form method = "post" action = "export_to_csv.php">
-		<input type = "hidden" name = "file_name" value="users">
-	    <input id="export_to_csv" type="submit" class="submit" value="Export" />
-     </form>
-	</div>
-	<div style='clear:both'></div>
-
         <?php if ($total > 0) { ?>
 
 			<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
@@ -171,6 +169,7 @@
 				<th width="25%">Name</th>
 				<th width="25%">Email</th>
 				<th width="10%">Country</th>
+				<th>Payment Method</th>
 				<th width="15%">Balance</th>
 				<th width="10%">Clicks</th>
 				<th width="10%">Status</th>
@@ -184,6 +183,14 @@
 					<td align="left" valign="middle"><a href="user_details.php?id=<?php echo $row['user_id']; ?>&pn=<?php echo $page; ?>"><?php echo $row['fname']." ".$row['lname']; ?></a></td>
 					<td align="left" valign="middle"><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td>
 					<td align="center" valign="middle"><?php echo GetCountry($row['country'], $show_only_icon = 1); ?></td>
+					
+					<td align="center" valign="middle">
+					<!-- Open a popup on click of the payment method -->
+						<a href="#" class="payment_method" u_id="<?php echo $row['user_id']?>">
+							<?php echo $row['cashback_method'];?>
+						</a>
+					</td>
+					
 					<td align="center" valign="middle"><a style="color: #000" href="user_payments.php?id=<?php echo $row['user_id']; ?>"><?php echo GetUserBalance($row['user_id']); ?></a></td>
 					<td align="center" valign="middle"><a href="clicks.php?user=<?php echo $row['user_id']; ?>"><?php echo GetUserClicksTotal($row['user_id']); ?></a></td>
 					<td align="center" valign="middle">
@@ -224,5 +231,22 @@
 					<div class="info_box">There are no members at this time.</div>
 				<?php } ?>
         <?php } ?>
-
+<script>
+$(".payment_method").click(function(){
+	var user_id = $(this).attr("u_id");
+	
+	$.colorbox({
+	    iframe      : true,
+	    width: 593,
+	    height: 360,
+	    opacity: 0.8,
+	    scrolling: false,
+	    closeButton: false,
+	    fixed: false,
+	    transition: "none",
+	    href : "<?php echo SITE_URL;?>admin/payment_method_popup.php?user_id="+user_id
+	});
+});
+	
+</script>
 <?php require_once ("inc/footer.inc.php"); ?>

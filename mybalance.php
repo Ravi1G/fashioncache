@@ -20,17 +20,35 @@
 ?>
 
 		<h1><?php echo CBE1_BALANCE_TITLE; ?></h1>
+<?php 
+	$paid = GetUserBalance($userid);
+	$pending = GetPendingBalance();
+	
+	$type = GetCashbackType($paid);
+	$paid_without_type = RemoveCashbackType($paid);
+	
+	$type = GetCashbackType($pending);
+	$pending_without_type = RemoveCashbackType($pending);
+	
+	
+	$total = $paid_without_type + $pending_without_type;
+	$total = '$'.$total;
+?>
 
 		<table align="center" class="btb" width="300" border="0" cellspacing="0" cellpadding="7">
 		<tr class="available_balance">
 			<td width="200" valign="middle" align="left"><?php echo CBE1_BALANCE_ABALANCE; ?></td>
-			<td valign="middle" align="right"><?php echo GetUserBalance($userid); ?></td>
+			<td valign="middle" align="right"><?php echo $paid;?></td>
 		</tr>
 		<tr class="pending_cashback">
 			<td valign="middle" align="left"><?php echo CBE1_BALANCE_PCASHBACK; ?></td>
-			<td valign="middle" align="right"><?php echo GetPendingBalance(); ?></td>
+			<td valign="middle" align="right"><?php echo $pending; ?></td>
 		</tr>
-		<tr class="declined_cashback">
+		<tr>
+			<td valign="middle" align="left">Total</td>
+			<td valign="middle" align="right"><?php echo $total; ?></td>
+		</tr>
+		<!-- <tr class="declined_cashback">
 			<td valign="middle" align="left"><?php echo CBE1_BALANCE_DCASHBACK; ?></td>
 			<td valign="middle" align="right"><?php echo GetDeclinedBalance(); ?></td>
 		</tr>
@@ -45,13 +63,13 @@
 		<tr class="lifetime_cashback">
 			<td valign="middle" align="left"><?php echo CBE1_BALANCE_LCASHBACK; ?></td>
 			<td valign="middle" align="right"><?php echo GetLifetimeCashback(); ?></td>
-		</tr>
+		</tr>-->
 		</table>
 
 		<p align="center"><?php echo CBE1_BALANCE_TEXT; ?> <a href="<?php echo SITE_URL; ?>mypayments.php"><?php echo CBE1_PAYMENTS_TITLE; ?></a></p>
 
 		<?php if (GetBalanceUpdateDate($userid)) { ?>
-			<p align="center"<?php echo CBE1_BALANCE_TEXT2; ?> <?php echo GetBalanceUpdateDate($userid); ?></p>
+			<p align="center"><?php echo CBE1_BALANCE_TEXT2; ?> <?php echo GetBalanceUpdateDate($userid); ?></p>
 		<?php } ?>
 
 
@@ -72,6 +90,8 @@
               <tr>
 				<th width="15%"><?php echo CBE1_BALANCE_DATE; ?></th>
 				<th width="50%"><?php echo CBE1_BALANCE_STORE; ?></th>
+				<th>Order #</th>
+				<th>Amount</th>
                 <th width="15%"><?php echo CBE1_BALANCE_CASHBACK; ?></th>
                 <th width="20%"><?php echo CBE1_BALANCE_STATUS; ?></th>
               </tr>
@@ -79,6 +99,9 @@
                 <tr class="<?php if (($cc%2) == 0) echo "row_even"; else echo "row_odd"; ?>">
                   <td valign="middle" align="center"><?php echo $row['date_created']; ?></td>
                   <td valign="middle" align="center"><?php echo ($row['retailer'] != "") ? $row['retailer'] : "-----"; ?></td>
+                  <td valign="middle" align="center"><?php echo $row['transaction_id']; ?></td>
+                  <td valign="middle" align="center"><?php echo $row['transaction_amount']; ?></td>
+                  
                   <td valign="middle" align="center"><?php echo DisplayMoney($row['amount']); ?></td>
                   <td valign="middle" align="center">
 					<?php
@@ -104,5 +127,4 @@
            </table>
 
      <?php } ?>
-
 <?php require_once ("inc/footer.inc.php"); ?>

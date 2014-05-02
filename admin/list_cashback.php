@@ -18,30 +18,22 @@
 	{
 		//Validations
 		$errs = array();
-		if(!$_POST['no_of_days'])
+		if(!$_POST['start_date'] || !$_POST['end_date'])
 		{
-			$errs[] = "Please enter the number of days";
+			$errs[] = "Please Select Starting-Date & Ending-Date";
 		}
-		elseif(!is_numeric($_POST['no_of_days']))
-		{
-			$errs[] = "Number of days should be numeric";
-		}
-		// Uncomment the following to accept the back dates before
-		
-		/*elseif($_POST['no_of_days'] < 30)
-		{
-			$errs[] = "Number of days should be more than 30";
-		}*/
 		
 		$select_option = mysql_real_escape_string(getPostParameter('select_option'));
 		
 		if(count($errs)==0)
 		{
-			$no_days = mysql_real_escape_string(getPostParameter('no_of_days'));
+			/*$no_days = mysql_real_escape_string(getPostParameter('no_of_days'));
 			define('SECONDS_PER_DAY', 86400);
 			
-			$back_date = date('Y-m-d', time() - $no_days * SECONDS_PER_DAY);
+			$back_date = date('Y-m-d', time() - $no_days * SECONDS_PER_DAY);*/
 			
+			$start_date = mysql_real_escape_string(getPostParameter('start_date'));
+			$end_date = mysql_real_escape_string(getPostParameter('end_date'));
 			if($select_option == 'showall')
 			{
 				$where = "";
@@ -54,29 +46,36 @@
 			{
 				$where = "and t.status = 'pending' ";
 			}
-			
+		//SELECT * FROM logs WHERE date 
+//			STR_TO_DATE(date, '%Y-%m-%d') 
+//between STR_TO_DATE(from_date, '%Y-%m-%d') and STR_TO_DATE(to_date, '%m/%d/%Y')
+	
 			$query = "SELECT 
 						u.user_id,
 						u.username,
 						u.fname,
 						t.retailer,
 						t.transaction_date,
-						sum(t.amount) AS total_amount 
+						sum(t.amount) AS total_amount,
+						c.cashback_method 
 						FROM cashbackengine_transactions AS t 
 						INNER JOIN 
 						cashbackengine_users AS u 
-						ON u.user_id = t.user_id 
-						WHERE t.payment_type='cashback' and t.transaction_date < '$back_date'  
+						ON u.user_id = t.user_id
+						LEFT JOIN
+						cashbackengine_cashback_method AS c
+						ON u.user_id = c.user_id 
+						WHERE t.payment_type='cashback' and 
+						t.transaction_date 
+						between '$start_date' and '$end_date'  
 						$where
 						GROUP BY u.username ";
-			
+
 			$result_retailers = smart_mysql_query($query);
-			
 		}
-		
 	}
 	
-	$title = "List Retailers Cashback";
+	$title = "User Transactions";
 	require_once ("inc/header.inc.php");
 	
 ?>
@@ -94,12 +93,17 @@
 			<?php 
 		}
 	}
+	
 ?>	
+  <h2><?php echo $title;?></h2>
 	<table>
 		<form method='post'>
 			<tr class="showResultsForm">
-				<td>Show Transaction happened atleast X days back:</td>
-				<td><input class="noOfDays" type='text' name='no_of_days' placeholder="Enter no. of days, e.g. 3" value='<?php echo $no_days;?>'></td>
+				<!-- <td>Show Transaction happened atleast X days back:</td>-->
+				<!-- <td><input class="noOfDays" type='text' name='no_of_days' placeholder="Enter no. of days, e.g. 3" value='<?php echo $no_days;?>'></td>-->
+				
+				<td valign="middle"><input type="text" name="start_date" id="start_date" value="<?php echo getPostParameter('start_date'); ?>" size="12"  maxlength="12" class="textbox" placeholder="Select Start Date"/></td>
+				<td valign="middle"><input type="text" name="end_date" id="end_date" value="<?php echo getPostParameter('end_date'); ?>" size="12"  maxlength="12" class="textbox" placeholder="Select End Date"/></td>
 				<td>
 				<?php $select_option = mysql_real_escape_string(getPostParameter('select_option'));?>				
 					<select id='select_option' name ='select_option'>
@@ -114,11 +118,13 @@
 		</form>
 	</table>
 	
+	
 	<?php if((isset($result_retailers) && (mysql_num_rows($result_retailers) > 0))){?>
 	<table class="retailersCashbackTable">
 	<tr>
 		<th width="30%" class="alignLeft">User</th>
 		<th width="20%" class="alignright">Total Amount</th>
+		<th>Payment Method</th>
 		<th width="50%" class="alignCenter">Click for detail</th>
 	</tr>
 		<?php 
@@ -132,6 +138,12 @@
 						</td>
 						<td class="alignRight">
 							<?php echo $rows['total_amount'];?>
+						</td>
+						<td align="center" valign="middle">
+					<!-- Open a popup on click of the payment method -->
+						<a href="#" class="payment_method" user_id="<?php echo $rows['user_id']?>">
+							<?php echo $rows['cashback_method'];?>
+						</a>
 						</td>
 						<td align="center" class="actionCenter">
 							<a href="#" class="show_transactions" u_id="<?php echo $rows['user_id'];?>" t_date="<?php echo $rows['transaction_date'];?>">Show Transactions</a>
@@ -158,7 +170,7 @@ $(function(){
 		currentParentTr.find('.transactionLoadingImg').show();
 		
 		if(hasTransactions){			
-			currentParentTr.next().find('div.innerData').hide().slideDown(AnimationSpeed);			
+			currentParentTr.next().show();			
 			currentParentTr.find('.transactionLoadingImg').hide();
 			currentParentTr.find('.hide_transactions').show();
 		}else{
@@ -171,26 +183,42 @@ $(function(){
 				data: { user_id: user_id , t_date: t_date,no_of_days : no_of_days, select_option: select_option},
 				success: function(response) { 										
 					currentParentTr.after('<tr class="transactions"><td colspan="4"><div class="innerData">'+response+'</div></td></tr>');
-					currentParentTr.next().find('div.innerData').hide().slideDown(AnimationSpeed);					
-					if(currentParentTr.hasClass("even"))
-						{
+					//currentParentTr.next().find('div.innerData');					
+					if(currentParentTr.hasClass("even")){
 							currentParentTr.next().addClass("even");
-						}					
+					}					
 					currentParentTr.find('.transactionLoadingImg').hide();
 					currentParentTr.find('.hide_transactions').show();
 		        }
 			});
 		}
-	})
+	});
 
 	$(".hide_transactions").click(function(e){
 		var currentParentTr = $(this).parents('tr').eq(0);
 		var currentElem = $(this);
 		currentElem.hide();
 		currentParentTr.find('.show_transactions').show();
-		currentParentTr.next().find('div.innerData').show().slideUp(AnimationSpeed);		
+		currentParentTr.next().hide();
 	});
-})
+
+	$(".payment_method").click(function(){
+		var u_id = $(this).attr("user_id");
+		$.colorbox({
+		    iframe: true,
+		    width: 593,
+		    height: 360,
+		    opacity: 0.8,
+		    scrolling: false,
+		    closeButton: true,
+		    fixed: true,
+		    transition: "none",
+		    href : "<?php echo SITE_URL;?>admin/payment_method_popup.php?user_id="+u_id
+		});
+	});
+	$('#start_date').calendricalDate();
+    $('#end_date').calendricalDate();
+});
 </script>
 
 <?php require_once ("inc/footer.inc.php"); ?>

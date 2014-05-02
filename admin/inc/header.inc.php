@@ -4,9 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $title; ?> | CashbackEngine Admin Panel</title>
 <link href="css/cashbackengine.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo SITE_URL;?>css/colorbox.css" rel="stylesheet"/>
 <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="js/jquery.calendrical.js"></script>
 <script language="javascript" src="js/scripts.js" type="text/javascript"></script>
+<script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
 </head>
 <body>
 
@@ -43,7 +45,7 @@
 				<?php } ?>
 				<li><a href="affnetworks.php">Affiliate Networks</a></li>
 				<li><a href="payments.php">Payments</a></li>
-				<li><a href="list_cashback.php">List Cashback</a></li>
+				<li><a href="list_cashback.php">User Transactions</a></li>
 				<?php if (GetRequestsTotal() > 0) { ?>
 					<li><a href="cashout_requests.php">Cash Out Requests <span class="new_count"><?php echo GetRequestsTotal(); ?></span></a></li>
 				<?php } ?>

@@ -37,7 +37,10 @@
 			$start_date = $current_date;
 		}
 
-	$end_date = $current_date;
+ 	$end_date = $current_date;
+ 	
+	$start_date = '20140411';
+	$end_date = '20140419';
 	$file_content = file_get_contents('https://reportws.linksynergy.com/downloadreport.php?bdate='.$start_date.'&edate='.$end_date.'&token=51f99871ce6bea90b4ddd82a396bef20af3768c29ff0848d7150c01f0e92c5e2&tokenid&reportid=12&');	
 
 	$csv = new parseCSV();
@@ -61,26 +64,26 @@
 			
 			//Query to check whether the reference already exists in database
 			
-			$query_chk_ref = "SELECT program_id,reference_id,payment_type,user_id,amount,transaction_commision,transaction_date,network_id FROM cashbackengine_transactions WHERE reference_id = '$reference_id'";
+			$query_chk_ref = "SELECT program_id,reference_id,payment_type,user_id,transaction_amount,amount,transaction_commision,transaction_date,network_id FROM cashbackengine_transactions WHERE reference_id = '$reference_id'";
 			$rs	= smart_mysql_query($query_chk_ref);
 			$total = mysql_num_rows($rs);
 			if($total > 0)
 			{
 				while($rows = mysql_fetch_array($rs))
-				{
+				{	
+				
 					if(// If any match then nothing will happen otherwise - new record will be inserted
 						($program_id == $rows['program_id']) &&
 						($reference_id == $rows['reference_id']) &&
 						($payment_type == $rows['payment_type']) &&
 						($commision == $rows['transaction_commision']) &&
-						($transaction_amount == $rows['amount']) &&
-						($transaction_date == $rows['transaction_date'])
+						($transaction_amount == $rows['transaction_amount']) 
 					)	
 					{
-
 						$insert_flg = 0;
 					}
 				}
+				
 			}
 			if($insert_flg==1)
 			{
@@ -115,7 +118,7 @@
 					}
 				}
 
-				
+
 				$query = "INSERT INTO cashbackengine_transactions SET
 					program_id = '$program_id',
 					reference_id = '$reference_id',
@@ -127,10 +130,25 @@
 					transaction_date = '$transaction_date' ,
 					network_id = '$network_id',
 					created = NOW(),
-					amount = '$member_money'
+					amount = '$member_money',
+					status = 'pending'
 				";
 				$result = smart_mysql_query($query);	
-
+				//If commission is less than the amount then fire an email to the
+				if($commision < $member_money && $result==1)
+				{
+					$insert_id = mysql_insert_id();
+					$to      = 'mr.mohitsharma1986@gmail.com';
+					$subject = 'Cashback amount is more than commision';
+					$message = 'Please check the transaction with id : '.$insert_id;
+					
+					$headers = 'From: webmaster@example.com' . "\r\n" .
+					    'Reply-To: webmaster@example.com' . "\r\n" .
+					    'X-Mailer: PHP/' . phpversion();
+					
+					mail($to, $subject, $message, $headers);
+					$insert_id = 0;
+				} 
 			}
 			
 		}
