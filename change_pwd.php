@@ -75,6 +75,29 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 	$PAGE_TITLE = "Change Password";
 	require_once ("inc/header.inc.php");
 ?>
+<?php 
+	if(isset($_POST['action_newsletter']) && $_POST['action_newsletter']=="newsletter")
+	{
+		$newsletter = $_POST['newsletter'];
+		if($newsletter =="1")
+		{
+			$value = 1;
+		}
+		else 
+		{
+			$value = 0;
+		}
+
+		$up_query = "UPDATE cashbackengine_users SET newsletter='$value' WHERE user_id = '$userid'";
+		
+		if (smart_mysql_query($up_query))
+			{
+				header("Location: change_pwd.php?msg=3");
+				exit();
+			}	
+	}
+?>
+
 <div class="container standardContainer innerRegularPages">
 			
 			<?php 
@@ -100,6 +123,7 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 													switch ($_GET['msg'])
 													{
 														case "2": echo CBE1_MYPROFILE_MSG2; break;
+														case "3": echo "News letter status has been saved successfully"; break;
 													}							
 												?>
 											 </div>
@@ -143,10 +167,10 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 									<div class="label"><?php echo CBE1_MYPROFILE_CNPASSWORD; ?></div>
 									<div class="data"><input type="password" name="newpassword2" id="newpassword2" value="" size="25" /></div>
 								</div>
-								<div class="row locationPlate">
+								<!-- <div class="row locationPlate">
 									<div class="label">News Letter</div>
 									<div class="data"><input type="checkbox" name="newsletter" id="newsletter" value="1" size="25" <?php if($row['newsletter']){echo 'checked';}?>/></div>
-								</div>
+								</div>-->
 															
 								
 								<input type="hidden" name="action" value="changepwd" />
@@ -163,10 +187,14 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 					 <div class="para">For the latest news and CashBack offers, subscribe to our Newsletter Service.</div>
 					 <div class="para">To get more from Fashion Cache, including subscription deals and exclusive news from our Blogs and Offers, simply check the checkbox below and hit subscribe.</div>
 					 <div class="subscriptionForm">
-						<input type="checkbox"/> <i>I'd like to receive the newsletter from Fashion Cache.</i><br/>
-						<div class="allStores forSignUp">
-						  <span id="updateForm">SUBSCRIBE</span>
-						</div>
+						
+						<form method="post" name="form_newsletter" id="form_newsletter">
+							<input type="hidden" name="action_newsletter" value="newsletter">				 
+							<input type="checkbox" name="newsletter" value="1" <?php if($row['newsletter']){echo 'checked';}?>/> <i>I'd like to receive the newsletter from Fashion Cache.</i><br/>
+							<div class="allStores forSignUp">
+							  <span id="updatenewsletter">SUBSCRIBE</span>
+							</div>
+						</form>
 						
 					 </div>
 					
@@ -201,4 +229,9 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 				</div>
 				<div class="cb"></div>
 	</div>
+	<script>
+		$("#updatenewsletter").click(function(){
+			$("#form_newsletter").submit();
+		});
+	</script>
 <?php require_once ("inc/footer.inc.php"); ?>
