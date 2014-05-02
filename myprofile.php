@@ -282,7 +282,7 @@
 							</div>								
 						</div>
 						<div class="cb"></div>
-						<div class="newsLetters"><input type="checkbox" name="newsletter" class="yesNewsletter" value="1" <?php if(isset($newsletter) && ($newsletter!="")){ echo "checked";}elseif(isset($newsletter) && ($newsletter=="")){echo "";} elseif(isset($row['newsletter']) && ($row['newsletter']!="")){echo "checked";}else{ echo "";} ?>/> <?php echo CBE1_MYPROFILE_NEWSLETTER; ?></div>
+						<!-- <div class="newsLetters"><input type="checkbox" name="newsletter" class="yesNewsletter" value="1" <?php if(isset($newsletter) && ($newsletter!="")){ echo "checked";}elseif(isset($newsletter) && ($newsletter=="")){echo "";} elseif(isset($row['newsletter']) && ($row['newsletter']!="")){echo "checked";}else{ echo "";} ?>/> <?php echo CBE1_MYPROFILE_NEWSLETTER; ?></div>-->
 						<input type="hidden" name="action" value="editprofile" />
 						<input type="submit" class="hidden" name="Update" id="Update" value="<?php echo CBE1_MYPROFILE_UPBUTTON; ?>" />
 						<input type="button" class="hidden" name="cancel" id="CancelIt" value="<?php echo CBE1_CANCEL_BUTTON; ?>" onClick="javascript:document.location.href='myaccount.php'" />
