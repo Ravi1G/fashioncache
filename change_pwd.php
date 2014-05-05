@@ -190,9 +190,9 @@ if (isset($_POST['action']) && $_POST['action'] == "changepwd")
 						
 						<form method="post" name="form_newsletter" id="form_newsletter">
 							<input type="hidden" name="action_newsletter" value="newsletter">				 
-							<input type="checkbox" name="newsletter" value="1" <?php if($row['newsletter']){echo 'checked';}?>/> <i>I'd like to receive the newsletter from Fashion Cache.</i><br/>
+							<input type="checkbox" name="newsletter" value="1" <?php if($row['newsletter']){echo 'checked';}?>/> <b>I'd like to receive the newsletter from Fashion Cache.</b>
 							<div class="allStores forSignUp">
-							  <span id="updatenewsletter">SUBSCRIBE</span>
+							  <span id="updatenewsletter">SAVE</span>
 							</div>
 						</form>
 						

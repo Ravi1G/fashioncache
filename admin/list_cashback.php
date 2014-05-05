@@ -271,7 +271,7 @@ $(function(){
 		$('.paymentMethodIns').each(function() { 
 			$(this).qtip({ 
 				position: {
-						my: 'left top',
+						my: 'top left',
 						at: 'right bottom'
 					},
 				style: { 
@@ -279,7 +279,7 @@ $(function(){
 					},
 				content: {		
 						text: $(this).next('div')
-					}				
+					}
 			});
 		});
 	});
