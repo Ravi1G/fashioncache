@@ -15,6 +15,8 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 	$back_date = $_POST['back_date'];
 	$no_of_days = $_POST['no_of_days'];
 	$select_option = $_POST['select_option'];
+	$start_date = mysql_real_escape_string(getPostParameter('start_date'));
+	$end_date = mysql_real_escape_string(getPostParameter('end_date'));
 	
 	$no_days = $no_of_days;
 	define('SECONDS_PER_DAY', 86400);		
@@ -42,7 +44,9 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 				t.amount 
 					FROM cashbackengine_transactions 
 					AS t INNER JOIN cashbackengine_users AS u ON u.user_id = t.user_id 
-				WHERE u.user_id='$user_id' and t.payment_type='cashback' and t.transaction_date < '$back_date' $where";
+				WHERE u.user_id='$user_id' and t.payment_type='cashback' and 
+						t.transaction_date 
+						between '$start_date' and '$end_date' $where";
 	
 	$result_detail = smart_mysql_query($query);
 

@@ -65,7 +65,7 @@
 	    $cXML = simplexml_load_string($cHTML);
 	    for ($i = 0; $i < count($cXML->commissions->commission); $i++) {
 	    	$single = $cXML->commissions->commission[$i];
-	       
+	      	
 	        $program_id = $single->cid;
 	        $transaction_id = $single->{'order-id'};
 	        $user_id =$single->sid;
@@ -73,10 +73,12 @@
 	        $commission = $single->{'commission-amount'};
 	        $status = $single->{'action-status'};
 	        $original_action_id = $single->{'original-action-id'};
-
-	//Query to check whether the transaction already exists in database
-			
-			$query_chk_ref = "SELECT program_id,transaction_id,user_id,amount,transaction_amount,transaction_commision,original_action_id FROM cashbackengine_transactions WHERE original_action_id = '$original_action_id'";
+	        $retailer = $single->{'advertiser-name'};
+			$transaction_date = $single->{'event-date'};
+			$transaction_date = explode('T',$transaction_date);
+			$transaction_date = $transaction_date[0];
+	//Query to check whether the transaction already exists in database			
+			$query_chk_ref = "SELECT program_id,transaction_id,user_id,amount,transaction_amount,transaction_commision,transaction_date,original_action_id FROM cashbackengine_transactions WHERE original_action_id = '$original_action_id'";
 			
 			$rs	= smart_mysql_query($query_chk_ref);
 			$total = mysql_num_rows($rs);
@@ -87,7 +89,7 @@
 				
 					if(// If any match then nothing will happen otherwise - new record will be inserted
 						($program_id == $rows['program_id']) &&
-						//($transaction_id == $rows['transaction_id']) &&
+						($transaction_date == $rows['transaction_date']) &&
 						($user_id == $rows['user_id']) &&
 						($transaction_amount == $rows['transaction_amount']) &&
 						($commission == $rows['transaction_commision']) &&
@@ -149,19 +151,21 @@
 							created = NOW(),
 							amount = '$member_money',
 							original_action_id = '$original_action_id',
-							payment_type ='cashback'
+							payment_type ='cashback',
+							transaction_date = '$transaction_date',
+							retailer = '$retailer'
 							";
 			
 	        $result = smart_mysql_query($query);
 	        	
 				//If commission is less than the amount then fire an email to the
-				if($commision < $member_money && $result==1)
+				if($commission < $member_money && $result==1)
 				{
 					$insert_id = mysql_insert_id();
 					$to      = 'navin@codelee.com';
 					$subject = 'Cashback amount is more than commision';
 					$message = 'Please check the transaction with id : '.$insert_id.'\n 
-					The commision of this particular transaction is :'.$commision.'\n
+					The commision of this particular transaction is :'.$commission.'\n
 					Money for the member is :'.$member_money.' ,Which is more than the commision, Which seems like
 					a conflict, please resolve this issue';
 					
