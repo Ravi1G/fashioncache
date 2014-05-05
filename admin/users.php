@@ -85,7 +85,20 @@
 
 		$from = ($page-1)*$results_per_page;
 
-		$query = " select u.*,c.cashback_method, DATE_FORMAT(u.created, '%e %b %Y') AS signup_date FROM cashbackengine_users AS u LEFT JOIN cashbackengine_cashback_method AS c ON u.user_id = c.user_id $filter_by ORDER BY ".$rrorder." ".$rorder." LIMIT ".$from.",".$results_per_page;
+		$query = " select u.*,c.cashback_method,c.paypal_email,
+						c.address,
+						c.city,
+						c.state,
+						c.country,
+						c.zip,
+						c.venmo_username,
+						country.name AS country_name,
+
+						DATE_FORMAT(u.created, '%e %b %Y') AS signup_date
+						FROM cashbackengine_users AS u 
+							LEFT JOIN cashbackengine_cashback_method AS c ON u.user_id = c.user_id
+							LEFT JOIN cashbackengine_countries AS country ON c.country = country.country_id 
+						$filter_by ORDER BY ".$rrorder." ".$rorder." LIMIT ".$from.",".$results_per_page;
 		$result = smart_mysql_query($query);
 		$total_on_page = mysql_num_rows($result);
 
@@ -191,49 +204,54 @@
 							<?php echo $row['cashback_method'];?>
 						</a>
 						<!--  For Venmo  -->
-						<!--<div class="paymentMethodDataContainer">
+						<?php if($row['cashback_method']=='venmo'){?>
+						<div class="paymentMethodDataContainer">
 							<div class="blockTitle">Venmo User Detail</div>
 							<div class="blockDescription">
-								<div><b>Username:</b> johnwalker225@gmail.com</div>
+								<div><b>Username:</b> <?php echo $row['venmo_username'];?></div>
 							</div>
-						</div>-->
+						</div>
+						<?php }?>
 						
 						<!--  For Paypal  -->
-						<!--<div class="paymentMethodDataContainer">
+						<?php if($row['cashback_method']=='paypal'){?>
+						<div class="paymentMethodDataContainer">
 							<div class="blockTitle">PayPal User Detail</div>
 							<div class="blockDescription">
-								<div><b>Email:</b> TonnyStark@starks.com</div>
+								<div><b>Email:</b> <?php echo $row['paypal_email'];?></div>
 							</div>
-						</div>-->
+						</div>
+						<?php }?>
 						
 						<!--  For Check  -->
+						<?php if($row['cashback_method']=='check'){?>
 						<div class="paymentMethodDataContainer">
 							<div class="blockTitle">Check Details</div>
 							<div class="blockDescription">
 								<table>
 									<tr>
 										<td><b>Address:</b></td>
-										<td>GH35, Old Hills</td>
+										<td><?php echo $row['address'];?></td>
 									</tr>
 									<tr>
 										<td><b>City:</b></td>
-										<td>Chicago</td>
+										<td><?php echo $row['city'];?></td>
 									</tr>
 									<tr>
 										<td><b>State:</b></td>
-										<td>Mexico</td>
+										<td><?php echo $row['state'];?></td>
 									</tr>
 									<tr>
 										<td><b>Country:</b></td>
-										<td>Unites States of America</td>
+										<td><?php echo $row['country_name'];?></td>
 									</tr>
 									<tr>
 										<td><b>Zip Code:</b></td>
-										<td>155784</td>
+										<td><?php echo $row['zip'];?></td>
 									</tr>
 								</table>								
 							</div>
-						</div>
+						</div><?php }?>
 					</td>
 					
 					<td align="center" valign="middle"><a style="color: #000" href="user_payments.php?id=<?php echo $row['user_id']; ?>"><?php echo GetUserBalance($row['user_id']); ?></a></td>
