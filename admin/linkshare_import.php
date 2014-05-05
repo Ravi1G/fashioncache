@@ -42,7 +42,6 @@
 	$start_date = '20140411';
 	$end_date = '20140419';
 	$file_content = file_get_contents('https://reportws.linksynergy.com/downloadreport.php?bdate='.$start_date.'&edate='.$end_date.'&token=51f99871ce6bea90b4ddd82a396bef20af3768c29ff0848d7150c01f0e92c5e2&tokenid&reportid=12&');	
-
 	$csv = new parseCSV();
 	$csv->delimiter = ",";
 	$csv->parse($file_content);
@@ -145,7 +144,7 @@
 					Money for the member is :'.$member_money.' ,Which is more than the commision, Which seems like
 					a conflict, please resolve this issue';
 					
-					$headers = 'From: webmaster@example.com' . "\r\n" ';
+					$headers = 'From: webmaster@example.com' . "\r\n";
 					
 					mail($to, $subject, $message, $headers);
 					$insert_id = 0;

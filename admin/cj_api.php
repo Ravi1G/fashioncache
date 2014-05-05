@@ -76,7 +76,7 @@
 
 	//Query to check whether the transaction already exists in database
 			
-			$query_chk_ref = "SELECT program_id,transaction_id,user_id,amount,transaction_commision,original_action_id FROM cashbackengine_transactions WHERE original_action_id = '$original_action_id'";
+			$query_chk_ref = "SELECT program_id,transaction_id,user_id,amount,transaction_amount,transaction_commision,original_action_id FROM cashbackengine_transactions WHERE original_action_id = '$original_action_id'";
 			
 			$rs	= smart_mysql_query($query_chk_ref);
 			$total = mysql_num_rows($rs);
@@ -89,7 +89,7 @@
 						($program_id == $rows['program_id']) &&
 						//($transaction_id == $rows['transaction_id']) &&
 						($user_id == $rows['user_id']) &&
-						($transaction_amount == $rows['amount']) &&
+						($transaction_amount == $rows['transaction_amount']) &&
 						($commission == $rows['transaction_commision']) &&
 						($original_action_id == $rows['original_action_id'])
 					)	
@@ -132,6 +132,12 @@
 						}
 					}
 				}
+			//Checking the status and according to that filling data into the database
+			if($status=='new')
+			{
+				$status = 'pending';
+			}
+			
 	        $query = "INSERT INTO cashbackengine_transactions SET 
 	        				network_id = '$network_id',
 							program_id ='$program_id',
@@ -142,10 +148,28 @@
 							status = '$status',
 							created = NOW(),
 							amount = '$member_money',
-							original_action_id = '$original_action_id'
+							original_action_id = '$original_action_id',
+							payment_type ='cashback'
 							";
 			
 	        $result = smart_mysql_query($query);
+	        	
+				//If commission is less than the amount then fire an email to the
+				if($commision < $member_money && $result==1)
+				{
+					$insert_id = mysql_insert_id();
+					$to      = 'navin@codelee.com';
+					$subject = 'Cashback amount is more than commision';
+					$message = 'Please check the transaction with id : '.$insert_id.'\n 
+					The commision of this particular transaction is :'.$commision.'\n
+					Money for the member is :'.$member_money.' ,Which is more than the commision, Which seems like
+					a conflict, please resolve this issue';
+					
+					$headers = 'From: webmaster@example.com' . "\r\n";
+					
+					mail($to, $subject, $message, $headers);
+					$insert_id = 0;
+				} 
 	        }
 	    } // ends for ($i = 0; $i < count($cXML->commissions->commission); $i++)
 	} // ends else from if (curl_error($ch))
