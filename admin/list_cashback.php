@@ -57,14 +57,25 @@
 						t.retailer,
 						t.transaction_date,
 						sum(t.amount) AS total_amount,
-						c.cashback_method 
+						c.cashback_method,
+						c.paypal_email,
+						c.address,
+						c.city,
+						c.state,
+						c.country,
+						c.zip,
+						c.venmo_username,
+						country.name AS country_name
 						FROM cashbackengine_transactions AS t 
 						INNER JOIN 
 						cashbackengine_users AS u 
 						ON u.user_id = t.user_id
 						LEFT JOIN
 						cashbackengine_cashback_method AS c
-						ON u.user_id = c.user_id 
+						ON u.user_id = c.user_id
+						LEFT JOIN
+						cashbackengine_countries AS country
+						ON c.country = country.country_id
 						WHERE t.payment_type='cashback' and 
 						t.transaction_date 
 						between '$start_date' and '$end_date'  
@@ -124,8 +135,8 @@
 	<tr>
 		<th width="30%" class="alignLeft">User</th>
 		<th width="20%" class="alignright">Total Amount</th>
-		<th width="20%" class="alignCenter">Payment Method</th>
-		<th width="30%" class="alignCenter">Click for detail</th>
+		<th width="11%" class="alignCenter">Payment Method</th>
+		<th width="39%" class="alignCenter">Click for detail</th>
 	</tr>
 		<?php 
 		$i = 1;
@@ -140,55 +151,60 @@
 							<?php echo $rows['total_amount'];?>
 						</td>
 						<td align="center" valign="middle">
-						<!-- Open a popup on click of the payment method -->
+						
 						<a href="#" class="payment_method paymentMethodIns" user_id="<?php echo $rows['user_id']?>">
 							<?php echo $rows['cashback_method'];?>
 						</a>
 						<!--  For Venmo  -->
-						<!--<div class="paymentMethodDataContainer">
+						<?php if($rows['cashback_method']=='venmo'){?>
+						<div class="paymentMethodDataContainer">
 							<div class="blockTitle">Venmo User Detail</div>
 							<div class="blockDescription">
-								<div><b>Username:</b> johnwalker225@gmail.com</div>
+								<div><b>Username:</b> <?php echo $rows['venmo_username'];?></div>
 							</div>
-						</div>-->
+						</div>
+						<?php }?>
 						
 						<!--  For Paypal  -->
-						<!--<div class="paymentMethodDataContainer">
+						<?php if($rows['cashback_method']=='paypal'){?>
+						<div class="paymentMethodDataContainer">
 							<div class="blockTitle">PayPal User Detail</div>
 							<div class="blockDescription">
-								<div><b>Email:</b> TonnyStark@starks.com</div>
+								<div><b>Email:</b> <?php echo $rows['paypal_email'];?></div>
 							</div>
-						</div>-->
+						</div>
+						<?php }?>
 						
 						<!--  For Check  -->
+						<?php if($rows['cashback_method']=='check'){?>
 						<div class="paymentMethodDataContainer">
 							<div class="blockTitle">Check Details</div>
 							<div class="blockDescription">
 								<table>
 									<tr>
 										<td><b>Address:</b></td>
-										<td>GH35, Old Hills</td>
+										<td><?php echo $rows['address'];?></td>
 									</tr>
 									<tr>
 										<td><b>City:</b></td>
-										<td>Chicago</td>
+										<td><?php echo $rows['city'];?></td>
 									</tr>
 									<tr>
 										<td><b>State:</b></td>
-										<td>Mexico</td>
+										<td><?php echo $rows['state'];?></td>
 									</tr>
 									<tr>
 										<td><b>Country:</b></td>
-										<td>Unites States of America</td>
+										<td><?php echo $rows['country_name'];?></td>
 									</tr>
 									<tr>
 										<td><b>Zip Code:</b></td>
-										<td>155784</td>
+										<td><?php echo $rows['zip'];?></td>
 									</tr>
 								</table>								
 							</div>
 						</div>
-						
+						<?php }?>
 						</td>
 						<td align="center" class="actionCenter">
 							<a href="#" class="show_transactions" u_id="<?php echo $rows['user_id'];?>" t_date="<?php echo $rows['transaction_date'];?>">Show Transactions</a>
