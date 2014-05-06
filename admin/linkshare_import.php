@@ -8,10 +8,9 @@
 \*******************************************************************/
 
 	session_start();
-
 	require_once("../inc/config.inc.php");
 	require_once("./inc/parsecsv.inc.php");
-	
+	set_time_limit(0);
 	$insert_flg = 1;
 	
 	//Read id of linkshare from the database starts

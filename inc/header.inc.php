@@ -79,9 +79,21 @@ $menu_categories = GetMenuCategories();
 			         <div class="dropdownContain">          
 			          <div class="dropOut">
 			           <div class="triangle"></div>
+			           <?php 
+				           	$query_paid ="SELECT SUM(amount) AS total FROM cashbackengine_transactions WHERE user_id='".(int)$_SESSION['userid']."' AND payment_type='cashback' AND status='confirmed'";
+							$result_paid = smart_mysql_query($query_paid);
+							$total_paid = mysql_fetch_assoc($result_paid);
+							$total_paid = round($total_paid['total'],2);
+							
+							$query_pending = "SELECT SUM(amount) AS total FROM cashbackengine_transactions WHERE user_id='".(int)$_SESSION['userid']."' AND payment_type='cashback' AND status='pending'";
+							$result_pending = smart_mysql_query($query_pending);
+							$total_pending = mysql_fetch_assoc($result_pending);
+							$total_pending = round($total_pending['total'],2);
+			           ?>
 			           <ul>
-			            <li><b>Balance:</b> <?php echo GetUserBalance($_SESSION['userid']);?></li>
-			            <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b> <?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li>             
+			            <li><b>Pending Amount:</b> <?php echo DisplayMoney($total_pending);?></li>
+			            <!-- <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b> <?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li> -->
+			            <li><span class="referrals"><b>Paid Amount:</b> <?php echo DisplayMoney($total_paid);?></span></li>             
 			            <li><b><a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a></b></li>
 			           </ul>
 			           <div class="cb"></div>

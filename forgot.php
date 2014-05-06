@@ -49,7 +49,7 @@
 				$emessage = str_replace("{first_name}", $row['fname'], $emessage);
 				$emessage = str_replace("{username}", $row['username'], $emessage);
 				$emessage = str_replace("{password}", $newPassword, $emessage);
-				$emessage = str_replace("{login_url}", SITE_URL."login.php", $emessage);	
+				$emessage = str_replace("{login_url}", SITE_URL."signup_or_login.php", $emessage);	
 				
 				$to_email = $row['fname'].' '.$row['lname'].' <'.$email.'>';
 				$subject = $esubject;
@@ -92,7 +92,7 @@
 		</div>
 	<?php }elseif($_GET['msg'] == 4){ ?>
 		<div class="success_msg"><?php echo CBE1_FORGOT_MSG4; ?></div>
-		<p align="center"><a class="goback" href="<?php echo SITE_URL; ?>login.php"><?php echo CBE1_FORGOT_GOBACK; ?></a></p>
+		<p align="center"><a class="goback" href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE1_FORGOT_GOBACK; ?></a></p>
 	<?php }else{ ?> 
 		<p align="center"><?php echo CBE1_FORGOT_TEXT; ?></p>
 	<?php } ?>

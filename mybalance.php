@@ -20,14 +20,22 @@
 ?>
 
 <?php 
-	$paid = GetUserBalance($userid);
-	$pending = GetPendingBalance();
-	$type = GetCashbackType($paid);
-	$paid_without_type = RemoveCashbackType($paid);
-	$type = GetCashbackType($pending);
-	$pending_without_type = RemoveCashbackType($pending);
-	$total = number_format($paid_without_type + $pending_without_type,2);
+	//$paid = GetUserBalance($userid);
+	//$pending = GetPendingBalance();
 	
+	$query_paid ="SELECT SUM(amount) AS total FROM cashbackengine_transactions WHERE user_id='".(int)$userid."' AND payment_type='cashback' AND status='confirmed'";
+	$result_paid = smart_mysql_query($query_paid);
+	$total_paid = mysql_fetch_assoc($result_paid);
+	$total_paid = round($total_paid['total'],2);
+	
+	$query_pending = "SELECT SUM(amount) AS total FROM cashbackengine_transactions WHERE user_id='".(int)$userid."' AND payment_type='cashback' AND status='pending'";
+	$result_pending = smart_mysql_query($query_pending);
+	$total_pending = mysql_fetch_assoc($result_pending);
+	$total_pending = round($total_pending['total'],2);
+	
+	$total = number_format($total_paid + $total_pending,2);
+	$total_pending = number_format($total_pending,2);
+	$total_paid = number_format($total_paid,2);
 ?>
 
 	<div class="container standardContainer innerRegularPages">		
@@ -46,13 +54,17 @@
 				<div class="balanceSection">					
 					<div class="balanceSectionHolder">
 						<div class="fl dollarIcon">$</div>
-						<?php $paid_amount = explode( '.', $paid_without_type );?>						
+						<?php $paid_amount = explode( '.', $total_paid );?>						
 						<div class="fl amountIs">
 							<?php 
 								echo $paid_amount[0];
 							?>
 						</div>
-						<div class="fl smallAmountIs">.<?php echo $paid_amount[1];?></div>
+						<div class="fl smallAmountIs">
+							<?php
+							 if($paid_amount[1]!="") 
+									echo '.'.$paid_amount[1];?>
+						</div>
 						<div class="cb"></div>
 					</div>
 				</div>
@@ -63,9 +75,13 @@
 				<div class="balanceSection">					
 					<div class="balanceSectionHolder">
 						<div class="fl dollarIcon">$</div>
-						<?php $pending_amount = explode('.',$pending_without_type);?>
+						<?php $pending_amount = explode('.',$total_pending);?>
 						<div class="fl amountIs"><?php echo $pending_amount[0];?></div>
-						<div class="fl smallAmountIs">.<?php echo $pending_amount[1];?></div>
+						<div class="fl smallAmountIs">
+							<?php  
+							 if($pending_amount[1]!="") 
+									echo '.'.$pending_amount[1];?>
+						</div>
 						<div class="cb"></div>
 					</div>
 				</div>
@@ -78,7 +94,12 @@
 						<?php $total_amount = explode('.',$total);?>
 						<div class="fl dollarIcon">$</div>
 						<div class="fl amountIs"><?php echo $total_amount[0]; ?></div>
-						<div class="fl smallAmountIs">.<?php echo $total_amount[1];?></div>
+						<div class="fl smallAmountIs">
+							<?php
+								if($total_amount[1]!="") 
+									echo '.'.$total_amount[1];
+							?>
+						</div>
 						<div class="cb"></div>
 					</div>
 				</div>
@@ -89,7 +110,7 @@
 		 <?php
 			$cc = 0;
 	
-			$query = "SELECT *, DATE_FORMAT(created, '%e %b %Y') AS date_created, DATE_FORMAT(updated, '%e %b %Y') AS updated_date FROM cashbackengine_transactions WHERE user_id='$userid' AND program_id!='0' AND status!='unknown' ORDER BY created DESC";
+			$query = "SELECT *, DATE_FORMAT(created, '%e %b %Y') AS date_created, DATE_FORMAT(updated, '%e %b %Y') AS updated_date FROM cashbackengine_transactions WHERE user_id='$userid' AND payment_type='cashback' AND program_id!='0' AND status!='unknown' ORDER BY created DESC";
 			$result = smart_mysql_query($query);
 			$total = mysql_num_rows($result);
 	
@@ -114,14 +135,14 @@
 						  <td valign="middle" align="center"><?php echo $row['reference_id']; ?></td>
 						  <td valign="middle" align="center"><?php echo ($row['retailer'] != "") ? $row['retailer'] : "--"; ?></td>
 						  <td valign="middle" align="center"><?php echo $row['date_created']; ?></td>
-						  <td valign="middle" align="center"><?php echo $row['transaction_amount']; ?></td>
+						  <td valign="middle" align="center"><?php echo DisplayMoney($row['transaction_amount']); ?></td>
 						  <td valign="middle" align="center"><?php echo DisplayMoney($row['amount']); ?></td>
 						  <td valign="middle" align="center">
 						  <div class="statusCenter">
 							<?php
 									switch ($row['status'])
 									{
-										case "confirmed":	echo "<span class='confirmed_status'>".STATUS_CONFIRMED."</span>"; break;
+										case "confirmed":	echo "<span class='confirmed_status'>paid</span>"; break;
 										case "pending":		echo "<span class='pending_status'>".STATUS_PENDING."</span>"; break;
 										case "declined":	echo "<span class='declined_status'>".STATUS_DECLINED."</span>"; break;
 										case "failed":		echo "<span class='failed_status'>".STATUS_FAILED."</span>"; break;

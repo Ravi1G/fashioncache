@@ -8,9 +8,9 @@
 \*******************************************************************/
 
 	session_start();
-
+	
 	require_once("../inc/config.inc.php");
-	    
+	set_time_limit(0);   
     $cDevKey = '00b72e6d005831676a338b6a10e13f54b37f9c67f03307442f392fc7814efc17b90ff5a13efc010149709a7f721fd379cd59e792d091073fcf32a0ceb35e4c4127/72c921bea48518c380d72cb8b51d054b917c85d90b70d33630449364a104f12b90d650e703a8b84df0563f6b47466934fa03fedeb22cb728ec5c632ea5542a49'; 
     $insert_flg = 1;
     //Read id of linkshare from the database starts
@@ -65,7 +65,6 @@
 	    $cXML = simplexml_load_string($cHTML);
 	    for ($i = 0; $i < count($cXML->commissions->commission); $i++) {
 	    	$single = $cXML->commissions->commission[$i];
-	      	
 	        $program_id = $single->cid;
 	        $transaction_id = $single->{'order-id'};
 	        $user_id =$single->sid;
@@ -75,8 +74,9 @@
 	        $original_action_id = $single->{'original-action-id'};
 	        $retailer = $single->{'advertiser-name'};
 			$transaction_date = $single->{'event-date'};
-			$transaction_date = explode('T',$transaction_date);
-			$transaction_date = $transaction_date[0];
+			$transaction_date= date('Y-m-d h:i:s',strtotime($transaction_date));
+			//$transaction_date = explode('T',$transaction_date);
+			//$transaction_date = $transaction_date[0].' 00:00:00';
 	//Query to check whether the transaction already exists in database			
 			$query_chk_ref = "SELECT program_id,transaction_id,user_id,amount,transaction_amount,transaction_commision,transaction_date,original_action_id FROM cashbackengine_transactions WHERE original_action_id = '$original_action_id'";
 			
@@ -89,7 +89,6 @@
 				
 					if(// If any match then nothing will happen otherwise - new record will be inserted
 						($program_id == $rows['program_id']) &&
-						($transaction_date == $rows['transaction_date']) &&
 						($user_id == $rows['user_id']) &&
 						($transaction_amount == $rows['transaction_amount']) &&
 						($commission == $rows['transaction_commision']) &&
@@ -101,7 +100,7 @@
 				}
 				
 			}
-
+			
 	        if($insert_flg == 1)
 	        {
 	        //Calculating the amount to be cashback from the cashback % given using network_id and program_id
@@ -134,11 +133,10 @@
 						}
 					}
 				}
-			//Checking the status and according to that filling data into the database
-			if($status=='new')
-			{
+			//status of the transaction by default : pending
+			
 				$status = 'pending';
-			}
+			
 			
 	        $query = "INSERT INTO cashbackengine_transactions SET 
 	        				network_id = '$network_id',
