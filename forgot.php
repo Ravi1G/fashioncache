@@ -82,34 +82,74 @@
 	
 ?>
 
-	<h1><?php echo CBE1_FORGOT_TITLE; ?></h1>
+		<div class="container content siteInnerSection">
+			<div class="userActivityContainer">
+			
+				<?php /* <?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && $_GET['msg'] != 4) { ?>
+					<div class="error_msg">
+						<?php if ($_GET['msg'] == 1) { echo CBE1_FORGOT_MSG1; } ?>
+						<?php if ($_GET['msg'] == 2) { echo CBE1_FORGOT_MSG2; } ?>
+						<?php if ($_GET['msg'] == 3) { echo CBE1_FORGOT_MSG3; } ?>
+					</div>
+				<?php }elseif($_GET['msg'] == 4){ ?>
+					<div class="success_msg"><?php echo CBE1_FORGOT_MSG4; ?></div>
+					<p align="center"><a class="goback" href="<?php echo SITE_URL; ?>login.php"><?php echo CBE1_FORGOT_GOBACK; ?></a></p>
+				<?php }else{ ?> 
+					<p align="center"><?php echo CBE1_FORGOT_TEXT; ?></p>
+				<?php } ?>
+			
+				<?php if (!(isset($_GET['msg']) && $_GET['msg'] == 4)) { ?> */ ?>
+				
+				<div class="forgotPasswordContainer">
+					<div class="heading">FORGOT YOUR PASSWORD?</div>
+					<div class="body">
+						<p class="forgotPasswordCaption">Don&#x2019;t worry, just fill in your email and  we will send you an email that contains your new password.</p>
+						 <form action="" method="post" id="recoveryEmailForm">
+							 <div class="standardInputBox recoveryEmailInput">
+								<b>EMAIL ADDRESS:</b>
+								<div><input type="text" class="textbox" name="email" size="30" required="required" value=""/></div>
+							 </div>
+							 <input type="hidden" name="action" value="forgot" />
+							 <div class="actionCenter">
+								 <div class="fl shopNowBotton siteButton leftAlign formSubmitButton recoveryEmailSubmit">
+									<a onclick="document.getElementById('recoveryEmailForm').submit();return false;" href="#">
+										<span>SEND EMAIL</span>
+									</a>
+								 </div>
+								 <div class="fl backToSignIn"><a class="colorLink" href="#">Click here for Sign In</a></div>
+								 <div class="cb"></div>
+							 </div>
+						 </form>												
+					</div>					
+					<div class="signUpReference">Dont have an account?  <a href="#">Sign Up</a>.</div>
+				</div>
+				<?php /* <?php } ?> */ ?>
+				
+				  <?php /* <h1><?php echo CBE1_FORGOT_TITLE; ?></h1> */ ?>
 
-	<?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && $_GET['msg'] != 4) { ?>
-		<div class="error_msg">
-			<?php if ($_GET['msg'] == 1) { echo CBE1_FORGOT_MSG1; } ?>
-			<?php if ($_GET['msg'] == 2) { echo CBE1_FORGOT_MSG2; } ?>
-			<?php if ($_GET['msg'] == 3) { echo CBE1_FORGOT_MSG3; } ?>
+				
+				  <?php /* <form action="" method="post">
+					<table bgcolor="#F7F7F7" style="border: 1px solid #EEEEEE" width="100%" align="center" cellpadding="3" cellspacing="0" border="0">
+					  <tr height="50">
+						<td width="40%" align="right" valign="middle" nowrap="nowrap"><b><?php echo CBE1_FORGOT_EMAIL; ?>:</b></td>
+						<td width="20%" align="left" valign="middle" nowrap="nowrap"><input type="text" class="textbox" name="email" size="30" required="required" value="" /></td>
+						<td width="40%" align="left" valign="middle" nowrap="nowrap">
+							<input type="hidden" name="action" value="forgot" />
+							<input type="submit" class="submit" name="send" id="send" value="<?php echo CBE1_FORGOT_BUTTON; ?>" />
+						</td>
+					  </tr>
+					</table>
+				  </form> */ ?>
+				
+			
+			</div>
+			
+			<?php require_once "inc/right_sidebar.php";?>	
 		</div>
-	<?php }elseif($_GET['msg'] == 4){ ?>
-		<div class="success_msg"><?php echo CBE1_FORGOT_MSG4; ?></div>
-		<p align="center"><a class="goback" href="<?php echo SITE_URL; ?>login.php"><?php echo CBE1_FORGOT_GOBACK; ?></a></p>
-	<?php }else{ ?> 
-		<p align="center"><?php echo CBE1_FORGOT_TEXT; ?></p>
-	<?php } ?>
 
-	<?php if (!(isset($_GET['msg']) && $_GET['msg'] == 4)) { ?>
-      <form action="" method="post">
-        <table bgcolor="#F7F7F7" style="border: 1px solid #EEEEEE" width="100%" align="center" cellpadding="3" cellspacing="0" border="0">
-          <tr height="50">
-            <td width="40%" align="right" valign="middle" nowrap="nowrap"><b><?php echo CBE1_FORGOT_EMAIL; ?>:</b></td>
-            <td width="20%" align="left" valign="middle" nowrap="nowrap"><input type="text" class="textbox" name="email" size="30" required="required" value="" /></td>
-			<td width="40%" align="left" valign="middle" nowrap="nowrap">
-		  		<input type="hidden" name="action" value="forgot" />
-				<input type="submit" class="submit" name="send" id="send" value="<?php echo CBE1_FORGOT_BUTTON; ?>" />
-			</td>
-          </tr>
-        </table>
-      </form>
-	<?php } ?>
+
+
+
+	
 
 <?php require_once ("inc/footer.inc.php"); ?>

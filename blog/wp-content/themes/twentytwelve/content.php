@@ -24,7 +24,7 @@ if(!is_single()){
 			<div class="blogPicture"><a href="<?php the_permalink(); ?>">
 			<?php 
 			if (has_post_thumbnail( $post_id )) {?> 
-				<?php the_post_thumbnail( array(225,225) );
+				<?php the_post_thumbnail( array(225,325) );
 			}
 			else{ ?>
 				<img src="<?php echo SITE_URL; ?>img/hangerIcon.png">
@@ -33,19 +33,17 @@ if(!is_single()){
 			</a></div>
 		</div>
 		<div class="blogContentContainerRight">
-			<div class="postDate" style="text-transform:uppercase"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
-			<div class="blogCategory">
-				<div><a href="<?php the_permalink(); ?>"><i><?php the_category(', ');?></i></a></div>
-				<div class="blogAuthor"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>">By <?php echo get_the_author(); ?></a></div>			        
+			<div class="blogCategory">			
+				<div><a href="<?php the_permalink(); ?>"><?php the_category(', ');?></a></div>
 			</div>
 			<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
+			<div class="blogInfo">
+				<div class="blogAuthor"><a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>">By <?php echo get_the_author(); ?></a></div>
+				<div class="postDate">| <a href="<?php the_permalink();?>/#comments"><?php echo get_comments_number(); ?> Comments</a></div>
+				<div class="postDate1"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+			</div>
 			<div class="blogDescription">
-				 <?php the_content();?> 
-				 <div class="blogSocialIcons">	
-				 	<a href="<?php the_permalink();?>/#comments">			
-						<span class="countContainer"><?php echo get_comments_number(); ?></span>
-					</a>
-				</div>
+				 <?php the_content();?>
 			</div>
 			
 		</div>
