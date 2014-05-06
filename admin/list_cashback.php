@@ -222,7 +222,9 @@ $(function(){
 	var AnimationSpeed = 300;
 	
 	$(".show_transactions").click(function(e){		
-		var no_of_days = "<?php echo mysql_real_escape_string(getPostParameter('no_of_days'))?>";
+		//var no_of_days = "<?php echo mysql_real_escape_string(getPostParameter('no_of_days'))?>";
+		var start_date = "<?php echo mysql_real_escape_string(getPostParameter('start_date'))?>";
+		var end_date = "<?php echo mysql_real_escape_string(getPostParameter('end_date'))?>";
 		var select_option = "<?php echo mysql_real_escape_string(getPostParameter('select_option'))?>";
 		var currentParentTr = $(this).parents('tr').eq(0);
 		var hasTransactions = currentParentTr.next('tr.transactions').length;
@@ -241,7 +243,7 @@ $(function(){
 			$.ajax({
 				type: "POST",
 				url: "<?php echo SITE_URL.'admin/list_cashback_detail.php';?>",
-				data: { user_id: user_id , t_date: t_date,no_of_days : no_of_days, select_option: select_option},
+				data: { user_id: user_id , t_date: t_date,start_date: start_date,end_date: end_date, select_option: select_option},
 				success: function(response) { 										
 					currentParentTr.after('<tr class="transactions"><td colspan="4"><div class="innerData">'+response+'</div></td></tr>');
 					//currentParentTr.next().find('div.innerData');					

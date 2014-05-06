@@ -19,6 +19,22 @@
 
 ?>
 
+<?php 
+	$paid = GetUserBalance($userid);
+	$pending = GetPendingBalance();
+	
+	$type = GetCashbackType($paid);
+	$paid_without_type = RemoveCashbackType($paid);
+	
+	$type = GetCashbackType($pending);
+	$pending_without_type = RemoveCashbackType($pending);
+	
+	
+	$total = number_format($paid_without_type + $pending_without_type,2);
+	$total_without_type = $total;
+	$total = '$'.$total;
+?>
+
 	<div class="container standardContainer innerRegularPages">		
 		<?php 
 		/* Left SideBar Content */
@@ -34,9 +50,14 @@
 				<div class="heading">Paid Amount</div>
 				<div class="balanceSection">					
 					<div class="balanceSectionHolder">
-						<div class="fl dollarIcon">$</div>						
-						<div class="fl amountIs">150</div>
-						<div class="fl smallAmountIs">.00</div>
+						<div class="fl dollarIcon">$</div>
+						<?php $paid_amount = explode( '.', $paid_without_type );?>						
+						<div class="fl amountIs">
+							<?php 
+								echo $paid_amount[0];
+							?>
+						</div>
+						<div class="fl smallAmountIs">.<?php echo $paid_amount[1];?></div>
 						<div class="cb"></div>
 					</div>
 				</div>
@@ -47,8 +68,9 @@
 				<div class="balanceSection">					
 					<div class="balanceSectionHolder">
 						<div class="fl dollarIcon">$</div>
-						<div class="fl amountIs">5</div>
-						<div class="fl smallAmountIs">.00</div>
+						<?php $pending_amount = explode('.',$pending_without_type);?>
+						<div class="fl amountIs"><?php echo $pending_amount[0];?></div>
+						<div class="fl smallAmountIs">.<?php echo $pending_amount[1];?></div>
 						<div class="cb"></div>
 					</div>
 				</div>
@@ -58,35 +80,15 @@
 				<div class="heading">Total Amount</div>
 				<div class="balanceSection">					
 					<div class="balanceSectionHolder">
+						<?php $total_amount = explode('.',$total_without_type);?>
 						<div class="fl dollarIcon">$</div>
-						<div class="fl amountIs">20</div>
-						<div class="fl smallAmountIs">.00</div>
+						<div class="fl amountIs"><?php echo $total_amount[0]; ?></div>
+						<div class="fl smallAmountIs">.<?php echo $total_amount[1];?></div>
 						<div class="cb"></div>
 					</div>
 				</div>
 			</div>
 			<div class="cb"></div>
-			<?php /* 
-			
-			<div><?php echo CBE1_BALANCE_ABALANCE; ?></div>
-			<div><?php echo GetUserBalance($userid); ?></div>
-			
-			<div><?php echo CBE1_BALANCE_PCASHBACK; ?></div>
-			<div><?php echo GetPendingBalance(); ?></div>
-			
-			<div><?php echo CBE1_BALANCE_DCASHBACK; ?></div>
-			<div><?php echo GetDeclinedBalance(); ?></div>
-			
-			<div><?php echo CBE1_BALANCE_CREQUESTED; ?></div>
-			<div><?php echo GetCashOutRequested(); ?></div>
-			
-			<div><?php echo CBE1_BALANCE_CPROCESSED; ?></div>
-			<div><?php echo GetCashOutProcessed(); ?></div>
-			
-			<div><?php echo CBE1_BALANCE_LCASHBACK; ?></div>
-			<div><?php echo GetLifetimeCashback(); ?></div> */
-			
-			?>    
 		
 		
 		 <?php
@@ -114,10 +116,10 @@
 				<tbody>
 					<?php while ($row = mysql_fetch_array($result)) { $cc++; ?>
 						<tr>
-						  <td valign="middle" align="center">L55478</td>
+						  <td valign="middle" align="center"><?php echo $row['reference_id']; ?></td>
 						  <td valign="middle" align="center"><?php echo ($row['retailer'] != "") ? $row['retailer'] : "--"; ?></td>
 						  <td valign="middle" align="center"><?php echo $row['date_created']; ?></td>
-						  <td valign="middle" align="center">$300</td>
+						  <td valign="middle" align="center"><?php echo $row['transaction_amount']; ?></td>
 						  <td valign="middle" align="center"><?php echo DisplayMoney($row['amount']); ?></td>
 						  <td valign="middle" align="center">
 						  <div class="statusCenter">
