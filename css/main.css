@@ -469,82 +469,86 @@ h1 {
 
 .blogContentContainerLeft .blogPicture {
 	margin-top: 2px;
-	width: 225px;	
+	width: 225px;
 	overflow: hidden;
 }
 
 .blogContentContainerLeft .blogPicture img {
-	width: 100%;	
+	width: 100%;
 	max-width: 225px;
 	max-height: 325px;
 }
-.blogInfo .postDate,
-.blogInfo .blogAuthor
-{
-display:inline-block;
-}
-.blogInfo .blogAuthor
-{
 
+.blogInfo .postDate,.blogInfo .blogAuthor {
+	display: inline-block;
 }
+
+.blogInfo .blogAuthor {
+	
+}
+
 .blogContentContainerRight .postDate {
 	font-size: 13px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	color:#666666;	
-	text-transform:uppercase;
+	color: #666666;
+	text-transform: uppercase;
 }
+
 .blogContentContainerRight .postDate1 {
 	font-size: 11px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	color:#666666;	
-	text-transform:uppercase;
+	color: #666666;
+	text-transform: uppercase;
 }
 
 .blogContentContainerRight .blogCategory {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
-	font-size: 13px;	
+	font-size: 13px;
 	color: #FBADAB;
-	margin-bottom:5px;
-	text-transform:uppercase;	
+	margin-bottom: 5px;
+	text-transform: uppercase;
 }
 
 .blogContentContainerRight .blogAuthor {
 	font-size: 13px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	color:#666666;
-	text-transform:uppercase;
+	color: #666666;
+	text-transform: uppercase;
 }
 
 .blogContentContainerRight .blogTitle {
 	font-family: "Garamond";
-    font-size: 28px;
-    font-weight: normal;
-    letter-spacing: 1px;
-    line-height: 31px;    
-    text-transform: uppercase;	
+	font-size: 28px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	line-height: 31px;
+	text-transform: uppercase;
+	margin-top: 10px;
 }
 
 .blogContentContainerRight .blogDescription {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	font-size: 13px;
-	line-height: 17px;
+	line-height: 18px;	
+	margin-top: 20px;
 }
-.blogDescription .socialIcons a img
-{
-height:auto !important;
-width:auto !important;
+
+.blogDescription .socialIcons a img {
+	height: auto !important;
+	width: auto !important;
 }
 
 .blogContentContainerRight .blogReadMore {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 	font-size: 12px;
-	margin-top: 15px;
+	margin-top: -0.5em;
+	margin-bottom: 15px;	
 }
 
 .blogContentContainerRight .blogSocialIcons {
@@ -3684,7 +3688,7 @@ ul.menuDropDown li a {
 }
 
 .dropdownContain {
-	width: 160px;
+	width: 182px;
 	position: absolute;
 	z-index: 2;
 	left: 50%;
@@ -3694,7 +3698,7 @@ ul.menuDropDown li a {
 }
 
 .dropOut {
-	width: 140px;
+	width: 190px;
 	background: #FFF;
 	float: left;
 	position: relative;
@@ -3728,28 +3732,33 @@ ul.menuDropDown li a {
 
 .lt-ie9 .dropOut {
 	zoom: 1;
-	filter: progid :       DXImageTransform.Microsoft.Shadow (       color =
+	filter: progid :         DXImageTransform.Microsoft.Shadow (        
+		color = 
 		   
-		  #dddddd, direction =       0, strength =       1 ), progid :   
-		   DXImageTransform.Microsoft.Shadow (       color =       #dddddd,
-		direction =  
-		    45, strength =       1 ), progid :     
-		 DXImageTransform.Microsoft.Shadow (  
-		    color =   
-		   #dddddd, direction =       90, strength =       2 ), progid :   
-		   DXImageTransform.Microsoft.Shadow (       color =       #dddddd,
-		direction =  
-		    135, strength =       3 ), progid :     
-		 DXImageTransform.Microsoft.Shadow (       color =   
-		   #cccccc, direction =       180, strength =       10 ), progid :   
-		   DXImageTransform.Microsoft.Shadow (       color =       #dddddd,
-		direction =  
-		    225, strength =       3 ), progid :     
-		 DXImageTransform.Microsoft.Shadow (       color =   
-		   #dddddd, direction =       270, strength =       2 ), progid :   
-		   DXImageTransform.Microsoft.Shadow (       color =       #dddddd,
-		direction =  
-		    315, strength =       1 );
+		   #dddddd, direction =         0, strength =         1 ), progid :
+		   
+		    DXImageTransform.Microsoft.Shadow (         color =        
+		#dddddd, direction =   
+		     45, strength =         1 ), progid :      
+		  DXImageTransform.Microsoft.Shadow (   
+		     color =    
+		    #dddddd, direction =         90, strength =         2 ), progid :
+		   
+		    DXImageTransform.Microsoft.Shadow (         color =        
+		#dddddd, direction =   
+		     135, strength =         3 ), progid :      
+		  DXImageTransform.Microsoft.Shadow (         color =    
+		    #cccccc, direction =         180, strength =         10 ), progid
+		:    
+		    DXImageTransform.Microsoft.Shadow (         color =        
+		#dddddd, direction =   
+		     225, strength =         3 ), progid :      
+		  DXImageTransform.Microsoft.Shadow (         color =    
+		    #dddddd, direction =         270, strength =         2 ), progid :
+		   
+		    DXImageTransform.Microsoft.Shadow (         color =        
+		#dddddd, direction =   
+		     315, strength =         1 );
 }
 
 .dropOut ul {
@@ -3770,7 +3779,7 @@ ul.menuDropDown li a {
 .dropOut ul li {
 	text-align: left;
 	float: left;
-	width: 105px;
+	width: 80%;
 	color: #777;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -4107,17 +4116,48 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	padding-right: 15px;
 }
 
-.alignCenter {	
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
+.alignCenter {
+	text-align: center;
 }
 
-.aligncenter
-{
+.blogDescription .aligncenter,.blogSection .aligncenter {
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin: 10px auto;
+}
+
+.blogDescription .alignleft,.blogSection .alignleft {
+	float: left;
+	margin: 4px 8px 4px 0px;
+}
+
+.blogDescription .alignright,.blogSection .alignright {
+	float:right;
+	margin: 4px 0px 4px 8px;
+}
+
+.commentsIcon {
+	position: relative;
+	top: -1px;
+}
+
+.blogDescription .socialIcons,.blogSection .socialIcons {
+	margin-right: 0px;
+	text-align: left;
+	margin-bottom: 40px;
+}
+
+.blogSection .socialIcons {
+	margin-bottom: 10px;
+}
+
+.blogDescription img {
+	max-width: 95% !important;
+	max-height: 95% !important;
+}
+
+.blogSection .socialIcons,.blogDescription .socialIcons,.blogSection p,.blogDescription p
+	{
+	clear: both;
 }
 
 .referFriendSectionContainers {
@@ -4164,11 +4204,13 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .blogPostHeading h1 {
-	margin-left: 0px;
-	padding-left: 0px;
-	margin-bottom: 2px;
-	margin-top: 10px;
 	display: block;
+    font-size: 34px;
+    line-height: 38px;
+    margin-bottom: 9px;
+    margin-left: 0;
+    margin-top: 25px;
+    padding-left: 0;	
 }
 
 .blogPostContainer {
@@ -4280,8 +4322,9 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	display: inline-block;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
-	min-width: 100px;
+	min-width: 40px;
 	float: left;
+	text-transform:capitalize;
 }
 
 .blogAuthorDetail {
@@ -4410,7 +4453,10 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	margin-left: 0px;
 	padding-left: 0px;
 }
-
+.blog .categoryHeadingWithMargins h1
+{
+margin-left:0px;
+}
 /* Contact us form Design Modification*/
 .wpcf7 .wpcf7-form {
 	background-color: #EFEFEF;
@@ -4669,8 +4715,9 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 	height: 7px !important;
 	margin: 0 3px !important;
 	outline: 0;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;	
+	-webkit-border-radius:5px;
+	-ms-border-radius:5px;
 	border-radius: 5px;
 }
 
@@ -5290,7 +5337,7 @@ input.yesNewsletter {
 	color: #fff;
 	font-size: 13px;
 	font-weight: 600;
-	padding:0px 8px;
+	padding: 0px 8px;
 }
 
 .balanceSection {
@@ -5299,10 +5346,10 @@ input.yesNewsletter {
 	padding-bottom: 10px;
 	text-align: center;
 	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;	
+	border-bottom-right-radius: 4px;
 	padding-left: 5px;
 	padding-right: 5px;
-	min-width:110px;
+	min-width: 110px;
 }
 
 .balanceSectionHolder {
@@ -5336,26 +5383,35 @@ input.yesNewsletter {
 	font-size: 14px;
 	color: #555555;
 	margin-left: 1px;
-	position:relative;
-	top:2px;
+	position: relative;
+	top: 2px;
 }
 
 .greenColored {
 	background-color: #C3DA53;
 	border: 1px solid #C3DA53;
 	border-radius: 5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
 }
 
 .orangeColored {
 	background-color: #F0A200;
 	border: 1px solid #F0A200;
-	border-radius: 5px;
+	border-radius: 5px;	
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
 }
 
 .blackColored {
 	background-color: #555555;
 	border: 1px solid #555555;
 	border-radius: 5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	-webkit-border-radius:5px;
 }
 
 .para {
@@ -5374,8 +5430,8 @@ input.yesNewsletter {
 }
 
 .subscriptionForm .forSignUp {
-	text-align:left;
-	margin-top:21px;	
+	text-align: left;
+	margin-top: 21px;
 }
 
 .subscriptionForm input {
@@ -5416,119 +5472,315 @@ input.yesNewsletter {
 }
 
 .PaymentMethodPopup {
-	width:400px;
-	min-height:380px;
-	border:1px solid #555555;
-	box-shadow:0 0 5px #555555;
-	margin:auto;
+	width: 400px;
+	min-height: 380px;
+	border: 1px solid #555555;
+	box-shadow: 0 0 5px #555555;
+	margin: auto;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 13px;	
+	font-size: 13px;
 }
 
 .PaymentMethodPopup h2 {
-	font-weight:400;
-	text-align:center;
-	margin-top:0px;
-	margin-bottom:0px;
-	padding-top:8px;
-	padding-bottom:8px;
-	background-color:#FDD3D1;
-	letter-spacing:1px;
+	font-weight: 400;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	background-color: #FDD3D1;
+	letter-spacing: 1px;
 }
 
 .PaymentMethodPopup h2 span {
-	font-weight:600;
-	letter-spacing:0px;
+	font-weight: 600;
+	letter-spacing: 0px;
 }
 
 .PaymentMethodPopupBody {
-	padding:10px;
+	padding: 10px;
 }
 
 .amountAlignment {
-	padding-right:10px;
+	padding-right: 10px;
 }
 
 .forgotPasswordContainer {
-	width:100%;	
-	margin:auto;
-	margin-top:10px;
+	width: 100%;
+	margin: auto;
+	margin-top: 10px;
 }
 
-.forgotPasswordContainer .heading {	
-	background-color:#FBD2D1;
-	text-align:left;
-	text-transform:uppercase;
-	font-size:17px;
-	padding-left:20px;
+.forgotPasswordContainer .heading {
+	background-color: #FBD2D1;
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 17px;
+	padding-left: 20px;
 	font-family: 'Garamond';
-	font-weight:normal;	
-	letter-spacing:1px;
-	line-height:32px;
-	padding-top:5px;
-	border-top-left-radius:5px;
-	border-top-right-radius:5px;
-}
-.forgotPasswordContainer div.body
-{
-padding:10px;
-background-color:#F7F7F7;
-border-bottom-left-radius:5px;
-border-bottom-right-radius:5px;
-}
-.recoveryEmailInput input
-{
-width:50%;
-padding:7px 4px;
-}
-.recoveryEmailInput
-{
-width:97%;
-margin:auto;
-margin-top:10px;
-}
-.recoveryEmailSubmit
-{
-text-align:left;
-margin-top:0px;
-}
-.recoveryEmailInput div
-{
-margin-top:5px;
-}
-.forgotPasswordCaption
-{
-width:97%;
-margin:10px auto 0px auto;
+	font-weight: normal;
+	letter-spacing: 1px;
+	line-height: 32px;
+	padding-top: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 
-.recoveryEmailSubmit span
-{
-padding:6px 14px;
-display:inline-block;
+.forgotPasswordContainer div.body {
+	padding: 25px 10px;
+	background-color: #F7F7F7;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
-.recoveryEmailInput b
-{
-font-weight:600;
+
+.recoveryEmailInput input {
+	width: 50%;
+	padding: 7px 4px;
+	font-size: 14px;
 }
-.signUpReference
-{
-background-color:#fff;
-padding:5px 5px;
-font-size:12px;
+
+.recoveryEmailInput {
+	width: 97%;
+	margin: auto;
+	margin-top: 10px;
 }
-.forgotPasswordContainer .actionCenter
-{
-width:97%;
-margin:auto;
-margin-top:8px;
+
+.recoveryEmailSubmit {
+	text-align: left;
+	margin-top: 0px;
 }
-.forgotPasswordContainer .actionCenter .backToSignIn
+
+.recoveryEmailInput div {
+	margin-top: 5px;
+}
+
+.forgotPasswordCaption {
+	width: 97%;
+	margin: 0px auto 20px auto;
+	font-size: 13px;
+}
+
+.recoveryEmailSubmit span {
+	padding: 6px 14px;
+	display: inline-block;
+}
+
+.recoveryEmailInput b {
+	font-weight: 600;
+	font-size: 13px;
+}
+
+.signUpReference {	
+	padding: 0px 5px;
+	font-size: 12px;
+	width: 97%;
+	margin:auto;
+}
+
+.forgotPasswordContainer .actionCenter {
+	width: 97%;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 10px;
+}
+
+.forgotPasswordContainer .actionCenter .backToSignIn {
+	width: 214px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 12px;
+	text-align: right;
+	margin-top: -5px;
+}
+
+.authorIcon {
+	position: relative;
+	top: -1px;
+}
+
+.PostedOn {
+	position: relative;
+	top: -1px;
+	padding-right: 1px;
+}
+
+.logoutTab b a {
+	width: 93%;
+	display: block !important;
+	padding: 10px !important;
+	padding-left: 0px !important;
+	text-align: left;
+}
+
+.logoutTab {
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
+}
+
+.socialIcons a {
+	width: 30px !important;
+	height: 30px !important;
+	display: inline-block;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.socialIcons a img {
+	display: none !important;
+}
+/* Facebook Icon Image  */
+a.synved-social-provider-facebook {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/facebook.png);
+}
+
+a.synved-social-provider-facebook:hover {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/facebookHover.jpg);
+}
+
+/* Twitter Icon Image  */
+a.synved-social-provider-twitter {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/twitter.png);
+}
+
+a.synved-social-provider-twitter:hover {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/twitterHover.jpg);
+}
+
+/* Google Plus Icon Image  */
+a.synved-social-provider-google_plus {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/google_plus.png);
+}
+
+a.synved-social-provider-google_plus:hover {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/google_plusHover.jpg);
+}
+
+/* Pinterest Icon Image  */
+a.synved-social-provider-pinterest {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/pinterest.png);
+}
+
+a.synved-social-provider-pinterest:hover {
+	background-image:
+		url(../blog/wp-content/plugins/social-media-feather/synved-social/image/social/regular/48x48/pinterestHover.jpg);
+}
+.welcomePopup 
 {
-width:214px;
-font-family: 'Open Sans', sans-serif;
-font-weight: 400;
-font-size: 12px;
+width:360px;
+top:0px;
+}
+.welcomePopup .descriptionMessage
+{
+font-family:'Garamond';
+font-weight:normal;
+letter-spacing:1px;
+font-size:19px;
+}
+.welcomePopup .themePink
+{
+padding:7px 10px 6px 10px;
+}
+.welcomePopup .themeWhite
+{
+padding:20px 10px 15px 10px;
+background-image:#f6f6f6;
+}
+.welcomePopup .leadLine
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	font-size:16px;
+	margin-top:10px;	
+}
+.welcomePopup .leadLine1
+{
+	margin:15px 0px;
+	font-weight: 400;
+	text-align:center;
+	font-size:14px;
+}
+.welcomePopup .bottomLine
+{
+	font-size:11px;
+	margin-top:30px;
+	border-top:1px dotted #555555;
+	padding-top:10px;
+}
+
+.welcomePopupParent
+{
+	box-shadow: 0 0 15px #000 !important;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-ms-border-radius:5px;
+}
+.welcomePopupParent #cboxClose {
+	 background: url("../img/customcontrols.png") no-repeat scroll -25px 0 rgba(0, 0, 0, 0);
+	 height: 25px;
+	 position: absolute;
+	 right: -1px;
+	 text-indent: -9999px;
+	 top: 1px;
+	 width: 25px;
+}
+.inviteAd
+{
+	background-color: #F9F9F9;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-ms-border-radius:5px;
+    margin-bottom: 15px;
+    padding: 10px 12px;
+    width: 582px;
+}
+.inviteAd .fr
+{
 text-align:right;
-margin-top:-5px;
+width:auto;
+}
+.inviteAd .fr img
+{
+width:150px;
+}
+.inviteAd .fl
+{
+text-align:center;
+width: 432px;
+}
+.inviteAd .fl .line1
+{
+font-family:'Garamond';
+font-size:19px;
+line-height:23px;
+margin:2px 0px;
+}
+.inviteAd .fl .line2
+{
+font-family:'Garamond';
+font-size:27px;
+line-height:24px;
+letter-spacing:1px;
+margin-top:3px;
+}
+.inviteAd .fl .line3
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size:11px;	
+}
+
+a.more-link
+{
+color:#0066CC;
+font-style:italic;
 }

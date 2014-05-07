@@ -91,10 +91,14 @@ $menu_categories = GetMenuCategories();
 							$total_pending = round($total_pending['total'],2);
 			           ?>
 			           <ul>
-			            <li><b>Pending Amount:</b> <?php echo DisplayMoney($total_pending);?></li>
-			            <!-- <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b> <?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li> -->
-			            <li><span class="referrals"><b>Paid Amount:</b> <?php echo DisplayMoney($total_paid);?></span></li>             
-			            <li><b><a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a></b></li>
+							<li><b>Pending Amount:</b> <?php echo DisplayMoney($total_pending);?></li>
+							<!-- <li><a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><b>My Referrals:</b> <?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a></li> -->
+							<li><span class="referrals"><b>Paid Amount:</b> <?php echo DisplayMoney($total_paid);?></span></li>             
+							<li class="logoutTab">
+								<b>
+									<a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a>
+								</b>
+							</li>
 			           </ul>
 			           <div class="cb"></div>
 			          </div>

@@ -103,7 +103,7 @@
 				<div class="forgotPasswordContainer">
 					<div class="heading">FORGOT YOUR PASSWORD?</div>
 					<div class="body">
-						<p class="forgotPasswordCaption">Don&#x2019;t worry, just fill in your email and  we will send you an email that contains your new password.</p>
+						<p class="forgotPasswordCaption">You can request a new password by filling in your e-mail address below. By doing so, we will send you an e-mail containing a new password which is active directly.</p>
 						 <form action="" method="post" id="recoveryEmailForm">
 							 <div class="standardInputBox recoveryEmailInput">
 								<b>EMAIL ADDRESS:</b>
@@ -116,12 +116,12 @@
 										<span>SEND EMAIL</span>
 									</a>
 								 </div>
-								 <div class="fl backToSignIn"><a class="colorLink" href="#">Click here for Sign In</a></div>
+								 <div class="fl backToSignIn"><a class="colorLink" href="<?php echo SITE_URL;?>signup_or_login.php">Click here for Sign In</a></div>
 								 <div class="cb"></div>
 							 </div>
-						 </form>												
-					</div>					
-					<div class="signUpReference">Dont have an account?  <a href="#">Sign Up</a>.</div>
+						 </form>
+ 						<div class="signUpReference">Dont have an account? <a class="colorLink" href="<?php echo SITE_URL;?>signup_or_login.php">Sign Up</a></div>
+					</div>										
 				</div>
 				<?php /* <?php } ?> */ ?>
 				

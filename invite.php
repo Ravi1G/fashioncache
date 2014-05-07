@@ -112,9 +112,8 @@
 
 ?>
 
-<div class="container standardContainer innerRegularPages">
-			
-				<?php 
+<div class="container standardContainer innerRegularPages">			
+			<?php 
 			/* Left SideBar Content */
 			if(isLoggedIn())
 			{
@@ -124,6 +123,22 @@
 			
 			<div class="rightAligned flowContent1">				
 					<div class="RetailerContainer referFriendSectionContainers">
+					
+						<!--  Invite Friends Advertisement Starts -->
+						<div class="inviteAd">
+							<div class="fl">
+								<div class="line1">Invite Your Friends</div>
+								<div class="line2">GET REWARDED</div>
+								<div class="line1">for spreading the word</div>
+								<div class="line3">Earn a <b>$10 Gift Card</b> for each friend that signs up &#x0026; makes a qualified purchase.</div>
+							</div>
+							<div class="fr">
+								<img src="<?php echo SITE_URL;?>img/ndStrom.jpg" alt="Nordstrom"/>
+							</div>
+							<div class="cb"></div>
+						</div>
+						<!--  Invite Friends Advertisement Ends -->
+						
 						<div class="categoryHeading categoryHeadingWithMargins referenceSectionHeadings">
 							<h1><?php echo CBE1_INVITE_TITLE; ?></h1>
 						</div>					

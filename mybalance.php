@@ -135,8 +135,8 @@
 						  <td valign="middle" align="center"><?php echo $row['reference_id']; ?></td>
 						  <td valign="middle" align="center"><?php echo ($row['retailer'] != "") ? $row['retailer'] : "--"; ?></td>
 						  <td valign="middle" align="center"><?php echo $row['date_created']; ?></td>
-						  <td valign="middle" align="center"><span class="amountAlignment"><?php echo DisplayMoney($row['transaction_amount']); ?></span></td>
-						  <td valign="middle" align="center"><span class="amountAlignment"><?php echo DisplayMoney($row['amount']); ?></span></td>
+						  <td valign="middle" align="right"><span class="amountAlignment"><?php echo DisplayMoney($row['transaction_amount']); ?></span></td>
+						  <td valign="middle" align="right"><span class="amountAlignment"><?php echo DisplayMoney($row['amount']); ?></span></td>
 						  <td valign="middle" align="center">
 						  <div class="statusCenter">
 							<?php

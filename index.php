@@ -63,6 +63,23 @@
 			});
 		</script>
 	<?php } ?>
+	
+	<?php if(isLoggedIn()){ ?>
+		<script type="application/javascript">
+			$.colorbox({
+				iframe      : true,
+				width: 361,
+				height: 238,
+				opacity: 0.8,
+				scrolling: false,
+				closeButton: false,
+				className: 'welcomePopupParent',
+				fixed: true,				
+				href : "<?php echo SITE_URL?>welcomeAgain.php"
+			});
+		</script>
+	<?php } ?>
+	
 		<div class="container content">
 		<!-- Featured Store List  -->
 			<div class="featuredStoresSection">
