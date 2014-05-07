@@ -14,21 +14,22 @@
 	if (isset($_POST['action']) && $_POST['action'] == "forgot")
 	{
 		$email = strtolower(mysql_real_escape_string(getPostParameter('email')));
+		unset($errors);
+		$errors = array();
 
 		if (!($email) || $email == "")
 		{
-			header("Location: forgot.php?msg=1");
-			exit();
+			$errors[] = CBE1_FORGOT_MSG1;
 		}
 		else
 		{
 			if (!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email))
 			{
-				header("Location: forgot.php?msg=2");
-				exit();
+				$errors[] = CBE1_FORGOT_MSG2;
 			}
 		}
-		
+		if(count($errors)==0 )
+		{
 		$query = "SELECT * FROM cashbackengine_users WHERE email='$email' AND status='active' LIMIT 1";
 		$result = smart_mysql_query($query);
 
@@ -64,41 +65,64 @@
 					header("Location: forgot.php?msg=4");
 					exit();
 				}
-				////////////////////////////////////////////////////////////////////////////////
 			}
 		}
 		else
 		{
-			header("Location: forgot.php?msg=3");
-			exit();
+			$errors[] = CBE1_FORGOT_MSG3;
 		}
-
 	}
+}
 
-	///////////////  Page config  ///////////////
+	//  Page config
 	$PAGE_TITLE = CBE1_FORGOT_TITLE;
-
 	require_once "inc/header.inc.php";
-	
 ?>
-
 		<div class="container content siteInnerSection">
 			<div class="userActivityContainer">
+			<?php if(count($errors) > 0 ){?>
+	        <div class="errorMessageContainer">
+	            <div class="leftContainer errorIcon"></div>
+				<div class="leftContainer">	
+					<!-- For Single line error, add singleError class -->
+	               <ul class="standardList errorList <?php if (isset($_GET['msg']) || count($errors)==1){ echo 'singleError'; }?>"> 	             			
+	               <?php
+	               	if(isset($_GET['msg']) && $_GET['msg']=='exists')
+	               	{?>
+	               		<li><div class="errorMessage"><?php echo CBE1_SIGNUP_ERR10;?></div></li>
+	               	<?php }
+	               	else if(isset($errors))
+	               	{
+					foreach ($errors as $err){?>
+						<li><div class="errorMessage"><?php echo $err;?></div></li>               	
+					<?php }	
+					}
+					?>
+				</ul>
+	            </div>              
+	            <div class="cb"></div>			
+	        </div>
+	           <?php } ?>
+        	<?php 
+			if((isset($_GET['msg']) && ($_GET['msg'] == 4)))
+				{?>
+				<div class="errorMessageContainer successMessageContainer">
+            <div class="leftContainer errorIcon"></div>
+			<div class="leftContainer">	
+				<!-- For Single line error, add singleError class -->
+               <ul class="standardList errorList <?php if (isset($_GET['msg']) || count($errors)==1){ echo 'singleError'; }?>"> 	             			
+               <?php
+               	if(isset($_GET['msg']) && $_GET['msg']=='4')
+               	{?>
+               		<li><div class="errorMessage success_msg"><?php echo CBE1_FORGOT_MSG4; ?></div></li>
+               	<?php }?>
+			</ul>
+            </div>              
+            <div class="cb"></div>			
+        </div>
+			<?php }?>
 			
-				<?php /* <?php if (isset($_GET['msg']) && is_numeric($_GET['msg']) && $_GET['msg'] != 4) { ?>
-					<div class="error_msg">
-						<?php if ($_GET['msg'] == 1) { echo CBE1_FORGOT_MSG1; } ?>
-						<?php if ($_GET['msg'] == 2) { echo CBE1_FORGOT_MSG2; } ?>
-						<?php if ($_GET['msg'] == 3) { echo CBE1_FORGOT_MSG3; } ?>
-					</div>
-				<?php }elseif($_GET['msg'] == 4){ ?>
-					<div class="success_msg"><?php echo CBE1_FORGOT_MSG4; ?></div>
-					<p align="center"><a class="goback" href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE1_FORGOT_GOBACK; ?></a></p>
-				<?php }else{ ?> 
-					<p align="center"><?php echo CBE1_FORGOT_TEXT; ?></p>
-				<?php } ?>
-			
-				<?php if (!(isset($_GET['msg']) && $_GET['msg'] == 4)) { ?> */ ?>
+				<?php if (!(isset($_GET['msg']) && $_GET['msg'] == 4)) { ?>
 				
 				<div class="forgotPasswordContainer">
 					<div class="heading">FORGOT YOUR PASSWORD?</div>
@@ -123,33 +147,9 @@
  						<div class="signUpReference">Dont have an account? <a class="colorLink" href="<?php echo SITE_URL;?>signup_or_login.php">Sign Up</a></div>
 					</div>										
 				</div>
-				<?php /* <?php } ?> */ ?>
-				
-				  <?php /* <h1><?php echo CBE1_FORGOT_TITLE; ?></h1> */ ?>
-
-				
-				  <?php /* <form action="" method="post">
-					<table bgcolor="#F7F7F7" style="border: 1px solid #EEEEEE" width="100%" align="center" cellpadding="3" cellspacing="0" border="0">
-					  <tr height="50">
-						<td width="40%" align="right" valign="middle" nowrap="nowrap"><b><?php echo CBE1_FORGOT_EMAIL; ?>:</b></td>
-						<td width="20%" align="left" valign="middle" nowrap="nowrap"><input type="text" class="textbox" name="email" size="30" required="required" value="" /></td>
-						<td width="40%" align="left" valign="middle" nowrap="nowrap">
-							<input type="hidden" name="action" value="forgot" />
-							<input type="submit" class="submit" name="send" id="send" value="<?php echo CBE1_FORGOT_BUTTON; ?>" />
-						</td>
-					  </tr>
-					</table>
-				  </form> */ ?>
-				
-			
+				<?php } ?>
 			</div>
-			
 			<?php require_once "inc/right_sidebar.php";?>	
 		</div>
-
-
-
-
-	
 
 <?php require_once ("inc/footer.inc.php"); ?>

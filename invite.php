@@ -92,7 +92,7 @@
 			////////////////////////////////////////////////////////////////////////////////
 
 			// save invitations in history //
-			smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage', sent_date=NOW()");
+			smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage',status='pending' , sent_date=NOW()");
 
 			header("Location: invite.php?msg=1");
 			exit();
@@ -197,11 +197,6 @@
 							<div class="cb"></div>			
 						</div>
 					<?php } ?>
-					
-			
-					
-					
-					
 					<div class="referalForm">
 						<form action="" method="post">										
 								<table>
@@ -289,16 +284,21 @@
 						if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) { $page = (int)$_GET['page']; } else { $page = 1; }
 						$from = ($page-1)*$results_per_page;
 				
-						$refs_query = "SELECT *, DATE_FORMAT(created, '%e %b %Y %h:%i %p') AS signup_date FROM cashbackengine_users WHERE ref_id='$userid' ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
+						/*$refs_query = "SELECT *, DATE_FORMAT(created, '%e %b %Y %h:%i %p') AS signup_date FROM cashbackengine_users WHERE ref_id='$userid' ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
 						$total_refs_result = smart_mysql_query("SELECT * FROM cashbackengine_users WHERE ref_id='$userid'");
 						$total_refs = mysql_num_rows($total_refs_result);
 				
 						$refs_result = smart_mysql_query($refs_query);
-						$total_refs_on_page = mysql_num_rows($refs_result);
+						$total_refs_on_page = mysql_num_rows($refs_result);*/
 				
+						//New query
+							$refs_query = smart_mysql_query("SELECT * FROM cashbackengine_invitations WHERE user_id = '$userid'");
+							$total_refs = mysql_num_rows($refs_query);
+							
+						
 						if ($total_refs > 0)
 						{
-					?>
+						?>
 							<div class="sortBarOnTop">
 							<!--
 								<div class="sortby leftAligned">
@@ -325,19 +325,36 @@
 							<table class="categoryTable retailerTable referralsTable">
 							<thead>
 								<tr class="categoryTableHeading">							
-									<td style="width:50%;" class="storeName alignCenter topLeft"><span><?php echo CBE1_INVITE_EMAIL; ?></span></td>							
-									<td style="width:50%;" class="storeSite topRight"><?php echo CBE1_INVITE_SDATE; ?></td>
+									<!-- <td style="width:50%;" class="storeName alignCenter topLeft"><span><?php echo CBE1_INVITE_EMAIL; ?></span></td>							
+									<td style="width:50%;" class="storeSite topRight"><?php echo CBE1_INVITE_SDATE; ?></td>-->
+									<!-- New functionality -->
+									<td style="width:33%;" class="storeName alignCenter topLeft"><span><?php echo CBE1_INVITE_EMAIL; ?></span></td>							
+									<td style="width:33%;" class="storeSite storeName"><?php echo "Invitation Date"; ?></td>
+									<td style="width:33%;" class="storeSite topRight"><?php echo "Invitation Status"; ?></td>
 								</tr>
 							</thead>
 							<tbody>
+								<!-- New functionality -->
+								<?php while ($refs_row = mysql_fetch_array($refs_query)) { $cc++; ?>
+								<tr>
+								<td>
+									<img src="<?php echo SITE_URL; ?>images/referral_icon.png" align="absmiddle" /> &nbsp; 
+									<?php 
+									$email = explode('|',$refs_row['recipients']);
+									echo $email = $email[1];
+									?>
+								</td>						
+								<td class="alignCenter"><?php echo $refs_row['sent_date']; ?></td>
+								<td class="alignCenter"><?php echo $refs_row['status']?></td>
+								</tr>
+								<?php } ?>
 								
-								<?php while ($refs_row = mysql_fetch_array($refs_result)) { $cc++; ?>
+								<!--<?php while ($refs_row = mysql_fetch_array($refs_result)) { $cc++; ?>
 								<tr>
 								<td><img src="<?php echo SITE_URL; ?>images/referral_icon.png" align="absmiddle" /> &nbsp; <?php echo $refs_row['email']." ".$refs_row['lname']; ?></td>						
 								<td class="alignCenter"><?php echo $refs_row['signup_date']; ?></td>
 							</tr>
-							<?php } ?>
-								
+							<?php } ?>-->
 							</tbody>
 							</table>
 							
