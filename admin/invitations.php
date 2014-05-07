@@ -13,6 +13,12 @@
 	require_once("../inc/pagination.inc.php");
 	require_once("./inc/admin_funcs.inc.php");
 
+	if(isset($_POST['invitation_id']) && ($_POST['invitation_id']!=""))
+	{
+		$invitation_id = mysql_real_escape_string(getPostParameter('invitation_id'));
+		$status = mysql_real_escape_string(getPostParameter('status'));
+		smart_mysql_query("UPDATE cashbackengine_invitations SET status = '$status' WHERE invitation_id=$invitation_id");
+	}
 
 	// results per page
 	if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0)
@@ -86,24 +92,17 @@
 		
 		$result = smart_mysql_query($query);
 		$total_on_page = mysql_num_rows($result);
-
+		
+		
 		$query2 = "SELECT * FROM cashbackengine_invitations WHERE ".$where;
 		$result2 = smart_mysql_query($query2);
         $total = mysql_num_rows($result2);
-
 		$cc = 0;
-
-
 	$title = $title2." Invitations";
 	require_once ("inc/header.inc.php");
-
 ?>
-
 		<h2><?php echo $title2; ?> Invitations</h2>		
-
         <?php if ($total > 0) { ?>
-
-
 			<?php if (isset($_GET['msg']) && $_GET['msg'] != "") { ?>
 			<div class="success_box">
 				<?php
@@ -112,18 +111,16 @@
 					{
 						case "deleted": echo "Invitation has been successfully deleted"; break;
 					}
-
 				?>
 			</div>
 			<?php } ?>
-
-
 		<form id="form1" name="form1" method="get" action="">
 		<table bgcolor="#F9F9F9" align="center" width="100%" border="0" cellpadding="3" cellspacing="0">
 		<tr>
 		<td nowrap="nowrap" width="65%" valign="middle" align="left">
            Sort by: 
           <select name="column" id="column" onChange="document.form1.submit()">
+          	<option>--select--</option>
 			<option value="sent_date" <?php if ($_GET['column'] == "sent_date") echo "selected"; ?>>Newest</option>
 			<option value="user_id" <?php if ($_GET['column'] == "user_id") echo "selected"; ?>>Username</option>
           </select>
@@ -154,9 +151,14 @@
 				<th width="50%"><b>Recipients</b></th>
 				<th width="17%"><b>User</b></th>
 				<th width="20%"><b>Date Sent</b></th>
+				<th>Signed Up</th>
+				<th>Total Transaction Amount</th>
+				<th>Invitation Status</th>
 				<th width="10%"><b>Actions</b></th>
 			</tr>
-			<?php while ($row = mysql_fetch_array($result)) { $cc++; ?>				  
+			<?php 
+				
+			while ($row = mysql_fetch_assoc($result)) { $cc++;?>				  
 				  <tr class="<?php if (($cc%2) == 0) echo "even"; else echo "odd"; ?>">
 					<td nowrap="nowrap" align="center" valign="middle"><input type="checkbox" class="checkbox" name="id_arr[<?php echo $row['invitation_id']; ?>]" id="id_arr[<?php echo $row['invitation_id']; ?>]" value="<?php echo $row['invitation_id']; ?>" /></td>
 					<td align="left" valign="middle">
@@ -175,6 +177,32 @@
 					</td>
 					<td align="center" valign="middle"><a href="user_details.php?id=<?php echo $row['user_id']; ?>" class="user"><?php echo GetUsername($row['user_id']); ?></a></td>
 					<td align="center" valign="middle"><div style="float: right; color: #8E8E8E;"><?php echo $row['date_sent']; ?></div></td>
+					<td align="center" valign="middle"><?php if($row['registering_user_id']==0){echo 'N';}else {echo 'Y';}?></td>
+					<td align="center" valign="middle">
+					<?php
+						if($row['status']=='confirmed')
+						{
+							$registering_user_id = $row['registering_user_id']; 
+							if($registering_user_id!=0)
+							{
+								$query = "SELECT SUM(transaction_amount) AS total FROM cashbackengine_transactions WHERE user_id=$registering_user_id";
+								$result = smart_mysql_query($query);
+								$total = mysql_fetch_assoc($result);
+								echo number_format($total['total'],2);
+							}
+						}
+					 ?>
+					</td>
+					<td>
+						<form method="post" action="" id="change_status_form">
+							<input type="hidden" name="invitation_id" value="<?php echo $row['invitation_id'];?>">
+							<select name ='status' class="change_status_class">
+								<option value='confirmed' <?php if($row['status']=='confirmed'){echo 'selected';}?>>Confirmed</option>
+								<option value='expired' <?php if($row['status']=='expired'){echo 'selected';}?>>Expired</option>
+								<option value='pending' <?php if($row['status']=='pending'){echo 'selected';}?>>Pending</option>
+							</select>
+						</form>
+					</td>
 					<td nowrap="nowrap" align="center" valign="middle">
 						<a href="invitation_details.php?id=<?php echo $row['invitation_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>" title="View"><img src="images/view.png" border="0" alt="View" /></a>
 						<a href="#" onclick="if (confirm('Are you sure you really want to delete this invitation?') )location.href='invitation_delete.php?id=<?php echo $row['invitation_id']; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>&pn=<?php echo $page?>'" title="Delete"><img src="images/delete.png" border="0" alt="Delete" /></a>
@@ -193,11 +221,9 @@
 				<tr>
 				  <td colspan="5" align="center">
 					<?php
-							$params = "";
-
-							if ($user)	$params .= "user=$user&";
-
-							echo ShowPagination("invitations",$results_per_page,"invitations.php?".$params."column=$rrorder&order=$rorder&show=$results_per_page&", "WHERE ".$where);
+						$params = "";
+						if ($user)	$params .= "user=$user&";
+						echo ShowPagination("invitations",$results_per_page,"invitations.php?".$params."column=$rrorder&order=$rorder&show=$results_per_page&", "WHERE ".$where);
 					?>
 				  </td>
 				</tr>
@@ -207,5 +233,9 @@
           <?php }else{ ?>
 					<div class="info_box">There are no invitations at this time.</div>
           <?php } ?>
-
+<script>
+	$(".change_status_class").change(function(){
+		console.log($(this).parent("form").submit());
+	});
+</script>
 <?php require_once ("inc/footer.inc.php"); ?>
