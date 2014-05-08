@@ -37,9 +37,7 @@
 		}
 
  	$end_date = $current_date;
- 	
-	$start_date = '20140411';
-	$end_date = '20140419';
+
 	$file_content = file_get_contents('https://reportws.linksynergy.com/downloadreport.php?bdate='.$start_date.'&edate='.$end_date.'&token=51f99871ce6bea90b4ddd82a396bef20af3768c29ff0848d7150c01f0e92c5e2&tokenid&reportid=12&');	
 	$csv = new parseCSV();
 	$csv->delimiter = ",";

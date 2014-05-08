@@ -37,13 +37,8 @@
 //Computing start and end date for the cURL
  	$end_date = date("Y-m-d", strtotime($current_date));
  	$start_date = date("Y-m-d", strtotime($start_date));
- 	
- //Dummy dates - comment or delete the following
-	$start_date = '2014-04-05';
-	$end_date = '2014-05-03';
 	
     $cURL = "https://commission-detail.api.cj.com/v3/commissions?date-type=event&start-date=$start_date&end-date=$end_date";
-    //$cURL .= 'date-type=event';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $cURL);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(

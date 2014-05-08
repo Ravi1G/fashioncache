@@ -99,14 +99,12 @@
 						$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 						$headers .= 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
 
-						
-
 						@mail($to_email, $subject, $message, $headers);
 					}
 				}
 			////////////////////////////////////////////////////////////////////////////////
 
-			// save invitations in history //
+			// save invitations in history - old functionality
 			//smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage',status='pending' , sent_date=NOW()");
 
 			header("Location: invite.php?msg=1");

@@ -261,8 +261,14 @@
 				if(isset($_COOKIE['invitation_id']) && $_COOKIE['invitation_id']!="")
 					{
 						$invitation_id = $_COOKIE['invitation_id'];
-						//Update the record of whose invitation_id matches - insert user id
-						$query_inivitation = "UPDATE cashbackengine_invitations SET registering_user_id = '$new_user_id' WHERE inivitation_id ='$invitation_id'";
+						//Update the record of whose invitation_id matches - insert user id 
+
+						$query_invitation = "UPDATE cashbackengine_invitations SET registering_user_id = $new_user_id WHERE invitation_id = $invitation_id";
+						smart_mysql_query($query_invitation);
+						
+						//Deleting the cookie containing invitation_id
+						unset($_COOKIE['invitation_id']);
+  						setcookie('invitation_id', '', time() - 3600);
 					}
 
 				if (SIGNUP_BONUS > 0)
