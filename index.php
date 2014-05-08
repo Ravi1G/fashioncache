@@ -21,7 +21,12 @@
 	{
 		$ref_id = (int)$_GET['ref'];
 		setReferal($ref_id);
-
+		if(isset($_GET['in_id']) && is_numeric($_GET['in_id']))
+		{
+			//Set cookie for invitation_id
+			setcookie("invitation_id", $_GET['in_id'], time()+(60*60*24*30));
+		}
+		
 		header("Location: index.php");
 		exit();
 	}
@@ -64,7 +69,9 @@
 		</script>
 	<?php } ?>
 	
-	<?php if(isLoggedIn()){ ?>
+	<?php
+	if(isset($_GET['msg']) && $_GET['msg']=="welcome")
+	{ ?>
 		<script type="application/javascript">
 			$.colorbox({
 				iframe      : true,

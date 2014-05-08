@@ -240,6 +240,7 @@
 				if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
 					{
 						$ref_id = $_COOKIE['referer_id'];
+						
 					}
 
 				$unsubscribe_key = GenerateKey($username);
@@ -256,6 +257,13 @@
 
 				smart_mysql_query($insert_query);
 				$new_user_id = mysql_insert_id();
+				
+				if(isset($_COOKIE['invitation_id']) && $_COOKIE['invitation_id']!="")
+					{
+						$invitation_id = $_COOKIE['invitation_id'];
+						//Update the record of whose invitation_id matches - insert user id
+						$query_inivitation = "UPDATE cashbackengine_invitations SET registering_user_id = '$new_user_id' WHERE inivitation_id ='$invitation_id'";
+					}
 
 				if (SIGNUP_BONUS > 0)
 				{

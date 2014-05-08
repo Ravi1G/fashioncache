@@ -17,7 +17,28 @@
 	{
 		$invitation_id = mysql_real_escape_string(getPostParameter('invitation_id'));
 		$status = mysql_real_escape_string(getPostParameter('status'));
-		smart_mysql_query("UPDATE cashbackengine_invitations SET status = '$status' WHERE invitation_id=$invitation_id");
+		
+		/*if($status=='confirmed')
+		{
+			$result = smart_mysql_query("SELECT * FROM cashbackengine_invitations WHERE invitation_id=$invitation_id");
+			$row_invitations = mysql_fetch_assoc($result);
+			
+			//Fetching the data from users table to store user_id into invitations
+			$email = explode('|',$row_invitations['recipients']);
+			$email = $email[1];
+			
+			$result = smart_mysql_query("SELECT * FROM cashbackengine_users WHERE username='$email' || email='$email'");
+			$row_user =mysql_fetch_assoc($result);
+			$registering_id = $row_user['user_id'];
+			smart_mysql_query("UPDATE cashbackengine_invitations SET status = '$status',registering_user_id=$registering_id WHERE invitation_id=$invitation_id");
+			
+		}*/
+		
+		smart_mysql_query("UPDATE cashbackengine_invitations 
+								SET status = '$status' 
+							WHERE 
+								invitation_id=$invitation_id");
+			
 	}
 
 	// results per page

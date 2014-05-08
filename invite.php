@@ -53,10 +53,25 @@
 
 				foreach ($fname as $k=>$v)
 				{
+					
+						
 					if (isset($v) && $v != "" && isset($femail[$k]) && $femail[$k] != "")
 					{
 						$friend_name = $v;
 						$friend_email = $femail[$k];
+						
+						$recipients = $friend_name."|".$friend_email;
+						
+						// save invitations in history - n records for n invitations by a single sender
+						 
+						smart_mysql_query("INSERT INTO cashbackengine_invitations 
+												SET user_id='".(int)$userid."', 
+												recipients='$recipients', 
+												message='$umessage',
+												status='pending' , 
+												sent_date=NOW()");
+						$invite_id =  mysql_insert_id();
+						$ReferralLink.='&in_id='.$invite_id;
 						
 						$esubject = $etemplate['email_subject'];
 
@@ -84,7 +99,7 @@
 						$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 						$headers .= 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
 
-						$recipients .= $friend_name."|".$friend_email."||";
+						
 
 						@mail($to_email, $subject, $message, $headers);
 					}
@@ -92,7 +107,7 @@
 			////////////////////////////////////////////////////////////////////////////////
 
 			// save invitations in history //
-			smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage',status='pending' , sent_date=NOW()");
+			//smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage',status='pending' , sent_date=NOW()");
 
 			header("Location: invite.php?msg=1");
 			exit();
