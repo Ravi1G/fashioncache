@@ -140,7 +140,7 @@
 					$emessage = str_replace("{first_name}", $fname, $emessage);
 					$emessage = str_replace("{username}", $email, $emessage);
 					$emessage = str_replace("{password}", $pwd, $emessage);
-					$emessage = str_replace("{login_url}", SITE_URL."login.php", $emessage);
+					$emessage = str_replace("{login_url}", SITE_URL."signup_or_login.php", $emessage);
 
 					$to_email = $fname.' '.$lname.' <'.$email.'>';
 					$subject = $esubject;
@@ -179,7 +179,7 @@
         <table width="100%" style="border-bottom: 2px solid #EFF0FB;" align="center" cellpadding="2" cellspacing="0" border="0">
         <tr>
 			<td align="left" valign="middle"><h1 style="margin-bottom:0;border:none;"><?php echo CBE1_SIGNUP_TITLE; ?></h1></td>
-			<td align="right" valign="bottom"><?php echo CBE1_SIGNUP_MEMBER; ?> <a href="<?php echo SITE_URL; ?>login.php"><?php echo CBE1_LOGIN_TITLE; ?></a></td>
+			<td align="right" valign="bottom"><?php echo CBE1_SIGNUP_MEMBER; ?> <a href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE1_LOGIN_TITLE; ?></a></td>
         </tr>
         </table>
 

@@ -326,7 +326,7 @@
 					$emessage = str_replace("{first_name}", $fname, $emessage);
 					$emessage = str_replace("{username}", $email, $emessage);
 					$emessage = str_replace("{password}", $pwd, $emessage);
-					$emessage = str_replace("{login_url}", SITE_URL."login.php", $emessage);
+					$emessage = str_replace("{login_url}", SITE_URL."signup_or_login.php", $emessage);
 
 					$to_email = $fname.' '.$lname.' <'.$email.'>';
 					$subject = $esubject;

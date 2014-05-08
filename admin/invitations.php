@@ -214,8 +214,13 @@
 						}
 					 ?>
 					</td>
+						<input type="hidden" name="column" value="<?php echo $rrorder; ?>" />
+					<input type="hidden" name="order" value="<?php echo $rorder; ?>" />
+					<input type="hidden" name="page" value="<?php echo $page; ?>" />
+					<input type="hidden" name="action" value="delete" />
+					</form>
 					<td>
-						<form method="post" action="" id="change_status_form">
+						<form method="post" action="">
 							<input type="hidden" name="invitation_id" value="<?php echo $row['invitation_id'];?>">
 							<select name ='status' class="change_status_class">
 								<option value='confirmed' <?php if($row['status']=='confirmed'){echo 'selected';}?>>Confirmed</option>
@@ -249,14 +254,16 @@
 				  </td>
 				</tr>
             </table>
-			</form>
 
           <?php }else{ ?>
 					<div class="info_box">There are no invitations at this time.</div>
           <?php } ?>
 <script>
 	$(".change_status_class").change(function(){
-		console.log($(this).parent("form").submit());
+		$(this).parent("form").submit();
+	});
+	$("#GoDelete").click(function(){
+		$("#form2").submit();
 	});
 </script>
 <?php require_once ("inc/footer.inc.php"); ?>
