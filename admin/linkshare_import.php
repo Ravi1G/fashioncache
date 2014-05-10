@@ -22,27 +22,33 @@
 		$row_nw = mysql_fetch_assoc($rs);
 		$network_id = $row_nw['network_id'];
 	}//Read id of linkshare from the database ends
-	//Current date and time
-	$current_date = date('Ymd');
-	$current_time = date('His');
-
-	//Conditions to check and set start and end date for the query
-	if(($current_time>000000)&&($current_time<010000))
-		{
-			$start_date = $current_date - 1;
-		}
-	else
-		{
-			$start_date = $current_date;
-		}
-
- 	$end_date = $current_date;
-
+	
+	if((isset($_GET['start_date'])) && ($_GET['start_date']!="")&& (isset($_GET['end_date'])) && ($_GET['end_date']!=""))
+	{
+		$start_date = str_replace('-','',$_GET['start_date']);
+		$end_date	= str_replace('-','',$_GET['end_date']);
+	}
+	else {
+		//Current date and time
+		$current_date = date('Ymd');
+		$current_time = date('His');
+	
+		//Conditions to check and set start and end date for the query
+		if(($current_time>000000)&&($current_time<010000))
+			{
+				$start_date = $current_date - 1;
+			}
+		else
+			{
+				$start_date = $current_date;
+			}
+	
+	 	$end_date = $current_date;
+	}
 	$file_content = file_get_contents('https://reportws.linksynergy.com/downloadreport.php?bdate='.$start_date.'&edate='.$end_date.'&token=51f99871ce6bea90b4ddd82a396bef20af3768c29ff0848d7150c01f0e92c5e2&tokenid&reportid=12&');	
 	$csv = new parseCSV();
 	$csv->delimiter = ",";
 	$csv->parse($file_content);
-	
 	if (count($csv->data) > 0)
 	{
 		foreach($csv->data as $value)

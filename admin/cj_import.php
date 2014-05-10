@@ -22,6 +22,13 @@
 		$row_nw = mysql_fetch_assoc($rs);
 		$network_id = $row_nw['network_id'];
 	}//Read id of commision junction from the database ends
+	
+	if((isset($_GET['start_date'])) && ($_GET['start_date']!="")&& (isset($_GET['end_date'])) && ($_GET['end_date']!=""))
+	{
+		$start_date = $_GET['start_date'];
+		$end_date	= $_GET['end_date'];
+	}
+	else {
 	//Current date and time
 	$current_date = date('Ymd'); // SETTING THESE VARIABLES pending
 	$current_time = date('His');
@@ -37,9 +44,10 @@
 //Computing start and end date for the cURL
  	$end_date = date("Y-m-d", strtotime($current_date));
  	$start_date = date("Y-m-d", strtotime($start_date));
+	}
 	
     $cURL = "https://commission-detail.api.cj.com/v3/commissions?date-type=event&start-date=$start_date&end-date=$end_date";
-	$ch = curl_init();
+    $ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $cURL);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 	              'Authorization: ' . $cDevKey,
@@ -57,7 +65,7 @@
 	    echo "Curl error: " . curl_error($ch);
 	} 
 	else {
-	    $cXML = simplexml_load_string($cHTML);
+	    $cXML = simplexml_load_string($cHTML);print_r($cXML);
 	    for ($i = 0; $i < count($cXML->commissions->commission); $i++) {
 	    	$single = $cXML->commissions->commission[$i];
 	        $program_id = $single->cid;
