@@ -15,7 +15,7 @@
 
 	session_start();
 	require_once("inc/config.inc.php");
-
+ 	
 	// save referral id //////////////////////////////////////////////
 	if (isset($_GET['ref']) && is_numeric($_GET['ref']))
 	{
@@ -23,8 +23,19 @@
 		setReferal($ref_id);
 		if(isset($_GET['in_id']) && is_numeric($_GET['in_id']))
 		{
-			//Set cookie for invitation_id
-			setcookie("invitation_id", $_GET['in_id'], time()+(60*60*24*30));
+			//Getting the record of invitation_id and checking whether 
+			//this is the first time when the invitation id is being used
+			$invitation_id =$_GET['in_id'];
+			$query = "SELECT * FROM cashbackengine_invitations WHERE invitation_id = $invitation_id";
+			
+			$result = smart_mysql_query($query);
+			$row = mysql_fetch_assoc($result);
+			
+			if(!$row['registering_user_id'])
+			{
+				//Set cookie for invitation_id if registering_user_id is not set
+				setcookie("invitation_id", $_GET['in_id'], time()+(60*60*24*30));
+			}
 		}
 		
 		header("Location: index.php");

@@ -9,7 +9,7 @@
 
 	if (!(isset($_SESSION['adm']['id']) && is_numeric($_SESSION['adm']['id'])))
 	{
-		header("Location: signup_or_login.php");
+		header("Location: login.php");
 		exit();
 	}
 	else

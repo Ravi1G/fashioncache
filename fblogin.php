@@ -72,7 +72,7 @@
 			$name				= explode('.',$username);
 			$fname				= mysql_real_escape_string($user['first_name']);
 			$lname				= mysql_real_escape_string($user['last_name']);
-			$country			= "";
+			$country			= "227";
 			$unsubscribe_key	= GenerateKey($username);
 			$ip					= getenv("REMOTE_ADDR");
 			if (isset($_COOKIE['referer_id']) && is_numeric($_COOKIE['referer_id'])) $ref_id = (int)$_COOKIE['referer_id']; else $ref_id = 0;

@@ -53,8 +53,6 @@
 
 				foreach ($fname as $k=>$v)
 				{
-					
-						
 					if (isset($v) && $v != "" && isset($femail[$k]) && $femail[$k] != "")
 					{
 						$friend_name = $v;
@@ -77,11 +75,13 @@
 
 						if ($umessage != "")
 						{
-							$emessage = $umessage;
+							//$emessage = $umessage;
+							$emessage = $etemplate['email_message'];
 							$emessage = str_replace("{friend_name}", $friend_name, $emessage);
 							$emessage = str_replace("{first_name}", $uname, $emessage);
 							$emessage = str_replace("{referral_link}", $ReferralLink, $emessage);
-							$emessage .= "Sign up here: <a href=\'$ReferralLink\'>".$ReferralLink."</a>";
+							$emessage = str_replace("{friend_message}", $umessage, $emessage);
+							//$emessage .= ": Sign up here: <a href=\'$ReferralLink\'>".$ReferralLink."</a>";
 						}
 						else
 						{
@@ -89,6 +89,7 @@
 							$emessage = str_replace("{friend_name}", $friend_name, $emessage);
 							$emessage = str_replace("{first_name}", $uname, $emessage);
 							$emessage = str_replace("{referral_link}", $ReferralLink, $emessage);
+							$emessage = str_replace("{friend_message}", "", $emessage);
 						}
 
 						$to_email = $friend_name.' <'.$friend_email.'>';

@@ -43,6 +43,10 @@
 			$deal_of_week		= (int)getPostParameter('deal_of_week');
 			$popular_retailer	= (int)getPostParameter('popular_retailer');
 			$status				= mysql_real_escape_string(getPostParameter('status'));
+			$top_retailer		= mysql_real_escape_string(getPostParameter('top_retailer'));
+			
+			$category_on_top	= array();
+			$category_on_top	= $_POST['category_on_top'];
 			
 			$r_img_I			= $_FILES['image_I']['name'];
 			$r_img_II			= $_FILES['image_II']['name'];
@@ -346,7 +350,8 @@
 						image_I	=	'$loc_image_I',
 						image_II =	'$loc_image_II',
 						image_III =	'$loc_image_III',
-						sort_order = '$max_val'
+						sort_order = '$max_val',
+						top_retailer ='$top_retailer' 
 						
 					";
 					$result = smart_mysql_query($insert_sql);
@@ -358,6 +363,17 @@
 						{
 							$cats_insert_sql = "INSERT INTO cashbackengine_retailer_to_category SET retailer_id='$new_retailer_id', category_id='$cat_id'";
 							smart_mysql_query($cats_insert_sql);
+						}
+					}
+					
+					//For categories on top
+					if(count($category_on_top)>0)
+					{
+						$query = "";
+						foreach($category_on_top as $cat_top)
+						{
+							$query_update_retailer_cat = "UPDATE cashbackengine_retailer_to_category SET category_on_top = 1 WHERE 	retailer_id ='$new_retailer_id' AND category_id ='$cat_top'";
+							smart_mysql_query($query_update_retailer_cat);
 						}
 					}
 
@@ -454,15 +470,25 @@
 						if (is_array($category) && in_array($category_id, $category)) $checked = 'checked="checked"'; else $checked = '';
 
 						if (($cc%2) == 0)
-							echo "<div class=\"even\"><input name=\"category_id[]\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\">".$category_name."</div>";
+							echo "<div class=\"even\"><input name=\"category_id[]\" class=\"categories\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\" category =\"$category_name\">".$category_name."</div>";
 						else
-							echo "<div class=\"odd\"><input name=\"category_id[]\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\">".$category_name."</div>";
+							echo "<div class=\"odd\"><input name=\"category_id[]\" class=\"categories\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\" category =\"$category_name\">".$category_name."</div>";
 					}
 
 				?>
 				</div>
 			</td>
           </tr>
+          
+          <tr>
+			<td valign="top" align="right" class="tb1">Put on top:</td>
+			<td>
+			<!-- Div for the categories which are being selected -->
+				<div class ="SelectedCats">
+				</div>
+				</td>
+			</tr>
+			
          <tr>
             <td width="30%" valign="middle" align="right" class="tb1">Country:</td>
             <td width="70%" valign="top">
@@ -610,6 +636,10 @@
 				<td valign="middle" align="right" class="tb1">Popular Retailer?</td>
 				<td valign="middle"><input type="checkbox" class="checkbox" name="popular_retailer" value="1" <?php if (getPostParameter('popular_retailer') == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
+             <tr>
+				<td valign="middle" align="right" class="tb1">Top Retailer - in all retailers?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="top_retailer" value="1" <?php if ($row['top_retailer'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
+            </tr>
             <tr>
 				<td valign="middle" align="right" class="tb1">Status:</td>
 				<td valign="middle">
@@ -632,6 +662,19 @@
 	<script>
 	$("#show_info").click(function () {
 	  $("#info").show("slow");
+	});
+	$(".categories").click(function(){
+		if($(this).prop('checked')) {
+			var cat_id = $(this).val();
+			var cat = $(this).attr("category");
+			$(".SelectedCats").append("<div id=div_cat_"+cat_id+">"+
+					"<input type='checkbox' name='category_on_top[]' value="+cat_id+">"+cat+"<span class='note'>Select to show in top</span></div>");
+		} 
+		else{
+			var cat_id = $(this).val();
+			var cat = $(this).attr("category");
+			$("#div_cat_"+cat_id).remove();
+		}
 	});
 	</script>
 

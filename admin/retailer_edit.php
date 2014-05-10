@@ -45,146 +45,14 @@
 			$deal_of_week		= (int)getPostParameter('deal_of_week');
 			$popular_retailer	= (int)getPostParameter('popular_retailer');
 			$status				= mysql_real_escape_string(getPostParameter('status'));
-
+			$top_retailer		= mysql_real_escape_string(getPostParameter('top_retailer'));
+			
+			$category_on_top	= array();
+			$category_on_top	= $_POST['category_on_top'];
+			
 			$r_img_I			= $_FILES['image_I']['name'];
 			$r_img_II			= $_FILES['image_II']['name'];
 			$r_img_III			= $_FILES['image_III']['name'];
-			
-			// get previous image details
-			/*$id	= (int)$_GET['id'];
-			$query1 = "
-				SELECT 
-					image,
-					image_original,
-					image_120x60,
-					image_300x100
-				FROM cashbackengine_retailers 
-				WHERE retailer_id='$id' 
-				LIMIT 1
-			";
-			$rs1 = smart_mysql_query($query1);
-			$row1 = mysql_fetch_assoc($rs1);
-			$imgPreviousUrl = (empty($row1)) ? '' : $row1['image'] ;
-			
-			// no image url provided
-			if ($img == "")
-			{
-				$img = "noimg.gif";
-				
-				if ( ! empty($imgPreviousUrl)) {
-					// delete previous files from disk
-				    $previousOriginalFile = $row1['image_original'];
-					$previous120x60ThumbnailFile = $row1['image_120x60'];
-					$previous300x100ThumbnailFile = $row1['image_300x100'];
-					
-					if (file_exists("upload/$previousOriginalFile")) {
-						unlink("upload/$previousOriginalFile");
-					}
-					
-					if (file_exists("upload/$previous120x60ThumbnailFile")) {
-						unlink("upload/$previous120x60ThumbnailFile");
-					}
-					
-					if (file_exists("upload/$previous300x100ThumbnailFile")) {
-						unlink("upload/$previous300x100ThumbnailFile");
-					}
-					// save new files in db
-					$qry1 = smart_mysql_query("
-						UPDATE cashbackengine_retailers 
-						SET image_original = 'noimg.gif',
-							image_120x60 = 'noimg.gif',
-							image_300x100 = 'noimg.gif'
-						WHERE retailer_id='$id' 
-					");
-				
-				}
-			}
-			// image url provided
-			else 
-			{
-				if ($imgPreviousUrl != $img) {
-					require_once("../inc/Zebra_Image.php");
-					
-					// download the image from Web
-					$imgDownload = file_get_contents($img);
-					$originalFilename = pathinfo($imageExternalUrl, PATHINFO_FILENAME); 
-					$newFilename  = $originalFilename . '_' . md5(uniqid()) . '.jpg';
-					$status = file_put_contents("upload/$newFilename", $imgDownload);
-					
-					if (status != false) {
-		    			$image = new Zebra_Image();
-		    			$imageMedium = new Zebra_Image();
-		    		
-		    			// indicate a source image (a GIF, PNG or JPEG file)
-		    			$image->source_path = "upload/$newFilename";
-		    			$imageMedium->source_path = "upload/$newFilename";
-		    		
-			    		// indicate a target image
-					    // note that there's no extra property to set in order to specify the target 
-					    // image's type -simply by writing '.jpg' as extension will instruct the script 
-					    // to create a 'jpg' file
-					    $newParts = explode('.', $newFilename);
-						$newName = $newParts[0];
-						$newExt = $newParts[1];
-					
-						// smaller thumbnail
-						$thumbSmallerFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
-					    $image->target_path = "upload/$thumbSmallerFilename";
-				    
-					    // some additional properties that can be set
-					    // read about them in the documentation
-					    $image->preserve_aspect_ratio = true;
-					    $image->enlarge_smaller_images = false;
-					    $image->preserve_time = true;
-					
-						// resize the image to exactly 100x100 pixels by using the "crop from center" method
-					    // (read more in the overview section or in the documentation)
-					    //  and if there is an error, check what the error is about
-					    $image->resize(120, 60, ZEBRA_IMAGE_NOT_BOXED);
-				    
-					    // medium thumbnail
-				   		$thumbMediumFilename = $newName . '_' . md5(uniqid()) . '.' . $newExt;
-				    	$imageMedium->target_path = "upload/$thumbMediumFilename";
-				    
-					    // some additional properties that can be set
-					    // read about them in the documentation
-					    $imageMedium->preserve_aspect_ratio = true;
-					    $imageMedium->enlarge_smaller_images = false;
-					    $imageMedium->preserve_time = true;
-					
-						// resize the image to exactly 100x100 pixels by using the "crop from center" method
-					    // (read more in the overview section or in the documentation)
-					    //  and if there is an error, check what the error is about
-					    $imageMedium->resize(300, 100, ZEBRA_IMAGE_NOT_BOXED);
-					    
-					    // delete previous files from disk
-					    $previousOriginalFile = $row1['image_original'];
-						$previous120x60ThumbnailFile = $row1['image_120x60'];
-						$previous300x100ThumbnailFile = $row1['image_300x100'];
-						
-						if (file_exists("upload/$previousOriginalFile")) {
-							unlink("upload/$previousOriginalFile");
-						}
-						
-						if (file_exists("upload/$previous120x60ThumbnailFile")) {
-							unlink("upload/$previous120x60ThumbnailFile");
-						}
-						
-						if (file_exists("upload/$previous300x100ThumbnailFile")) {
-							unlink("upload/$previous300x100ThumbnailFile");
-						}
-						
-						// save new files in db
-						$qry1 = smart_mysql_query("
-							UPDATE cashbackengine_retailers 
-							SET image_original = '$newFilename',
-								image_120x60 = '$thumbSmallerFilename',
-								image_300x100 = '$thumbMediumFilename'
-							WHERE retailer_id='$id' 
-						");
-					}
-				}			    
-			}*/
 
 			if (!($rname && $url && $status)) //$cashback && $cashback_sign
 			{
@@ -447,7 +315,10 @@
 							deal_of_week='$deal_of_week',
 							popular_retailer='$popular_retailer', 
 							$str_img
-							status='$status' WHERE retailer_id='$retailer_id'");
+							status='$status',
+							top_retailer ='$top_retailer' 
+							
+							WHERE retailer_id='$retailer_id'");
 	
 				smart_mysql_query("DELETE FROM cashbackengine_retailer_to_category WHERE retailer_id='$retailer_id'");
 				if (count($category) > 0)
@@ -456,6 +327,16 @@
 					{
 						$cats_insert_sql = "INSERT INTO cashbackengine_retailer_to_category SET retailer_id='$retailer_id', category_id='$cat_id'";
 						smart_mysql_query($cats_insert_sql);
+					}
+				}
+				//For categories on top
+				if(count($category_on_top)>0)
+				{
+					$query = "";
+					foreach($category_on_top as $cat_top)
+					{
+						$query_update_retailer_cat = "UPDATE cashbackengine_retailer_to_category SET category_on_top = 1 WHERE 	retailer_id ='$retailer_id' AND category_id ='$cat_top'";
+						smart_mysql_query($query_update_retailer_cat);
 					}
 				}
 
@@ -537,13 +418,10 @@
 			<select class="textbox2" id="network_id" name="network_id" onchange="javascript:hiddenDiv('network_id','program_id')" <?php if ($network_id) echo "style='display: block;'"; ?>>
 				<option value="">-----------------------</option>
 				<?php
-
 					$sql_affs = smart_mysql_query("SELECT * FROM cashbackengine_affnetworks WHERE status='active' ORDER BY network_name ASC");
-				
 					while ($row_affs = mysql_fetch_array($sql_affs))
 					{
 						if ($row['network_id'] == $row_affs['network_id']) $selected = " selected=\"selected\""; else $selected = "";
-
 						echo "<option value=\"".$row_affs['network_id']."\"".$selected.">".$row_affs['network_name']."</option>";
 					}
 				?>	
@@ -555,11 +433,10 @@
             <td valign="top"><input type="text" name="program_id" value="<?php echo $row['program_id']; ?>" size="15" class="textbox" /><span class="note">Program ID from affiliate network</span></td>
 			</tr>
           <tr>
-            <td valign="middle" align="right" class="tb1">Category:</td>
+            <td valign="top" align="right" class="tb1">Category:</td>
             <td valign="top">
 				<div class="scrollbox">
 				<?php
-
 					unset($retailer_cats);
 					$retailer_cats = array();
 
@@ -579,20 +456,70 @@
 					foreach ($allcategories as $category_id => $category_name)
 					{
 						$cc++;
-						if (is_array($retailer_cats) && in_array($category_id, $retailer_cats)) $checked = 'checked="checked"'; else $checked = '';
+						if (is_array($retailer_cats) && in_array($category_id, $retailer_cats)) 
+						{
+							$checked = 'checked="checked"';
+							
+						} else 
+						{
+							$checked = '';
+						}
 
 						if (($cc%2) == 0)
-							echo "<div class=\"even\"><input name=\"category_id[]\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\">".$category_name."</div>";
+							echo "<div class=\"even\"><input name=\"category_id[]\" class=\"categories\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\" category =\"$category_name\">".$category_name."</div>";
 						else
-							echo "<div class=\"odd\"><input name=\"category_id[]\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\">".$category_name."</div>";
+							echo "<div class=\"odd\"><input name=\"category_id[]\" class=\"categories\" value=\"".(int)$category_id."\" ".$checked." type=\"checkbox\" category =\"$category_name\">".$category_name."</div>";
 					}
+	
 
 				?>
 				</div>
 			</td>
 			</tr>
+			<tr>
+			<td valign="top" align="right" class="tb1">Put on top:</td>
+			<td>
+			<!-- Div for the categories which are being selected -->
+				<div class ="SelectedCats">
+				<?php
+				$query = "SELECT 
+								c.category_id,
+								c.name,
+								rc.category_on_top 
+							FROM  cashbackengine_categories 
+								AS c INNER JOIN cashbackengine_retailer_to_category AS rc
+								ON c.category_id=rc.category_id 
+							WHERE retailer_id = $id";	
+
+				$result = smart_mysql_query($query);
+				while($top_cat = mysql_fetch_assoc($result))
+				{
+					$top_cat_id = $top_cat['category_id'];
+					$top_cat_name = $top_cat['name'];
+					$cat_on_top = $top_cat['category_on_top']; // Check using cat_top to make the checkbox check
+					
+					if($cat_on_top==1){
+						$checkbox_state = 'checked';
+					}
+					else 
+					{
+						$checkbox_state = '';
+					}
+					if($top_cat_id)
+					{
+						?><div id="div_cat_<?php echo $top_cat_id;?>">
+						<input type="checkbox" value="<?php echo $top_cat_id;?>" 
+						name="category_on_top[]" <?php echo $checkbox_state;?>><?php echo $top_cat_name;?>
+						<span class="note">Select to show in top</span>
+							</div><?php 
+					}
+				}
+				?> 
+				</div>
+				</td>
+			</tr>
           <tr>
-            <td valign="middle" align="right" class="tb1">Country:</td>
+            <td valign="top" align="right" class="tb1">Country:</td>
             <td valign="top">
 				<div class="scrollbox">
 				<?php
@@ -780,6 +707,11 @@
 				<td valign="middle" align="right" class="tb1">Popular Retailer?</td>
 				<td valign="middle"><input type="checkbox" class="checkbox" name="popular_retailer" value="1" <?php if ($row['popular_retailer'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
             </tr>
+            
+            <tr>
+				<td valign="middle" align="right" class="tb1">Top Retailer - in all retailers?</td>
+				<td valign="middle"><input type="checkbox" class="checkbox" name="top_retailer" value="1" <?php if ($row['top_retailer'] == 1) echo "checked=\"checked\""; ?> />&nbsp;Yes!</td>
+            </tr>
             <tr>
             <td valign="middle" align="right" class="tb1">Status:</td>
             <td valign="top">
@@ -805,5 +737,19 @@
 			<p align="center">Sorry, no retailer found.<br/><br/><a class="goback" href="#" onclick="history.go(-1);return false;">Go Back</a></p>
       <?php } ?>
 
-
+<script>
+	$(".categories").click(function(){
+		if($(this).prop('checked')) {
+			var cat_id = $(this).val();
+			var cat = $(this).attr("category");
+			$(".SelectedCats").append("<div id=div_cat_"+cat_id+">"+
+					"<input type='checkbox' name='category_on_top[]' value="+cat_id+">"+cat+"<span class='note'>Select to show in top</span></div>");
+		} 
+		else{
+			var cat_id = $(this).val();
+			var cat = $(this).attr("category");
+			$("#div_cat_"+cat_id).remove();
+		}
+	});
+</script>
 <?php require_once ("inc/footer.inc.php"); ?>

@@ -10,6 +10,8 @@
 	session_start();
 	require_once("inc/config.inc.php");
 	require_once("inc/pagination.inc.php");
+
+	//Pop-up if the user is not logged in, whenever he click on shop now button
 	$show_popup = 0;
 	if(isset($_GET['p']) && $_GET['p']==1)
 	{
@@ -94,6 +96,7 @@
 		$retailers_per_category[] = "111111111111111111111";
 
 		$sql_retailers_per_category = smart_mysql_query("SELECT retailer_id FROM cashbackengine_retailer_to_category WHERE category_id='$cat_id'");
+		
 		while ($row_retailers_per_category = mysql_fetch_array($sql_retailers_per_category))
 		{
 			$retailers_per_category[] = $row_retailers_per_category['retailer_id'];
@@ -121,18 +124,28 @@
 
 	$where .= " (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active'";
 	
-	if ($rrorder == "cashback")
-		$query = "SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY ABS(cashback) $rorder LIMIT $from, $results_per_page";
+	if (isset($_GET['cat']) && is_numeric($_GET['cat']) && $_GET['cat'] > 0)
+	{//Create a join between two tables to get data - 
+		$cat_id ="";
+		$cat_id = $_GET['cat'];
+		$query = "SELECT r.*,c_r.* FROM cashbackengine_retailers AS r
+					LEFT JOIN cashbackengine_retailer_to_category AS c_r
+					ON c_r.retailer_id=r.retailer_id WHERE c_r.category_id=$cat_id 
+					ORDER BY category_on_top desc, r.title asc
+		";
+	}
+	else if ($rrorder == "cashback")
+		$query = "SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY top_retailer DESC, ABS(cashback) $rorder LIMIT $from, $results_per_page";
 	else
-		$query = "SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY featured DESC, $rrorder $rorder LIMIT $from, $results_per_page";
+		$query = "SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY top_retailer DESC, featured DESC, $rrorder $rorder LIMIT $from, $results_per_page";
 	
-	$total_result = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY title ASC");
-	$total = mysql_num_rows($total_result);
-
+	//$total_result = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY title ASC");
+	//$total = mysql_num_rows($total_result);
+	
 	$result = smart_mysql_query($query);
 	$total_on_page = mysql_num_rows($result);
 
-
+	//print_r(mysql_fetch_assoc($result));echo '<br>';exit;
 	
 	///////////////  Page config  ///////////////
 	$PAGE_TITLE	= getCategory($_GET['cat']).$totitle;
@@ -167,13 +180,24 @@
 						</tr>
 					</thead>
 						<?php while($row=mysql_fetch_assoc($result)){?>
-						<tr>
+						<tr <?php if(($row['top_retailer']==1) &&($_GET['cat']=="")) 
+									{
+										echo 'class="selectedRow"';
+									}
+									else if(isset($_GET['cat']) &&($_GET['cat']!="") && $row['category_on_top'])
+									{
+										echo 'class="selectedRow"';
+									}
+									?>
+						>
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<a href="view_retailer.php?id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
-								<?php echo $row['cashback'];?>
+								<?php 
+									echo DisplayCashback($row['cashback']);
+								?>
 							</td>
 							<td>
 								<div class="shopNowBotton siteButton">
@@ -404,7 +428,7 @@ $(document).ready(function() {
     $('#categoryTable').dataTable({
 		"bPaginate": false,
 		"bFilter": false,
-		"aaSorting": [ [0,'asc'], [1,'asc'] ]
+		//"aaSorting": [ [0,'asc'], [1,'asc'] ]
 	});
 	<?php 
 		if(isset($show_popup) && $show_popup==1)

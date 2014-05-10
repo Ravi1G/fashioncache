@@ -75,11 +75,38 @@
 				if (ACCOUNT_ACTIVATION == 1)
 				{
 					$activation_key = GenerateKey($username);
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', status='inactive',ref_id='$ref_id', activation_key='$activation_key', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET 
+																		username='$username', 
+																		password='".PasswordEncryption($pwd)."', 
+																		email='$email', 
+																		ip='$ip', 
+																		status='inactive',
+																		ref_id='$ref_id', 
+																		activation_key='$activation_key', 
+																		last_login=NOW(), 
+																		login_count='1', 
+																		last_ip='$ip',
+																		created=NOW(),
+																		newsletter = 1,
+																		country = 227";
 				}
 				else
 				{
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', status='active',ref_id='$ref_id',  activation_key='', unsubscribe_key='$unsubscribe_key', last_login=NOW(), login_count='1', last_ip='$ip', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET 
+																		username='$username', 
+																		password='".PasswordEncryption($pwd)."', 
+																		email='$email', 
+																		ip='$ip', 
+																		status='active',
+																		ref_id='$ref_id', 
+																		activation_key='', 
+																		unsubscribe_key='$unsubscribe_key', 
+																		last_login=NOW(), 
+																		login_count='1', 
+																		last_ip='$ip', 
+																		created=NOW(),
+																		newsletter = 1,
+																		country = 227";
 				}
 
 				smart_mysql_query($insert_query);

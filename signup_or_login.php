@@ -240,7 +240,6 @@
 				if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
 					{
 						$ref_id = $_COOKIE['referer_id'];
-						
 					}
 
 				$unsubscribe_key = GenerateKey($username);
@@ -248,16 +247,65 @@
 				if (ACCOUNT_ACTIVATION == 1)
 				{
 					$activation_key = GenerateKey($username);
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', fname='$fname', status='inactive',ref_id='$ref_id', activation_key='$activation_key', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET 
+																		username='$username', 
+																		password='".PasswordEncryption($pwd)."', 
+																		email='$email', 
+																		ip='$ip', 
+																		fname='$fname', 
+																		status='inactive',
+																		ref_id='$ref_id', 
+																		activation_key='$activation_key',
+																		login_count='1', 
+																		last_ip='$ip' 
+																		created=NOW(), 
+																		newsletter = 1,
+																		country = 227";
 				}
 				else
 				{
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email',fname='$fname', ip='$ip', status='active',ref_id='$ref_id',  activation_key='', unsubscribe_key='$unsubscribe_key', last_login=NOW(), login_count='1', last_ip='$ip', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET 
+																		username='$username', 
+																		password='".PasswordEncryption($pwd)."', 
+																		email='$email',
+																		fname='$fname', 
+																		ip='$ip', 
+																		status='active',
+																		ref_id='$ref_id',  
+																		activation_key='', 
+																		unsubscribe_key='$unsubscribe_key', 
+																		last_login=NOW(), 
+																		login_count='1', 
+																		last_ip='$ip', 
+																		created=NOW(), 
+																		newsletter = 1,
+																		country = 227
+																		";
 				}
 
 				smart_mysql_query($insert_query);
 				$new_user_id = mysql_insert_id();
-				
+
+				if($ref_id && !isset($_COOKIE['invitation_id']))
+					{
+						$query = "INSERT INTO cashbackengine_invitations 
+										SET 
+											user_id = $ref_id,
+											recipients = '$fname|$email',
+											status = 'pending',
+											registering_user_id = $new_user_id";
+						 
+						smart_mysql_query($query);
+
+						//Removing the cookie after inserting invitation record
+						if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
+						{
+							unset($_COOKIE['referer_id']);
+	  						setcookie('referer_id', '', time() - 3600);
+						}
+					}
+					
+					
 				if(isset($_COOKIE['invitation_id']) && $_COOKIE['invitation_id']!="")
 					{
 						$invitation_id = $_COOKIE['invitation_id'];
