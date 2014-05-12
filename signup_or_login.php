@@ -283,7 +283,7 @@
 																		";
 				}
 
-				smart_mysql_query($insert_query);
+				smart_mysql_query($insert_query); 
 				$new_user_id = mysql_insert_id();
 
 				if($ref_id && !isset($_COOKIE['invitation_id']))
@@ -293,6 +293,7 @@
 											user_id = $ref_id,
 											recipients = '$fname|$email',
 											status = 'pending',
+											sent_date=NOW(),
 											registering_user_id = $new_user_id";
 						 
 						smart_mysql_query($query);
@@ -304,19 +305,34 @@
 	  						setcookie('referer_id', '', time() - 3600);
 						}
 					}
-					
-					
+				
 				if(isset($_COOKIE['invitation_id']) && $_COOKIE['invitation_id']!="")
 					{
 						$invitation_id = $_COOKIE['invitation_id'];
-						//Update the record of whose invitation_id matches - insert user id 
+						//Getting the record of invitation_id and checking whether 
+						//this is the first time when the invitation id is being used
+						$query_invitation_check = "SELECT * FROM cashbackengine_invitations WHERE invitation_id = $invitation_id";
 
-						$query_invitation = "UPDATE cashbackengine_invitations SET registering_user_id = $new_user_id WHERE invitation_id = $invitation_id";
-						smart_mysql_query($query_invitation);
 						
+						$result = smart_mysql_query($query_invitation_check);
+						$row = mysql_fetch_assoc($result);
+						$email_check = explode('|',$row['recipients']);
+						
+						if($username==$email_check[1])
+						{
+							//Update the record of whose invitation_id matches - insert user id 
+							$query_invitation = "UPDATE cashbackengine_invitations SET registering_user_id = $new_user_id WHERE invitation_id = $invitation_id";
+							smart_mysql_query($query_invitation);							
+						}
+
 						//Deleting the cookie containing invitation_id
 						unset($_COOKIE['invitation_id']);
   						setcookie('invitation_id', '', time() - 3600);
+  						if($ref_id && !isset($_COOKIE['invitation_id']))
+  						{
+	  						unset($_COOKIE['referer_id']);
+		  					setcookie('referer_id', '', time() - 3600);
+  						}
 					}
 
 				if (SIGNUP_BONUS > 0)

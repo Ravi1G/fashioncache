@@ -41,9 +41,11 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 				t.transaction_date,
 				t.retailer,
 				t.status,
-				t.amount 
-					FROM cashbackengine_transactions 
-					AS t INNER JOIN cashbackengine_users AS u ON u.user_id = t.user_id 
+				t.amount,
+				n.network_name 
+					FROM cashbackengine_transactions AS t 
+						INNER JOIN cashbackengine_users AS u ON u.user_id = t.user_id
+						INNER JOIN cashbackengine_affnetworks AS n ON t.network_id = n.network_id 
 				WHERE u.user_id='$user_id' and t.payment_type='cashback' and 
 						t.transaction_date 
 						between '$start_date' and '$end_date' $where";
@@ -55,9 +57,10 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 		<table class="retailersCashbackTable1">
 			<tr>
 				<th width="35%">Retailer</th>
-				<th width="16%" class="alignRight">Amount</th>
+				<th width="10%" class="alignRight">Amount</th>
 				<th width="32%" class="alignCenter">Date of transaction</th>
-				<th width="17%" class="alignCenter">Mark as paid</th>
+				<th>Platform</th>
+				<th width="10%" class="alignCenter">Mark as paid</th>
 			</tr>
 			<?php 
 			while($row = mysql_fetch_assoc($result_detail))
@@ -78,7 +81,8 @@ if(isset($_POST['user_id']) && ($_POST['user_id']!=""))
 				echo '<tr>
 						<td>'.$row['retailer'].'</td>
 						<td class="alignRight">'.$row['amount'].'</td>
-						<td class="alignCenter">'.$row['transaction_date']."</td>
+						<td class="alignCenter">'.$row['transaction_date'].'</td>
+						<td>'.$row['network_name']."</td>
 						<td class='alignCenter'>
 							<a href='#' style='$style_for_update_link' class='update_link' r_id=".$row['transaction_id'].">Update</a>
 							<span class='show_paid' style='$style_for_paid_link'>PAID</span>

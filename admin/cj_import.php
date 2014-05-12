@@ -12,7 +12,6 @@
 	require_once("../inc/config.inc.php");
 	set_time_limit(0);   
     $cDevKey = '00b72e6d005831676a338b6a10e13f54b37f9c67f03307442f392fc7814efc17b90ff5a13efc010149709a7f721fd379cd59e792d091073fcf32a0ceb35e4c4127/72c921bea48518c380d72cb8b51d054b917c85d90b70d33630449364a104f12b90d650e703a8b84df0563f6b47466934fa03fedeb22cb728ec5c632ea5542a49'; 
-    $insert_flg = 1;
     //Read id of linkshare from the database starts
 	$query_nw_id = "SELECT network_id FROM cashbackengine_affnetworks WHERE network_name = 'Commission Junction'";
 	$rs	= smart_mysql_query($query_nw_id);
@@ -65,8 +64,9 @@
 	    echo "Curl error: " . curl_error($ch);
 	} 
 	else {
-	    $cXML = simplexml_load_string($cHTML);print_r($cXML);
+	    $cXML = simplexml_load_string($cHTML);
 	    for ($i = 0; $i < count($cXML->commissions->commission); $i++) {
+	    	$insert_flg = 1;
 	    	$single = $cXML->commissions->commission[$i];
 	        $program_id = $single->cid;
 	        $transaction_id = $single->{'order-id'};

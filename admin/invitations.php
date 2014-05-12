@@ -192,10 +192,10 @@
 								$query_total = "SELECT 
 												SUM(transaction_amount) AS total 
 											FROM cashbackengine_transactions 
-											WHERE user_id=$registering_user_id";
+											WHERE user_id='$registering_user_id'";
 								
 								$result_total = smart_mysql_query($query_total);
-								$total = mysql_fetch_assoc($result);
+								$total = mysql_fetch_assoc($result_total);
 								echo number_format($total['total'],2);
 							}
 						}

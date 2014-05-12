@@ -11,7 +11,6 @@
 	require_once("../inc/config.inc.php");
 	require_once("./inc/parsecsv.inc.php");
 	set_time_limit(0);
-	$insert_flg = 1;
 	
 	//Read id of linkshare from the database starts
 	$query_nw_id = "SELECT network_id FROM cashbackengine_affnetworks WHERE network_name = 'Linkshare'";
@@ -52,7 +51,16 @@
 	if (count($csv->data) > 0)
 	{
 		foreach($csv->data as $value)
-		{
+		{	
+			$insert_flg = 1;
+			$program_id = "";
+			$reference_id = "";
+			$retailer = "";
+			$user_id = "";
+			$commision = "";
+			$transaction_amount = "";
+			$transaction_date = "";
+			
 			$program_id = $value['Merchant ID'];
 			$reference_id = $value['Order ID'];
 			$retailer = $value['Merchant Name'];
@@ -85,10 +93,11 @@
 						$insert_flg = 0;
 					}
 				}
-				
 			}
+			
 			if($insert_flg==1)
 			{
+			
 				//Calculating the amount to be cashback from the cashback % given using network_id and program_id
 				$query = "SELECT cashback FROM cashbackengine_retailers WHERE network_id='$network_id' AND program_id='$program_id' LIMIT 1";
 				
