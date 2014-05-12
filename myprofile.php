@@ -275,10 +275,10 @@
 								</select>
 							</div>				
 						</div>					
-						<div class="row phonePlates leftAligned locationPlate">
+						<div class="row phonePlates leftAligned locationPlate hide">
 							<div class="label"><?php echo CBE1_LABEL_PHONE; ?></div>
 							<div class="data">
-              							<input type="text" class="phoneInput" name="phone" id="phone" value="<?php if(isset($phone) && ($phone!="")){echo $phone;} elseif(isset($row['phone']) && ($row['phone']!="")) {echo $row['phone'];} ?>" size="25" />
+              					<input type="text" class="phoneInput" name="phone" id="phone" value="<?php if(isset($phone) && ($phone!="")){echo $phone;} elseif(isset($row['phone']) && ($row['phone']!="")) {echo $row['phone'];} ?>" size="25" />
 							</div>								
 						</div>
 						<div class="cb"></div>

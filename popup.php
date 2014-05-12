@@ -82,7 +82,7 @@ include_once 'inc/config.inc.php';?>
 									<div class="customInputBox"><input type="password" name="password" placeholder="Password"/></div>
 									<div class="formActions">
 										<div class="formActionsLeft">
-											<button type="submit" id='submitform' class="customButton customButtonHomePage"><span>SIGN UP</span></button>	                            		
+											<button type="submit" id='submitform' class="customButton customButtonHomePage signUpCaption1"><span>SIGN UP</span></button>	                            		
 										</div>
 										<div class="formActionsRight">
 											<div class="alreadyMember">Already a Member?</div>
@@ -114,7 +114,7 @@ include_once 'inc/config.inc.php';?>
 										</div>
 										<div class="formActionsRight">
 											<div class="alreadyMember">New Member?</div>
-											<div class="login" ><a href="" id='signupLink'>SIGN UP</a></div>
+											<div class="login"><a href="" id='signupLink'>SIGN UP</a></div>
 										</div>
 										<div class="cb"></div>
 									</div>
