@@ -11,7 +11,6 @@
 	require_once("../inc/config.inc.php");
 	require_once("./inc/parsecsv.inc.php");
 	set_time_limit(0);
-	$insert_flg = 1;
 	
 	//Read id of linkshare from the database starts
 	$query_nw_id = "SELECT network_id FROM cashbackengine_affnetworks WHERE network_name = 'Linkshare'";
@@ -22,33 +21,46 @@
 		$row_nw = mysql_fetch_assoc($rs);
 		$network_id = $row_nw['network_id'];
 	}//Read id of linkshare from the database ends
-	//Current date and time
-	$current_date = date('Ymd');
-	$current_time = date('His');
-
-	//Conditions to check and set start and end date for the query
-	if(($current_time>000000)&&($current_time<010000))
-		{
-			$start_date = $current_date - 1;
-		}
-	else
-		{
-			$start_date = $current_date;
-		}
-
- 	$end_date = $current_date;
- 	
-	$start_date = '20140411';
-	$end_date = '20140419';
+	
+	if((isset($_GET['start_date'])) && ($_GET['start_date']!="")&& (isset($_GET['end_date'])) && ($_GET['end_date']!=""))
+	{
+		$start_date = str_replace('-','',$_GET['start_date']);
+		$end_date	= str_replace('-','',$_GET['end_date']);
+	}
+	else {
+		//Current date and time
+		$current_date = date('Ymd');
+		$current_time = date('His');
+	
+		//Conditions to check and set start and end date for the query
+		if(($current_time>000000)&&($current_time<010000))
+			{
+				$start_date = $current_date - 1;
+			}
+		else
+			{
+				$start_date = $current_date;
+			}
+	
+	 	$end_date = $current_date;
+	}
 	$file_content = file_get_contents('https://reportws.linksynergy.com/downloadreport.php?bdate='.$start_date.'&edate='.$end_date.'&token=51f99871ce6bea90b4ddd82a396bef20af3768c29ff0848d7150c01f0e92c5e2&tokenid&reportid=12&');	
 	$csv = new parseCSV();
 	$csv->delimiter = ",";
 	$csv->parse($file_content);
-	
 	if (count($csv->data) > 0)
 	{
 		foreach($csv->data as $value)
-		{
+		{	
+			$insert_flg = 1;
+			$program_id = "";
+			$reference_id = "";
+			$retailer = "";
+			$user_id = "";
+			$commision = "";
+			$transaction_amount = "";
+			$transaction_date = "";
+			
 			$program_id = $value['Merchant ID'];
 			$reference_id = $value['Order ID'];
 			$retailer = $value['Merchant Name'];
@@ -81,10 +93,11 @@
 						$insert_flg = 0;
 					}
 				}
-				
 			}
+			
 			if($insert_flg==1)
 			{
+			
 				//Calculating the amount to be cashback from the cashback % given using network_id and program_id
 				$query = "SELECT cashback FROM cashbackengine_retailers WHERE network_id='$network_id' AND program_id='$program_id' LIMIT 1";
 				

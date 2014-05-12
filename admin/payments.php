@@ -82,7 +82,17 @@
 		if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) { $page = (int)$_GET['page']; } else { $page = 1; }
 		$from = ($page-1)*$results_per_page;
 
-		$query = "SELECT t.*, DATE_FORMAT(t.created, '%e %b %Y') AS payment_date, u.username, u.email FROM cashbackengine_transactions t, cashbackengine_users u WHERE t.user_id=u.user_id $filter_by ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
+		$query = "SELECT t.*, 
+						DATE_FORMAT(t.created, '%e %b %Y') AS payment_date, 
+						u.username, 
+						u.email,
+						n.network_name 
+						FROM cashbackengine_transactions AS t 
+						INNER JOIN	cashbackengine_users AS u 
+							ON t.user_id=u.user_id
+						INNER JOIN cashbackengine_affnetworks AS n 
+							ON t.network_id = n.network_id
+						WHERE t.user_id=u.user_id $filter_by ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
 		$result = smart_mysql_query($query);
 		$total_on_page = mysql_num_rows($result);
 
@@ -162,6 +172,8 @@
 				<th width="20%">Username</th>
 				<th width="12%">Reference ID</th>
 				<th width="15%">Payment Type</th>
+				<th>Retailer</th>
+				<th>Platform</th>
 				<th width="8%">Amount</th>
 				<th width="9%">Date</th>
 				<th width="12%">Status</th>
@@ -173,6 +185,8 @@
 					<td nowrap="nowrap" align="left" valign="middle"><a href="user_details.php?id=<?php echo $row['user_id']; ?>" class="user"><?php echo $row['username']; ?></a></td>
 					<td nowrap="nowrap" align="center" valign="middle"><a href="payment_details.php?id=<?php echo $row['transaction_id']; ?>"><?php echo $row['reference_id']; ?></a></td>
 					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['payment_type']; ?></td>
+					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['retailer']; ?></td>
+					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['network_name']; ?></td>
 					<td nowrap="nowrap" align="center" valign="middle">
 						<?php if (strstr($row['amount'], "-")) $pcolor = "#DD0000"; else $pcolor = "#000000"; ?>
 						<span style="color: <?php echo $pcolor; ?>"><?php echo DisplayMoney($row['amount']); ?></span>

@@ -247,15 +247,93 @@
 				if (ACCOUNT_ACTIVATION == 1)
 				{
 					$activation_key = GenerateKey($username);
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email', ip='$ip', fname='$fname', status='inactive',ref_id='$ref_id', activation_key='$activation_key', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET 
+																		username='$username', 
+																		password='".PasswordEncryption($pwd)."', 
+																		email='$email', 
+																		ip='$ip', 
+																		fname='$fname', 
+																		status='inactive',
+																		ref_id='$ref_id', 
+																		activation_key='$activation_key',
+																		login_count='1', 
+																		last_ip='$ip' 
+																		created=NOW(), 
+																		newsletter = 1,
+																		country = 227";
 				}
 				else
 				{
-					$insert_query = "INSERT INTO cashbackengine_users SET username='$username', password='".PasswordEncryption($pwd)."', email='$email',fname='$fname', ip='$ip', status='active',ref_id='$ref_id',  activation_key='', unsubscribe_key='$unsubscribe_key', last_login=NOW(), login_count='1', last_ip='$ip', created=NOW()";
+					$insert_query = "INSERT INTO cashbackengine_users SET 
+																		username='$username', 
+																		password='".PasswordEncryption($pwd)."', 
+																		email='$email',
+																		fname='$fname', 
+																		ip='$ip', 
+																		status='active',
+																		ref_id='$ref_id',  
+																		activation_key='', 
+																		unsubscribe_key='$unsubscribe_key', 
+																		last_login=NOW(), 
+																		login_count='1', 
+																		last_ip='$ip', 
+																		created=NOW(), 
+																		newsletter = 1,
+																		country = 227
+																		";
 				}
 
-				smart_mysql_query($insert_query);
+				smart_mysql_query($insert_query); 
 				$new_user_id = mysql_insert_id();
+
+				if($ref_id && !isset($_COOKIE['invitation_id']))
+					{
+						$query = "INSERT INTO cashbackengine_invitations 
+										SET 
+											user_id = $ref_id,
+											recipients = '$fname|$email',
+											status = 'pending',
+											sent_date=NOW(),
+											registering_user_id = $new_user_id";
+						 
+						smart_mysql_query($query);
+
+						//Removing the cookie after inserting invitation record
+						if(isset($_COOKIE['referer_id']) && $_COOKIE['referer_id']!="")
+						{
+							unset($_COOKIE['referer_id']);
+	  						setcookie('referer_id', '', time() - 3600);
+						}
+					}
+				
+				if(isset($_COOKIE['invitation_id']) && $_COOKIE['invitation_id']!="")
+					{
+						$invitation_id = $_COOKIE['invitation_id'];
+						//Getting the record of invitation_id and checking whether 
+						//this is the first time when the invitation id is being used
+						$query_invitation_check = "SELECT * FROM cashbackengine_invitations WHERE invitation_id = $invitation_id";
+
+						
+						$result = smart_mysql_query($query_invitation_check);
+						$row = mysql_fetch_assoc($result);
+						$email_check = explode('|',$row['recipients']);
+						
+						if($username==$email_check[1])
+						{
+							//Update the record of whose invitation_id matches - insert user id 
+							$query_invitation = "UPDATE cashbackengine_invitations SET registering_user_id = $new_user_id WHERE invitation_id = $invitation_id";
+							smart_mysql_query($query_invitation);							
+						}
+
+						//Deleting the cookie containing invitation_id
+						unset($_COOKIE['invitation_id']);
+  						setcookie('invitation_id', '', time() - 3600);
+  						if($ref_id && !isset($_COOKIE['invitation_id']))
+  						{
+	  						unset($_COOKIE['referer_id']);
+		  					setcookie('referer_id', '', time() - 3600);
+  						}
+					}
 
 				if (SIGNUP_BONUS > 0)
 				{
@@ -312,7 +390,7 @@
 					$emessage = str_replace("{first_name}", $fname, $emessage);
 					$emessage = str_replace("{username}", $email, $emessage);
 					$emessage = str_replace("{password}", $pwd, $emessage);
-					$emessage = str_replace("{login_url}", SITE_URL."login.php", $emessage);
+					$emessage = str_replace("{login_url}", SITE_URL."signup_or_login.php", $emessage);
 
 					$to_email = $fname.' '.$lname.' <'.$email.'>';
 					$subject = $esubject;

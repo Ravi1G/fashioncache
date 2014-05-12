@@ -104,7 +104,7 @@
 	        </div>
 	           <?php } ?>
         	<?php 
-			if((isset($_GET['msg']) && ($_GET['msg'] == 4)))
+			if((isset($_GET['msg']) && ($_GET['msg'] == 4) && (count($errors)==0)))
 				{?>
 				<div class="errorMessageContainer successMessageContainer">
             <div class="leftContainer errorIcon"></div>
@@ -122,7 +122,7 @@
         </div>
 			<?php }?>
 			
-				<?php if (!(isset($_GET['msg']) && $_GET['msg'] == 4)) { ?>
+				<?php //if (!(isset($_GET['msg']) && $_GET['msg'] == 4)) { ?>
 				
 				<div class="forgotPasswordContainer">
 					<div class="heading">FORGOT YOUR PASSWORD?</div>
@@ -147,7 +147,7 @@
  						<div class="signUpReference">Dont have an account? <a class="colorLink" href="<?php echo SITE_URL;?>signup_or_login.php">Sign Up</a></div>
 					</div>										
 				</div>
-				<?php } ?>
+				<?php //} ?>
 			</div>
 			<?php require_once "inc/right_sidebar.php";?>	
 		</div>

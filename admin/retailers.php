@@ -240,7 +240,6 @@
 						<input type="text" rid="<?php echo $row['retailer_id']; ?>" current-order="<?php echo $row['sort_order']; ?>" class="sort_order_arr" name="sort_arr[<?php echo $row['retailer_id']; ?>]" size="3" value="<?php echo $row['sort_order']; ?>">
 					</td>
 					<?php } ?>
-					
 					<td align="left" valign="middle" class="row_title">
 						<a href="retailer_details.php?id=<?php echo $row['retailer_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>">
 							<?php if (strlen($row['title']) > 100) echo substr($row['title'], 0, 100)."..."; else echo $row['title']; ?>

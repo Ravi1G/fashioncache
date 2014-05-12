@@ -15,13 +15,34 @@
 
 	session_start();
 	require_once("inc/config.inc.php");
-
+ 	
 	// save referral id //////////////////////////////////////////////
 	if (isset($_GET['ref']) && is_numeric($_GET['ref']))
-	{
-		$ref_id = (int)$_GET['ref'];
-		setReferal($ref_id);
-
+	{//checking if ref variable is set
+		if(isset($_GET['in_id']) && is_numeric($_GET['in_id']))
+		{ // checking for the in_id variable if set then create both the cookies
+			//Getting the record of invitation_id and checking whether 
+			//this is the first time when the invitation id is being used
+			$invitation_id =$_GET['in_id'];
+			$query = "SELECT * FROM cashbackengine_invitations WHERE invitation_id = $invitation_id";
+			
+			$result = smart_mysql_query($query);
+			$row = mysql_fetch_assoc($result);
+			
+			if($row['registering_user_id']==0)
+			{
+				//Set cookie for invitation_id if registering_user_id is not set
+				setcookie("invitation_id", $_GET['in_id'], time()+(60*60*24*30));
+				$ref_id = (int)$_GET['ref'];
+				setReferal($ref_id);
+			}
+		}
+		else 
+		{//Or create the single cookie
+			$ref_id = (int)$_GET['ref'];
+			setReferal($ref_id);
+		}
+		
 		header("Location: index.php");
 		exit();
 	}
@@ -64,7 +85,9 @@
 		</script>
 	<?php } ?>
 	
-	<?php if(isLoggedIn()){ ?>
+	<?php
+	if(isset($_GET['msg']) && $_GET['msg']=="welcome")
+	{ ?>
 		<script type="application/javascript">
 			$.colorbox({
 				iframe      : true,
@@ -685,6 +708,7 @@
 						speed: BANNER_SPEED,
 						pager: false, // carasuls
 						controls: false,
+						pause: 7000, // By default 4000ms
 						autoHover : true<?php if(count($allbanners)<2){?>,
 						infiniteLoop: false 
 						<?php }?>

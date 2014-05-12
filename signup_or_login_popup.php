@@ -58,7 +58,7 @@ include_once 'inc/config.inc.php';?>
 				<img src="<?php echo SITE_URL.'admin/upload/retailer/'.$retailerImg;?>" alt="Logo"/>
 			</div>
 			<div class="popupLeadLine">
-				Join FREE now and get <span><?php echo $cashback;?> Cash Back</span> on Fashion Cache orders.
+				Join FREE now and get <span><?php echo DisplayCashback($cashback);?> Cash Back</span> on Fashion Cache orders.
 			</div>
 			<!-- Block for login -->
 			 <div id="loginBlock" class="popupFormSection <?php if($section=='signup'){ echo 'hidden';}?>">

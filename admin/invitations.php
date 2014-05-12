@@ -17,7 +17,11 @@
 	{
 		$invitation_id = mysql_real_escape_string(getPostParameter('invitation_id'));
 		$status = mysql_real_escape_string(getPostParameter('status'));
-		smart_mysql_query("UPDATE cashbackengine_invitations SET status = '$status' WHERE invitation_id=$invitation_id");
+		
+		smart_mysql_query("UPDATE cashbackengine_invitations 
+								SET status = '$status' 
+							WHERE 
+								invitation_id=$invitation_id");
 	}
 
 	// results per page
@@ -185,23 +189,25 @@
 							$registering_user_id = $row['registering_user_id']; 
 							if($registering_user_id!=0)
 							{
-								$query = "SELECT SUM(transaction_amount) AS total FROM cashbackengine_transactions WHERE user_id=$registering_user_id";
-								$result = smart_mysql_query($query);
-								$total = mysql_fetch_assoc($result);
+								$query_total = "SELECT 
+												SUM(transaction_amount) AS total 
+											FROM cashbackengine_transactions 
+											WHERE user_id='$registering_user_id'";
+								
+								$result_total = smart_mysql_query($query_total);
+								$total = mysql_fetch_assoc($result_total);
 								echo number_format($total['total'],2);
 							}
 						}
 					 ?>
 					</td>
 					<td>
-						<form method="post" action="" id="change_status_form">
 							<input type="hidden" name="invitation_id" value="<?php echo $row['invitation_id'];?>">
-							<select name ='status' class="change_status_class">
+							<select name ='status' class="change_status_class" invitation_id ="<?php echo $row['invitation_id'];?>">
 								<option value='confirmed' <?php if($row['status']=='confirmed'){echo 'selected';}?>>Confirmed</option>
 								<option value='expired' <?php if($row['status']=='expired'){echo 'selected';}?>>Expired</option>
 								<option value='pending' <?php if($row['status']=='pending'){echo 'selected';}?>>Pending</option>
 							</select>
-						</form>
 					</td>
 					<td nowrap="nowrap" align="center" valign="middle">
 						<a href="invitation_details.php?id=<?php echo $row['invitation_id']; ?>&pn=<?php echo $page; ?>&column=<?php echo $_GET['column']; ?>&order=<?php echo $_GET['order']; ?>" title="View"><img src="images/view.png" border="0" alt="View" /></a>
@@ -228,14 +234,27 @@
 				  </td>
 				</tr>
             </table>
-			</form>
-
+</form>
           <?php }else{ ?>
 					<div class="info_box">There are no invitations at this time.</div>
           <?php } ?>
 <script>
 	$(".change_status_class").change(function(){
-		console.log($(this).parent("form").submit());
+		//$(this).parent("form").submit();
+		var status = $(this).val(); 
+		var invitation_id = $(this).attr('invitation_id');
+		$.ajax({
+			type: "POST",
+			url: "<?php echo SITE_URL.'admin/invitations.php';?>",
+			data: { invitation_id: invitation_id ,status: status},
+			success: function(response) { 										
+				
+	        }
+		});	
+	});
+	
+	$("#GoDelete").click(function(){
+		$("#form2").submit();
 	});
 </script>
 <?php require_once ("inc/footer.inc.php"); ?>

@@ -315,9 +315,9 @@ define ('CBE1_ACTIVATION_MSG1', 'Thank you for registration!');
 define ('CBE1_ACTIVATION_TEXT01', 'An activation email has been sent to your email address (don\'t forget to check your SPAM folder).');
 define ('CBE1_ACTIVATION_TEXT02', 'Please check your email and click on the activation link.');
 define ('CBE1_ACTIVATION_MSG2', 'You have successfully activated your account!');
-define ('CBE1_ACTIVATION_TEXT2', 'Please <a href="'.SITE_URL.'login.php">click here</a> to log in.');
+define ('CBE1_ACTIVATION_TEXT2', 'Please <a href="'.SITE_URL.'signup_or_login">click here</a> to log in.');
 define ('CBE1_ACTIVATION_MSG3', 'You have already activated your account!');
-define ('CBE1_ACTIVATION_TEXT3', 'Please <a href="'.SITE_URL.'login.php">click here</a> to log in.');
+define ('CBE1_ACTIVATION_TEXT3', 'Please <a href="'.SITE_URL.'signup_or_login">click here</a> to log in.');
 
 
 /* ACCOUNT ACTIVATION EMAIL */
@@ -483,7 +483,7 @@ define ('CBE1_STORES_COUPONS', 'Coupons');
 define ('CBE1_STORES_VISIT', 'Visit Store');
 define ('CBE1_STORES_WORLDWIDE', 'Worldwide Store');
 define ('CBE1_STORES_NO', 'There are no stores to list in this category.');
-define ('CBE1_STORES_LOGIN', 'You need to be logged in to earn cashback. <a href="'.SITE_URL.'login.php">Click here</a> to login.');
+define ('CBE1_STORES_LOGIN', 'You need to be logged in to earn cashback. <a href="'.SITE_URL.'signup_or_login.php">Click here</a> to login.');
 
 
 /* VIEW RETAILER */
@@ -522,7 +522,7 @@ define ('CBE1_REVIEW_RTITLE', 'Title of your review');
 define ('CBE1_REVIEW_REVIEW', 'Your review');
 define ('CBE1_REVIEW_BUTTON', 'Submit your review');
 define ('CBE1_REVIEW_NO', 'No reviews yet. Be the first to write a review!');
-define ('CBE1_REVIEW_MSG', 'You must be <a href="'.SITE_URL.'/login.php">logged in</a> to submit a review.');
+define ('CBE1_REVIEW_MSG', 'You must be <a href="'.SITE_URL.'/signup_or_login.php">logged in</a> to submit a review.');
 define ('CBE1_STORE_LIKE', 'You might also like...');
 define ('CBE1_STORE_NOT_FOUND', 'Store not found');
 define ('CBE1_STORE_NOT_FOUND2', 'Sorry, no store found.');

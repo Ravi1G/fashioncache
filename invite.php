@@ -58,15 +58,30 @@
 						$friend_name = $v;
 						$friend_email = $femail[$k];
 						
+						$recipients = $friend_name."|".$friend_email;
+						
+						// save invitations in history - n records for n invitations by a single sender
+						 
+						smart_mysql_query("INSERT INTO cashbackengine_invitations 
+												SET user_id='".(int)$userid."', 
+												recipients='$recipients', 
+												message='$umessage',
+												status='pending' , 
+												sent_date=NOW()");
+						$invite_id =  mysql_insert_id();
+						$ReferralLink.='&in_id='.$invite_id;
+						
 						$esubject = $etemplate['email_subject'];
 
 						if ($umessage != "")
 						{
-							$emessage = $umessage;
+							//$emessage = $umessage;
+							$emessage = $etemplate['email_message'];
 							$emessage = str_replace("{friend_name}", $friend_name, $emessage);
 							$emessage = str_replace("{first_name}", $uname, $emessage);
 							$emessage = str_replace("{referral_link}", $ReferralLink, $emessage);
-							$emessage .= "Sign up here: <a href=\'$ReferralLink\'>".$ReferralLink."</a>";
+							$emessage = str_replace("{friend_message}", $umessage, $emessage);
+							//$emessage .= ": Sign up here: <a href=\'$ReferralLink\'>".$ReferralLink."</a>";
 						}
 						else
 						{
@@ -74,6 +89,7 @@
 							$emessage = str_replace("{friend_name}", $friend_name, $emessage);
 							$emessage = str_replace("{first_name}", $uname, $emessage);
 							$emessage = str_replace("{referral_link}", $ReferralLink, $emessage);
+							$emessage = str_replace("{friend_message}", "", $emessage);
 						}
 
 						$to_email = $friend_name.' <'.$friend_email.'>';
@@ -83,16 +99,13 @@
 						$headers  = 'MIME-Version: 1.0' . "\r\n";
 						$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 						$headers .= 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
-
-						$recipients .= $friend_name."|".$friend_email."||";
-
 						@mail($to_email, $subject, $message, $headers);
 					}
 				}
 			////////////////////////////////////////////////////////////////////////////////
 
-			// save invitations in history //
-			smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage',status='pending' , sent_date=NOW()");
+			// save invitations in history - old functionality
+			//smart_mysql_query("INSERT INTO cashbackengine_invitations SET user_id='".(int)$userid."', recipients='$recipients', message='$umessage',status='pending' , sent_date=NOW()");
 
 			header("Location: invite.php?msg=1");
 			exit();
