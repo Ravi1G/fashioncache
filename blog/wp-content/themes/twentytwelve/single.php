@@ -27,16 +27,16 @@ get_header(); ?>
 					<div>					
 					<div class="categoryHeading blogPostHeading">												
 						<h1><?php the_title();?></h1>						
-						<div class="blogAuthorNameSection">
+						<div class="blogAuthorNameSection">BY 
 							<?php if ( have_posts() ) : ?>
 								<?php while ( have_posts() ) : the_post(); ?>									
 									<?php echo get_the_author(); ?>
 								<?php endwhile; ?>
 							<?php else : ?>
-								
-							<?php endif;?>
+															
+							<?php endif;?> <span class="pipeSeperator">|</span>
 						</div>
-						<div class="blogTimeStamp">Posted on: <?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+						<div class="blogTimeStamp"><?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
 						<div class="cb"></div>
 					</div>
 						<div class="blogSection"> 						
