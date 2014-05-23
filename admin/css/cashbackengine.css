@@ -1024,76 +1024,79 @@ color:#555555;
 	padding: 2px 10px;
 	margin-left:1px;
 }
+
 .retailersCashbackTable1 .alignLeft,
-.alignLeft
-{
-text-align:left;
+.alignLeft {
+	text-align:left;
 }
+
 .retailersCashbackTable1 .alignRight,
-.alignRight
-{
-text-align:right;
+.alignRight {
+	text-align:right;
 }
+
 .retailersCashbackTable1 .alignCenter,
-.alignCenter
-{
-text-align:center;
-}
-.noOfDays
-{
-width:118px;
-}
-.editRetailerAdminAction
-{
-width:100%;
-}
-.editRetailerAdminAction td textarea
-{
-width:97.5%;
-}
-.exportCsvContainer a.import
-{
-margin-right:0px !important;
-}
-div.customQtip
-{
-border:0px;
-}
-div.customQtip div.qtip-content
-{
-background-color:#f6f6f6;
-border:1px solid #e4e4e4;
-box-shadow:1px 1px 2px #e4e4e4;
-padding:0px;
-font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
-}
-div.customQtip .qtip-tip
-{
-background-color:#6097D8 !important;
-left:0px !important;
-}
-.paymentMethodDataContainer
-{
-display:none;
-
-}
-.paymentMethodDataContainer .blockTitle
-{
-background-color:#6097D8;
-text-align:left;
-padding:4px;
-font-size:.98em;
-color:#fff;
-text-align:center;
-font-weight:bold;
+.alignCenter {
+	text-align:center;
 }
 
-.paymentMethodDataContainer .blockDescription
-{
-padding:6px 5px;
-font-size:10px;
+.noOfDays {
+	width:118px;
 }
-.paymentMethodDataContainer .blockDescription b
-{
-padding-right:5px;
+
+.editRetailerAdminAction {
+	width:100%;
+}
+
+.editRetailerAdminAction td textarea {
+	width:97.5%;
+}
+
+.exportCsvContainer a.import {
+	margin-right:0px !important;
+}
+
+div.customQtip {
+	border:0px;
+}
+
+div.customQtip div.qtip-content {
+	background-color:#f6f6f6;
+	border:1px solid #e4e4e4;
+	box-shadow:1px 1px 2px #e4e4e4;
+	padding:0px;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+div.customQtip .qtip-tip {
+	background-color:#6097D8 !important;
+	left:0px !important;
+}
+
+.paymentMethodDataContainer {
+	display:none;
+}
+
+.paymentMethodDataContainer .blockTitle {
+	background-color:#6097D8;
+	text-align:left;
+	padding:4px;
+	font-size:.98em;
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+}
+
+.paymentMethodDataContainer .blockDescription {
+	padding:6px 5px;
+	font-size:10px;
+}
+
+.paymentMethodDataContainer .blockDescription b {
+	padding-right:5px;
+}
+
+.dowrap {
+	word-break:break-all;
+	padding:2px 2px;
 }
