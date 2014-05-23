@@ -105,6 +105,25 @@
 		$title = "Payments";
 		require_once ("inc/header.inc.php");
 ?>		
+
+<style type="text/css">
+	#wrapper,
+	#header,
+	#content-wrapper
+	{
+		width:992px;
+	}
+	
+	#footer {
+		width:981px;
+	}
+	
+	#content {
+		width:771px;
+	}
+	
+</style>
+
 		<div id="addnew" class="exportCsvContainer">
 			<form method = "post" action = "export_to_csv.php">
 				<input type = "hidden" name = "file_name" value="payments">
@@ -166,32 +185,32 @@
 			</form>
 
 			<form id="form2" name="form2" method="post" action="">
-            <table align="center" width="100%" border="0" cellpadding="3" cellspacing="0">
+            <table align="center" border="0" cellpadding="2" cellspacing="0" style="width:100%;">
 			<tr>
-				<th width="3%"><input type="checkbox" name="selectAll" onclick="checkAll();" class="checkbox" /></th>
-				<th width="20%">Username</th>
-				<th width="12%">Reference ID</th>
-				<th width="15%">Payment Type</th>
+				<th><input type="checkbox" name="selectAll" onclick="checkAll();" class="checkbox" /></th>
+				<th>Username</th>
+				<th>Reference ID</th>
+				<th>Payment Type</th>
 				<th>Retailer</th>
 				<th>Platform</th>
-				<th width="8%">Amount</th>
-				<th width="9%">Date</th>
-				<th width="12%">Status</th>
-				<th width="7%">Actions</th>
+				<th>Amount</th>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Actions</th>
 			</tr>
              <?php while ($row = mysql_fetch_array($result)) { $cc++; ?>
 				  <tr class="<?php if (($cc%2) == 0) echo "even"; else echo "odd"; ?>">
 					<td align="center" valign="middle"><input type="checkbox" class="checkbox" name="id_arr[<?php echo $row['transaction_id']; ?>]" id="id_arr[<?php echo $row['transaction_id']; ?>]" value="<?php echo $row['transaction_id']; ?>" /></td>
 					<td nowrap="nowrap" align="left" valign="middle"><a href="user_details.php?id=<?php echo $row['user_id']; ?>" class="user"><?php echo $row['username']; ?></a></td>
-					<td nowrap="nowrap" align="center" valign="middle"><a href="payment_details.php?id=<?php echo $row['transaction_id']; ?>"><?php echo $row['reference_id']; ?></a></td>
+					<td class="dowrap" align="center" valign="middle"><a href="payment_details.php?id=<?php echo $row['transaction_id']; ?>"><?php echo $row['reference_id']; ?></a></td>
 					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['payment_type']; ?></td>
 					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['retailer']; ?></td>
 					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['network_name']; ?></td>
-					<td nowrap="nowrap" align="center" valign="middle">
+					<td nowrap="nowrap" align="right" valign="middle" style="padding-right:3px;">
 						<?php if (strstr($row['amount'], "-")) $pcolor = "#DD0000"; else $pcolor = "#000000"; ?>
 						<span style="color: <?php echo $pcolor; ?>"><?php echo DisplayMoney($row['amount']); ?></span>
 					</td>
-					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['payment_date']; ?></td>
+					<td nowrap="nowrap" width="9%" align="center" valign="middle"><?php echo $row['payment_date']; ?></td>
 					<td nowrap="nowrap" align="center" valign="middle">
 					<?php
 						switch ($row['status'])
