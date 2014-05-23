@@ -97,7 +97,7 @@ a:hover {
 
 .header {
 	background-color: #EFEFEF;
-	height: 67px;
+	height: 46px;
 }
 
 .container {
@@ -108,7 +108,7 @@ a:hover {
 .saleCouponsSection {
 	width: 200px;
 	float: left;
-	margin-top: 24px;
+	margin-top: 12px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 	font-size: 14px;
@@ -120,7 +120,7 @@ a:hover {
 	float: right;
 	text-align: right;
 	font-size: 17px;
-	margin-top: 15px;
+	margin-top: 1px;
 }
 
 .userActivitySection .signUpSection span {
@@ -4303,31 +4303,28 @@ ul.menuDropDown li a:hover,ul.menuDropDown li:hover a {
 }
 
 .blogTimeStamp {
-	margin-bottom: 10px;
-	margin-left: 10px;
-	font-size: 12px;
-	background-color: #EFEFEF;
-	border-left: 5px solid #FBD2D1;
-	padding: 4px 10px;
-	display: inline-block;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 600;
-	min-width: 100px;
+	color: #666666;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 15px;
+    font-weight: 400;    
 	float: left;
+	text-transform: uppercase;
+	margin-left: 5px;
 }
 
+.pipeSeperator {
+	position: relative;
+	top: -2px;
+}
+	
 .blogAuthorNameSection {
-	margin-bottom: 10px;
-	font-size: 12px;
-	background-color: #EFEFEF;
-	border-left: 5px solid #FBD2D1;
-	padding: 4px 10px;
-	display: inline-block;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 600;
-	min-width: 40px;
+	color: #666666;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 15px;
+    font-weight: 400;    
 	float: left;
-	text-transform: capitalize;
+	text-transform: uppercase;
+	margin-bottom: 10px;
 }
 
 .blogAuthorDetail {
