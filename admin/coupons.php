@@ -235,7 +235,9 @@
 				  <tr class="<?php if (($cc%2) == 0) echo "even"; else echo "odd"; ?>">
 					<td nowrap="nowrap" align="center" valign="middle"><input type="checkbox" class="checkbox" name="id_arr[<?php echo $row['coupon_id']; ?>]" id="id_arr[<?php echo $row['coupon_id']; ?>]" value="<?php echo $row['coupon_id']; ?>" /></td>
 					<td align="center" valign="middle"><input type="text" name="sort_arr[<?php echo $row['coupon_id']; ?>]" value="<?php echo $row['sort_order']; ?>" class="textbox" size="3" /></td>
-					<td align="left" valign="middle"><a href="retailer_details.php?id=<?php echo $row['retailer_id']; ?>"><?php echo GetStoreName($row['retailer_id']); ?></a></td>
+					<td align="left" valign="middle">
+						<a href="retailer_details.php?id=<?php echo $row['retailer_id']; ?>">
+						<?php echo GetStoreName($row['retailer_id']); ?></a></td>
 					<td align="left" valign="middle" class="row_title">
 					<?php 
 							if (strlen($row['title']) > 100)

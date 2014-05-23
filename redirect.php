@@ -172,5 +172,7 @@ body {
 	</div>
 </div>
 <?php */ ?>
+
+<?php echo GOOGLE_ANALYTICS; ?>
 </body>
 </html>

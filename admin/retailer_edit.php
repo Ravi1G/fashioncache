@@ -316,8 +316,8 @@
 							popular_retailer='$popular_retailer', 
 							$str_img
 							status='$status',
-							top_retailer ='$top_retailer' 
-							
+							top_retailer ='$top_retailer',
+							is_profile_completed = '0' 
 							WHERE retailer_id='$retailer_id'");
 	
 				smart_mysql_query("DELETE FROM cashbackengine_retailer_to_category WHERE retailer_id='$retailer_id'");
@@ -381,9 +381,7 @@
     <h2>Edit Retailer</h2>
 
 	<?php if ($total > 0) {
-		
 		$row = mysql_fetch_array($rs);
-
 	?>
 
 		<script>

@@ -31,10 +31,10 @@
 			</div>
 			<div class="connectWithUs footernavlinks socialLinks">
 				<div class="title">CONNECT WITH US!</div>
-				<div><a href="<?php echo FACEBOOK_PAGE;?>" class="fbDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorDark.jpg"/></a></div>
+				<div><a href='<?php echo FACEBOOK_PAGE;?>' class="fbDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorDark.jpg"/></a></div>
 				<div><a href="<?php echo TWITTER_PAGE;?>" class="twtDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorDark.jpg"/></a></div>
-				<div><a href="#" class="gpDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorDark.jpg"/></a></div>
-				<div><a href="#" class="piDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorDark.jpg"/></a></div>
+				<div><a href="https://plus.google.com/109229722850645533350" class="gpDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorDark.jpg"/></a></div>
+				<div><a href="http://www.pinterest.com/thefashioncache/" class="piDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorDark.jpg"/></a></div>
 			</div>
 			<div class="cb"></div>
 		</div>
@@ -44,14 +44,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-	
-	
-			
 	<script src="<?php echo SITE_URL?>/js/plugins.js"></script>
 	<script src="<?php echo SITE_URL?>/js/main.js"></script>
 	<script src="<?php echo SITE_URL; ?>js/fb.js"></script>
@@ -59,15 +51,7 @@
 		var CLOSE_POPUP=0;
 		var SITE_URL ="<?php echo SITE_URL;?>"; 
 	</script>
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-	<!-- <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-     	</script> -->
+	<?php echo GOOGLE_ANALYTICS; ?>
 </body>
 </html>
 <?php 

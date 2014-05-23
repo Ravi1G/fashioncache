@@ -130,14 +130,14 @@
 		$cat_id = $_GET['cat'];
 		$query = "SELECT r.*,c_r.* FROM cashbackengine_retailers AS r
 					LEFT JOIN cashbackengine_retailer_to_category AS c_r
-					ON c_r.retailer_id=r.retailer_id WHERE c_r.category_id=$cat_id 
+					ON c_r.retailer_id=r.retailer_id WHERE is_profile_completed=0 AND c_r.category_id=$cat_id 
 					ORDER BY category_on_top desc, r.title asc
 		";
 	}
 	else if ($rrorder == "cashback")
-		$query = "SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY top_retailer DESC, ABS(cashback) $rorder LIMIT $from, $results_per_page";
+		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY top_retailer DESC, ABS(cashback) $rorder LIMIT $from, $results_per_page";
 	else
-		$query = "SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY top_retailer DESC, featured DESC, $rrorder $rorder LIMIT $from, $results_per_page";
+		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY top_retailer DESC, featured DESC, $rrorder $rorder LIMIT $from, $results_per_page";
 	
 	//$total_result = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY title ASC");
 	//$total = mysql_num_rows($total_result);
