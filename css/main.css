@@ -5789,3 +5789,369 @@ a.more-link {
 	padding: 5px 12px 4px 12px !important;
 	display: inline-block;
 }
+
+
+.mobilePopup .resizedPopup .popUpContainer {
+	width:100%;
+	background-image:none;
+}
+
+.mobilePopup .resizedPopup .popUpContainer .title,
+.mobilePopup .resizedPopup .popUpContentRight .formHeader {
+	font-size:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+	position:relative;
+}
+
+.backgroundOfContainer {
+	position:absolute;
+	top:37px;
+	left:0px;
+	z-index:-1;
+}
+
+.backgroundOfContainer img {
+	width:100%;
+	min-width:320px;
+}
+
+.mobilePopup {
+	width:100%;
+	overflow:hidden;
+}
+
+.mobilePopup .resizedPopup .popUpContainer .body {
+	margin-top:0px;
+}
+
+.mobilePopup .resizedPopup .popUpContainer .body .welcomeContainer {
+	padding-top:30%;
+	width:auto;
+	margin-left:5%;
+	text-align:left;
+}
+
+.mobilePopup .resizedPopup .popUpContainer .body .welcomeContainer .welcomeTitle {
+	text-align:left;
+	margin-left:12%;
+}
+
+.mobilePopup .resizedPopup .welcomeContainer img {
+	width:45%;
+	max-width:239px;
+	min-width:180px;
+}
+
+.mobilePopup .resizedPopup .popUpContent {
+	margin-top:20%;
+}
+
+.mobilePopup .popUpContentLeft,
+.mobilePopup .popUpContentRight {
+	float:none;
+	width:100%;
+	margin-bottom:20px;
+}
+
+.mobilePopup .popUpContentRight {
+	box-shadow:2px 2px 5px #DADADA;	
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.mobilePopup .popUpContentLeft .heading {
+	color:#373737;
+	font-size:20px;
+}
+
+.mobilePopup .resizedPopup .popUpSteps {
+	width:100%;
+	padding:0px;
+	margin:0px;
+	margin-top:25px;
+}
+
+.mobilePopup .resizedPopup .popUpSteps .stepSection {
+	width:31% !important;
+	padding:0px;
+	padding-left:1%;
+	padding-right:1%;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.mobilePopup .resizedPopup .popUpSteps .stepSection img {
+	width:56px;
+	height:56px;
+}
+.mobilePopup .resizedPopup .popUpSteps .stepSection .stepTitle {
+	font-size:14px !important;
+}
+
+.mobilePopup .popUpContentRight .formHeader {
+	border-radius:0px;
+	font-size:17px !important;
+	color:#fff;
+}
+
+.mobilePopup .resizedPopup .customInputBox input {
+	width:88%;
+	padding-top:10px;
+	padding-bottom:10px;
+	font-size:15px !important;
+	box-shadow:inset 0 0 5px #999999;
+}
+
+.mobilePopup .resizedPopup .fbApi img {
+	width:90%;
+	max-width:263px;
+}
+
+.mobilePopup .resizedPopup .formBody .signUpWithEmail {
+	margin-top:12px;
+	margin-bottom:12px;
+	font-size:13px;
+}
+
+.mobilePopup .resizedPopup .customInputBox {
+	margin-top:6px;
+	margin-bottom:6px;
+}
+
+.mobilePopup .resizedPopup .formActions {
+	width:100%;
+}
+
+.mobilePopup .resizedPopup .customButtonHomePage {
+	margin-top:5px !important;
+	margin-bottom:5px !important;
+}
+
+.mobilePopup .resizedPopup .customButtonHomePage,
+.mobilePopup .resizedPopup .customButtonHomePage span {
+	width:91.5%;
+	height:auto;
+	font-size:16px !important;
+	padding:0px;
+}
+
+.mobilePopup .resizedPopup .customButtonHomePage span {
+	margin-left: 0px !important;
+    padding-bottom: 8px !important;
+    padding-top: 8px !important;
+}
+
+.mobilePopup .resizedPopup .customButtonHomePage span {
+	border-radius:5px;
+}
+
+
+.mobilePopup .formActionsLeft,
+.mobilePopup .formActionsRight {
+	float:none;
+	text-align:center;
+	width:100% !important;
+}
+
+.mobilePopup .popUpContainer {
+	background-image: none;
+    border: 0px;
+    left: 0px;
+    margin: auto;
+    position: relative;
+    top: 0px;    
+    z-index: 22;
+}
+
+.mobilePopup .resizedPopup .formActionsRight .alreadyMember {
+	font-size:14px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.mobilePopup .resizedPopup .formActionsRight .alreadyMember a {
+	color:#5D77AF;
+}
+
+.mobilePopup .termsConditions {
+	border-bottom:1px solid #d8d8d8;
+	width:200px;
+	margin:auto;
+	margin-bottom:10px;
+}
+
+.mobilePopup .formBody .fbApi {
+	margin-top:15px;
+}
+
+.mobilePopup .termsAndContidions {
+	font-size:11px;
+	margin-bottom:10px;
+}
+
+.mobilePopup .resizedPopup .popUpContentRight .formBody {
+	border-radius:0px !important;
+}
+
+.mobilePopup .resizedPopup .CashBackStores {
+	margin-top:0px;
+	margin-bottom:10px;
+	font-size: 17px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: relative;
+	width:100%;
+}
+
+.mobilePopup .storeRow {
+	border-bottom:1px solid #d8d8d8;
+	margin-bottom:10px;
+	margin-top:10px;
+	margin-left:1.8%;
+	margin-right:1.8%;
+}
+
+.mobilePopup .storeRow.last {
+	border:0px;
+}
+
+.mobilePopup .storeIconsContainer .sites {
+	width:48%;
+	float:left;
+	max-width:400px;	
+}
+
+.mobilePopup .storeIconsContainer .sites img {
+	width:80%;
+}
+
+.mobilePopup .resizedPopup .storeIconsContainer {
+	width:100%;
+}
+
+.mobilePopup .siteCopyright {
+	background-color:#000;	
+}
+
+.mobilePopup .siteCopyright div {
+	color:#fff;
+	padding:10px 11px;
+	font-size:12px;
+}
+
+.mobilePopup .CashBackStoresContainer {
+	box-shadow:2px 2px 5px #DADADA;
+	border:1px solid #DADADA;
+	margin:13px auto;
+	margin-bottom:25px;
+	width:97%;
+}
+
+.mobilePopup .resizedPopup .CashBackStores span {
+	padding-left:2%;
+	padding-right:2%;
+}
+
+
+/* Query for Device with minimum Screen 240 */
+
+
+@media only screen 
+and (min-width : 240px) 
+and (max-width : 320px) {
+	
+	.mobilePopup .resizedPopup .popUpContainer .title{
+		font-size:16px;
+		line-height:30px;
+		letter-spacing:1px;
+	}
+	
+	.backgroundOfContainer {
+		top: 30px;
+	}
+	
+	.mobilePopup .resizedPopup .popUpSteps .stepSection img {
+		height:36px;
+		width:36px;
+	}
+	
+	.mobilePopup .resizedPopup .popUpSteps .stepSection .stepTitle {
+		font-size:11px !important;
+	}
+	
+	.backgroundOfContainer img {
+		min-width:239px;
+	}
+	
+	.mobilePopup .resizedPopup .popUpSteps {
+		margin-top:10px;
+	}
+	
+	.mobilePopup .resizedPopup .welcomeContainer img {
+		min-width:130px;
+		height:8px;
+	}
+	
+	.mobilePopup .resizedPopup .popUpContainer .body .welcomeContainer .welcomeTitle {
+		margin-left: 10%;
+	    text-align: left;
+		margin-bottom:-1px;
+		font-size:9px;
+		letter-spacing:1px;
+	}
+	
+	.mobilePopup .resizedPopup .popUpContainer .body .welcomeContainer {
+		padding-top:40%;
+	}
+	
+	.mobilePopup .resizedPopup .popUpSteps .stepSection {		
+		height:auto;
+		padding-left:1.1%;
+		padding-right:1.1%;
+	}
+	
+	
+	.mobilePopup .resizedPopup .howItWorksStepThree {
+		padding-right:0px;
+	}
+	
+	.mobilePopup .resizedPopup .howItWorksStepOne {
+		padding-left:0px;
+	}
+	
+	.mobilePopup .resizedPopup .customButtonHomePage,
+	.mobilePopup .resizedPopup .customButtonHomePage span {
+		width:90%;
+		position:relative;
+		left:-1px;
+		font-size:15px !important;
+	}	
+	
+	.mobilePopup .resizedPopup .CashBackStores {
+		letter-spacing:1px;
+	}
+}
+
+/* Query for Device with minimum Screen 320 */
+
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 480px) {
+
+	.mobilePopup .resizedPopup .popUpSteps .stepSection .stepTitle {
+		font-size:13px !important;
+	}
+	
+	.mobilePopup .resizedPopup .customButtonHomePage,
+	.mobilePopup .resizedPopup .customButtonHomePage span {
+		position:relative;
+		left:0px;
+		font-size:15px !important;
+		width:91.4%;
+	}
+	
+	.mobilePopup .resizedPopup .CashBackStores span {
+		letter-spacing:2px;
+	}
+}

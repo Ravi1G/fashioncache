@@ -6,6 +6,11 @@
  * Copyright (c) 2010-2014 CashbackEngine Software. All rights reserved.
  * ------------ CashbackEngine IS NOT FREE SOFTWARE --------------
 \******************************************************************/
+
+
+
+
+
 	$is_index = 1;
 	if (file_exists("./install.php"))
 	{
@@ -68,7 +73,15 @@
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
-
+	require_once 'inc/Mobile_Detect.php';
+	$detect = new Mobile_Detect;
+	
+	// Only Mobiles no Tablets.
+	if( $detect->isMobile() && !$detect->isTablet() && !isLoggedIn()){
+			header ("Location: pmv.php");
+			exit;
+	}
+	
 	if(!isLoggedIn()){
 	?>
 		<script type="application/javascript">
