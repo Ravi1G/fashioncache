@@ -1373,7 +1373,7 @@ if (!function_exists('GetAdvertisements')) {
 if (!function_exists('GetMenuCategories')) {
 function GetMenuCategories ()
 {
-	$result = smart_mysql_query("SELECT name, category_id FROM cashbackengine_categories WHERE show_in_menu=1 ORDER BY sort_order, name");
+	$result = smart_mysql_query("SELECT name,slug,category_id FROM cashbackengine_categories WHERE show_in_menu=1 ORDER BY sort_order, name");
 	$total = mysql_num_rows($result);
 
 	if ($total > 0)

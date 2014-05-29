@@ -30,21 +30,86 @@
  
 		$catid					= (int)getPostParameter('catid');
 		$catname				= mysql_real_escape_string(getPostParameter('catname'));
+		$slug_value				= mysql_real_escape_string(getPostParameter('slug'));
+		
 		$category_description	= mysql_real_escape_string(nl2br(getPostParameter('description')));
 		$parent_category		= (int)getPostParameter('parent_id');
 		$meta_description		= mysql_real_escape_string(nl2br(getPostParameter('meta_description')));
 		$meta_keywords			= mysql_real_escape_string(getPostParameter('meta_keywords'));
 		$sort_order				= (int)getPostParameter('sort_order');
 		$show_in_menu			= (int)getPostParameter('show_in_menu');
+
+		//Replace space character with '-'
+		$slug = str_replace(" ","-",$slug_value);
 		
-		if (!($catname && $catid))
+		
+		if (!($catname && $catid && $slug_value))
 		{
-			$errors[] = "Please enter category name";
+			$errors[] = "Please enter required fields";
 		}
 
 		if (count($errors) == 0)
 		{
-			smart_mysql_query("UPDATE cashbackengine_categories SET parent_id='$parent_category', name='$catname', description='$category_description', category_url='', meta_description='$meta_description', meta_keywords='$meta_keywords', sort_order='$sort_order',show_in_menu='$show_in_menu' WHERE category_id='$catid'");
+			$query_check_slug = smart_mysql_query("SELECT * FROM cashbackengine_categories WHERE slug = '$slug'");
+			$row_category = mysql_fetch_assoc($query_check_slug);
+
+			if($row_category['category_id'] == $catid)
+			{
+				$slug = $slug_value;
+			}
+			else{
+				$pos     = "";
+				$pos_val = "";
+				//Check for the exisint slug if any matches then put number at the end of slug
+				$query_check_exisiting_slug = smart_mysql_query("SELECT * FROM cashbackengine_categories WHERE slug = '$slug'");
+				$row_category = mysql_fetch_assoc($query_check_exisiting_slug);
+				
+				while(mysql_num_rows($query_check_exisiting_slug)!==0)
+					{
+						$pos = strpos($row_category['slug'], "-");
+						if($pos)
+						{
+							$pieces    = explode("-", $row_category['slug']);
+							$count = count($pieces);
+							for($i=0;$i<$count;$i++)
+							{
+								$val = $val.$pieces[$i].'-';
+							}
+							
+							$pos_value = $pieces[$count-1];
+							if(!$pos_value)
+							{
+								$pos_value = 1;
+							}
+							else
+							{
+								$pos_value = intval($pos_value) + 1;
+							}
+							
+							$slug = str_replace(" ","-",$slug_value).'-'.$pos_value;
+						}
+						else
+						{
+							$slug = $slug_value.'-1'; 
+						}
+						$query_check_exisiting_slug = smart_mysql_query("SELECT * FROM cashbackengine_categories WHERE slug = '$slug'");
+						$row_category = mysql_fetch_assoc($query_check_exisiting_slug);
+					}
+			}
+			
+
+			
+			smart_mysql_query("UPDATE cashbackengine_categories SET 
+															parent_id='$parent_category', 
+															name='$catname', 
+															description='$category_description', 
+															category_url='', 
+															meta_description='$meta_description', 
+															meta_keywords='$meta_keywords', 
+															sort_order='$sort_order',
+															show_in_menu='$show_in_menu', 
+															slug = '$slug'
+															WHERE category_id='$catid'");
 
 			header("Location: categories.php?msg=updated");
 			exit();
@@ -84,6 +149,12 @@
           <tr>
             <td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1"><span class="req">* </span>Category Name:</td>
             <td valign="top"><input type="text" name="catname" id="catname" value="<?php echo $row['name']; ?>" size="40" class="textbox" /></td>
+          </tr>
+          <tr>
+            <td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1"><span class="req">* </span>Slug:</td>
+			<td align="left">
+				<input type="text" name="slug" id="slug" value="<?php echo $row['slug']; ?>" size="40" class="textbox" />
+			</td>
           </tr>
           <tr>
             <td nowrap="nowrap" valign="middle" align="right" class="tb1">Parent Category:</td>

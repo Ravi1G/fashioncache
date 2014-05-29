@@ -80,6 +80,7 @@
 	$from = ($page-1)*$results_per_page;
 	$where = "";
 
+	/*
 	if (isset($_GET['cat']) && is_numeric($_GET['cat']) && $_GET['cat'] > 0)
 	{
 		$cat_id = (int)$_GET['cat'];
@@ -103,7 +104,41 @@
 		}
 
 		$where .= "retailer_id IN (".implode(",",$retailers_per_category).") AND";
+	}*/
+
+	$pageURL = $_SERVER["REQUEST_URI"];
+	$page = explode("/" , $pageURL);
+	$cat_name =$page[2];
+	$cat_name = urldecode($cat_name);
+	$cat_name = str_replace("&","&amp;",$cat_name);
+	
+	if ($cat_name!="")
+	{
+		$cat_name = mysql_real_escape_string($cat_name);
+		
+		$cat_query = "SELECT * FROM cashbackengine_categories WHERE slug='$cat_name' LIMIT 1";
+		$cat_result = smart_mysql_query($cat_query);
+		if (mysql_num_rows($cat_result) > 0)
+		{
+			$cat_row = mysql_fetch_assoc($cat_result);
+		}
+		$cat_id = $cat_row['category_id'];
+		
+		unset($retailers_per_category);
+		$retailers_per_category = array();
+		$retailers_per_category[] = "111111111111111111111";
+
+		$sql_retailers_per_category = smart_mysql_query("SELECT retailer_id FROM cashbackengine_retailer_to_category WHERE category_id='$cat_id'");
+		
+		while ($row_retailers_per_category = mysql_fetch_array($sql_retailers_per_category))
+		{
+			$retailers_per_category[] = $row_retailers_per_category['retailer_id'];
+		}
+
+		$where .= "retailer_id IN (".implode(",",$retailers_per_category).") AND";
 	}
+	
+	
 	
 	if (isset($_GET['letter']) && in_array($_GET['letter'], $alphabet))
 	{
@@ -133,17 +168,38 @@
 					ON c_r.retailer_id=r.retailer_id WHERE is_profile_completed=0 AND c_r.category_id=$cat_id 
 					ORDER BY category_on_top desc, r.title asc
 		";
+		
+		$query_for_top = "SELECT r.*,c_r.* FROM cashbackengine_retailers AS r
+					LEFT JOIN cashbackengine_retailer_to_category AS c_r
+					ON c_r.retailer_id=r.retailer_id 
+					WHERE is_profile_completed=0 AND c_r.category_id=$cat_id AND c_r.category_on_top=1
+					ORDER BY r.title asc";
 	}
 	else if ($rrorder == "cashback")
-		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY top_retailer DESC, ABS(cashback) $rorder LIMIT $from, $results_per_page";
-	else
-		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY top_retailer DESC, featured DESC, $rrorder $rorder LIMIT $from, $results_per_page";
+	{
+		//$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY top_retailer DESC, ABS(cashback) $rorder LIMIT $from, $results_per_page";
+		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY title ASC $rorder LIMIT $from, $results_per_page";
+		$query_for_top = "SELECT * FROM cashbackengine_retailers 
+						WHERE is_profile_completed=0 AND top_retailer=1 ORDER BY title ASC, $rrorder $rorder LIMIT $from, $results_per_page";
+	
+	}
+	else{
+		//$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY top_retailer DESC, featured DESC, $rrorder $rorder LIMIT $from, $results_per_page";
+		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY title ASC, $rrorder $rorder LIMIT $from, $results_per_page";
+		
+		$query_for_top = "SELECT * FROM cashbackengine_retailers 
+						WHERE is_profile_completed=0 AND top_retailer=1 ORDER BY title ASC, $rrorder $rorder LIMIT $from, $results_per_page";
+	}
+	
+		
 	
 	//$total_result = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE $where ORDER BY title ASC");
 	//$total = mysql_num_rows($total_result);
 	
 	$result = smart_mysql_query($query);
 	$total_on_page = mysql_num_rows($result);
+	
+	$result_top = smart_mysql_query($query_for_top);
 
 	//print_r(mysql_fetch_assoc($result));echo '<br>';exit;
 	
@@ -179,8 +235,9 @@
 							<td class="storeSite topRight">See Site</td>
 						</tr>
 					</thead>
+						<tbody>
 						<?php while($row=mysql_fetch_assoc($result)){?>
-						<tr <?php if(($row['top_retailer']==1) &&($_GET['cat']=="")) 
+						<tr> <!--<?php if(($row['top_retailer']==1) &&($_GET['cat']=="")) 
 									{
 										echo 'class="selectedRow"';
 									}
@@ -188,11 +245,12 @@
 									{
 										echo 'class="selectedRow"';
 									}
-									?>
-						>
+									?>-->
+						
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
-								<a href="view_retailer.php?id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>
+								<!-- <a href="view_retailer.php?r=<?php echo $row['title'];?>&id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>-->
+								<a href="retailer/<?php echo $row['retailer_slug'];?>/<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 
@@ -212,6 +270,28 @@
 							</td>
 						</tr>
 						<?php }?>
+						</tbody>
+						<?php 
+							while($row_top = mysql_fetch_assoc($result_top)){?>
+							<tr class="selectedRow"> 
+							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
+							<td>
+								<!-- <a href="view_retailer.php?id=<?php echo $row_top['retailer_id'];?>"><?php echo $row_top['title']?></a>-->
+								<a href="retailer/<?php echo $row_top['retailer_slug'];?>/<?php echo $row_top['retailer_id'];?>"><?php echo $row_top['title']?></a>
+							</td>
+							<td class="cashBackCaptionAligned">
+								<?php 
+									echo DisplayCashback($row_top['cashback']);
+								?>
+							</td>
+							<td>
+								<div class="shopNowBotton siteButton">
+									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
+								</div>
+							</td>
+						</tr>							
+							<?php }
+						?>
 					</table>	
 				</div>
 			</div>

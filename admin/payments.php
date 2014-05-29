@@ -96,7 +96,17 @@
 		$result = smart_mysql_query($query);
 		$total_on_page = mysql_num_rows($result);
 
-		$query2 = "SELECT * FROM cashbackengine_transactions WHERE 1=1".$filter_by;
+		$query2 = "SELECT t.*, 
+						DATE_FORMAT(t.created, '%e %b %Y') AS payment_date, 
+						u.username, 
+						u.email,
+						n.network_name 
+						FROM cashbackengine_transactions AS t 
+						INNER JOIN	cashbackengine_users AS u 
+							ON t.user_id=u.user_id
+						INNER JOIN cashbackengine_affnetworks AS n 
+							ON t.network_id = n.network_id
+						WHERE t.user_id=u.user_id";
 		$result2 = smart_mysql_query($query2);
         $total = mysql_num_rows($result2);
 
@@ -240,7 +250,14 @@
 				</tr>
 				<tr>
 				  <td colspan="8" align="center" valign="top">
-						<?php echo ShowPagination("transactions",$results_per_page,"payments.php?column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by); ?>
+						<?php 
+						$filter ="AS t 
+						INNER JOIN	cashbackengine_users AS u 
+							ON t.user_id=u.user_id
+						INNER JOIN cashbackengine_affnetworks AS n 
+							ON t.network_id = n.network_id
+						WHERE t.user_id=u.user_id";
+						echo ShowPagination("transactions",$results_per_page,"payments.php?column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by,$filter); ?>
 				  </td>
 				</tr>
             </table>

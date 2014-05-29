@@ -26,6 +26,8 @@
 			$country			= array();
 			$country			= $_POST['country_id'];
 			$rname				= mysql_real_escape_string(getPostParameter('rname'));
+			$slug_value			= mysql_real_escape_string(getPostParameter('slug'));
+			
 			$img				= mysql_real_escape_string(trim($_POST['image_url']));
 			$url				= mysql_real_escape_string(trim($_POST['url']));
 			$old_cashback		= mysql_real_escape_string(getPostParameter('old_cashback'));
@@ -55,7 +57,7 @@
 			$newFilename  = '';
 			$thumbSmallerFilename = '';
 			$thumbMediumFilename = '' ;
-			
+
 			//Retailer Image functionality
 			
 			
@@ -124,7 +126,7 @@
 				}*/
 			}
 
-			if (!($rname && $url && $r_img_I && $r_img_II && $r_img_III)) //$cashback && $cashback_sign
+			if (!($rname && $url && $r_img_I && $r_img_II && $r_img_III && $slug_value)) //$cashback && $cashback_sign
 			{
 				$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 			}
@@ -322,6 +324,51 @@
 				     	$loc_image_III = $_FILES["image_III"]["name"];
 					}
 					
+			//Slug functionality starts
+				$pos     = "";
+				$pos_val = "";
+				//Replace space character with '-'
+				$slug = str_replace(" ","-",$slug_value);
+
+				//Check for the exisint slug if any matches then put number at the end of slug
+				$query_check_exisiting_slug = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_slug = '$slug'");
+				$row_retailer = mysql_fetch_assoc($query_check_exisiting_slug);
+				
+				while(mysql_num_rows($query_check_exisiting_slug)!==0)
+				{
+					$pos = strpos($row_retailer['retailer_slug'], "-");
+					if($pos)
+					{
+						$pieces    = explode("-", $row_retailer['retailer_slug']);
+						$count = count($pieces);
+						for($i=0;$i<$count;$i++)
+						{
+							$val = $val.$pieces[$i].'-';
+						}
+						$pos_value = $pieces[$count-1];
+						if(!$pos_value)
+						{
+							$pos_value = 1;
+						}
+						else
+						{
+							$pos_value = intval($pos_value) + 1;
+						}
+						
+						$slug = str_replace(" ","-",$slug_value).'-'.$pos_value;
+					}
+					else
+					{
+						$slug = $slug_value.'-1'; 
+					}
+					
+					$query_check_exisiting_slug = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_slug = '$slug'");
+					$row_retailer = mysql_fetch_assoc($query_check_exisiting_slug);
+					
+				}
+					//Slug functionality ends
+					
+					
 					//Get maximum sort order of the retailers who are active in status
 					$max= smart_mysql_query("SELECT max(sort_order) as max_order FROM cashbackengine_retailers WHERE status='active'");
 					$max_order = mysql_fetch_assoc($max);	 
@@ -351,8 +398,8 @@
 						image_II =	'$loc_image_II',
 						image_III =	'$loc_image_III',
 						sort_order = '$max_val',
-						top_retailer ='$top_retailer' 
-						
+						top_retailer ='$top_retailer',
+						retailer_slug = '$slug' 
 					";
 					$result = smart_mysql_query($insert_sql);
 					$new_retailer_id = mysql_insert_id();
@@ -431,6 +478,12 @@
           <tr>
             <td width="30%" valign="middle" align="right" class="tb1"><span class="req">* </span>Title:</td>
             <td width="70%" valign="top"><input type="text" name="rname" id="rname" value="<?php echo getPostParameter('rname'); ?>" size="62" class="textbox" /></td>
+          </tr>
+          <tr>
+            <td width="30%" valign="middle" align="right" class="tb1"><span class="req">* </span>Slug:</td>
+			 <td width="70%" valign="top">
+				<input type="text" name="slug" id="slug" value="<?php echo getPostParameter('slug'); ?>" size="40" class="textbox" />
+			</td>
           </tr>
 			<tr>
             <td nowrap="nowrap" width="30%" valign="middle" align="right" class="tb1">Affiliate Network:</td>

@@ -108,12 +108,8 @@
                     </td>                    
                     <td class="columnTwo">
 						<div class="offerName">
-							<a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>
-							<span class="offerExpiryDate">
-								<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
-									<span class="offerExpiryDate">(exp. <?php echo $row['coupon_end_date']; ?>)</span> &nbsp; 
-								<?php } ?>								
-							</span>
+							<!-- <a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>-->
+							
 						</div>
 						<div class="offerDescription1"><?php echo $row['description']?></div>
                         <div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
@@ -128,6 +124,13 @@
                         	/* if ($row['description'] != "") { ?>
 							<p><?php echo $row['description']; ?></p>
 						<?php } */?>
+                        </div>
+                        <div class="offerName">
+                        	<span class="offerExpiryDate">
+								<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
+									<span class="cashBackOnOffer">Expires <?php echo $row['coupon_end_date']; ?></span> &nbsp; 
+								<?php } ?>								
+							</span>
                         </div>
                     </td>
                     <td class="columnThree">

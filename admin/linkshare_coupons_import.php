@@ -77,7 +77,7 @@
 		
  	set_time_limit(0);   
   	$cDevKey = '00b72e6d005831676a338b6a10e13f54b37f9c67f03307442f392fc7814efc17b90ff5a13efc010149709a7f721fd379cd59e792d091073fcf32a0ceb35e4c4127/72c921bea48518c380d72cb8b51d054b917c85d90b70d33630449364a104f12b90d650e703a8b84df0563f6b47466934fa03fedeb22cb728ec5c632ea5542a49';
- 	$cURL = "http://couponfeed.linksynergy.com/coupon?token=1498767497b950eb0019efb9c34bf949d1c8988a738ce5a8422ca39ba1dd79f0&resultsperpage=100&pagenumber=$page_no";
+ 	$cURL = "http://couponfeed.linksynergy.com/coupon?token=1498767497b950eb0019efb9c34bf949d1c8988a738ce5a8422ca39ba1dd79f0&resultsperpage=100&pagenumber=$page_no&U1={USERID}";
  	//&network=1, mid can be passed to the cURL for selected records
     $ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $cURL);
@@ -153,7 +153,7 @@
 				else 
 				{
 					//Get the maximum sort order from the coupons to give the next sort order
-					$query_get_sortorder = "SELECT MAX(`sort_order`) AS max_order_id FROM cashbackengine_coupons";
+					$query_get_sortorder = "SELECT MAX(sort_order) AS max_order_id FROM cashbackengine_coupons";
     				$sort_order	= smart_mysql_query($query_get_sortorder);
 					 if(mysql_num_rows($sort_order)>0)
 					 {
@@ -169,8 +169,8 @@
 										FROM 
 											cashbackengine_retailers 
 											WHERE 
-											network_id = 9 AND title = '$advertisername' AND
-											program_id = $advertiserid";
+											network_id = 9 AND
+											program_id = '$advertiserid'";
 					
     				$rs_retailer	= smart_mysql_query($query_chk_retailer);
 					$total_retailer = mysql_num_rows($rs_retailer);
@@ -190,6 +190,7 @@
 													";
 						$result_retailer = smart_mysql_query($query_insert_retailer);
 						$retailer_id = mysql_insert_id();
+						$clickurl	=	$clickurl."&U1={USERID}";
 						 
 						$query_insert = "INSERT INTO cashbackengine_coupons 
 											SET  
@@ -224,6 +225,7 @@
 						$row_retailer = mysql_fetch_assoc($rs_retailer);
 						$retailer_id = $row_retailer['retailer_id'];
 					
+						$clickurl	=	$clickurl."&U1={USERID}";
 						
 						//Insert the records and set flag to 0 results don't fire the email
 						$query_insert = "INSERT INTO cashbackengine_coupons 
@@ -250,8 +252,8 @@
 					{//Fire an email
 						$insert_id = $new_coupon_id;
 						//////******** Change the email - id to SITE_MAIL
-						//$to      = SITE_MAIL;
-						$to      = "php.codelee@gmail.com";
+						$to      = SITE_MAIL;
+						//$to      = "php.codelee@gmail.com";
 						$subject = 'Coupon with new retailer';
 						$message = 'Please complete the information of the retailer.
 						Click on the link to fill the information : <a href="'.SITE_URL.'admin/retailer_edit.php?id='.$retailer_id.'">Edit Retailer<a>
