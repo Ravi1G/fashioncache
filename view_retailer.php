@@ -11,18 +11,7 @@
 	require_once("inc/config.inc.php");
 	require_once("inc/pagination.inc.php");
 
-
-	if (isset($_GET['id']) && is_numeric($_GET['id']))
-	{
-		$retailer_id = (int)$_GET['id'];
-		$slug = $_GET['r'];
-		
-	}
-	else
-	{		
-		header ("Location: index.php");
-		exit();
-	}
+	$slug = $_GET['r'];
 
 	//$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added FROM cashbackengine_retailers WHERE retailer_id='$retailer_id' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' LIMIT 1";
 	$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added FROM cashbackengine_retailers WHERE retailer_slug='$slug' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' LIMIT 1";

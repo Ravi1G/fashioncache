@@ -123,7 +123,7 @@
 			$cat_row = mysql_fetch_assoc($cat_result);
 		}
 		$cat_id = $cat_row['category_id'];
-		
+		$_GET['cat'] = $cat_id;
 		unset($retailers_per_category);
 		$retailers_per_category = array();
 		$retailers_per_category[] = "111111111111111111111";
@@ -250,7 +250,7 @@
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<!-- <a href="view_retailer.php?r=<?php echo $row['title'];?>&id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>-->
-								<a href="retailer/<?php echo $row['retailer_slug'];?>/<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>
+								<a href="retailer/<?php echo $row['retailer_slug'];?>"><?php echo $row['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 
@@ -277,7 +277,7 @@
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<!-- <a href="view_retailer.php?id=<?php echo $row_top['retailer_id'];?>"><?php echo $row_top['title']?></a>-->
-								<a href="retailer/<?php echo $row_top['retailer_slug'];?>/<?php echo $row_top['retailer_id'];?>"><?php echo $row_top['title']?></a>
+								<a href="retailer/<?php echo $row_top['retailer_slug'];?>"><?php echo $row_top['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 

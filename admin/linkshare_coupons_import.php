@@ -180,11 +180,12 @@
 					if($total_retailer == 0)
 					{
 						//Create a record for retailer 
-						
+						$slug = str_replace(" ","-",$advertisername);
 						$query_insert_retailer = "INSERT INTO cashbackengine_retailers SET
 													program_id = '$advertiserid',
 													title = '$advertisername',
 													network_id ='9',
+													retailer_slug = '$slug',
 													added = NOW(),
 													is_profile_completed = 1
 													";
@@ -253,7 +254,6 @@
 						$insert_id = $new_coupon_id;
 						//////******** Change the email - id to SITE_MAIL
 						$to      = SITE_MAIL;
-						//$to      = "php.codelee@gmail.com";
 						$subject = 'Coupon with new retailer';
 						$message = 'Please complete the information of the retailer.
 						Click on the link to fill the information : <a href="'.SITE_URL.'admin/retailer_edit.php?id='.$retailer_id.'">Edit Retailer<a>
