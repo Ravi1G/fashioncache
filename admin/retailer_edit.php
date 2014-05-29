@@ -28,6 +28,9 @@
 			$country			= array();
 			$country			= $_POST['country_id'];
 			$rname				= mysql_real_escape_string(getPostParameter('rname'));
+			$slug_value			= mysql_real_escape_string(getPostParameter('slug'));
+			
+			
 			$img				= mysql_real_escape_string(trim($_POST['image_url']));
 			$url				= mysql_real_escape_string(trim($_POST['url']));
 			$old_cashback		= mysql_real_escape_string(getPostParameter('old_cashback'));
@@ -53,8 +56,60 @@
 			$r_img_I			= $_FILES['image_I']['name'];
 			$r_img_II			= $_FILES['image_II']['name'];
 			$r_img_III			= $_FILES['image_III']['name'];
+			
+			
+			
+			//Replace space character with '-'
+			$slug = str_replace(" ","-",$slug_value);
+			$query_check_slug = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_slug = '$slug'");
+			$row_retailer = mysql_fetch_assoc($query_check_slug);
 
-			if (!($rname && $url && $status)) //$cashback && $cashback_sign
+			if($row_retailer['retailer_id'] == $retailer_id)
+			{
+				$slug = $slug_value;
+			}
+			else{
+				$pos     = "";
+				$pos_val = "";
+				//Check for the exisint slug if any matches then put number at the end of slug
+				$query_check_exisiting_slug = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_slug = '$slug'");
+				$row_retailer = mysql_fetch_assoc($query_check_exisiting_slug);
+				
+				while(mysql_num_rows($query_check_exisiting_slug)!==0)
+					{
+						$pos = strpos($row_retailer['retailer_slug'], "-");
+						if($pos)
+						{
+							$pieces    = explode("-", $row_retailer['retailer_slug']);
+							$count = count($pieces);
+							for($i=0;$i<$count;$i++)
+							{
+								$val = $val.$pieces[$i].'-';
+							}
+							
+							$pos_value = $pieces[$count-1];
+							if(!$pos_value)
+							{
+								$pos_value = 1;
+							}
+							else
+							{
+								$pos_value = intval($pos_value) + 1;
+							}
+							
+							$slug = str_replace(" ","-",$slug_value).'-'.$pos_value;
+						}
+						else
+						{
+							$slug = $slug_value.'-1'; 
+						}
+						$query_check_exisiting_slug = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_slug = '$slug'");
+						$row_retailer = mysql_fetch_assoc($query_check_exisiting_slug);
+						
+					}
+			}
+			
+			if (!($rname && $url && $status && $slug_value)) //$cashback && $cashback_sign
 			{
 				$errors[] = "Please ensure that all fields marked with an asterisk are complete";
 			}
@@ -316,8 +371,9 @@
 							popular_retailer='$popular_retailer', 
 							$str_img
 							status='$status',
-							top_retailer ='$top_retailer' 
-							
+							top_retailer ='$top_retailer',
+							is_profile_completed = '0',
+							retailer_slug ='$slug'
 							WHERE retailer_id='$retailer_id'");
 	
 				smart_mysql_query("DELETE FROM cashbackengine_retailer_to_category WHERE retailer_id='$retailer_id'");
@@ -381,9 +437,7 @@
     <h2>Edit Retailer</h2>
 
 	<?php if ($total > 0) {
-		
 		$row = mysql_fetch_array($rs);
-
 	?>
 
 		<script>
@@ -407,11 +461,17 @@
         <table class="editRetailerAdminAction" cellpadding="2" cellspacing="5" border="0" align="center">
           <tr>
             <td colspan="2" align="right" valign="top"><font color="red">* denotes required field</font></td>
-          </tr>
-          <tr>
+         </tr>
+         <tr>
             <td valign="middle" align="right" class="tb1"><span class="req">* </span>Title:</td>
             <td valign="top"><input type="text" name="rname" id="rname" value="<?php echo $row['title']; ?>" size="62" class="textbox" /></td>
-			</tr>
+		</tr>
+		 <tr>
+            <td width="30%" valign="middle" align="right" class="tb1"><span class="req">* </span>Slug:</td>
+			 <td width="70%" valign="top">
+				<input type="text" name="slug" id="slug" value="<?php echo $row['retailer_slug']; ?>" size="40" class="textbox" />
+			</td>
+          </tr>
           <tr>
             <td valign="middle" align="right" class="tb1">Affiliate Network:</td>
             <td valign="top">

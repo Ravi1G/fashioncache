@@ -11,18 +11,10 @@
 	require_once("inc/config.inc.php");
 	require_once("inc/pagination.inc.php");
 
+	$slug = $_GET['r'];
 
-	if (isset($_GET['id']) && is_numeric($_GET['id']))
-	{
-		$retailer_id = (int)$_GET['id'];
-	}
-	else
-	{		
-		header ("Location: index.php");
-		exit();
-	}
-
-	$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added FROM cashbackengine_retailers WHERE retailer_id='$retailer_id' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' LIMIT 1";
+	//$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added FROM cashbackengine_retailers WHERE retailer_id='$retailer_id' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' LIMIT 1";
+	$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added FROM cashbackengine_retailers WHERE retailer_slug='$slug' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' LIMIT 1";
 	$result = smart_mysql_query($query);
 	$total = mysql_num_rows($result);
 
@@ -46,16 +38,18 @@
 		if (isset($_POST['action']) && $_POST['action'] == "add_review" && isLoggedIn())
 		{
 			$userid			= (int)$_SESSION['userid'];
-			$retailer_id	= (int)getPostParameter('retailer_id');
+			//$retailer_id	= (int)getPostParameter('retailer_id');
 			$rating			= (int)getPostParameter('rating');
 			$review_title	= mysql_real_escape_string(getPostParameter('review_title'));
 			$review			= mysql_real_escape_string(nl2br(trim(getPostParameter('review'))));
 			$review			= ucfirst(strtolower($review));
 
+			$retailer_id = $row['retailer_id'];
+			
 			unset($errs);
 			$errs = array();
 
-			if (!($userid && $retailer_id && $rating && $review_title && $review))
+			if (!($userid && $retailer_id && $slug && $rating && $review_title && $review))
 			{
 				$errs[] = CBE1_REVIEW_ERR;
 			}
@@ -74,12 +68,12 @@
 			if (count($errs) == 0)
 			{
 				$review = substr($review, 0, MAX_REVIEW_LENGTH);
-				$check_review = mysql_num_rows(smart_mysql_query("SELECT * FROM cashbackengine_reviews WHERE retailer_id='$retailer_id' AND user_id='$userid'"));
+				$check_review = mysql_num_rows(smart_mysql_query("SELECT * FROM cashbackengine_reviews WHERE retailer_slug='$slug' AND user_id='$userid'"));
 
 				if ($check_review == 0)
 				{
 					(REVIEWS_APPROVE == 1) ? $status = "pending" : $status = "active";
-					$review_query = "INSERT INTO cashbackengine_reviews SET retailer_id='$retailer_id', rating='$rating', user_id='$userid', review_title='$review_title', review='$review', status='$status', added=NOW()";
+					$review_query = "INSERT INTO cashbackengine_reviews SET retailer_slug='$slug', rating='$rating', user_id='$userid', review_title='$review_title', review='$review', status='$status', added=NOW()";
 					$review_result = smart_mysql_query($review_query);
 					$review_added = 1;
 
@@ -192,9 +186,9 @@
 								<div class="discountTitle">Discount:</div>
 							</td>
 							<td class="columnTwo">
-								<div class="offerName"><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row_coupons['coupon_id']; ?>" target="_blank"><b><?php echo $row_coupons['title']; ?></b></a>
+								<div class="offerName">
+									<!-- <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row_coupons['coupon_id']; ?>" target="_blank"><b><?php echo $row_coupons['title']; ?></b></a>-->
 								<span class="offerExpiryDate"><?php if ($row_coupons['end_date'] != "0000-00-00 00:00:00") { ?>
-								<span class="expires">(exp. <?php echo $row_coupons['coupon_end_date']; ?>)</span>								
 							<?php } ?></span></div>
 								<div class="offerDescription"><?php echo $row_coupons['description'];?></div>
 								<div class="cashBackOnOffer">Plus <span><?php echo $cashback.$cashback_type;?></span> Cash Back</div>
@@ -204,6 +198,7 @@
 										<?php } else {?>
 									No Coupon Code Required
 									<?php }?>
+									<br/><span class="cashBackOnOffer">Expiers <?php echo $row_coupons['coupon_end_date']; ?></span>
 								</div>
 							</td>
 							<td class="columnThree">

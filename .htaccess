@@ -9,8 +9,16 @@ ErrorDocument 403 /
 </FilesMatch>
 
 ## SEO Friendly URLs ##
-#RewriteEngine On
+RewriteEngine On
+RewriteRule ^retailers$ retailers.php?show=$1
+RewriteRule ^retailers/(.*)$ retailers.php?cat=$1&show=$2
+
+RewriteRule ^retailer/(.*)$ view_retailer.php?r=$1
+
 #RewriteRule ^category/([a-zA-Z0-9\-]+)$ /retailers.php?cat=$1
 #RewriteRule ^category/([a-zA-Z0-9\-]+)/([a-zA-Z0-9\-]+)$ /retailers.php?cat=$1&letter=$2
 #RewriteRule ^retailers/([0-9]+)/([a-zA-Z0-9\-]+)$ /view_retailer.php?id=$1
 #RewriteRule ^coupons/([0-9]+)/([a-zA-Z0-9\-]+)$ /view_retailer.php?id=$1#coupons
+
+
+

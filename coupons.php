@@ -56,10 +56,24 @@
 	//$query = "SELECT c.*, DATE_FORMAT(c.end_date, '%d %b %Y')  AS coupon_end_date, UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, c.title AS coupon_title, r.image, r.title FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW())) AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) AND r.status='active' ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
 
 	// Query for fetching data & sorting according to the sort order provided at the backend
-	$query = "SELECT c.*, DATE_FORMAT(c.end_date, '%m/%d/%Y')  AS coupon_end_date, UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, c.title AS coupon_title, r.image,r.image_I,r.image_II,r.image_III, r.title,r.cashback AS cashback FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r ON c.retailer_id=r.retailer_id WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW())) AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) AND r.status='active' ORDER BY sort_order LIMIT $from, $results_per_page";
+	$query = "SELECT c.*, 
+					DATE_FORMAT(c.end_date, '%m/%d/%Y')  AS coupon_end_date, 
+					UNIX_TIMESTAMP(c.end_date) - UNIX_TIMESTAMP() AS time_left, 
+					c.title AS coupon_title, 
+					r.image,
+					r.image_I,
+					r.image_II,
+					r.image_III, 
+					r.title,
+					r.cashback AS cashback FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r 
+					ON c.retailer_id=r.retailer_id 
+					WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW()))
+					AND (r.is_profile_completed='0') 
+					AND c.status='active' AND (r.end_date='0000-00-00 00:00:00' OR r.end_date > NOW()) 
+					AND r.status='active' ORDER BY sort_order ";
 	
-	$total_result = smart_mysql_query("SELECT * FROM cashbackengine_coupons WHERE $where ORDER BY sort_order ASC");
-	$total = mysql_num_rows($total_result);
+	//$total_result = smart_mysql_query("SELECT * FROM cashbackengine_coupons WHERE $where ORDER BY sort_order ASC");
+	//$total = mysql_num_rows($total_result);
 
 	$result = smart_mysql_query($query);
 	$total_on_page = mysql_num_rows($result);
@@ -94,12 +108,8 @@
                     </td>                    
                     <td class="columnTwo">
 						<div class="offerName">
-							<a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>
-							<span class="offerExpiryDate">
-								<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
-									<span class="offerExpiryDate">(exp. <?php echo $row['coupon_end_date']; ?>)</span> &nbsp; 
-								<?php } ?>								
-							</span>
+							<!-- <a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>-->
+							
 						</div>
 						<div class="offerDescription1"><?php echo $row['description']?></div>
                         <div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
@@ -114,6 +124,13 @@
                         	/* if ($row['description'] != "") { ?>
 							<p><?php echo $row['description']; ?></p>
 						<?php } */?>
+                        </div>
+                        <div class="offerName">
+                        	<span class="offerExpiryDate">
+								<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
+									<span class="cashBackOnOffer">Expires <?php echo $row['coupon_end_date']; ?></span> &nbsp; 
+								<?php } ?>								
+							</span>
                         </div>
                     </td>
                     <td class="columnThree">

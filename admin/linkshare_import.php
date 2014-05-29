@@ -149,14 +149,14 @@
 				if($commision < $member_money && $result==1)
 				{
 					$insert_id = mysql_insert_id();
-					$to      = 'navin@codelee.com';
+					$to      = SITE_MAIL;
 					$subject = 'Cashback amount is more than commision';
 					$message = 'Please check the transaction with id : '.$insert_id.'\n 
 					The commision of this particular transaction is :'.$commision.'\n
 					Money for the member is :'.$member_money.' ,Which is more than the commision, Which seems like
 					a conflict, please resolve this issue';
 					
-					$headers = 'From: webmaster@example.com' . "\r\n";
+					$headers = 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
 					
 					mail($to, $subject, $message, $headers);
 					$insert_id = 0;

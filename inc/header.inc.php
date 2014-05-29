@@ -146,14 +146,35 @@ $menu_categories = GetMenuCategories();
 			<div class="navigationSection">
 			<?php 
 				$pageURL = $_SERVER["REQUEST_URI"];
+				$page = explode("/" , $pageURL);
+				$cat_name =$page[2];
+				$cat_name = urldecode($cat_name);
+				
+				$slug_value = $page[2];
+				$slug_value = urldecode($slug_value);
+				$slug_value = str_replace("&","&amp;",$slug_value);
+				
+				//$cat_name = str_replace("&","&amp;",$cat_name);
+				
+				//echo $cat_name = str_replace("-"," ",$cat_name);
+				
+				//$cat_name = mysql_real_escape_string($cat_name);
+				//echo $cat_name= str_replace("%20",' ', $cat_name);
 			?>
 				<ul>
-					<li <?php if($pageURL=="/retailers.php?show=111111"){?>class="active"<?php }?>><a href="<?php echo SITE_URL; ?>retailers.php?show=111111">ALL STORES</a></li>
+					<li <?php if($pageURL=="/retailers"){?>class="active"<?php }?>><a href="<?php echo SITE_URL; ?>retailers">ALL STORES</a></li>
 					<?php 
 					if($menu_categories){ 
 						foreach($menu_categories as $menu_category){
 					?>
-						<li <?php if($menu_category['category_id']==$_GET['cat']){?>class="active"<?php }?>><a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a></li>
+						<li <?php
+						if($menu_category['slug']==$slug_value)
+							{?>class="active"<?php }?>>
+							
+							<!-- <a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a>-->
+							<!-- <a href="<?php echo SITE_URL;?>retailers/<?php $cat_name = str_replace(" ","-",$menu_category['name']); echo $cat_name;?>"><?php echo $menu_category['name'];?></a>-->
+							<a href="<?php echo SITE_URL;?>retailers/<?php echo $menu_category['slug'];?>"><?php echo $menu_category['name'];?></a>
+							</li>
 					<?php 
 						}
 					}

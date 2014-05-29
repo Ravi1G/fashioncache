@@ -17,9 +17,16 @@
 	{
 		$sort_arr = $_POST['sort_arr'];
 		
+		//For only featured
 		if(isset($_GET['featured']) && is_numeric($_GET['featured']))
 		{
-			$only_featured=1;
+			$only_featured = 1;
+		}
+		
+		//For only incomplete
+		if(isset($_GET['incomplete']) && is_numeric($_GET['incomplete']))
+		{
+			$only_incomplete = 1;
 		}
 		
 		foreach($sort_arr AS $key=>$val)
@@ -32,20 +39,28 @@
 			header("Location: retailers.php?featured=1&msg=updated");
 			exit();	
 		}
+		
+		if($only_incomplete==1)
+		{
+			header("Location: retailers.php?incomplete=1&msg=updated");
+			exit();	
+		}
 		header("Location: retailers.php?msg=updated");
 		exit();
 	}
+	
 	
 	if(isset($_GET['featured']) && is_numeric($_GET['featured']))
 	{
 		$only_featured=1;
 		$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added, DATE_FORMAT(end_date, '%d %b %Y %h:%i') AS retailer_end_date, UNIX_TIMESTAMP(end_date) - UNIX_TIMESTAMP() AS time_left FROM cashbackengine_retailers WHERE featured=1 ORDER BY sort_order";
 		$result = smart_mysql_query($query);
-
-		 $total = mysql_num_rows($result);
+		$total = mysql_num_rows($result);
 	}
+	
 	else{
 		$only_featured = 0;
+		$only_incomplete = 0 ;
 	// results per page
 		if (isset($_GET['show']) && is_numeric($_GET['show']) && $_GET['show'] > 0)
 			$results_per_page = (int)$_GET['show'];
@@ -114,15 +129,30 @@
 		if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) { $page = (int)$_GET['page']; } else { $page = 1; }
 		$from = ($page-1)*$results_per_page;
 
-		if ($rrorder == "cashback")
+		
+
+	if(isset($_GET['incomplete']) && is_numeric($_GET['incomplete']))
+	{	
+		$only_incomplete = 1;
+		$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added, DATE_FORMAT(end_date, '%d %b %Y %h:%i') AS retailer_end_date, UNIX_TIMESTAMP(end_date) - UNIX_TIMESTAMP() AS time_left FROM cashbackengine_retailers WHERE is_profile_completed=1 $filter_by ORDER BY $rrorder $rorder LIMIT $from, $results_per_page ";
+		//$result = smart_mysql_query($query);
+		//$total = mysql_num_rows($result);
+	}else if ($rrorder == "cashback")
 			$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added, DATE_FORMAT(end_date, '%d %b %Y %h:%i') AS retailer_end_date, UNIX_TIMESTAMP(end_date) - UNIX_TIMESTAMP() AS time_left FROM cashbackengine_retailers $filter_by ORDER BY ABS(cashback) $rorder LIMIT $from, $results_per_page";
 		else
 			$query = "SELECT *, DATE_FORMAT(added, '%e %b %Y') AS date_added, DATE_FORMAT(end_date, '%d %b %Y %h:%i') AS retailer_end_date, UNIX_TIMESTAMP(end_date) - UNIX_TIMESTAMP() AS time_left FROM cashbackengine_retailers $filter_by ORDER BY $rrorder $rorder LIMIT $from, $results_per_page";
+	
 
 		$result = smart_mysql_query($query);
 		$total_on_page = mysql_num_rows($result);
-
+		
+	if(isset($_GET['incomplete']) && is_numeric($_GET['incomplete']))
+	{	
+		$query2 = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed =1";
+	}
+	else{
 		$query2 = "SELECT * FROM cashbackengine_retailers".$filter_by;
+	}
 		$result2 = smart_mysql_query($query2);
         $total = mysql_num_rows($result2);
 
@@ -171,7 +201,7 @@
 
 
 			<form id="form1" name="form1" method="get" action="">
-				<div class="resultRow">Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?></div>
+				<div class="resultRow"><?php if($only_featured!=1){?>Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; }?></div>
 				<table bgcolor="#F9F9F9" align="center" width="100%" border="0" cellpadding="3" cellspacing="0">
 					<tr>
 						<td nowrap="nowrap" valign="middle" align="left">
@@ -196,9 +226,7 @@
 								<option value="111111111" <?php if ($_GET['show'] == "111111111") echo "selected"; ?>>ALL</option>
 							  </select>
 						</td>
-						<td nowrap="nowrap" valign="middle" align="left" class="showFeaturedOnly">
-							Show Featured Only<input type="checkbox" id="chk_featured" <?php if($only_featured==1){?>checked<?php }?>/>
-						</td>
+						
 						<td nowrap="nowrap" valign="middle" align="left" class="retailerSearchSection">
 							<div class="admin_filter">
 								<input type="text" name="filter" value="<?php echo $filter; ?>" class="textbox" size="30" title="Title or Program ID" /> <input type="submit" class="submit" value="Search" />
@@ -210,6 +238,12 @@
 						   Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?>
 						</td>
 						<?php */ ?>
+					</tr>
+					<tr>
+					<td nowrap="nowrap" valign="middle" align="left" class="showFeaturedOnly">
+							<input type="checkbox" id="chk_featured" <?php if($only_featured==1){?>checked<?php }?>/>Show Featured Only &#x00a0;&#x00a0;
+							<input type="checkbox" id="chk_incomplete" <?php if($only_incomplete==1){?>checked<?php }?>/>Show Incomplete Only
+					</td>
 					</tr>
 				</table>
 			</form>
@@ -234,7 +268,7 @@
 			<?php while ($row = mysql_fetch_array($result)) { $cc++; ?>				  
 				  <tr class="<?php if (($cc%2) == 0) echo "even"; else echo "odd"; ?>">
 					<td nowrap="nowrap" align="center" valign="middle"><input type="checkbox" class="checkbox" name="id_arr[<?php echo $row['retailer_id']; ?>]" id="id_arr[<?php echo $row['retailer_id']; ?>]" value="<?php echo $row['retailer_id']; ?>" /></td>
-					<td align="center" valign="middle"><?php echo $row['retailer_id']; ?></td>
+					<td align="center" valign="middle"><?php echo $row['retailer_id'];if($row['is_profile_completed']==1){echo '<br><span style="color:red;">(Incomplete)</span>';} ?></td>
 					<?php if($only_featured){?>
 					<td align="center" valign="middle">
 						<input type="text" rid="<?php echo $row['retailer_id']; ?>" current-order="<?php echo $row['sort_order']; ?>" class="sort_order_arr" name="sort_arr[<?php echo $row['retailer_id']; ?>]" size="3" value="<?php echo $row['sort_order']; ?>">
@@ -281,15 +315,28 @@
 					<input type="submit" class="submit" name="GoUpdate" id="GoUpdate" value="Update Sort Order" />&nbsp;
 					<?php }?>
 					<input type="submit" class="submit" name="GoDelete" id="GoDelete" value="Delete Selected" />
-					<span class="resultRow">Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; ?></div>
+					<span class="resultRow"><?php if($only_featured!=1){?>Showing <?php echo ($from + 1); ?> - <?php echo min($from + $total_on_page, $total); ?> of <?php echo $total; }?></div>
 					<div class="cb"></div>
 				</td>
 				</tr>
 				<tr>
 				  <td colspan="10" align="center">
-				  <?php if($only_featured==0){?>
-					<?php echo ShowPagination("retailers",$results_per_page,"retailers.php?column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by); ?>
-					<?php }?>
+				  <?php if($only_featured==0 && $only_incomplete==0){?>
+					<?php 
+						echo ShowPagination("retailers",$results_per_page,"retailers.php?column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by); 
+						
+					}
+					else if($only_incomplete == 1)
+					{
+						//echo $results_per_page.' rroder:'.$rrorder;
+						echo ShowPagination("retailers",
+											$results_per_page,
+											"retailers.php?incomplete=1&column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by,"WHERE is_profile_completed =1");
+						//echo 'Show Pagination for incomplete';
+					}
+					
+					?>
+					
 				  </td>
 				</tr>
             </table>			
@@ -310,6 +357,16 @@
 			if ($(this).is(':checked')) 
 			{
 	           window.location="<?php echo SITE_URL?>admin/retailers.php?featured=1";
+	        }
+			else
+			{
+				window.location="<?php echo SITE_URL?>admin/retailers.php?column=title&order=asc&show=10&page=1";
+			}
+		});
+		$("#chk_incomplete").click(function(){
+			if ($(this).is(':checked')) 
+			{
+	           window.location="<?php echo SITE_URL?>admin/retailers.php?incomplete=1";
 	        }
 			else
 			{

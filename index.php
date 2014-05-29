@@ -136,7 +136,7 @@
 					if (FEATURED_STORES_LIMIT > 0)
 					{
 						// show featured retailers
-						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' ORDER BY sort_order asc LIMIT ".FEATURED_STORES_LIMIT);
+						$result_featured = smart_mysql_query("SELECT * FROM cashbackengine_retailers WHERE featured='1' AND (end_date='0000-00-00 00:00:00' OR end_date > NOW()) AND status='active' AND is_profile_completed=0 ORDER BY sort_order asc LIMIT ".FEATURED_STORES_LIMIT);
 						$total_fetaured = mysql_num_rows($result_featured);
 					
 						if ($total_fetaured > 0) { 
@@ -426,7 +426,11 @@
                 <div class="followUs">
                     <div class="title">------ FOLLOW US ------</div>
                     <div class="shortLinks">
-                        <span><a href="<?php echo FACEBOOK_PAGE;?>" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span><span><a href="<?php ECHO TWITTER_PAGE;?>" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span><span><a href="#" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span><span><a href="#" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
+                        <span>
+                        	<a href="<?php echo FACEBOOK_PAGE;?>" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span>
+                        	<span><a href="<?php echo TWITTER_PAGE;?>" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span>
+                        	<span><a href="https://plus.google.com/109229722850645533350" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span>
+                        	<span><a href="http://www.pinterest.com/thefashioncache/" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
                     </div>
                 </div>
                 
