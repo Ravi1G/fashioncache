@@ -28,7 +28,7 @@
 		$results_per_page = RESULTS_PER_PAGE;
 	}
 
-
+$results_per_page = '111111111111';
 	if (isset($_GET['view']) && $_GET['view'] != "")
 	{
 		$view = $_GET['view'];
@@ -166,7 +166,7 @@
 		$query = "SELECT r.*,c_r.* FROM cashbackengine_retailers AS r
 					LEFT JOIN cashbackengine_retailer_to_category AS c_r
 					ON c_r.retailer_id=r.retailer_id WHERE is_profile_completed=0 AND c_r.category_id=$cat_id 
-					ORDER BY category_on_top desc, r.title asc
+					ORDER BY r.title asc
 		";
 		
 		$query_for_top = "SELECT r.*,c_r.* FROM cashbackengine_retailers AS r
@@ -250,7 +250,7 @@
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<!-- <a href="view_retailer.php?r=<?php echo $row['title'];?>&id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>-->
-								<a href="retailer/<?php echo $row['retailer_slug'];?>"><?php echo $row['title']?></a>
+								<a href="<?php echo SITE_URL;?>retailer/<?php echo $row['retailer_slug'];?>"><?php echo $row['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 
@@ -277,7 +277,7 @@
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<!-- <a href="view_retailer.php?id=<?php echo $row_top['retailer_id'];?>"><?php echo $row_top['title']?></a>-->
-								<a href="retailer/<?php echo $row_top['retailer_slug'];?>"><?php echo $row_top['title']?></a>
+								<a href="<?php echo SITE_URL;?>retailer/<?php echo $row_top['retailer_slug'];?>"><?php echo $row_top['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 
@@ -508,6 +508,7 @@ $(document).ready(function() {
     $('#categoryTable').dataTable({
 		"bPaginate": false,
 		"bFilter": false,
+		"paging": false
 		//"aaSorting": [ [0,'asc'], [1,'asc'] ]
 	});
 	<?php 

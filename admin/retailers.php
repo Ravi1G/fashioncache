@@ -321,18 +321,18 @@
 				</tr>
 				<tr>
 				  <td colspan="10" align="center">
-				  <?php if($only_featured==0 && $only_incomplete==0){?>
+				  <?php if(($only_featured==0 && $only_incomplete==0)){?>
 					<?php 
-						echo ShowPagination("retailers",$results_per_page,"retailers.php?column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by); 
-						
+					echo ShowPagination("retailers",
+												$results_per_page,
+												"retailers.php?column=$rrorder&order=$rorder
+												&show=$results_per_page&".$filter,$filter_by); 	
 					}
 					else if($only_incomplete == 1)
 					{
-						//echo $results_per_page.' rroder:'.$rrorder;
 						echo ShowPagination("retailers",
 											$results_per_page,
 											"retailers.php?incomplete=1&column=$rrorder&order=$rorder&show=$results_per_page&".$filter_by,"WHERE is_profile_completed =1");
-						//echo 'Show Pagination for incomplete';
 					}
 					
 					?>

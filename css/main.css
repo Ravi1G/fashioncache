@@ -6155,3 +6155,6 @@ and (max-width : 480px) {
 		letter-spacing:2px;
 	}
 }
+#categoryTable_info{
+display: none;
+}
