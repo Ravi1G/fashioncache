@@ -73,7 +73,7 @@
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
-	require_once 'inc/Mobile_Detect.php';
+	require_once 'inc/mobile_detect.php';
 	$detect = new Mobile_Detect;
 	
 	// Only Mobiles no Tablets.

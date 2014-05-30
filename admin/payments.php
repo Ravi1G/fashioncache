@@ -214,7 +214,7 @@
 					<td nowrap="nowrap" align="left" valign="middle"><a href="user_details.php?id=<?php echo $row['user_id']; ?>" class="user"><?php echo $row['username']; ?></a></td>
 					<td class="dowrap" align="center" valign="middle"><a href="payment_details.php?id=<?php echo $row['transaction_id']; ?>"><?php echo $row['reference_id']; ?></a></td>
 					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['payment_type']; ?></td>
-					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['retailer']; ?></td>
+					<td align="center" valign="middle"><?php echo $row['retailer'];?></td>
 					<td nowrap="nowrap" align="center" valign="middle"><?php echo $row['network_name']; ?></td>
 					<td nowrap="nowrap" align="right" valign="middle" style="padding-right:3px;">
 						<?php if (strstr($row['amount'], "-")) $pcolor = "#DD0000"; else $pcolor = "#000000"; ?>
