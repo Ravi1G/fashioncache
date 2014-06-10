@@ -188,7 +188,7 @@ $results_per_page = '111111111111';
 		$query = "SELECT * FROM cashbackengine_retailers WHERE is_profile_completed=0 AND $where ORDER BY title ASC, $rrorder $rorder LIMIT $from, $results_per_page";
 		
 		$query_for_top = "SELECT * FROM cashbackengine_retailers 
-						WHERE is_profile_completed=0 AND top_retailer=1 ORDER BY title ASC, $rrorder $rorder LIMIT $from, $results_per_page";
+						WHERE is_profile_completed=0 AND top_retailer=1 AND status='active' ORDER BY title ASC, $rrorder $rorder LIMIT $from, $results_per_page";
 	}
 	
 		
@@ -250,7 +250,7 @@ $results_per_page = '111111111111';
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<!-- <a href="view_retailer.php?r=<?php echo $row['title'];?>&id=<?php echo $row['retailer_id'];?>"><?php echo $row['title']?></a>-->
-								<a href="<?php echo SITE_URL;?>retailer/<?php echo $row['retailer_slug'];?>"><?php echo $row['title']?></a>
+								<a href="<?php echo SITE_URL;?>coupons/<?php echo $row['retailer_slug'];?>"><?php echo $row['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 
@@ -277,7 +277,7 @@ $results_per_page = '111111111111';
 							<td><img alt="" src="<?php echo SITE_URL;?>img/bulletIcon.png" class="bulletIconAlignment"/></td>
 							<td>
 								<!-- <a href="view_retailer.php?id=<?php echo $row_top['retailer_id'];?>"><?php echo $row_top['title']?></a>-->
-								<a href="<?php echo SITE_URL;?>retailer/<?php echo $row_top['retailer_slug'];?>"><?php echo $row_top['title']?></a>
+								<a href="<?php echo SITE_URL;?>coupons/<?php echo $row_top['retailer_slug'];?>"><?php echo $row_top['title']?></a>
 							</td>
 							<td class="cashBackCaptionAligned">
 								<?php 
