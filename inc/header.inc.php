@@ -17,7 +17,7 @@ $detect = new Mobile_Detect;
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <?php if ($detect->isMobile() && !$detect->isTablet()) {?>
-		<meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 <?php } else if ($detect->isMobile() && $detect->isTablet()) {?>
 		<meta name="viewport" content="width=device-width, initial-scale=0.7"/>
 <?php } else {?>
@@ -218,16 +218,12 @@ $detect = new Mobile_Detect;
 			</div>
 			
 			<div class="isResponsive responsiveMenu">
-				<div class="siteTitleSection">
-					<a href="<?php echo SITE_URL;?>">
-						<span class="siteTitle" >
-								<img alt="Fashion Cache" src="<?php echo SITE_URL;?>img/logo.jpg"/>
-						</span>
-						<span class="siteSubTitle">
-							SHOP &#x0026; EARN CASH BACK
-						</span>
-					</a>
+				<div class="siteLogoView">
+					<a href="<?php echo SITE_URL;?>"><span class="virtualLink">&#x00A0;</span></a>
+					<span class="titleLogoFashionCache"><img alt="Fashion Cache" src="<?php echo SITE_URL;?>img/logo.jpg"/></span>
+					<span class="subTitleFashionCache">SHOP &#x0026; EARN CASH BACK</span>
 				</div>
+								
 				
 				<ul id="reponsiveNavigation" class="demo-ul">
 						<li class="demo-li <?php if($pageURL=="/retailers"){?>active<?php }?>">

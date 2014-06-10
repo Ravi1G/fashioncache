@@ -126,7 +126,7 @@
 	<?php } ?>
 		<div class="cb"></div>
 		<!-- For Responsive View -->
-		<div class="isResponsive">
+		<div class="isResponsive BannerSlider">
 		<?php $allbanners = array(); $allbanners = BannersList(0);?>
 					<ul class="contentSlider">
 							<?php foreach ($allbanners as $banner){ ?>
@@ -437,7 +437,7 @@
 	
 		
 		
-		<div class="topTrendSection dealsOfWeekContainer isResponsive">
+		<div class="topTrendSection dealsOfWeekContainer isResponsive hidden">
                             <div class="title">TRENDING SALES</div>
                             <div class="body">
 							<div class="responsiveSlider">
@@ -682,73 +682,49 @@
 				});				
 			})
 		
-		</script>		
-	<?php if( $detect->isMobile() && !$detect->isTablet()){ ?>				
-		<script src="js/orientationDetection.js" type="text/javascript"></script>
-	<?php } ?>
-		<script>
+		</script>
+		
+	
+	
+		<?php /* <script>
 			$(function(){
 					// Screen Width
 					var sw = $(window).width();
 					
-					// Default Orientation
-					var orientation = 'portrait';				
 					
-					// For Orientation	 Change					
-					// Check if Mobile 
-				<?php if( $detect->isMobile() && !$detect->isTablet()){ ?>
+					
+					
+				$('.responsiveSlider').children().hide();
+				$('.slideLoader').show();
 				
-						//Window Resize Event
-						$(window).on("load resize", function () {
-							var h = $(window).height();
-							var w = $(window).width();
+				<?php if( $detect->isMobile()){ ?>				
+				// Default Orientation
+					var orientation = 'portrait';
 					
-							$('.responsiveSlider').children().hide();
-							$('.slideLoader').show();
-							if (w > h) {
-									var orientation = 'landscape';
-							} else {
-									var orientation = 'portrait';
-							}
-							
-							// Start Of Ajax Call
-							$.ajax({
-								url: "responsiveSlider.php",
-								data: {
-									deviceWidth: sw,
-									deviceOrientation: orientation
-								}
-								}).done(function (res) { 
-								<?php if ($detect-> isMobile() && !$detect-> isTablet()) { ?>
-											$('.slideLoader').hide();
-											
-											// For The Mobiles having Screen Size Less Than 768
-											if (w < 768) {
-												$('.responsiveSlider').empty();
-												$('.responsiveSlider').append(res);
-											}
-							
-											// For The Mobiles having Screen Size Greater Than 768
-											else {
-												$('.responsiveSlider').find(".bx-wrapper").empty();
-												$('.notResponsiveSlider').empty();
-												$('.notResponsiveSlider').append(res);
-											} 
-									<?php } ?>
-								});
-								// End Of Ajax Call
-								
-						});	
-				<?php }else { ?>				
-						// For Desktop Versions
-						$.ajax({
-							url: "responsiveSlider.php",
-							data: { deviceWidth: sw}
-							}).done(function(res) {						
-									 $('.slideLoader').hide();
-									 $('.notResponsiveSlider').append( res);
-							});
-				<?php }  ?>	
-			});	
-	</script>
+					// Start Of Ajax Call
+					$.ajax({
+						url: "responsiveSlider.php",
+						data: {
+							deviceWidth: sw,
+							deviceOrientation: orientation
+						}
+						}).done(function (res) { 
+									$('.slideLoader').hide();
+									$('.notResponsiveSlider').hide();
+									$('.responsiveSlider').empty();
+									$('.responsiveSlider').append(res);
+						});
+						// End Of Ajax Call						
+				<?php } ?>
+			
+				// For Desktop Versions
+				$.ajax({
+						url: "responsiveSlider.php",
+						data: { deviceWidth: sw}
+						}).done(function(res) {						
+								 $('.slideLoader').hide();
+								 $('.notResponsiveSlider').append( res);
+						});
+				});	
+	</script> */ ?>
 <?php require_once("inc/footer.inc.php"); ?>

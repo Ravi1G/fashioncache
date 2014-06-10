@@ -180,7 +180,7 @@
 			<!--<h3 class="store_coupons"><?php echo CBE1_STORE_COUPONS; ?></h3>-->
 			<div class="RetailerOffersHeading"><?php echo $row['title']; ?> <?php echo CBE1_STORE_COUPONS; ?> &#x0026; Specials</div>
 			
-			<table class="RetailerOffersTable">
+			<table class="RetailerOffersTable oneColumnTableResponse">
 				<?php while ($row_coupons = mysql_fetch_array($result_coupons)) { $ee++; ?>
 						<tr>
 							<td class="columnOne">

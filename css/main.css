@@ -6231,8 +6231,40 @@ and (max-width : 480px) {
 		float:none;
 		text-align:left;
 	}
-	.siteTitleSection img {
-		width:81%;
+	.siteLogoView {
+		position:relative;		
+		width:80%;
+		padding-top:10px;
+	}
+	.siteLogoView span {
+		display:block;
+	}
+	.BannerSlider {
+		width:100%;
+		max-width:100% !important;
+		overflow:hidden;
+	}
+	.BannerSlider img {		
+		max-width:100% !important;
+	}
+	.siteLogoView .titleLogoFashionCache img {
+		width:230px;
+		max-width:280px;
+	}
+	.virtualLink {
+		position:absolute;
+		top:10px;
+		left:0px;
+		width:230px;
+		height:43px;
+		z-index:60;
+	}
+	.siteLogoView .subTitleFashionCache {
+		font-size:12px;
+		margin-top:5px;
+		text-align:left;
+		font-family: "Garamond";
+		letter-spacing:3px;
 	}
 	.siteTitleSection .siteTitle {
 		margin:auto !important;		
@@ -6960,7 +6992,9 @@ and (max-width : 480px) {
 		text-align:center;
 	}
 	.RetailerIcon .imagebox img {
-		width:70%;
+		width:auto !important;
+		max-height: 80px !important;
+	    max-width: 200px !important;
 	}
 	.RetailerIcon {
 		width:100%;
@@ -6975,41 +7009,50 @@ and (max-width : 480px) {
 		margin-top:5px;
 	}
 			
-	table.RetailerOffersTable tr td.columnOne {
-		width:25%;
-		vertical-align:top;
-		padding-top:16%;
+	table.oneColumnTableResponse tr td.columnOne {		
+		vertical-align:middle;		
 	}
-	table.RetailerOffersTable tr td.columnTwo {
+	table.oneColumnTableResponse tr td.columnTwo {
 		width:75%;
 	}
-	table.RetailerOffersTable tr td.columnTwo .shopNowBotton span {
-		padding-left:20%;
-		padding-right:20%;
-		font-size:12px;
-	}
-	table.RetailerOffersTable tr td.columnTwo .shopNowBotton {
+	
+	table.oneColumnTableResponse tr td.columnTwo .shopNowBotton {
 		text-align:left;
 		margin-top:10px;
 	}
-	table.RetailerOffersTable .cashBackOnOffer {
+	table.oneColumnTableResponse .cashBackOnOffer {
 		margin-top:3px;
+	}
+	.oneColumnTableResponse .columnOne {
+		display:none;
+	}
+	.oneColumnTableResponse div.cashBackOnOffer,
+	.oneColumnTableResponse .requirement {
+		margin-left:10px;
+	}
+	.oneColumnTableResponse .shopNowBotton {
+		text-align:center !important;	
+	}	
+	table.oneColumnTableResponse tr td.columnTwo .shopNowBotton span {
+		padding-left:25%;
+		padding-right:25%;
+		font-size:12px;
 	}
 }
 
 @media only screen 
 and (min-width : 481px)
 and (max-width : 767px) {
-	table.RetailerOffersTable tr td.columnOne {
-		width:25%;
-		vertical-align:middle;
-		padding-top:0%;
+	table.RetailerOffersTable tr td.columnOne {		
+		vertical-align:middle;		
 	}
 	.RetailerContainer .RetailerCashBack {		
 		margin-top:0px;		
 	}	
 	.RetailerIcon .imagebox img {
-		width:90%;
+		width:auto !important;
+		max-height: 100px !important;
+	    max-width: 210px !important;
 	}
 	.RetailerContainer .RetailerIcon {
 		float:left;
@@ -7136,10 +7179,6 @@ and (max-width : 767px) {
 	padding-top:22px;
 }
 
-
-
-
-
 /* Responsive Table  */
 
 .footable {
@@ -7170,4 +7209,7 @@ and (max-width : 767px) {
 }
 .standardTable thead tr th {
   border-bottom:0px !important;
+}
+.blogSection img {
+	max-width:100%;
 }
