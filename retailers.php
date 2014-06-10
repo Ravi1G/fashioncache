@@ -226,7 +226,7 @@ $results_per_page = '111111111111';
 			<div class="SiteContentLeft">
 				<div class="RetailerContainer">
 					<div class="categoryHeading"><h1><?php echo getCategory($_GET['cat']).$totitle; ?></h1></div>
-					<table class="categoryTable retailerTable" id="categoryTable">
+					<table class="categoryTable retailerTable responsiveTable" id="categoryTable">
 					<thead>
 						<tr class="categoryTableHeading">
 							<td class="bulletIcon topLeft"></td>

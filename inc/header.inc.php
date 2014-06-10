@@ -3,6 +3,8 @@ global $advertisements;
 $sale_alert =  getSaleAlert(1);
 $advertisements = GetAdvertisements(array(HOME_PAGE_HEADER_AD_ID, HOME_PAGE_FOOTER_AD_ID,SIDEBAR_TOP_IMAGE, SIDEBAR_BOTTOM_IMAGE,HOME_PAGE_SIDEBAR_AD1_ID,HOME_PAGE_SIDEBAR_AD2_ID));
 $menu_categories = GetMenuCategories();
+require_once 'mobile_detect.php';
+$detect = new Mobile_Detect;
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -14,6 +16,13 @@ $menu_categories = GetMenuCategories();
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<?php if ($detect->isMobile() && !$detect->isTablet()) {?>
+		<meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no"/>
+<?php } else if ($detect->isMobile() && $detect->isTablet()) {?>
+		<meta name="viewport" content="width=device-width, initial-scale=0.7"/>
+<?php } else {?>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<?php }?>
 <title><?php echo $PAGE_TITLE." | ".SITE_TITLE; ?></title>
 <?php if ($PAGE_DESCRIPTION != "") { ?><meta name="description" content="<?php echo $PAGE_DESCRIPTION; ?>" /><?php } ?>
 <?php if ($PAGE_KEYWORDS != "") { ?><meta name="keywords" content="<?php echo $PAGE_KEYWORDS; ?>" /><?php } ?>
@@ -31,14 +40,15 @@ $menu_categories = GetMenuCategories();
 <link rel="icon" type="image/png" href="<?php echo SITE_URL; ?>img/favicon.png" />
 <!-- Cashback engine items ends -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/normalize.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/normalize.css"/>
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/jquery.megakrill.min.css"/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic,,300,600,800' rel='stylesheet' type='text/css'/>
-<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/fonts.css">
-<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/main.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/fonts.css"/>
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/main.css"/>
 <link href="<?php echo SITE_URL;?>css/jquery.bxslider.css" rel="stylesheet"/>
 <link href="<?php echo SITE_URL;?>css/colorbox.css" rel="stylesheet"/>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -48,7 +58,16 @@ $menu_categories = GetMenuCategories();
 <script src="<?php echo SITE_URL;?>js/jquery.c.js"></script>
 <script src="<?php echo SITE_URL;?>js/jquery.colorbox-min.js"></script>
 <script src="<?php echo SITE_URL; ?>js/jquery.dataTables.js"></script>
- <script src="<?php echo SITE_URL; ?>js/fb.js" type="text/javascript"></script>
+<script src="<?php echo SITE_URL; ?>js/fb.js" type="text/javascript"></script>
+ <?php if ($detect->isMobile() && !$detect->isTablet()) {?>
+	 <script type="text/javascript">
+	 	$('html').addClass("mobile");
+	 </script>	
+<?php } if ($detect->isMobile() && $detect->isTablet()) {?>
+	 <script type="text/javascript">
+	 	$('html').addClass("tablet");
+	 </script>	
+<?php }?>
 <?php /* ?> 
          <script type="text/javascript" src="<?php echo SITE_URL?>js/fb.js"></script>
          <script type="text/javascript" src="//use.typekit.net/aym2cwi.js"></script>
@@ -57,7 +76,6 @@ $menu_categories = GetMenuCategories();
 	var BANNER_SPEED = <?php echo BANNER_SPEED;?>;
 	var FACEBOOK_APPID= "<?php echo FACEBOOK_APPID;?>";
 </script>
-
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -72,7 +90,7 @@ $menu_categories = GetMenuCategories();
 			<div class="userActivitySection">
 				<?php if (isLoggedIn()) { ?>
 				<div class="welcomeContainer1">
-			      <div class="myAccount">
+			      <div class="myAccount notResponsive">
 			       <ul class="menuDropDown">       
 			        <li class="drop">
 			         <img alt="" src="<?php echo SITE_URL;?>img/login.jpg"/> <a href="<?php echo SITE_URL;?>myprofile.php" class="menuItem">my account</a>
@@ -116,7 +134,7 @@ $menu_categories = GetMenuCategories();
 				
 				<?php /*?>	<?php echo CBE_WELCOME; ?>, <a href="<?php echo SITE_URL; ?>myprofile.php"><span class="member"><?php echo $_SESSION['FirstName']; ?></span></a><!-- | <a href="<?php echo SITE_URL; ?>myaccount.php"><?php echo CBE_ACCOUNT ?></a>--> | <?php echo CBE_BALANCE; ?>: <span class="mbalance"><?php echo GetUserBalance($_SESSION['userid']); ?></span> | <?php echo CBE_REFERRALS; ?>: <a href="<?php echo SITE_URL; ?>invite.php#referrals"><span class="referrals"><?php echo GetReferralsTotal($_SESSION['userid']); ?></span></a> | <a href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a><?php */?>
 				<?php }else{ ?>
-					<div class="signUpSection">
+					<div class="signUpSection notResponsive">
 						<div><span>New to Fashion-Cache?</span></div>
 						<div class="signUpCaption"><a href="<?php echo SITE_URL; ?>signup_or_login.php"><?php echo CBE_SIGNUP; ?></a></div>
 					</div>
@@ -130,11 +148,17 @@ $menu_categories = GetMenuCategories();
 		</div>
 	</div>
 		<div class="container">	
-			<div class="siteTitleSection">
-				<div class="siteTitle"><a href="<?php echo SITE_URL;?>"><img alt="" src="<?php echo SITE_URL;?>img/logo.jpg"/></a></div>
-				<div class="siteSubTitle">SHOP &#x0026; EARN CASH BACK</div>
+			<div class="siteTitleSection notResponsive">
+				<div class="siteTitle">
+					<a href="<?php echo SITE_URL;?>">
+						<img alt="Fashion Cache" src="<?php echo SITE_URL;?>img/logo.jpg"/>
+					</a>
+				</div>
+				<div class="siteSubTitle">
+					<a href="<?php echo SITE_URL;?>">SHOP &#x0026; EARN CASH BACK</a>
+				</div>
 			</div>
-			<div class="advertisementOf480">				
+			<div class="advertisementOf480 notResponsive">				
 				<div class="sampleAdvertisement">
 					<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 						<img height="60" width="480" src="<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['image_url']!='' ? $advertisements[HOME_PAGE_HEADER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_HEADER_AD_ID]['image_name']?>">
@@ -143,7 +167,7 @@ $menu_categories = GetMenuCategories();
 				<div class="cb"></div>
 			</div>
 			<div class="cb"></div>
-			<div class="navigationSection">
+			<div class="navigationSection notResponsive">
 			<?php 
 				$pageURL = $_SERVER["REQUEST_URI"];
 				$page = explode("/" , $pageURL);
@@ -170,7 +194,6 @@ $menu_categories = GetMenuCategories();
 						<li <?php
 						if($menu_category['slug']==$slug_value)
 							{?>class="active"<?php }?>>
-							
 							<!-- <a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a>-->
 							<!-- <a href="<?php echo SITE_URL;?>retailers/<?php $cat_name = str_replace(" ","-",$menu_category['name']); echo $cat_name;?>"><?php echo $menu_category['name'];?></a>-->
 							<a href="<?php echo SITE_URL;?>retailers/<?php echo $menu_category['slug'];?>"><?php echo $menu_category['name'];?></a>
@@ -181,7 +204,7 @@ $menu_categories = GetMenuCategories();
 					?>
 					<li <?php if($pageURL=='/blog/'){?>class="active last"<?php } else {?>class="last"<?php }?>><a href="<?php echo BLOG_URL; ?>">BLOG</a></li>
 				</ul>
-				<div class="searchContainer">
+				<?php /* <div class="searchContainer">
 					<form action="<?php echo SITE_URL; ?>search.php" method="get" id="searchfrm" name="searchfrm" onSubmit="if(searchtext.value==searchtext.defaultValue) return false" >
 						<div class="searchIcon"><img alt="" src="<?php echo SITE_URL;?>img/search.jpg"/></div>
 						<div>
@@ -190,7 +213,58 @@ $menu_categories = GetMenuCategories();
 							<!-- <input type="submit" class="search_button" value="" /> -->
 						</div>
 					</form>
+				</div> */ ?>
+				<div class="cb"></div>
+			</div>
+			
+			<div class="isResponsive responsiveMenu">
+				<div class="siteTitleSection">
+					<a href="<?php echo SITE_URL;?>">
+						<span class="siteTitle" >
+								<img alt="Fashion Cache" src="<?php echo SITE_URL;?>img/logo.jpg"/>
+						</span>
+						<span class="siteSubTitle">
+							SHOP &#x0026; EARN CASH BACK
+						</span>
+					</a>
 				</div>
+				
+				<ul id="reponsiveNavigation" class="demo-ul">
+						<li class="demo-li <?php if($pageURL=="/retailers"){?>active<?php }?>">
+							<a class="demo-a" href="<?php echo SITE_URL; ?>retailers">ALL STORES</a>
+						</li>
+					<?php 
+					if($menu_categories){ 
+						foreach($menu_categories as $menu_category){
+					?>
+						<li class="demo-li <?php
+						if($menu_category['slug']==$slug_value)
+							{?>active<?php }?>">
+							
+							<!-- <a href="<?php echo SITE_URL;?>retailers.php?cat=<?php echo $menu_category['category_id']?>&show=111111"><?php echo $menu_category['name']?></a>-->
+							<!-- <a href="<?php echo SITE_URL;?>retailers/<?php $cat_name = str_replace(" ","-",$menu_category['name']); echo $cat_name;?>"><?php echo $menu_category['name'];?></a>-->
+							<a  class="demo-a" href="<?php echo SITE_URL;?>retailers/<?php echo $menu_category['slug'];?>"><?php echo $menu_category['name'];?></a>
+							</li>
+					<?php 
+						}
+					}
+					?>
+					<li class="demo-li <?php if($pageURL=='/blog/'){?>active<?php }?>">
+						<a class="demo-a" href="<?php echo BLOG_URL; ?>">BLOG</a>
+					</li>
+					<?php if (isLoggedIn()) { ?>
+					<li class="demo-li">
+							<a class="demo-a statusTab" href="<?php echo SITE_URL;?>myprofile.php">My Account
+								<span class="statusTab1">Pending Amount: <span><?php echo DisplayMoney($total_pending);?></span></span>								
+								<span class="statusTab2">Paid Amount: <span><?php echo DisplayMoney($total_paid);?></span></span>
+							</a>           
+					</li>
+					<li class="demo-li">
+						<a class="demo-a logoutLink" href="<?php echo SITE_URL; ?>logout.php"><?php echo CBE_LOGOUT; ?></a>
+					</li>					
+					<?php }  ?>
+					
+				</ul>
 				<div class="cb"></div>
 			</div>
 			<?php /* ?>

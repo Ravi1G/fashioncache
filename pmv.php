@@ -9,7 +9,9 @@ include_once 'inc/config.inc.php';?>
 <html class="no-js">
     <!--<![endif]-->
     <head>
-          <title><?php echo SITE_TITLE;?></title>
+          <title>
+		  	<?php echo SITE_TITLE;?>
+		  </title>
 		  <meta name="viewport" content="width=max-device-width, user-scalable=no"/>
           <?php include 'inc/common.php'; ?>
           
@@ -76,6 +78,16 @@ include_once 'inc/config.inc.php';?>
 									<div class="cb"></div>
 								</div>						
 							</div>
+							
+							<div class="siteOptions">
+								<div class="allStores forSignUp signUpCaption1 customButtonHomePage">
+									<a href="<?php echo SITE_URL;?>index.php?show=1">
+										<span>BROWSE THE WEBSITE</span>
+									</a>
+								</div>
+								<div class="orCaption"><i>OR</i></div>
+							</div>
+							
 							<div id="signupBlock" class="popUpContentRight <?php if($section=='login'){echo 'hidden';}?>">
 								<div class="formHeader">SIGN UP TODAY!</div>
 								<div class="formBody">

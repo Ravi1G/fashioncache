@@ -173,6 +173,10 @@ a:hover {
 	margin-top: 15px;
 }
 
+.siteTitleSection a:hover {
+	text-decoration:none;
+}
+
 .siteTitleSection .siteTitle {
 	margin-bottom: -5px;
 }
@@ -202,6 +206,7 @@ a:hover {
 	border-top: 1px solid #e3e3e3;
 	margin-top: 10px;
 	border-bottom: 1px solid #e3e3e3;
+	padding-bottom:13px;
 }
 
 .navigationSection ul {
@@ -5809,6 +5814,7 @@ a.more-link {
 	top:37px;
 	left:0px;
 	z-index:-1;
+	width:100%;
 }
 
 .backgroundOfContainer img {
@@ -6156,5 +6162,1012 @@ and (max-width : 480px) {
 	}
 }
 #categoryTable_info{
-display: none;
+	display: none;
+}
+.isResponsive {
+	display:none;
+}
+
+.forGotPasswordResponsive {
+	display:none;
+}
+
+
+/* Small Phones */
+@media only screen and (max-width : 320px) {
+
+	.store .icon {
+		width:110px;
+	}	
+	
+	.store .icon img {
+		max-width:98%;
+	}
+	.cashBack {
+		width:92px;
+	}
+}
+
+
+
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width : 767px) {
+	.header {
+		height:37px;
+	}	
+	.container {
+		width:92%;
+	}
+	.header .saleCouponsSection {
+		width:auto !important;
+		font-size:11px;
+	}
+	.header .userActivitySection {
+		width:auto !important;
+	}
+	.header .myAccount {
+		width:auto;
+	}
+	.menuDropDown .drop img {
+		width:25%;
+	}
+	.welcomeSection1 div.welcomeText {
+		font-size:13px;
+	}
+	.welcomeSection1 div.userName {
+		font-size:12px;
+	}	
+	.header .menuItem {
+		font-size:13px;
+	}
+	.notResponsive {
+		display:none;
+	}
+	.isResponsive {
+		display:block;
+	}
+	.header .siteTitleSection {
+		width:80%;
+		float:none;
+		text-align:left;
+	}
+	.siteTitleSection img {
+		width:81%;
+	}
+	.siteTitleSection .siteTitle {
+		margin:auto !important;		
+	}
+	.siteTitleSection .siteSubTitle {
+		font-size:12px;
+		margin-top:5px;
+		text-align:left;		
+	}
+	.store .icon {
+		width:146px;
+	}
+	#reponsiveNavigation {
+		display: none;
+	}	
+	.SiteContentSection .featuredStoresSection {
+		width:100%;
+		float:none;
+	}
+	
+	.SiteContentSection .SiteContentLeft {
+		float:none;
+		width:100%;
+	}
+	.featuredStoresSection {
+		width:100%;
+	}
+	.followUs.isResponsive {
+		margin-top:20px;
+		margin-bottom:-10px;
+		width:90%;
+		margin-left:auto;
+		margin-right:auto;
+	} 	
+	.footer .footerNavigation {
+		width:80%;
+		float:none;
+		padding-left:15px;
+	}
+	.footerNavigation .footernavlinks {
+		width:80%;
+	}
+	.footer .footernavlinks div {
+		font-size:12px;
+		margin-top:8px;
+		margin-bottom:8px;
+		width:80%;
+	}
+	.copyright .container div {
+		margin-left:15px;
+	}
+	.dealsOfWeekContainer {
+		width:100%;
+	}
+	.mk-toggle a {
+		background-color:#373737;		
+	}
+	.mk-toggle {
+		height:29px;
+		width:33px;
+	}
+	
+	.demo-li a {
+		font-size:14px;
+		letter-spacing:0px;
+		padding-left:20px;
+		text-transform:uppercase;
+		font-weight:600;
+	}
+	.demo-li.active a.demo-a {
+		background-color: #FBD2D1;
+		color:#333333;
+		font-weight:600;
+	}
+	.responsiveButton {
+	margin-top:18px;
+	margin-bottom:15px;
+	}
+	.responsiveButton span {
+		font-size:10px;
+		text-transform:uppercase;
+	}
+	.demo-li a.logoutLink:hover,
+	.demo-li a.logoutLink {
+		color:#FBD2D1;
+		font-weight:600;
+		letter-spacing:0px;
+	}	
+	.responsiveMenu {
+		border-bottom:1px solid #d8d8d8;
+		padding:8px 0px;
+		margin-bottom:10px;
+	}
+	.responsiveMenu span#menuCaption {		
+		font-size:15px;		
+		font-weight:600;
+		margin-left:10px;
+		display:inline-block;		
+	}
+	
+	.demo-a.statusTab,
+	.demo-a.logoutLink {
+		background-image:none;
+	}
+	
+	.statusTab1 {
+		display:block;
+		margin-top:12px;
+		margin-bottom:5px;
+		letter-spacing:0px;
+		margin-left:10px;		
+		text-transform:none;
+		font-size:14px;
+		font-weight:400;
+	}
+	.statusTab2 {
+		letter-spacing:0px;
+		margin-left:10px;
+		text-transform:none;
+		font-size:14px;
+		font-weight:400;
+	}
+	
+	.statusTab1 span,
+	.statusTab2 span {
+		color:#FBD2D1;
+		font-weight:600;
+	}
+	
+	.megakrill {
+		margin-top:-30px;
+	}
+	.dealsOfWeekContainer.isResponsive {
+		margin-top:30px;
+	}
+	.dealsOfWeekContainer {
+		width:91%;
+		margin:auto;
+	}
+	.store.lastItem {
+		border-bottom:1px solid #E3E3E3 !important;
+	}	
+	.sidebarWithAds {
+		width:100%;
+		float:none;
+		margin:auto;
+	}
+	.sidebarWithAds .howItWorksSteps .stepSection {
+		width:30%;
+		padding:2% 1%;
+	}
+	.sidebarWithAds .howItWorksSteps {
+		width:100%;
+		margin:5% auto;
+	}
+	.sidebarWithAds .howItWorksSteps img {
+		width:35%;		
+	}
+	.sidebarWithAds .body.standardBody {
+		height:100%;		
+		padding:1%;
+		padding-bottom:5%;
+		padding-top:3%
+	}	
+	
+	.RetailerContainer {
+		width:100%;
+		margin-left:0px;
+	}
+	
+	/* Responsive Table Design */
+	table.responsiveTable#categoryTable {
+		 width:100% !important;
+		 margin-bottom:10%;
+		 margin-top:5%;
+	}
+	
+	table.responsiveTable .bulletIconAlignment {
+		display:none;
+	}
+	table.responsiveTable .bulletIcon {
+		width:2% !important;
+	}
+	.categoryTable tr td {
+		font-size:11px;
+	}
+	h1,
+	.flowContent1 h1 {
+		font-size:19px;
+	}
+	.RetailerOffersTable.couponTable {
+		width:100%;
+		border-bottom: 1px solid #D3D3D3;
+		margin-left:0px;
+	}
+	.RetailerOffersTable.couponTable td {
+		vertical-align:top;		
+	}
+	table.couponTable tr td.columnThree {
+		width:auto;
+	}
+	table.couponTable tr td.columnOne {
+		width:auto;
+		padding-right:3%;		
+	}
+	table.couponTable .offerDescription1 {
+		margin-top:-5px;
+		margin-bottom:10px;
+	}
+	table.couponTable .shopNowBotton.siteButton.isResponsive {
+		text-align:left;
+	}
+	table.couponTable .shopNowBotton.siteButton.isResponsive span {
+		padding-left:18px;
+		padding-right:18px;
+		font-size:12px;
+	}
+	.requirement {
+		font-size:11px;
+	}
+	.cashBackOnOffer span {
+		font-weight:600;
+	}
+	.container.standardContainer.innerRegularPages .leftAligned,
+	.container.standardContainer.innerRegularPages .rightAligned {
+		float:none;
+		width:94%;
+	}
+	.container.standardContainer.innerRegularPages .customTable,
+	.container.standardContainer.innerRegularPages .locationPlate,
+	.container.standardContainer.innerRegularPages .emailPlate,
+	.changePassword .passwordContent,
+	.flowContent1 .successMessageContainer,
+	.flowContent1 .errorMessageContainer,
+	.cashBackContent .row .data select,
+	.container.standardContainer.innerRegularPages .sidebar2,
+	.locationPlate select,	
+	.flowContent1 .yourReferralLinkContainer
+	 {
+		width:100%;
+	}
+	
+	.flowContent1 .successMessageContainer,
+	.flowContent1 .errorMessageContainer {
+		padding-left:3%;
+		padding-right:3.5%;
+	}
+	
+	.container.standardContainer.innerRegularPages .customTable {
+		padding:3%;
+		padding-right:3.5%;
+	}
+	
+	.container.standardContainer.innerRegularPages .customTable .row .data input {
+		width:96%;
+	}
+		
+	.customTable .allStores.forSignUp {
+		margin-top:20px;
+		margin-bottom:15px;
+	}
+	.cashBackMethod .forSignUp,
+	.subscriptionForm .forSignUp {
+		text-align:center;
+	}
+	
+	.subscriptionForm #form_newsletter b {
+		display:inline-block;
+		width:90%;
+		vertical-align:top;		
+	}
+	
+	.customTable .passwordContent .allStores.forSignUp span {
+		padding-left:10%;
+		padding-right:10%;
+	}
+	
+	.customTable .allStores.forSignUp span {
+		padding-left:27%;
+		padding-right:27%;
+	}
+	.cashBackWays span.data {
+		display:block;
+		margin-top:5px;
+	}
+	.responsiveBalanceHistory {
+		text-align:center;
+	}
+	.responsiveBalanceHistory .balanceContainer {
+		float:none;
+		margin-bottom:10px;
+		margin-top:10px;
+		width:75%;
+		margin-right:0px;
+	}
+	.responsiveBalanceHistory .amountIs {
+		font-size: 43px;		
+		letter-spacing: -1px;
+		line-height: 42px;
+		margin-left: 0;
+	}
+	.blog .blogContentContainerLeft,
+	.blog .blogContentContainerRight {
+		width:100%;
+		float:none;
+	}
+	.blogSection,
+	.blog .blogContentContainer {
+		width:100%;
+	}
+	
+	.signUpContainer .standardSignUpContainer {
+		width:100%;
+	}
+	.blog .blogContentContainerLeft {
+		text-align:center;
+	}
+	.blogContentContainerLeft .blogPicture {
+		width:100%;
+		text-align:center;
+	}
+	.blogContentContainerRight .blogTitle {
+		 font-size: 19px;
+		 line-height:25px;
+		 margin-top:0px;
+	}
+	.blogPostHeading h1 {
+		font-size: 22px;
+		 line-height:28px;
+		 margin-bottom:5px;
+	}	
+	.blogPostContainer {
+		font-size: 13px;
+	}
+	.blogPostContainer .socialIcons {
+		text-align:center;
+	}
+	.customCommentArea {
+		width:97% !important;
+	}
+	.commentPoster, .customComment, .customReply {
+		width:78%;
+	}	
+	.comment-meta.comment-author img { 
+		width:20%;
+		height:20%;
+		max-height:100px;
+		max-width:100px;
+		padding-right:2%;
+	}
+	.comment-form {
+		width:100%;
+		padding:3%;
+	}
+	.comment-form label,
+	.comment-form input,
+	.comment-form textarea {
+		width:96.4%;		
+	}	
+	.comment-form label,
+	.customCommentArea .comment-notes {
+		font-size:12px;
+	}
+	.comment-form input {
+		padding-top:6px;
+		padding-bottom:6px;
+	}
+	.comment-form textarea {
+		width:97%;
+		padding:1%;		
+	}
+	.comments-title {
+		font-size:14px;
+	}
+	.comment-reply-title {
+		font-size:14px;
+		border-bottom:1px solid #d8d8d8;
+		padding-bottom:5px;
+	}
+	.customCommentArea .comment-respond .comment-form #submit {
+		width:60%;
+		margin-left:0px;
+		margin-right:0px;		
+	}	
+	p.form-submit {
+		text-align:center;
+	}
+	.commentPoster, .customComment, .customReply {
+		font-size: 12px;
+	}
+	.blogAuthorNameSection,
+	.blogTimeStamp {
+		font-size:11px;
+	}
+	.blogContentContainerRight .blogCategory {
+		font-size: 11px;
+		margin-top:10px;
+	}
+	.blogContentContainerRight .blogAuthor,
+	.blogContentContainerRight .postDate {
+		font-size: 11px;
+	}
+	
+	.LoginSection div {
+		margin-right:0px;
+		position:relative;
+		top:-2px;
+	}
+	.blogContentContainerRight .blogContentContainerLeft {
+		margin-top:10px;
+	}
+	.blogPostContainer {
+		width:100%;
+	}
+	.responsiveBlogHeading h1 {
+		border-bottom:1px solid #d8d8d8;		
+	}	
+	.responsiveBlogHeading {
+		margin-bottom:10px !important;
+	}
+	
+	.siteOptions {
+		text-align:center !important;
+		margin-top:10px;
+		margin-bottom:10px;
+	}	
+	.orCaption {
+		font-size:13px;
+		margin-top:5px;
+		margin-bottom:5px;
+		text-align:center;
+	}
+	
+	.siteOptions .allStores.forSignUp.signUpCaption1.customButtonHomePage {
+		margin:auto;
+	}
+	.wpcf7 .wpcf7-form {
+		width:94% !important;
+		padding:4%;
+	}
+	.blog .standardSiteContainer {
+		width:100%;
+		padding-left:0px;
+	}
+	.contactPersonInformation {
+		width:auto;
+	}
+	.contactPersonInformation div {
+		width:100%;
+	}
+	.contactPersonInformation .leftAligned {
+		float:none;
+		margin-top:7px;
+	}
+	.securityCheck .securityCheckLabel {
+		width:35%;
+	}
+	.securityCheck .securityCheckSection {
+		width:65%;
+	}
+	.wpcf7-submit {
+		width:80%;
+	}
+	.sidebarWithAds {		
+		margin-top:5%;
+	}
+	.userActivityContainer .leftContainer,
+	.userActivityContainer .rightContainer {
+		width:94%;
+		float:none;
+		padding:3%;
+		min-height:10px !important;
+		border:0px;
+	}
+	.contentTitle {
+		border-bottom:1px solid #d8d8d8;
+		padding-bottom:5px;
+	}
+	
+	.userActivityContainer .standardInputBox input {
+		width:100%;
+		padding-top:7px;
+		padding-bottom:7px;
+	}
+	.userActivityContainer .formSubmitButton {
+		text-align:center;
+		margin-bottom:0px;
+	}
+	.userActivityContainer .formSubmitButton span {
+		padding-left:20%;
+		padding-right:20%;
+		font-size:15px;
+		min-width:350px;
+	}
+	.forGotPasswordResponsive {
+		display:inline;
+	}
+	
+	.userActivityContainer {
+		width:100%;
+	}
+	.contentTitle.facebookTitle {
+		margin-bottom:15px;
+	}
+	.fbApiOption {
+		text-align:center;
+	}
+	.fbLoginApi {
+		margin:20px auto 10px auto;
+	}
+	
+	.userActivityContainer .errorMessageContainer .leftContainer {		
+		float:left !important;
+		width:70%;
+		padding-left:0%;		
+	}
+	.userActivityContainer .errorIcon {
+		width:5% !important;
+		padding-right:3%;
+		min-width:24px;
+	}
+	.userActivityContainer ul.singleError {
+		margin-left:0px;
+		margin-top:0px;		
+	}
+	.inviteAd .fl {
+		width:65%;
+	}
+	.inviteAd .fr {
+		width:30%;
+	}
+	.inviteAd .fr img {
+		width:100%;
+	}
+	.inviteAd .fl .line1 {
+		font-size:14px;
+	}
+	.inviteAd .fl .line2 {
+		font-size:20px;
+		line-height: 9px;
+	}
+	.inviteAd .fl .line3 {
+		font-size:10px;
+	}
+	
+	.flowContent1 .yourReferralLinkContainer input {
+		width:95% !important;
+	}	
+	.responsiveContainer {
+		width:100% !important;
+	}
+	.inviteAd {
+		width:92.8%;
+	}
+	.flowContent1 .referalForm table tr td input {
+		width:96%;
+	}
+	.referalsResponsiveTable {
+		width:98%;
+	}
+	.sendInvitationButton {
+		width:100%;
+		text-align:center;
+	}
+	.sendInvitationButton span {
+		font-size:15px;
+	}
+	.flowContent1 .yourReferralLinkContainer input {
+		width:60% !important;
+		margin-right:2%;
+		padding-top:5px;
+		padding-bottom:5px;
+	}
+	.yourReferralLinkContainer .isResponsive {
+		display:inline;
+	}
+	.yourReferralLinkContainer b {
+		display:block;
+		margin-bottom:5px;
+	}
+	.responsiveSlider .topTrends li table tr td .InfoContainer {
+		width:100% !important;
+	}
+	.responsiveSlider .topTrends li table tr td {
+		width:45% !important;
+		padding-left:2%;
+		padding-right:2%;
+	}
+	.leftContainer.loginActivity {
+		margin-top:20px;
+	}
+	.footable tr td,
+	.footable tr th {
+		width:33% !important;
+	}
+	.footable .onResponsiveCell1 {
+		text-align:left;
+	}
+	.footable-row-detail-inner {
+		padding-left:28px;
+	}
+	.footable-row-detail-inner div {
+		margin-top:3px;
+		margin-bottom:3px;
+	}
+	.footable {
+		width:107% !important;
+	}
+	.footable tr th {
+		border:0px !important;
+	}
+	
+	.footable tr th.onResponsiveCell3 {		
+		border-top-left-radius:5px;
+		border-right:1px solid #fff !important;
+	}
+	.footable tr th.onResponsiveCell2 {		
+		border-top-right-radius:5px;		
+	}
+	.footable-cell-detail {
+		background-color:#f9f9f9;
+	}
+	.shareOnSocialMedia.isResponsive {
+		margin-top:5px;
+		display:block;
+		text-align:left;
+	}
+	
+	.shareOnSocialMedia.isResponsive a {
+		margin-right:-5px;
+	}
+	
+	.addToFav.isResponsive {
+		margin-top:5px;
+		margin-bottom:5px;
+	}
+	.addToFav.isResponsive .siteButton {
+		margin-right:8px;
+	}
+	.transitionPopup {
+		width:90%;
+		margin:auto;
+	}
+	.transitionPopup .descriptionMessage {
+		font-size:14px;
+	}
+	.transitionPopup .loadingLine {
+		font-size:11px;
+	}
+	.transitionPopup .themeWhite .webIcon {
+		margin-top:10px;
+		margin-bottom:22px;
+	}
+	.transitionPopup .themeWhite .webIcon img {
+		width:90%;
+	}
+	.isResponsive.responsiveMenu a {
+		outline:none;
+		text-decoration:none;
+	}
+	
+	.recoveryEmailInput div input {
+		width:95% !important;
+		padding-left:2%;
+		padding-right:2%;
+	}
+	.forgotPasswordContainer .recoveryEmailSubmit {
+		text-align:center !important;
+		float:none;
+		margin-top:14px;
+	}
+	.forgotPasswordContainer .actionCenter .backToSignIn {
+		float:none !important;
+		width:100%;
+		text-align:center;
+		margin-top:10px;
+	}
+	.forgotPasswordContainer .actionCenter .formSubmitButton span {
+		min-width:2px !important;		
+	}
+	.forgotPasswordContainer .signUpReference {
+		display:none;
+	}
+	.forgotPasswordContainer div.body {
+		padding-bottom:10px;
+	}
+	
+	/* Retailer Page Responsive Design */
+	.RetailerContainer .RetailerIcon,
+	.RetailerContainer .RetailerCashBack {
+		float:none;
+		min-height:1px;
+	}
+	
+	.RetailerCashBack .percentageCount {
+		font-size:48px;
+		margin-top:0px;
+	}
+	.RetailerCashBack .cashBackCaption {
+		font-size:19px;
+		margin-bottom:8px;
+		margin-top:-15px;
+	}
+	.percentageCount .upToText {
+		font-size:17px;
+	}
+	.RetailerCashBack .percentageCount .percentageCountSymbol {
+		font-size: 30px;
+		left: -11px;
+		position: relative;
+		top: -18px;
+	}
+	.RetailerShopNow .shopNowLeft {
+		float:none;
+		width:100%;
+	}
+	.RetailerShopNow .shopNowLeft .siteButton {
+		text-align:center;
+	}
+	.RetailerShopNow .shopNowLeft .siteButton span {
+		padding-left:20%;
+		padding-right:20%;
+	}
+	.RetailerIcon .imagebox {
+		text-align:center;
+	}
+	.RetailerIcon .imagebox img {
+		width:70%;
+	}
+	.RetailerIcon {
+		width:100%;
+	}
+	.RetailerContainer .RetailerCashBack {
+		width:70%;
+		margin:auto;
+		margin-top:15px;		
+	}
+	
+	.RetailerDescription {
+		margin-top:5px;
+	}
+			
+	table.RetailerOffersTable tr td.columnOne {
+		width:25%;
+		vertical-align:top;
+		padding-top:16%;
+	}
+	table.RetailerOffersTable tr td.columnTwo {
+		width:75%;
+	}
+	table.RetailerOffersTable tr td.columnTwo .shopNowBotton span {
+		padding-left:20%;
+		padding-right:20%;
+		font-size:12px;
+	}
+	table.RetailerOffersTable tr td.columnTwo .shopNowBotton {
+		text-align:left;
+		margin-top:10px;
+	}
+	table.RetailerOffersTable .cashBackOnOffer {
+		margin-top:3px;
+	}
+}
+
+@media only screen 
+and (min-width : 481px)
+and (max-width : 767px) {
+	table.RetailerOffersTable tr td.columnOne {
+		width:25%;
+		vertical-align:middle;
+		padding-top:0%;
+	}
+	.RetailerContainer .RetailerCashBack {		
+		margin-top:0px;		
+	}	
+	.RetailerIcon .imagebox img {
+		width:90%;
+	}
+	.RetailerContainer .RetailerIcon {
+		float:left;
+		width:50%;
+	}
+	
+	.RetailerContainer .RetailerCashBack {
+		float:right;
+		width:48%;
+	}
+	
+	.footable tr th.onResponsiveCell2 {		
+		border-top-right-radius:0px;
+		border-right:1px solid #fff !important;
+	}
+	.cashBackContent .row .data select {
+		width:98.6%;
+	}
+	table.couponTable tr td.columnOne {
+		width:31%;
+		padding-right:3%;
+	}
+	
+	.categoryTable tr td {
+		font-size:12px;
+	}
+	.container.content {
+		width:90%;
+		margin:auto;
+	}
+	
+	.store .icon {
+		width:146px;
+		margin-left:20px;
+		float:none;
+		display:inline-block;
+		position:relative;
+		top:-15px;
+	}
+	.featuredStoresSection .cashBack {
+		padding-top:10px;
+		padding-bottom:10px;
+		width:153px;
+		float:none;
+		display:inline-block;
+	}
+	.responsiveSlider .topTrends li table {
+		width:100%;
+	}
+	.couponProviderIcon {
+		text-align:left;
+	}	
+	.responsiveSlider .topTrends li table tr td .InfoContainer {
+		width:100% !important;
+	}
+	.responsiveSlider .topTrends li table tr td {
+		width:auto !important;
+	}
+	.container.content .SiteContentSection .featuredStoresSection .store {
+		text-align:center;
+	}
+	.transitionPopup .themeWhite .webIcon img {
+		width:70%;
+	}	
+}
+
+.no-touch .mk-toggle {
+	height:35px;
+	width:39px;
+}
+
+.no-touch .responsiveMenu .megakrill .mk-toggle a.mk-opened {	
+	background-position:-12px -64px !important;
+}
+.no-touch .responsiveMenu .megakrill .mk-toggle a.mk-closed {
+	background-position:-12px -15px !important;
+}
+
+
+.slideLoader {
+	text-align:center;
+	margin:40px 0px;
+}
+.slideLoader img {
+	width:20px;
+}
+
+.mk-toggle {
+	background-color:#373737 !important;
+}
+
+.responsiveMenu .megakrill .mk-toggle a.mk-closed {
+	display:inline-block;
+	background-image:url(../img/toggle1.png) !important;
+	background-position:-7px -15px !important;
+	position:relative;
+	z-index:9999;
+	width:91%;
+	height:91%;
+}
+
+.responsiveMenu .megakrill .mk-toggle a.mk-opened {
+	display:inline-block;
+	background-image:url(../img/toggle1.png) !important;
+	background-position:-7px -60px !important;
+	position:relative;
+	z-index:9999;
+	width:91%;
+	height:91%;
+}
+
+.isResponsive.responsiveMenu .siteTitleSection span {
+	display:inline-block;
+}
+
+.mobile .prevSlideIcon,
+.tablet .prevSlideIcon,
+.mobile .nextSlideIcon,
+.tablet .nextSlideIcon {
+	top: -5px;
+}
+.mobile .dealsOfWeekContainer .bx-wrapper .bx-pager,
+.tablet .dealsOfWeekContainer .bx-wrapper .bx-pager {
+	padding-top:22px;
+}
+
+
+
+
+
+/* Responsive Table  */
+
+.footable {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.footable.breakpoint > tbody > tr > td.expand {
+  background: url('../img/plus.png') no-repeat 5px center;
+  padding-left: 30px;
+}
+
+.footable.breakpoint > tbody > tr.footable-detail-show > td.expand {
+  background: url('../img/minus.png') no-repeat 5px center;
+}
+
+.footable.breakpoint > tbody > tr:hover:not(.footable-row-detail) {
+  cursor: pointer;
+}
+
+.footable > tbody > tr > td, .footable > thead > tr > th {
+  border-bottom: 1px solid #ccc;
+}
+
+.standardTable tbody tr:first-child td {
+  border-top:0px !important;
+}
+.standardTable thead tr th {
+  border-bottom:0px !important;
 }

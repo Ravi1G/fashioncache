@@ -113,13 +113,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
 <meta http-equiv="refresh" content="2; url=<?php echo $website_url; ?>" />
 <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="<?php echo SITE_URL; ?>favicon.ico" />
 <link rel="icon" type="image/ico" href="<?php echo SITE_URL; ?>favicon.ico" />
-
-
 <?php 
 session_start();
 include_once 'inc/config.inc.php';?>

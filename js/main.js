@@ -1,4 +1,11 @@
 $(document).ready(function () {
+	
+	$nav = $('#reponsiveNavigation');
+	$nav.megakrill({
+		//clone       : false,
+		cloneRemove : 'li > div',
+		cloneId     : false
+	});
 
     $(".siteButton a").hover(
         function () {
@@ -73,27 +80,6 @@ $(document).ready(function () {
             }, 180);
         }
     );	
-
-    $('.topTrends').bxSlider({
-		adaptiveHeight: true,
-        auto: false,
-        pause: 2000,
-        speed: 800,
-		responsive: false,
-        pager: true, // carasuls
-        controls: true,
-		onSliderLoad: function(){
-			$('.bx-pager').prepend('<span id="pg-prev" class="prevSlideIcon"></span>');
-			$('.bx-pager').append('<span id="pg-next" class="nextSlideIcon"></span>');			
-			$('#pg-next').click(function(){
-				$('.dealsOfWeekContainer .bx-next').trigger('click');
-			})
-			
-			$('#pg-prev').click(function(){
-				$('.dealsOfWeekContainer .bx-prev').trigger('click');
-			})
-		}
-    });
 	
 	$('.expertSectoinSlider').bxSlider({
         auto: false,

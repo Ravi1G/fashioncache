@@ -9,7 +9,11 @@
 
 	session_start();
 	require_once("inc/config.inc.php");
-
+	
+	// The Mobile Detection Class
+	require_once("inc/mobile_detect.php");
+	$detect = new Mobile_Detect;
+	
 	$userid = (int)$_SESSION['userid'];
 
 
@@ -82,8 +86,12 @@
 				//print_r($_SESSION);exit;
 				//header("Location: signup_or_login.php?msg=4");
 				
-				header("Location: retailers.php?show=111111&p=1");//p = 1 to show the popup in retailer if the user is logged in
-				exit();
+				if ($detect->isMobile() || $detect->isTablet()) {
+					header("Location: signup_or_login.php");//Redirection to the Login Page
+				} else {
+					header("Location: retailers.php?show=111111&p=1");//p = 1 to show the popup in retailer if the user is logged in
+				}
+					exit();
 			}
 
 			// update retailer visits //

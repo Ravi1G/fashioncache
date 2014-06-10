@@ -19,8 +19,8 @@
 <?php 
 if(!is_single()){
 ?>
-	<div class="blogContentContainer">
-		<div class="blogContentContainerLeft">
+	<div class="blogContentContainer">	
+		<div class="blogContentContainerLeft notResponsive">
 			<div class="blogPicture"><a href="<?php the_permalink(); ?>">
 			<?php 
 			if (has_post_thumbnail( $post_id )) {?> 
@@ -33,18 +33,31 @@ if(!is_single()){
 			</a></div>
 		</div>
 		<div class="blogContentContainerRight">
-			<div class="blogCategory">			
-				<div><a href="<?php the_permalink(); ?>"><?php the_category(', ');?></a></div>
-			</div>
-			<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
-			<div class="blogInfo">
-				<div class="blogAuthor"><!--<img src="<?php echo SITE_URL;?>img/authorIcon.png" class="authorIcon" alt=""/>--> <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>">By <?php echo get_the_author(); ?></a></div>
-				<div class="postDate"><!--&#x00A0;&#x00A0;<img src="<?php echo SITE_URL;?>img/comments.png" class="commentsIcon" alt="No."/> <a href="<?php the_permalink();?>/#comments"><?php echo get_comments_number(); ?> Comment<?php $Comments = get_comments_number(); if ($Comments >= 2) {?>s<?php } ?></a>-->| <!--&#x00A0;&#x00A0;<img src="<?php echo SITE_URL;?>img/calender.png" alt="" class="PostedOn" />--> <?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
-			</div>
-			<div class="blogDescription">
-				 <?php the_content('read more...');?>
-			</div>
-			
+				<div class="blogCategory">			
+					<div><a href="<?php the_permalink(); ?>"><?php the_category(', ');?></a></div>
+				</div>
+				<div class="blogTitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>				
+				<div class="blogInfo">
+					<div class="blogAuthor"><!--<img src="<?php echo SITE_URL;?>img/authorIcon.png" class="authorIcon" alt=""/>--> <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>">By <?php echo get_the_author(); ?></a></div>
+					<div class="postDate"><!--&#x00A0;&#x00A0;<img src="<?php echo SITE_URL;?>img/comments.png" class="commentsIcon" alt="No."/> <a href="<?php the_permalink();?>/#comments"><?php echo get_comments_number(); ?> Comment<?php $Comments = get_comments_number(); if ($Comments >= 2) {?>s<?php } ?></a>-->| <!--&#x00A0;&#x00A0;<img src="<?php echo SITE_URL;?>img/calender.png" alt="" class="PostedOn" />--> <?php echo date('F d, Y', strtotime($post->post_date)); ?></div>
+				</div>
+				<div class="blogContentContainerLeft isResponsive">
+					<div class="blogPicture">
+						<a href="<?php the_permalink(); ?>">
+						<?php 
+						if (has_post_thumbnail( $post_id )) {?> 
+							<?php the_post_thumbnail( array(225,325) );
+						}
+						else{ ?>
+							<img src="<?php echo SITE_URL;?>img/hangerIcon.png">
+						<?php 
+						}?>
+						</a>
+					</div>					
+				</div>
+				<div class="blogDescription">
+					 <?php the_content('read more...');?>
+				</div>
 		</div>
 		<div class="cb"></div>
 	</div>

@@ -105,6 +105,31 @@
                             <br/><a class="more" href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>#coupons"><?php echo CBE1_COUPONS_SEEALL; ?></a>
                             <?php */?>
                         </div>
+						
+						<div class="isResponsive">
+							<div class="cashBackOnOffer">Cash Back: <span><?php echo $row['cashback']?></span></div>
+							<div class="requirement">
+								<?php if($row['code']!=""){?>
+									<b><?php echo CBE1_COUPONS_CODE; ?></b>: <?php echo $row['code'];?>
+								<?php } else{?>
+								No Coupon Required
+								<?php }?>
+								<?php 
+								//Description
+								/* if ($row['description'] != "") { ?>
+								<p><?php echo $row['description']; ?></p>
+							<?php } */?>
+							</div>
+							<div class="offerName">
+								<span class="offerExpiryDate">
+									<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
+										<span class="cashBackOnOffer">Expires: <?php echo $row['coupon_end_date']; ?></span> &nbsp; 
+									<?php } ?>								
+								</span>
+							</div>
+						</div>
+						
+						
                     </td>                    
                     <td class="columnTwo">
 						<div class="offerName">
@@ -112,29 +137,34 @@
 							
 						</div>
 						<div class="offerDescription1"><?php echo $row['description']?></div>
-                        <div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
-                        <div class="requirement">
-                        	<?php if($row['code']!=""){?>
-                        	<b><?php echo CBE1_COUPONS_CODE; ?></b>: <?php echo (isLoggedIn()) ? $row['code'] : CBE1_COUPONS_CODE_HIDDEN; ?>
-                        	<?php } else{?> No Coupon Code Required
-                        	<?php }?>
-                        	
-                        	<?php 
-                        	//Description
-                        	/* if ($row['description'] != "") { ?>
-							<p><?php echo $row['description']; ?></p>
-						<?php } */?>
-                        </div>
-                        <div class="offerName">
-                        	<span class="offerExpiryDate">
-								<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
-									<span class="cashBackOnOffer">Expires <?php echo $row['coupon_end_date']; ?></span> &nbsp; 
-								<?php } ?>								
-							</span>
+						<div class="notResponsive">
+							<div class="cashBackOnOffer">Plus <span><?php echo $row['cashback']?></span> Cash Back</div>
+							<div class="requirement">
+								<?php if($row['code']!=""){?>
+								<b><?php echo CBE1_COUPONS_CODE; ?></b>: <?php echo $row['code'];?>
+								<?php } else{?> No Coupon Code Required
+								<?php }?>
+								
+								<?php 
+								//Description
+								/* if ($row['description'] != "") { ?>
+								<p><?php echo $row['description']; ?></p>
+							<?php } */?>
+							</div>
+							<div class="offerName">
+								<span class="offerExpiryDate">
+									<?php if ($row['end_date'] != "0000-00-00 00:00:00") { ?>
+										<span class="cashBackOnOffer">Expires <?php echo $row['coupon_end_date']; ?></span> &nbsp; 
+									<?php } ?>								
+								</span>
+							</div>
+						</div>
+						<div class="shopNowBotton siteButton isResponsive">
+                            <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
                         </div>
                     </td>
                     <td class="columnThree">
-                        <div class="shopNowBotton siteButton">
+                        <div class="shopNowBotton siteButton notResponsive">
                             <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
                         </div>
                     </td>

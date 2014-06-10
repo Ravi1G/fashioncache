@@ -471,15 +471,16 @@
                     <div class="standardInputBox "><input name="password" class="signup_" type="password" value="<?php if(getPostParameter('action')=="signup"){?><?php echo getPostParameter('password');}?>"/></div>
                     <label class="standardLabel">Referrer's Email (optional):</label>
                     <div class="standardInputBox"><input id="referrer_email" class="signup_" name="referrer_email" type="text" value="<?php if(getPostParameter('action')==signup){?><?php echo getPostParameter('referrer_email');}?>"/></div>
+					<div class="isResponsive">By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
                     <div class="shopNowBotton siteButton leftAlign formSubmitButton">
                         <a href="#" onclick="document.getElementById('frmsignup').submit();return false;">
                             <span>Sign Up &#x003E;</span>
                         </a>
-                    </div>
+                    </div>					
                     <input type="hidden" name="action" value="signup">
                 </form>
             </div>
-            <div>By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
+            <div class="notResponsive">By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
 			<?php /* ?>
             <h3>Benefits of Fashion Cache membership:</h3>
             <ul class="standardList">
@@ -499,6 +500,7 @@
                 <div class="standardInputBox"><input name="password" class='login_' type="password" value="<?php echo "";?>"/></div>
                 <div class="rememberMe">
           		  <input type="checkbox" class="checkboxx" name="rememberme" id="rememberme" value="1" <?php echo (@$rememberme == 1) ? "checked" : "" ?>/> <?php echo CBE1_LOGIN_REMEMBER; ?>
+				  <span class="forGotPasswordResponsive">/ <a class="colorLink" href="<?php echo SITE_URL; ?>forgot.php">Forgot Password?</a></span>
           		</div>
                 <div class="loginActions">
                     <div class="leftContainer">
@@ -508,7 +510,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="leftContainer">
+                    <div class="leftContainer notResponsive">
                         <div class="forgotPassword"><a class="colorLink" href="<?php echo SITE_URL; ?>forgot.php">Forgot Password?</a></div>
                     </div>
                     <div class="cb"></div>
@@ -517,7 +519,7 @@
                 
             </form>
         </div>
-        <div class="rightContainer loginActivity">
+        <div class="rightContainer loginActivity fbApiOption">
             <div class="contentTitle facebookTitle">Facebook Members</div>
             <div class="haveAccount">Have a Facebook account?</div>
             <div>Signup or login here.</div>

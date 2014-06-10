@@ -15,7 +15,7 @@ global $advertisements;
         </div>
         
         <!-- Sign Up Section -->
-        <div class="signUpContainer standardSignUpContainer">
+        <div class="signUpContainer standardSignUpContainer notResponsive">
             <div class="title titleOf14">SHOP &#x0026; EARN CASH BACK!</div>
             <div class="body standardBody">
                 <div class="howItWorks">HOW IT WORKS</div>
@@ -39,12 +39,12 @@ global $advertisements;
                 	<span>SIGN UP</span></a></div>
             </div>
         </div>
-        <div class="advertisement300">
+        <div class="advertisement300 notResponsive">
             <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[SIDEBAR_TOP_IMAGE]['retailer_id']; ?>&a=<?php echo $advertisements[HOME_PAGE_HEADER_AD_ID]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 						<img height="250" width="300" src="<?php echo $advertisements[SIDEBAR_TOP_IMAGE]['image_url']!='' ? $advertisements[HOME_PAGE_HEADER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[SIDEBAR_TOP_IMAGE]['image_name']?>">
 			</a>
         </div>
-        <div class="advertisement300">
+        <div class="advertisement300 notResponsive">
            <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $advertisements[SIDEBAR_BOTTOM_IMAGE]['retailer_id']; ?>&a=<?php echo $advertisements[SIDEBAR_BOTTOM_IMAGE]['advertisement_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 						<img height="250" width="300" src="<?php echo $advertisements[SIDEBAR_BOTTOM_IMAGE]['image_url']!='' ? $advertisements[SIDEBAR_BOTTOM_IMAGE]['image_url'] : SITE_URL.'admin/'.$advertisements[SIDEBAR_BOTTOM_IMAGE]['image_name']?>">
 			</a>

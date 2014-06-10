@@ -121,7 +121,7 @@ include_once 'inc/config.inc.php';?>
 			<div class="popupEndingLines popupEndingLinesMargins">
 				<div>By becoming a member, you agree to our <a class="colorLink" href="#">Terms &#x0026; Conditions</a>.</div>
 				<div>&#x00A9; 1998-2014 Fashion Cache. All rights reserved. <a class="colorLink" href="#">Privacy Policy</a></div>
-			</div>
+			</div>			
 		</div>
 		<script>
 			$(function(){

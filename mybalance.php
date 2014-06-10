@@ -19,6 +19,13 @@
 
 ?>
 
+<script src="<?php echo SITE_URL;?>js/footable.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+      	$('.footable').footable();
+    });
+</script>
+
 <?php 
 	//$paid = GetUserBalance($userid);
 	//$pending = GetPendingBalance();
@@ -48,8 +55,8 @@
 		?>
 		<div class="rightAligned flowContent1">		 
 			<h1><?php echo CBE1_BALANCE_TITLE; ?></h1>
-			
-			<div class="balanceContainer  greenColored">
+			<div class="responsiveBalanceHistory">
+			<div class="balanceContainer greenColored">
 				<div class="heading">Paid Amount</div>
 				<div class="balanceSection">					
 					<div class="balanceSectionHolder">
@@ -105,7 +112,7 @@
 				</div>
 			</div>
 			<div class="cb"></div>
-		
+		</div>
 		
 		 <?php
 			$cc = 0;
@@ -118,27 +125,29 @@
      	 ?>		
 			<br/>
 			<h1><?php echo CBE1_BALANCE_TITLE2; ?></h1>			
-			<table class="standardTable">
+			
+			
+			<table class="standardTable footable">
 				<thead>
 					<tr>
-						<th width="12.66%" class="firstCell">Order No.</th>
-						<th width="21.66%"><?php echo CBE1_BALANCE_STORE;?></th>
-						<th width="15.66%"><?php echo CBE1_BALANCE_DATE;?></th>		
-						<th width="16.66%">Amount</th>
-						<th width="16.66%"><?php echo CBE1_BALANCE_CASHBACK;?></th>
-						<th width="16.66%" class="lastCell last"><?php echo CBE1_BALANCE_STATUS;?></th>
+						<th data-hide="phone,tablet" width="12.66%" class="firstCell"><span class="onResponsiveCell">Order No.</span></th>
+						<th data-class="expand" class="onResponsiveCell3" width="21.66%"><?php echo CBE1_BALANCE_STORE;?></th>
+						<th data-hide="phone,tablet" width="15.66%"><span class="onResponsiveCell"><?php echo CBE1_BALANCE_DATE;?></span></th>		
+						<th width="16.66%" class="onResponsiveCell2">Amount</th>
+						<th data-hide="phone,tablet" width="16.66%"><span class="onResponsiveCell"><?php echo CBE1_BALANCE_CASHBACK;?></span></th>
+						<th data-hide="phone" width="16.66%" class="lastCell last"><span class="onResponsiveCell"><?php echo CBE1_BALANCE_STATUS;?></span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php while ($row = mysql_fetch_array($result)) { $cc++; ?>
 						<tr>
 						  <td valign="middle" align="center"><?php echo $row['reference_id']; ?></td>
-						  <td valign="middle" align="center"><?php echo ($row['retailer'] != "") ? $row['retailer'] : "--"; ?></td>
+						  <td valign="middle" align="center" class="onResponsiveCell1"><?php echo ($row['retailer'] != "") ? $row['retailer'] : "--"; ?></td>
 						  <td valign="middle" align="center"><?php echo $row['date_created']; ?></td>
-						  <td valign="middle" align="right"><span class="amountAlignment"><?php echo DisplayMoney($row['transaction_amount']); ?></span></td>
-						  <td valign="middle" align="right"><span class="amountAlignment"><?php echo DisplayMoney($row['amount']); ?></span></td>
+						  <td valign="middle" align="right" class="numeric"><span class="amountAlignment"><?php echo DisplayMoney($row['transaction_amount']); ?></span></td>
+						  <td valign="middle" align="right" class="numeric"><span class="amountAlignment"><?php echo DisplayMoney($row['amount']); ?></span></td>
 						  <td valign="middle" align="center">
-						  <div class="statusCenter">
+
 							<?php
 									switch ($row['status'])
 									{
@@ -156,7 +165,7 @@
 										echo " <div class='cashbackengine_tooltip'><img src='".SITE_URL."images/info.png' align='absmiddle' /><span class='tooltip'>".$row['reason']."</span></div>";
 									}
 							?>
-							</div>
+
 						  </td>
 						</tr>
 					<?php } ?>
@@ -168,6 +177,8 @@
 		</div>
 		<div class="cb"></div>
 	</div>	
+
+
 
 		
 

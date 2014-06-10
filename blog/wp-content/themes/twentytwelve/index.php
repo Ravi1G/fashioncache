@@ -17,7 +17,9 @@ get_header(); ?>
 	<div class="container content blog standardContainer">
 	    <div class="SiteContentSection">
 	        <div class="SiteContentLeft">            
-	           	<div class="categoryHeadingWithMargins"><h1>BLOG</h1></div>
+	           	<div class="categoryHeadingWithMargins responsiveBlogHeading">
+					<h1>BLOG</h1>
+				</div>
 	            <div class="blogSection"> 
 	           		<?php if ( have_posts() ) : ?>
 		           		<?php while ( have_posts() ) : the_post(); ?>

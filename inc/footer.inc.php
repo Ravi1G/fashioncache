@@ -1,5 +1,5 @@
 <?php global $advertisements;?>
-<div class="Advertisement728">
+<div class="Advertisement728 notResponsive">
 	<div class="container">
 		<div class="advertisement"><a href="<?php echo $advertisements[HOME_PAGE_FOOTER_AD_ID]['link'];?>" target="_blank"><img height="90" width="728" src="<?php echo $advertisements[HOME_PAGE_FOOTER_AD_ID]['image_url']!='' ? $advertisements[HOME_PAGE_FOOTER_AD_ID]['image_url'] : SITE_URL.'admin/'.$advertisements[HOME_PAGE_FOOTER_AD_ID]['image_name']?>"></a></div>
 	</div>
@@ -19,7 +19,7 @@
 			<?php 
 				$query = mysql_query("SELECT retailer_id, title, url, retailer_url FROM cashbackengine_retailers WHERE popular_retailer=1");
 			?>
-			<div class="popularStores footernavlinks">
+			<div class="popularStores footernavlinks notResponsive">
 				<div class="title">MOST POPULAR STORES</div>
 				<?php 
 				while($row_popular=mysql_fetch_assoc($query))
@@ -29,7 +29,7 @@
 				<?php }
 				?>
 			</div>
-			<div class="connectWithUs footernavlinks socialLinks">
+			<div class="connectWithUs footernavlinks socialLinks notResponsive">
 				<div class="title">CONNECT WITH US!</div>
 				<div><a href='<?php echo FACEBOOK_PAGE;?>' class="fbDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorDark.jpg"/></a></div>
 				<div><a href="<?php echo TWITTER_PAGE;?>" class="twtDark"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtDark.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorDark.jpg"/></a></div>
@@ -45,8 +45,9 @@
 		</div>
 	</div>
 	<script src="<?php echo SITE_URL?>/js/plugins.js"></script>
+	<script src="<?php echo SITE_URL; ?>js/jquery.megakrill.min.js"></script>
 	<script src="<?php echo SITE_URL?>/js/main.js"></script>
-	<script src="<?php echo SITE_URL; ?>js/fb.js"></script>
+	<script src="<?php echo SITE_URL; ?>js/fb.js"></script>	
 	<script>
 		var CLOSE_POPUP=0;
 		var SITE_URL ="<?php echo SITE_URL;?>"; 

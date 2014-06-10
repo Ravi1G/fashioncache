@@ -134,7 +134,7 @@
 			}
 			?>
 			
-			<div class="rightAligned flowContent1">				
+			<div class="rightAligned flowContent1 responsiveContainer">				
 					<div class="RetailerContainer referFriendSectionContainers">
 					
 						<!--  Invite Friends Advertisement Starts -->
@@ -162,9 +162,16 @@
 						<?php } ?>
 						<div class="yourReferralLink">
 							<div class="leftAligned yourReferralLinkContainer">
-								<div><b><?php echo CBE1_INVITE_LINK; ?>:</b> <input type="text" class="reflink_textbox" size="60" readonly="readonly" onfocus="this.select();" onclick="this.focus();this.select();" value="<?php echo $ReferralLink; ?>" /></div>
+								<div>
+									<b><?php echo CBE1_INVITE_LINK; ?>:</b><input type="text" class="reflink_textbox" size="60" readonly="readonly" onfocus="this.select();" onclick="this.focus();this.select();" value="<?php echo $ReferralLink; ?>" />
+									<span class="isResponsive">
+										<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($ReferralLink); ?>&t=<?php echo SITE_TITLE; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL;?>img/fbIcon.jpg" align="absmiddle" alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a>
+										<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo SITE_TITLE; ?>&url=<?php echo urlencode($ReferralLink); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>img/twtIcon.jpg" align="absmiddle" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
+										<a href="https://plus.google.com/share?url=<?php echo urlencode($ReferralLink); ?>" target="_blank" title="<?php echo CBE1_SHARE_GOOGLE; ?>"><img src="<?php echo SITE_URL; ?>img/gpIcon.jpg" align="absmiddle" alt="<?php echo CBE1_SHARE_GOOGLE; ?>" /></a>
+									</span>
+								</div>
 							</div>
-							<div class="rightAligned">
+							<div class="rightAligned notResponsive">
 								<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($ReferralLink); ?>&t=<?php echo SITE_TITLE; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL;?>img/fbIcon.jpg" align="absmiddle" alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a>
 								<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo SITE_TITLE; ?>&url=<?php echo urlencode($ReferralLink); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>img/twtIcon.jpg" align="absmiddle" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
 								<a href="https://plus.google.com/share?url=<?php echo urlencode($ReferralLink); ?>" target="_blank" title="<?php echo CBE1_SHARE_GOOGLE; ?>"><img src="<?php echo SITE_URL; ?>img/gpIcon.jpg" align="absmiddle" alt="<?php echo CBE1_SHARE_GOOGLE; ?>" /></a>
@@ -212,7 +219,7 @@
 					<?php } ?>
 					<div class="referalForm">
 						<form action="" method="post">										
-								<table>
+								<table class="referalsResponsiveTable">
 									<tr>
 										<td width="6%">&#x00A0;</td>
 										<td width="47%"><b><?php echo CBE1_INVITE_FNAME; ?></b><sup class="manadatoryField">*</sup></td>
@@ -342,8 +349,8 @@
 									<td style="width:50%;" class="storeSite topRight"><?php echo CBE1_INVITE_SDATE; ?></td>-->
 									<!-- New functionality -->
 									<td style="width:33%;" class="storeName alignCenter topLeft"><span><?php echo CBE1_INVITE_EMAIL; ?></span></td>							
-									<td style="width:33%;" class="storeSite storeName"><?php echo "Invitation Date"; ?></td>
-									<td style="width:33%;" class="storeSite topRight"><?php echo "Invitation Status"; ?></td>
+									<td style="width:33%;" class="storeSite storeName"><span class="notResponsive"><?php echo "Invitation Date"; ?></span><span class="isResponsive">Sent On</span></td>
+									<td style="width:33%;" class="storeSite topRight"><span class="notResponsive"><?php echo "Invitation Status"; ?></span><span class="isResponsive">Status</span></td>
 								</tr>
 							</thead>
 							<tbody>
@@ -351,7 +358,7 @@
 								<?php while ($refs_row = mysql_fetch_array($refs_query)) { $cc++; ?>
 								<tr>
 								<td>
-									<img src="<?php echo SITE_URL; ?>images/referral_icon.png" align="absmiddle" /> &nbsp; 
+									<span class="notResponsive"><img src="<?php echo SITE_URL; ?>images/referral_icon.png" align="absmiddle" /> &nbsp; </span>
 									<?php 
 									$email = explode('|',$refs_row['recipients']);
 									echo $email = $email[1];

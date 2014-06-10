@@ -73,20 +73,29 @@
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
-	require_once 'inc/mobile_detect.php';
-	$detect = new Mobile_Detect;
 	
 	// Only Mobiles no Tablets.
-	if( $detect->isMobile() && !$detect->isTablet() && !isLoggedIn()){
-			header ("Location: pmv.php");
-			exit;
+	if( $detect->isMobile() && !$detect->isTablet()){
+	
+		// Getting the Status
+		if(isset($_GET['show']) && $_GET['show']==1) {
+			$visitStatus = $_GET['show'];
+			// Setting the cookie
+			setcookie("UserVisitStatus", $visitStatus, time()+3600*12);
+		}		
+		// Check If user is Frequent or not		
+		elseif(!isset($_COOKIE["UserVisitStatus"]) || $_COOKIE["UserVisitStatus"]!='1'){
+				header ("Location: pmv.php");
+				exit;
+		} 
+		
 	}
 	
-	if(!isLoggedIn()){
+	if(!isLoggedIn() && !$detect->isMobile() || $detect->isTablet()){
 	?>
 		<script type="application/javascript">
 			$.colorbox({
-				iframe      : true,
+				iframe: true,
 				width: 548,
 				height: 553,
 				opacity: 0.8,
@@ -115,13 +124,38 @@
 			});
 		</script>
 	<?php } ?>
+		<div class="cb"></div>
+		<!-- For Responsive View -->
+		<div class="isResponsive">
+		<?php $allbanners = array(); $allbanners = BannersList(0);?>
+					<ul class="contentSlider">
+							<?php foreach ($allbanners as $banner){ ?>
+							<li>
+								<?php
+								if($banner['bypass_script']==1) 
+								{
+									$link	=	$banner['link'];	
+								}
+								else {
+									$link	=	SITE_URL.'go2store.php?id='.$banner['retailer_id'].'&b='.$banner['banner_id'];	
+								}
+								?>
+								<a href="<?php echo $link?>" <?php echo "target=\"_blank\"";?> >
+									<img src="<?php echo SITE_URL.'admin/'.$banner['image']?>" alt=""/>
+								</a>
+							</li>
+							<?php 	}?>
+                        </ul>
+		</div>
+		
+		
 	
 		<div class="container content">
 		<!-- Featured Store List  -->
 			<div class="featuredStoresSection">
 			  	<div class="sectionTitle">FEATURED STORES</div>
 			</div>
-			<div class="saleAlertSection">
+			<div class="saleAlertSection notResponsive">
 			        <div class="sectionTitle"><span>SALE ALERT!</span> 
 			        <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $sale_alert['retailer_id']; ?>&s=<?php echo $sale_alert['sale_alert_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><?php echo $sale_alert['title']?></a></div>
 			</div>
@@ -174,11 +208,18 @@
 						} // end featured retailers 
 					?>
 		            <div class="cb"></div>
-		        </div>			
+		        </div>	
+				<div class="isResponsive">
+					<div class="allStores responsiveButton">
+						<a href="<?php echo SITE_URL?>coupons.php">
+							<span class="hoverAnim">Show All Stores</span>
+						</a>
+					</div>
+				</div>		
 		    </div>
 		     <?php $allbanners = array(); $allbanners = BannersList(0);?>
 		    <!-- Sale Alert Section -->
-		     <div class="saleAlertSection">		        
+		     <div class="saleAlertSection notResponsive">		        
                 <div class="sectionBody">
                     <div class="contentSection contentSectionSlides">
                         <ul class="contentSlider">
@@ -203,128 +244,10 @@
                         <div class="topTrendSection dealsOfWeekContainer">
                             <div class="title">TRENDING SALES</div>
                             <div class="body"> 
-                                <ul class="topTrends">
-                                <?php 
-                                if($total_trending_sale_coupons>0){ 
-								    $number_of_columns = 3;
-								    $multiple_of_three =$total_trending_sale_coupons+ ($total_trending_sale_coupons%$number_of_columns);
-									$total_iterations = floor($multiple_of_three/$number_of_columns);
-                                	$i = 1;
-									$start_index = 0;
-									//how many blocks we need to create
-                                	for($i = 0; $i<$total_iterations; $i++){
-										echo '<li><table>';
-
-										//how many rows we need to create for every block
-										for($k=0;$k<4;$k++){
-											$next_index = $start_index;
-											echo '<tr>';
-											if($k==0){
-												for($m=0;$m<$number_of_columns;$m++){
-													$trending_coupon = array();
-													if(array_key_exists($next_index, $trending_sale_coupons)){
-														$trending_coupon = $trending_sale_coupons[$next_index];
-													}
-												?>
-													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
-													    <?php if($trending_coupon){?>
-														<div class="InfoContainer">
-															<div class="storeTitle">
-																<!-- <img alt="" src="<?php echo $trending_coupon['retailer_image']; ?>"/>-->
-																<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $trending_coupon['retailer_id']; ?>&c=<?php echo $trending_coupon['coupon_id']?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
-																	<img src="<?php echo SITE_URL.'admin/upload/retailer/';echo $trending_coupon['image_III'];?>">
-																</a>
-															</div>
-														</div>
-														<?php } ?>
-													</td>
-												<?php
-												$next_index++;
-												}
-											}
-											
-											
-											if($k==1){
-												for($m=0;$m<$number_of_columns;$m++){
-													$trending_coupon = array();
-													if(array_key_exists($next_index, $trending_sale_coupons)){
-														$trending_coupon = $trending_sale_coupons[$next_index];
-													}
-												?>
-													<td class="saleInfo <?php if(!$trending_coupon){?>empty<?php } ?>">
-													    <?php if($trending_coupon){?>
-														<div class="InfoContainer">
-															<div class="storeText"><?php echo $trending_coupon['description']; ?></div>
-														</div>
-														<?php } ?>
-													</td>
-												<?php
-												$next_index++;
-												}
-											}
-											
-											
-											if($k==2){
-												for($m=0;$m<$number_of_columns;$m++){
-													$trending_coupon = array();
-													if(array_key_exists($next_index, $trending_sale_coupons)){
-														$trending_coupon = $trending_sale_coupons[$next_index];
-													}
-												?>
-													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
-													    <?php if($trending_coupon){?>
-														<div class="InfoContainer">
-															<div class="addition">+</div>
-														</div>
-														<?php } ?>
-													</td>
-												<?php
-												$next_index++;
-												}
-											}
-											
-											
-											if($k==3){
-												for($m=0;$m<$number_of_columns;$m++){
-													$trending_coupon = array();
-													if(array_key_exists($next_index, $trending_sale_coupons)){
-														$trending_coupon = $trending_sale_coupons[$next_index];
-													}
-												?>
-													<td <?php if(!$trending_coupon){?>class="empty"<?php } ?>>
-													    <?php if($trending_coupon){?>
-														<div class="InfoContainer">
-															<div class="cashBack">
-																<div class="percentage">
-																	 <?php														
-																		$trending_coupon_type = GetCashbackType($trending_coupon['cashback']);
-																		$cashback = RemoveCashbackType($trending_coupon['cashback']);
-																	?>
-																	<?php echo $cashback;?>
-																	<span class="percentageSymbol"><?php echo $trending_coupon_type;?></span>
-															   </div>                                               
-																<div class="cashBackCaption">Cash Back</div>
-															</div>
-														</div>
-														<?php } ?>
-													</td>
-												<?php
-												$next_index++;
-												}
-											}
-											echo '</tr>';
-										}
-										$start_index = $i+$number_of_columns;
-										
-										?>
-									</tr>
-								</table>								
-								</li>
-
-                                <?php	}
-								 } ?>
-                                </ul>
-                                <div class="cb"></div>                                
+								<div class="notResponsiveSlider">
+									<div class="slideLoader"><img src="<?php echo SITE_URL;?>img/bx_loader.gif" alt="Loading" /></div>
+								</div>
+								<div class="cb"></div>
 								<div class="allStores"><a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
                             </div>
                         </div>
@@ -332,7 +255,7 @@
                 </div>
             </div>
 		      <div class="cb"></div>
-		      <div class="fashionExpertSection">
+		      <div class="fashionExpertSection notResponsive">
 			<div class="titleSection">
 				<div>
 					<img alt="" src="<?php echo SITE_URL;?>img/FashionExpertsIcon.jpg" />
@@ -419,7 +342,7 @@
 		      
 		      
 		    </div>
-		    <div class="SiteContentRight">
+		    <div class="SiteContentRight notResponsive">
 		     <!-- Sidebar Section -->
             <div class="sideBarsSection">
                 <!-- Follow Us Section  -->				
@@ -508,6 +431,33 @@
 		    <div class="cb"></div>
 		</div>   
 		</div>
+		
+		
+		<?php // require_once("inc/screenDetector.php"); ?>		
+	
+		
+		
+		<div class="topTrendSection dealsOfWeekContainer isResponsive">
+                            <div class="title">TRENDING SALES</div>
+                            <div class="body">
+							<div class="responsiveSlider">
+								<div class="slideLoader"><img src="<?php echo SITE_URL?>img/bx_loader.gif" alt="Loading" /></div>
+							</div>							
+								<div class="cb"></div>                                
+								<div class="allStores"><a href="<?php echo SITE_URL?>coupons.php"><span class="hoverAnim">SEE ALL SALES &#x0026; COUPONS</span></a></div>
+                            </div>
+                        </div>
+		
+		<div class="followUs isResponsive">
+                    <div class="title">------ FOLLOW US ------</div>
+                    <div class="shortLinks">
+                        <span>
+                        	<a href="<?php echo FACEBOOK_PAGE;?>" class="fbLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/fbLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/fbColorLight.jpg"/></a></span>
+                        	<span><a href="<?php echo TWITTER_PAGE;?>" class="twtLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/twtLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/twtColorLight.jpg"/></a></span>
+                        	<span><a href="https://plus.google.com/109229722850645533350" class="gpLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/gpLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/gpColorLight.jpg"/></a></span>
+                        	<span><a href="http://www.pinterest.com/thefashioncache/" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
+                    </div>
+                </div>
 		<?php /* ?>
 		<div id="slider">
 			<ul>
@@ -732,5 +682,73 @@
 				});				
 			})
 		
-		</script>
+		</script>		
+	<?php if( $detect->isMobile() && !$detect->isTablet()){ ?>				
+		<script src="js/orientationDetection.js" type="text/javascript"></script>
+	<?php } ?>
+		<script>
+			$(function(){
+					// Screen Width
+					var sw = $(window).width();
+					
+					// Default Orientation
+					var orientation = 'portrait';				
+					
+					// For Orientation	 Change					
+					// Check if Mobile 
+				<?php if( $detect->isMobile() && !$detect->isTablet()){ ?>
+				
+						//Window Resize Event
+						$(window).on("load resize", function () {
+							var h = $(window).height();
+							var w = $(window).width();
+					
+							$('.responsiveSlider').children().hide();
+							$('.slideLoader').show();
+							if (w > h) {
+									var orientation = 'landscape';
+							} else {
+									var orientation = 'portrait';
+							}
+							
+							// Start Of Ajax Call
+							$.ajax({
+								url: "responsiveSlider.php",
+								data: {
+									deviceWidth: sw,
+									deviceOrientation: orientation
+								}
+								}).done(function (res) { 
+								<?php if ($detect-> isMobile() && !$detect-> isTablet()) { ?>
+											$('.slideLoader').hide();
+											
+											// For The Mobiles having Screen Size Less Than 768
+											if (w < 768) {
+												$('.responsiveSlider').empty();
+												$('.responsiveSlider').append(res);
+											}
+							
+											// For The Mobiles having Screen Size Greater Than 768
+											else {
+												$('.responsiveSlider').find(".bx-wrapper").empty();
+												$('.notResponsiveSlider').empty();
+												$('.notResponsiveSlider').append(res);
+											} 
+									<?php } ?>
+								});
+								// End Of Ajax Call
+								
+						});	
+				<?php }else { ?>				
+						// For Desktop Versions
+						$.ajax({
+							url: "responsiveSlider.php",
+							data: { deviceWidth: sw}
+							}).done(function(res) {						
+									 $('.slideLoader').hide();
+									 $('.notResponsiveSlider').append( res);
+							});
+				<?php }  ?>	
+			});	
+	</script>
 <?php require_once("inc/footer.inc.php"); ?>

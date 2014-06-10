@@ -124,29 +124,39 @@
                             <br/><a class="more" href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>#coupons"><?php echo CBE1_COUPONS_SEEALL; ?></a>
                             <?php */?>
                         </div>
+						<div class="shareOnSocialMedia isResponsive">Share: &#x00A0;
+							<a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>&t=<?php echo $row['title']; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL; ?>images/icon_facebook.png"  alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a> &nbsp;
+							<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo $row['title']; ?>&url=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>images/icon_twitter.png" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
+						</div>
                     </td>
-                    
                     <td class="columnTwo">
-                    <div class="offerName"><?php echo $row['title'];?> <span class="offerExpiryDate">(<?php echo $row['cashback'];?> Cashback)</span></div>                        
+	                    <div class="offerName"><?php echo $row['title'];?> <span class="offerExpiryDate">(<?php echo $row['cashback'];?> Cashback)</span></div>
                         <div class="requirement">
 							<div class="offerDetail"><?php
 								echo substr(strip_tags($row['description']),0,161).'...';?> 
 							</div>
 						</div>
+						<div class="isResponsive addToFav">							
+							<span class="shopNowBotton siteButton searchRetailerShopNow">
+								<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
+							</span>
+							<span class="shopNowBotton siteButton searchRetailerShopNow">
+								<a class="favorites" href="<?php echo SITE_URL; ?>myfavorites.php?act=add&id=<?php echo $row['retailer_id']; ?>"><span>Add to favourites</span></a>
+							</span>							
+						</div>
                     </td>
-                    <td class="columnThree">
-                    <div class="shareOnSocialMedia">
-                    	<a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>&t=<?php echo $row['title']; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL; ?>images/icon_facebook.png"  alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a> &nbsp;
-						<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo $row['title']; ?>&url=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>images/icon_twitter.png" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
-					</div>
+                    <td class="columnThree notResponsive">
+						<div class="shareOnSocialMedia">
+							<a href="http://www.facebook.com/sharer.php?u=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>&t=<?php echo $row['title']; ?>" target="_blank" title="<?php echo CBE1_SHARE_FACEBOOK; ?>"><img src="<?php echo SITE_URL; ?>images/icon_facebook.png"  alt="<?php echo CBE1_SHARE_FACEBOOK; ?>" /></a> &nbsp;
+							<a href="http://twitter.com/intent/tweet?source=sharethiscom&text=<?php echo $row['title']; ?>&url=<?php echo urlencode(GetRetailerLink($row['retailer_id'], $row['title'])); ?>" target="_blank" title="<?php echo CBE1_SHARE_TWITTER; ?>"><img src="<?php echo SITE_URL; ?>images/icon_twitter.png" alt="<?php echo CBE1_SHARE_TWITTER; ?>" /></a>
+						</div>
 						<div class="shopNowBotton siteButton searchRetailerShopNow">
                             <a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>"><span>SHOP NOW</span></a>
                         </div>
 						<div class="shopNowBotton siteButton searchRetailerShopNow">
                             <a class="favorites" href="<?php echo SITE_URL; ?>myfavorites.php?act=add&id=<?php echo $row['retailer_id']; ?>"><span>Add to favourites</span></a>
-                        </div>	
-                        
-                    </td>
+                        </div>					
+					</td>
                 </tr>
                 <?php }?>
                 

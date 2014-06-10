@@ -132,7 +132,6 @@
 					<div class="RetailerIcon">
 						<div>
 							<?php /*if ($row['featured'] == 1) { ?><span class="featured" alt="<?php echo CBE1_FEATURED_STORE; ?>" title="<?php echo CBE1_FEATURED_STORE; ?>"></span><?php } */ ?>
-							
 							<div class="imagebox"><a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><img src="<?php if (!stristr($row['image_II'], 'http')) echo SITE_URL."admin/upload/retailer/"; echo $row['image_II']; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" /></a></div>
 							<?php echo GetStoreRating($row['retailer_id'], $show_start = 1); ?>
 						</div>
@@ -144,7 +143,9 @@
 						<div class="cashBackCaption">Cash Back</div>
 					</div>
 					<div class="cb"></div>
-					<div class="RetailerDescription"><?php echo $row['description']; ?></div>
+					<div class="RetailerDescription">
+						<?php echo $row['description'];?>
+					</div>
 					<div class="RetailerShopNow">
 						<div class="shopNowLeft">
 							<div class="shopNowBotton siteButton">
@@ -163,9 +164,9 @@
 							 </div>
 						</div>
 						<div class="cb"></div>
-					</div>
+					</div>					
 					<!-- OLD CODE STARTS -->
-						<?php
+		<?php
 				// start coupons //
 				$ee = 0;
 				$query_coupons = "SELECT *, DATE_FORMAT(end_date, '%m/%d/%Y') AS coupon_end_date, UNIX_TIMESTAMP(end_date) - UNIX_TIMESTAMP() AS time_left FROM cashbackengine_coupons WHERE retailer_id='$retailer_id' AND (start_date<=NOW() AND (end_date='0000-00-00 00:00:00' OR end_date > NOW())) AND status='active' ORDER BY sort_order, added DESC";
@@ -194,14 +195,17 @@
 								<div class="cashBackOnOffer">Plus <span><?php echo $cashback.$cashback_type;?></span> Cash Back</div>
 								<div class="requirement">
 									<?php if ($row_coupons['code'] != "") { ?>
-										<?php echo (isLoggedIn()) ? $row_coupons['code'] : CBE1_COUPONS_CODE_HIDDEN; ?>
+									<?php echo (isLoggedIn()) ? $row_coupons['code'] : CBE1_COUPONS_CODE_HIDDEN; ?>
 										<?php } else {?>
-									No Coupon Code Required
+										No Coupon Code Required
 									<?php }?>
 									<br/><span class="cashBackOnOffer">Expiers <?php echo $row_coupons['coupon_end_date']; ?></span>
 								</div>
+								<div class="shopNowBotton siteButton isResponsive">
+									<a class="go2store" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row_coupons['coupon_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW</span></a>
+								</div>
 							</td>
-							<td class="columnThree">
+							<td class="columnThree notResponsive">
 								<div class="shopNowBotton siteButton">
 									<a class="go2store" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row_coupons['coupon_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW</span></a>
 								</div>
