@@ -7023,21 +7023,6 @@ and (max-width : 480px) {
 	table.oneColumnTableResponse .cashBackOnOffer {
 		margin-top:3px;
 	}
-	.oneColumnTableResponse .columnOne {
-		display:none;
-	}
-	.oneColumnTableResponse div.cashBackOnOffer,
-	.oneColumnTableResponse .requirement {
-		margin-left:10px;
-	}
-	.oneColumnTableResponse .shopNowBotton {
-		text-align:center !important;	
-	}	
-	table.oneColumnTableResponse tr td.columnTwo .shopNowBotton span {
-		padding-left:25%;
-		padding-right:25%;
-		font-size:12px;
-	}
 }
 
 @media only screen 
