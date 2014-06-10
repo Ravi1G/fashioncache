@@ -33,7 +33,7 @@
 			$ptitle	= $row['title'];
 
 		$retailer_url = GetRetailerLink($row['retailer_id'], $row['title']);
-
+		$retailer_id = $row['retailer_id'];
 		//// ADD REVIEW //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		if (isset($_POST['action']) && $_POST['action'] == "add_review" && isLoggedIn())
 		{

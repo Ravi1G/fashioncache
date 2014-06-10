@@ -65,6 +65,7 @@
 					r.image_II,
 					r.image_III, 
 					r.title,
+					r.retailer_slug,
 					r.cashback AS cashback FROM cashbackengine_coupons c LEFT JOIN cashbackengine_retailers r 
 					ON c.retailer_id=r.retailer_id 
 					WHERE (c.start_date<=NOW() AND (c.end_date='0000-00-00 00:00:00' OR c.end_date > NOW()))
@@ -95,10 +96,8 @@
                     <td class="columnOne">
                         <div class="couponProviderIcon"> <!-- Exclusive or See all coupons button is commented down, uncomment to show in the website -->
                         <?php /*?><?php if ($row['exclusive'] == 1) { ?><span class="exclusive" alt="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>" title="<?php echo CBE1_COUPONS_EXCLUSIVE; ?>"><?php echo CBE1_COUPONS_EXCLUSIVE; ?></span><?php } ?><?php */?>
-                            <a href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>">
-                            <!-- 
-                            <img src="<?php if (!stristr($row['image'], 'http')) echo SITE_URL."img/"; echo $row['image']; ?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" />
-                             -->
+                            <!-- <a href="<?php echo GetRetailerLink($row['retailer_id'], $row['title']); ?>">-->
+                            <a href="<?php echo SITE_URL.'coupons/'.$row['retailer_slug'];?>">
                              <img src="<?php echo SITE_URL."admin/upload/retailer/".$row['image_I'];?>" width="<?php echo IMAGE_WIDTH; ?>" height="<?php echo IMAGE_HEIGHT; ?>" alt="<?php echo $row['title']; ?>" title="<?php echo $row['title']; ?>" border="0" />
                             </a>
                             <?php /*?>
@@ -133,8 +132,7 @@
                     </td>                    
                     <td class="columnTwo">
 						<div class="offerName">
-							<!-- <a class="retailer_title" href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>-->
-							
+							<!-- <a class="retailer_title" href="<?php echo SITE_URL.$row['retailer_slug']; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&c=<?php echo $row['coupon_id']; ?>" target="_blank"><b><?php echo $row['coupon_title']; ?></b></a>-->
 						</div>
 						<div class="offerDescription1"><?php echo $row['description']?></div>
 						<div class="notResponsive">

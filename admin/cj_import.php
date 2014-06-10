@@ -40,7 +40,7 @@
 		{
 			$start_date = $current_date;
 		}
-//Computing start and end date for the cURL
+	//Computing start and end date for the cURL
  	$end_date = date("Y-m-d", strtotime($current_date));
  	$start_date = date("Y-m-d", strtotime($start_date));
 	}
