@@ -204,8 +204,7 @@
 					
 					$headers = 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
 					//////********* Uncomment the following to send email
-					echo $message.'<br>';
-					//mail($to, $subject, $message, $headers);
+					mail($to, $subject, $message, $headers);
 				}
 			}
 		}//End foreach loop

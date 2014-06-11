@@ -240,8 +240,7 @@
 							a conflict, please resolve this issue';
 							
 							$headers = 'From: '.SITE_TITLE.' <'.NOREPLY_MAIL.'>' . "\r\n";
-							echo $message;
-							//mail($to, $subject, $message, $headers);
+							mail($to, $subject, $message, $headers);
 							$insert_id = 0;
 						}
 						 
