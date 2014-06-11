@@ -3,23 +3,18 @@
 	require_once("inc/config.inc.php");
 	$trending_sale_coupons = GetTrendingSaleCoupons();
 	$total_trending_sale_coupons = count($trending_sale_coupons);
-	
-	// Mobile Detection Library
-	require_once 'inc/mobile_detect.php';
-	$detect = new Mobile_Detect;	
-	
-	// Geeting the Dimention and Orientation
-	$ScreenWidth = $_GET['deviceWidth'];
-	$ScreenOrientation = $_GET['deviceOrientation'];
+
+	// Getting No Of Columns
+	$dataColumns = $_GET['dataColumns'];
 ?>
-<?php if( $detect->isMobile() || $detect->isTablet()){ ?>
+<?php if(isset($dataColumns) && $dataColumns==2){ ?>
 	<style type="text/css">
-			.dealsOfWeekContainer .bx-wrapper .bx-pager {
-				padding-top:15px;				
-			}
-			.prevSlideIcon, .nextSlideIcon {
-				top:3px;
-			}
+		.dealsOfWeekContainer .bx-wrapper .bx-pager {
+			padding-top:15px;
+		}
+		.prevSlideIcon, .nextSlideIcon {
+			top:3px;
+		}
 	</style>
 <?php } ?>
 
@@ -27,37 +22,10 @@
 	<?php 
 	if($total_trending_sale_coupons>0){ 
 	
-			if( $detect->isMobile() && !$detect->isTablet()){			
-				// If Device is in Landscape Mode
-				if (isset($ScreenOrientation) && $ScreenOrientation == 'landscape')
-				 {
-					$number_of_columns = 3;					
-				 }				 
-				 // If Device is having screen lest that 480
-				 elseif ($ScreenWidth < 480)
-				 {
-					$number_of_columns = 2;					
-				 }
-				 // If Device is in portrait Mode
-				 elseif (isset($ScreenOrientation) && $ScreenOrientation == 'portrait')
-				 {
-				 	$number_of_columns = 2;
-				 }
-				 // Default
-				 else {
-				 	$number_of_columns = 3;
-				 }
-				 
+			if(isset($dataColumns)) {
+				$number_of_columns = $dataColumns;
 			}
-			
-			elseif (isset($ScreenOrientation) && $ScreenOrientation == 'landscape') {
-				$number_of_columns = 3;
-			}
-			
-			// If not Mobile Device
-			else {
-				$number_of_columns = 3;
-			}
+						
 		$multiple_of_three =$total_trending_sale_coupons+ ($total_trending_sale_coupons%$number_of_columns);
 		$total_iterations = floor($multiple_of_three/$number_of_columns);
 		$i = 1;
@@ -182,7 +150,7 @@
 			auto: false,
 			pause: 2000,
 			speed: 800,
-			responsive: false,
+			responsive: true,
 			pager: true, // carasuls
 			controls: true,
 			onSliderLoad: function(){

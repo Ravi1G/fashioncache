@@ -437,7 +437,7 @@
 	
 		
 		
-		<div class="topTrendSection dealsOfWeekContainer isResponsive hidden">
+				<div class="topTrendSection dealsOfWeekContainer isResponsive">
                             <div class="title">TRENDING SALES</div>
                             <div class="body">
 							<div class="responsiveSlider">
@@ -681,50 +681,30 @@
 						<?php }?>
 				});				
 			})
-		
-		</script>
-		
-	
-	
-		<?php /* <script>
-			$(function(){
-					// Screen Width
-					var sw = $(window).width();
-					
-					
-					
-					
-				$('.responsiveSlider').children().hide();
-				$('.slideLoader').show();
 				
-				<?php if( $detect->isMobile()){ ?>				
-				// Default Orientation
-					var orientation = 'portrait';
-					
-					// Start Of Ajax Call
-					$.ajax({
-						url: "responsiveSlider.php",
-						data: {
-							deviceWidth: sw,
-							deviceOrientation: orientation
-						}
-						}).done(function (res) { 
-									$('.slideLoader').hide();
-									$('.notResponsiveSlider').hide();
-									$('.responsiveSlider').empty();
-									$('.responsiveSlider').append(res);
-						});
-						// End Of Ajax Call						
-				<?php } ?>
-			
-				// For Desktop Versions
-				$.ajax({
-						url: "responsiveSlider.php",
-						data: { deviceWidth: sw}
-						}).done(function(res) {						
-								 $('.slideLoader').hide();
-								 $('.notResponsiveSlider').append( res);
-						});
-				});	
-	</script> */ ?>
+		$(function(){
+				$('.slideLoader').show();
+					<?php if( $detect->isMobile()){ ?>				
+					// For Mobile Versions				
+					var noOfColumns = 2;
+					<?php } else { ?>
+					// For Desktops Versions		
+					var noOfColumns = 3;
+					<?php } ?>	
+						$.ajax({
+							url: "responsiveSlider.php",
+							data: {
+								dataColumns: noOfColumns
+							}
+							}).done(function (res) { 										
+										<?php if( $detect->isMobile() && !$detect-> isTablet()){ ?>
+											$('.slideLoader').hide();
+											$('.responsiveSlider').append(res);
+										<?php } else { ?>
+											$('.slideLoader').hide();
+											$('.notResponsiveSlider').append(res);
+										<?php } ?>
+							});			
+				});
+	</script>
 <?php require_once("inc/footer.inc.php"); ?>

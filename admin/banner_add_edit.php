@@ -234,7 +234,7 @@ require_once ("inc/header.inc.php");
 			</tr>
 
 			<tr>
-				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1">Link :</td>
+				<td width="150" nowrap="nowrap" valign="middle" align="right" class="tb1"><span class="req">*</span>Link:</td>
 				<td align="left">
 					<input type="text" name="link" id="link" value="<?php echo $link; ?>" size="40" class="textbox" />
 				</td>
