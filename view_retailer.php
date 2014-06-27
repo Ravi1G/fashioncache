@@ -143,10 +143,10 @@
 						<div class="cashBackCaption">Cash Back</div>
 					</div>
 					<div class="cb"></div>
-					<div class="RetailerDescription">
+					<div class="RetailerDescription notResponsive">
 						<?php echo $row['description'];?>
 					</div>
-					<div class="RetailerShopNow">
+					<div class="RetailerShopNow RetailerShopNowClear">
 						<div class="shopNowLeft">
 							<div class="shopNowBotton siteButton">
 								<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
@@ -217,7 +217,15 @@
 		<?php } // end coupons // ?>
 			
 					</table>
+					
+				<div class="RetailerDescription RetailerDescriptionDown isResponsive">
+					<?php echo $row['description'];?>
 				</div>
+
+					
+					
+				</div>
+				<!-- Old code -->		
 				<div class="cb"></div>
 			</div>
 		<!-- Right side bar -->	
@@ -269,10 +277,8 @@
 			
 			<div class="cb"></div>
 		</div>
-	</div>
+	</div>	
 	
-	<!-- Old code -->		
-
 	
 
 	<?php }else{ ?>

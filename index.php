@@ -74,7 +74,7 @@
 	$total_trending_sale_coupons = count($trending_sale_coupons);
 	require_once("inc/header.inc.php");
 	
-	// Only Mobiles no Tablets.
+	/* // Only Mobiles no Tablets.
 	if( $detect->isMobile() && !$detect->isTablet()){
 	
 		// Getting the Status
@@ -89,7 +89,7 @@
 				exit;
 		} 
 		
-	}
+	} */
 	
 	if(!isLoggedIn() && !$detect->isMobile() || $detect->isTablet()){
 	?>
@@ -255,91 +255,91 @@
                 </div>
             </div>
 		      <div class="cb"></div>
-		      <div class="fashionExpertSection notResponsive">
-			<div class="titleSection">
-				<div>
-					<img alt="" src="<?php echo SITE_URL;?>img/FashionExpertsIcon.jpg" />
-				</div>
-				<div class="title">
-					MEET OUR <span>FASHION</span> <span class="pink">EXPERTS</span>
-				</div>
-			</div>
-			<div class="expertList">
-				<ul class="expertSectoinSlider">
-				<?php 
-				// Calling function to get author list from blog/apis.php
-				$authors= fc_get_users();
-				fc_reconnect_db();
-				$total_authors = count($authors);
-				if($total_authors>0){ 
-					$i = 1;
-					$total_authors_processed = 0;
-					foreach($authors as $author){		
-						$total_authors_processed++;
-						if($i==1){
-							echo '<li>';
-						}
-				?>
-				
-						<div class="expertInformation">
-							<div class="expertThumb">
-								<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">
-									<?php //Image link if author image is present otherwise show the default image
-										$img_link =isset($author['Author_Profile_Picture']) && $author['Author_Profile_Picture']!="" ? $author['Author_Profile_Picture'] : SITE_URL.'img/hangerIconSmall.png' ; 
-									?>
-									<img width="92" height="92" src='<?php echo $img_link;?>'/>
-								</a>
-							</div>
-							<?php 
-								if($author['first_name']!="")
-									$username = $author['first_name'];
-								//$username = trim($author['First_Name'].' '.substr($author['Last_name'], 0, 1));
-								elseif($author['user_nicename']!=''){
-									$username = $author['user_nicename'];
-								}
-							?>
-							<!-- Information about the author: authorname,city,state -->
-							<div class="expertName">
-								<?php 
-									if($username!="") 
-										echo $username;
-								?>
-							</div>
-							<?php 
-							unset($author_address);
-							if($author['author_city']!=""){
-								$author_address[] = $author['author_city'];								
-							}
-							if($author['author_state']!=""){
-								$author_address[] = $author['author_state'];								
-							}
-							if(isset($author_address)){
-							?>
-							<div class="expertLocation">
-								<?php echo implode(', ', $author_address);?>
-							</div>
-							<?php } ?>
-							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
-						</div>							
-				<?php 			
-						if($i==5 || $total_authors_processed==$total_authors){
-							echo '</li>';
-						}
-						
-						if($i==5)
+			 
+				  <div class="fashionExpertSection notResponsive">
+					<div class="titleSection">
+						<div>
+							<img alt="" src="<?php echo SITE_URL;?>img/FashionExpertsIcon.jpg" />
+						</div>
+						<div class="title">
+							MEET OUR <span>FASHION</span> <span class="pink">EXPERTS</span>
+						</div>
+					</div>
+					<div class="expertList">
+						<ul class="expertSectoinSlider" id="notREsponsiveExpertSectoinSlider">
+						<?php 
+						// Calling function to get author list from blog/apis.php
+						$authors= fc_get_users();
+						fc_reconnect_db();
+						$total_authors = count($authors);
+						if($total_authors>0){ 
 							$i = 1;
-						else 
-							$i++;  
-															
-					}
-				?>							
-				<?php } ?>				
-				</ul>
-				<div class="cb"></div>
-			</div>
-			<div class="cb"></div>
-		</div>
-		      
+							$total_authors_processed = 0;
+							foreach($authors as $author){		
+								$total_authors_processed++;
+								if($i==1){
+									echo '<li>';
+								}
+						?>
+						
+								<div class="expertInformation">
+									<div class="expertThumb">
+										<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">
+											<?php //Image link if author image is present otherwise show the default image
+												$img_link =isset($author['Author_Profile_Picture']) && $author['Author_Profile_Picture']!="" ? $author['Author_Profile_Picture'] : SITE_URL.'img/hangerIconSmall.png' ; 
+											?>
+											<img width="92" height="92" src='<?php echo $img_link;?>'/>
+										</a>
+									</div>
+									<?php 
+										if($author['first_name']!="")
+											$username = $author['first_name'];
+										//$username = trim($author['First_Name'].' '.substr($author['Last_name'], 0, 1));
+										elseif($author['user_nicename']!=''){
+											$username = $author['user_nicename'];
+										}
+									?>
+									<!-- Information about the author: authorname,city,state -->
+									<div class="expertName">
+										<?php 
+											if($username!="") 
+												echo $username;
+										?>
+									</div>
+									<?php 
+									unset($author_address);
+									if($author['author_city']!=""){
+										$author_address[] = $author['author_city'];								
+									}
+									if($author['author_state']!=""){
+										$author_address[] = $author['author_state'];								
+									}
+									if(isset($author_address)){
+									?>
+									<div class="expertLocation">
+										<?php echo implode(', ', $author_address);?>
+									</div>
+									<?php } ?>
+									<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
+								</div>							
+						<?php 			
+								if($i==5 || $total_authors_processed==$total_authors){
+									echo '</li>';
+								}
+								
+								if($i==5)
+									$i = 1;
+								else 
+									$i++;  
+																	
+							}
+						?>							
+						<?php } ?>				
+						</ul>
+						<div class="cb"></div>
+					</div>
+					<div class="cb"></div>
+				</div>		     
 		      
 		    </div>
 		    <div class="SiteContentRight notResponsive">
@@ -458,6 +458,113 @@
                         	<span><a href="http://www.pinterest.com/thefashioncache/" class="piLight"><img class="noncolor" alt="" src="<?php echo SITE_URL;?>img/piLight.jpg"/><img class="colorful" alt="" src="<?php echo SITE_URL;?>img/piColorLight.jpg"/></a></span>
                     </div>
                 </div>
+				
+				
+		<?php if( $detect->isMobile() && !$detect->isTablet() ) { ?>
+		<div class="fashionExpertSection isResponsive">
+			<div class="titleSection">
+					<img alt="" src="<?php echo SITE_URL;?>img/FashionExpertsIcon.jpg" />
+					MEET OUR <span>FASHION</span> <span class="pink">EXPERTS</span>
+			</div>
+			<div class="expertList">
+				<ul class="expertSectoinSlider" id="responsiveExpertSectoinSlider">
+				<?php 
+				// Calling function to get author list from blog/apis.php
+				
+				if($detect->isMobile()) {
+					$authorPerRow = 2;
+				}				
+				else {
+					$authorPerRow = 5;
+				}
+				
+				$authors= fc_get_users();
+				fc_reconnect_db();
+				$total_authors = count($authors);
+				if($total_authors>0){ 
+					$i = 1;
+					$total_authors_processed = 0;
+					foreach($authors as $author){		
+						$total_authors_processed++;
+						if($i==1){
+							echo '<li>';
+						}
+				?>
+				
+						<div class="expertInformation">
+							<div class="expertThumb">
+								<a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">
+									<?php //Image link if author image is present otherwise show the default image
+										$img_link =isset($author['Author_Profile_Picture']) && $author['Author_Profile_Picture']!="" ? $author['Author_Profile_Picture'] : SITE_URL.'img/hangerIconSmall.png' ; 
+									?>
+									<img width="92" height="92" src='<?php echo $img_link;?>'/>
+								</a>
+							</div>
+							<?php 
+								if($author['first_name']!="")
+									$username = $author['first_name'];
+								//$username = trim($author['First_Name'].' '.substr($author['Last_name'], 0, 1));
+								elseif($author['user_nicename']!=''){
+									$username = $author['user_nicename'];
+								}
+							?>
+							<!-- Information about the author: authorname,city,state -->
+							<div class="expertName">
+								<?php 
+									if($username!="") 
+										echo $username;
+								?>
+							</div>
+							<?php 
+							unset($author_address);
+							if($author['author_city']!=""){
+								$author_address[] = $author['author_city'];								
+							}
+							if($author['author_state']!=""){
+								$author_address[] = $author['author_state'];								
+							}
+							if(isset($author_address)){
+							?>
+							<div class="expertLocation">
+								<?php echo implode(', ', $author_address);?>
+							</div>
+							<?php } ?>
+							<div class="expertBlog"><a href="<?php echo BLOG_URL?>?author=<?php echo $author['ID'];?>">Read Posts</a></div>
+						</div>							
+						
+						
+						
+						
+				<?php
+						
+						if($i==$authorPerRow || $total_authors_processed==$total_authors){
+							echo '</li>';
+						}
+						
+						if($i==$authorPerRow)
+							$i = 1;
+						else 
+							$i++;  
+															
+					}
+				?>							
+				<?php } ?>				
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<script>
+				$('#responsiveExpertSectoinSlider').bxSlider({
+						auto: false,
+						pause: 1000,
+						speed: 920,
+						pager: false // carasuls
+				});
+			</script>
+			<div class="cb"></div>
+		</div>
+		<?php } ?>
+				
+				
 		<?php /* ?>
 		<div id="slider">
 			<ul>
@@ -684,7 +791,7 @@
 				
 		$(function(){
 				$('.slideLoader').show();
-					<?php if( $detect->isMobile()){ ?>				
+					<?php if( $detect->isMobile() && !$detect-> isTablet()){ ?>				
 					// For Mobile Versions				
 					var noOfColumns = 2;
 					<?php } else { ?>

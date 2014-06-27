@@ -7023,6 +7023,59 @@ and (max-width : 480px) {
 	table.oneColumnTableResponse .cashBackOnOffer {
 		margin-top:3px;
 	}
+	.fashionExpertSection {
+		width:100%;
+	}
+	.fashionExpertSection .titleSection {
+		float:none;
+		width:100% !important;
+		text-align:center;
+		border-top:1px solid #e4e4e4;
+		padding-top:10px;
+		margin-top:40px;
+		margin-bottom:20px;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 600;
+		font-size: 17px;
+	}	
+	.fashionExpertSection .titleSection span {
+		color:#FBD1D5;
+	}
+	
+	.fashionExpertSection .titleSection img { 
+		width:32px;
+		vertical-align:middle;
+		position:relative;
+		top:-6px;
+		margin-right:5px;
+	}
+	.fashionExpertSection .expertList {
+		float:none;
+		width:100% !important;
+	}
+	ul.expertSectoinSlider .expertInformation {
+		display:inline-block;
+		float:none;
+	}
+	ul.expertSectoinSlider li {
+		text-align:center;
+	}
+	.fashionExpertSection .expertList .bx-viewport {
+		width:100% !important;
+	}
+	.bx-wrapper .bx-prev {
+		background-position:right top;		
+	}
+	.fashionExpertSection .expertList .bx-prev {
+		left:-14px;
+	}
+	.RetailerShopNowClear {
+		margin-top:30px;
+	}
+	.RetailerDescriptionDown {
+		margin-top:20px;
+		margin-bottom:5xpx;
+	}
 }
 
 @media only screen 

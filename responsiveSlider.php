@@ -17,7 +17,7 @@
 		}
 	</style>
 <?php } ?>
-
+<div></div>
 <ul class="topTrends">
 	<?php 
 	if($total_trending_sale_coupons>0){ 
@@ -145,6 +145,30 @@
 </ul>
 <script>
 	$(function(){
+	
+	<?php if(isset($dataColumns) && $dataColumns==3){ ?>
+		$('.topTrends').bxSlider({
+			adaptiveHeight: true,
+			auto: false,
+			pause: 2000,
+			speed: 800,
+			responsive: false,
+			pager: true, // carasuls
+			controls: true,
+			onSliderLoad: function(){
+				$('.bx-pager').prepend('<span id="pg-prev" class="prevSlideIcon"></span>');
+				$('.bx-pager').append('<span id="pg-next" class="nextSlideIcon"></span>');			
+				$('#pg-next').click(function(){
+					$('.dealsOfWeekContainer .bx-next').trigger('click');
+				})
+				
+				$('#pg-prev').click(function(){
+					$('.dealsOfWeekContainer .bx-prev').trigger('click');
+				})
+			}
+		});
+	<?php } else { ?>
+	
 		var slider = $('.topTrends').bxSlider({
 			adaptiveHeight: true,
 			auto: false,
@@ -164,5 +188,8 @@
 				})
 			}
 		});
+	<?php } ?>
+	
 	});
+
 </script>

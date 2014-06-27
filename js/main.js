@@ -81,12 +81,14 @@ $(document).ready(function () {
         }
     );	
 	
-	$('.expertSectoinSlider').bxSlider({
+	$('#notREsponsiveExpertSectoinSlider').bxSlider({
         auto: false,
         pause: 1000,
         speed: 920,
-        pager: false // carasuls	    
+        pager: false // carasuls
     });
+	
+	
 
 
     $(".iframe").colorbox({

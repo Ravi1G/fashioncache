@@ -90,7 +90,6 @@
 ?>
 
        <h2>Cash Out Requests</h2>
-
        <?php if ($total > 0) { ?>
 
 		
