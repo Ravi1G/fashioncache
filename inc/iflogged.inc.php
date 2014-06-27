@@ -9,7 +9,7 @@
 
 	if (isset($_SESSION['userid']) && is_numeric($_SESSION['userid']))
 	{
-		header("Location: myaccount.php");
+		header("Location: index.php");
 		exit();
 	}
 

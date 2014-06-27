@@ -20,6 +20,7 @@
 	if (isset($_GET['id']) && is_numeric($_GET['id']))
 	{
 		$retailer_id = (int)$_GET['id'];
+		$retailer_url = $_GET['rURL'];
 
 		$query = "SELECT * FROM cashbackengine_retailers WHERE retailer_id='$retailer_id' LIMIT 1";
 		$result = smart_mysql_query($query);
@@ -82,7 +83,7 @@
 			{
 				$_SESSION['goRetailerID']	= $retailer_id;
 				$_SESSION['goCouponID']		= $coupon_id;
-				
+				$_SESSION['retailer_url']	= $retailer_url;
 				//print_r($_SESSION);exit;
 				//header("Location: signup_or_login.php?msg=4");
 				

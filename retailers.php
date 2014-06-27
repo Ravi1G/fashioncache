@@ -28,7 +28,7 @@
 		$results_per_page = RESULTS_PER_PAGE;
 	}
 
-$results_per_page = '111111111111';
+	$results_per_page = '111111111111';
 	if (isset($_GET['view']) && $_GET['view'] != "")
 	{
 		$view = $_GET['view'];
@@ -259,7 +259,7 @@ $results_per_page = '111111111111';
 							</td>
 							<td>
 								<div class="shopNowBotton siteButton">
-									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
+									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>&rURL=<?php echo $row['url'];?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
 								</div>
 						<?php /*
 						if (isset($cat_id) && is_numeric($cat_id))
@@ -286,7 +286,7 @@ $results_per_page = '111111111111';
 							</td>
 							<td>
 								<div class="shopNowBotton siteButton">
-									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
+									<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row_top['retailer_id']; ?>&rURL=<?php echo $row_top['url'];?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>><span>SHOP NOW </span></a>
 								</div>
 							</td>
 						</tr>							

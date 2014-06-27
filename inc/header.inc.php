@@ -85,7 +85,8 @@ $detect = new Mobile_Detect;
 	<div class="header">
 		<div class="container">
 			<div class="saleCouponsSection">
-				<a href="<?php echo SITE_URL; ?>coupons.php">SEE ALL SALES &#x0026; COUPONS</a> <img alt="" src="<?php echo SITE_URL;?>img/downArrow.jpg"/>
+				<!-- <a href="<?php echo SITE_URL; ?>coupons.php">SEE ALL SALES &#x0026; COUPONS</a>--> <!-- <img alt="" src="<?php echo SITE_URL;?>img/downArrow.jpg"/>-->
+				<a href="<?php echo SITE_URL; ?>retailers">SEE ALL STORES</a>
 			</div>						
 			<div class="userActivitySection">
 				<?php if (isLoggedIn()) { ?>

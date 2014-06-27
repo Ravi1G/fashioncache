@@ -1289,8 +1289,11 @@ if (!function_exists('well_formed')) {
 
 if (!function_exists('GetRetailerLink')) {
 	function GetRetailerLink($retailer_id, $retailer_title = "") {
-		$retailer_id = (int)$retailer_id;
-		$retailer_link = SITE_URL."view_retailer.php?id=".$retailer_id;
+		//$retailer_id = (int)$retailer_id;
+		//$retailer_link = SITE_URL."view_retailer.php?id=".$retailer_id;
+		$query = mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_id=$retailer_id");
+		$retailer_row = mysql_fetch_assoc($query);
+		$retailer_link = SITE_URL."coupons/".$retailer_row['retailer_slug'];
 		return $retailer_link;
 	}
 }
