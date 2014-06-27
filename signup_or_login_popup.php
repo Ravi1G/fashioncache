@@ -38,6 +38,20 @@ include_once 'inc/config.inc.php';?>
     		$_SESSION['action']		=	'login';
     		$section				=	'login';
     		$email					=	$_POST['email'];
+    		if($_SESSION['retailer_url'])
+			{
+				$redirect_url = $_SESSION['retailer_url'];
+				//unset($_SESSION['retailer_url']);
+			}
+			else 
+			{
+				$redirect_url = "index.php";	
+			}
+			?>
+			<script>
+				parent.$.colorbox.close();
+			</script>
+			<?php 
     	}
     	else{
     		$close_popup = 0;

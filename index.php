@@ -91,7 +91,7 @@
 		
 	} */
 	
-	if(!isLoggedIn() && !$detect->isMobile() || $detect->isTablet()){
+	if(!isLoggedIn() && !$detect->isMobile() || ($detect->isTablet() && !isLoggedIn())){
 	?>
 		<script type="application/javascript">
 			$.colorbox({
@@ -211,7 +211,7 @@
 		        </div>	
 				<div class="isResponsive">
 					<div class="allStores responsiveButton">
-						<a href="<?php echo SITE_URL?>coupons.php">
+						<a href="<?php echo SITE_URL?>retailers">
 							<span class="hoverAnim">Show All Stores</span>
 						</a>
 					</div>

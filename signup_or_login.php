@@ -97,6 +97,7 @@
 		{	
 			$sql = "SELECT * FROM cashbackengine_users WHERE username='$username' AND password='".PasswordEncryption($pwd)."' LIMIT 1";
 			$result = smart_mysql_query($sql);
+			
 			if (mysql_num_rows($result) != 0)
 			{
 					$row = mysql_fetch_array($result);
@@ -106,7 +107,8 @@
 						header("Location: signup_or_login.php?msg=2");
 						exit();
 					}
-
+				
+					
 					if (LOGIN_ATTEMPTS_LIMIT == 1)
 					{
 						unset($_SESSION['attems_'.$username."_".$ip], $_SESSION['attems_left']);
@@ -125,19 +127,56 @@
 					$_SESSION['userid'] = $row['user_id'];
 					$_SESSION['FirstName'] = $row['fname'];
 
+					//Check for retailer url session - if set then redirect to retailer url
+					/*if($_SESSION['retailer_url'])
+					{
+						$retailer_url =$_SESSION['retailer_url'];
+						$goRetailerID
+						echo $retailer_url;
+						
+						
+						unset($_SESSION['retailer_url']);
+						header('Location:retailers');
+						exit();
+						?>
+						<script>
+							var url = "<?php echo $retailer_url;?>";
+							window.open(url, "_blank");
+						</script>
+						<?php 
+						header('Location:'.$retailer_url);
+						exit();
+					}*/
+
 					if ($_SESSION['goRetailerID'])
 					{
 						$goRetailerID = (int)$_SESSION['goRetailerID'];
-						$redirect_url = GetRetailerLink($goRetailerID, GetStoreName($goRetailerID));
+						
+						//$redirect_url = GetRetailerLink($goRetailerID, GetStoreName($goRetailerID));
+						$query = mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_id =$goRetailerID");
+						$retailer_row = mysql_fetch_assoc($query);
+						$redirect_url = $retailer_row['url'];
+						
+						
+						if($_SESSION['retailer_url'])
+						{
+							$redirect_url = $_SESSION['retailer_url'];
+						}
+						$redirect_url = "go2store.php?id=$goRetailerID";
+						unset($_SESSION['retailer_url']);
 						unset($_SESSION['goRetailerID']);
 					}
 					else
 					{
 						$redirect_url = "index.php";
 					}
-
 					header("Location: ".$redirect_url);
 					exit();
+					?>
+						<script>
+							parent.$.colorbox.close();
+						</script>
+					<?php 
 			}
 			else
 			{
@@ -407,6 +446,26 @@
 					$_SESSION['userid']		= $new_user_id;
 					$_SESSION['FirstName']	= $fname;
 
+					// If  the user is new and goRetailerID is set then redirect to the retailer website
+					if ($_SESSION['goRetailerID'])
+						{
+							$goRetailerID = (int)$_SESSION['goRetailerID'];
+							
+							$query = mysql_query("SELECT * FROM cashbackengine_retailers WHERE retailer_id =$goRetailerID");
+							$retailer_row = mysql_fetch_assoc($query);
+							$redirect_url = $retailer_row['url'];
+							
+							if($_SESSION['retailer_url'])
+							{
+								$redirect_url = $_SESSION['retailer_url'];
+							}
+							$redirect_url = "go2store.php?id=$goRetailerID";
+							unset($_SESSION['retailer_url']);
+							unset($_SESSION['goRetailerID']);
+							header("Location: ".$redirect_url);
+							exit();
+						}
+					
 					header("Location: index.php?msg=welcome"); // forward new user to member dashboard
 					exit();
 				}

@@ -149,7 +149,7 @@
 					<div class="RetailerShopNow RetailerShopNowClear">
 						<div class="shopNowLeft">
 							<div class="shopNowBotton siteButton">
-								<a href="<?php echo SITE_URL; ?>go2store.php?id=<?php echo $row['retailer_id']; ?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
+								<a href="<?php echo SITE_URL;?>go2store.php?id=<?php echo $row['retailer_id'];?>&rURL=<?php echo $row['url'];?>" <?php if (isLoggedIn()) echo "target=\"_blank\""; ?>>
 									<span>SHOP NOW</span>
 								</a>
 							</div>
